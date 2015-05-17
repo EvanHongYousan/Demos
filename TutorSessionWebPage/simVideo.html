@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <title>canvas</title>
+    <link rel="stylesheet" href="${templateFolderPath}/main.css"/>
+    <link rel="stylesheet" href="${templateFolderPath}/play.css"/>
+</head>
+<body>
+
+<audio id="audio" src="${audioFilePath}" controls="controls"></audio>
+
+<div class="scrollBar">
+    <span id="prePage"><img src="${templateFolderPath}/arrow_up.png" alt=""/></span>
+    <span id="currentPage">1</span>
+    /
+    <span>3</span>
+    <span id="nextPage"><img src="${templateFolderPath}/arrow_down.png" alt=""/></span>
+</div>
+
+<canvas width="" height="" id="canvasOut">请升级浏览器</canvas>
+<canvas width="" height="" id="canvasIn">请升级浏览器</canvas>
+
+<div id="canvasOutData" class="none">${teacherDrawDataFilePath}</div>
+<div id="canvasInData" class="none">${studentDrawDataFilePath}</div>
+
+<img class="loadPhoto" src="" alt=""/>
+
+<script src="${templateFolderPath}/zepto.min.js"></script>
+<script src="${templateFolderPath}/zepto.scroll.js"></script>
+<script src="${templateFolderPath}/play.js"></script>
+</body>
+</html>
