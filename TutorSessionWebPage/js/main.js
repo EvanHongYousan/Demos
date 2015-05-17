@@ -380,9 +380,14 @@ var commons = {
         if($('.toolBar .eraser').hasClass('hover') && !$(target).hasClass('eraser')){
             $('.toolBar .eraser').removeClass('hover');
             compoments.canvasBindEv();
+            $('.toolBar .eraser img').eq(0).removeClass('none').next().addClass('none');
         }
         if($('.colorSwitch').hasClass('hover') && !$(target).hasClass('colorSwitch')){
             $('.colorSwitch').removeClass('hover');
+        }
+        if($('.toolBar .hand').hasClass('hover') && !$(target).hasClass('hand')){
+            $('.toolBar .hand').removeClass('hover');
+            compoments.canvasBindEv();
         }
     }
 };
@@ -454,6 +459,7 @@ var compoments = {
                 ctxOut.strokeStyle = "black";
                 pencilColor = 'black';
             }
+            commons.showTips('pencil_tip');
         });
 
         $('.toolBar .photograph').click(function(){
