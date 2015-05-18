@@ -115,6 +115,19 @@ body img{
     display:block;
 }
 
+.colorSwitch.hover{
+    border-radius: 50% 0 0 50%;
+}
+
+.colorSwitch.hover .colorBar .red{
+    border-radius: 0 50% 50% 0;
+}
+
+.colorSwitch.hover, .colorSwitch.hover .colorBar li{
+    background-color:RGBA(0, 0, 0, 0.4);
+    line-height: 0;
+}
+
 .colorSwitch.hover .colorBar .black{
     -webkit-transform:translateX(100%);
     -moz-transform:translateX(100%);
