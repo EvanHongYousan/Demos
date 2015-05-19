@@ -4,19 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <title>canvas</title>
-    <link rel="stylesheet" href="${templateFolderPath}/main.css"/>
-    <link rel="stylesheet" href="${templateFolderPath}/play.css"/>
+    <link rel="stylesheet" href="css/main.css"/>
+    <link rel="stylesheet" href="css/simVideo.css"/>
 </head>
 <body>
 
-<audio id="audio" src="${audioFilePath}" controls="controls"></audio>
+<audio id="audio" src="http://127.0.0.1:9000/test.mp3" controls="controls"></audio>
 
 <div class="scrollBar">
-    <span id="prePage"><img src="${templateFolderPath}/arrow_up.png" alt=""/></span>
+    <span id="prePage"><img src="images/arrow_up.png" alt=""/></span>
     <span id="currentPage">1</span>
     /
     <span>3</span>
-    <span id="nextPage"><img src="${templateFolderPath}/arrow_down.png" alt=""/></span>
+    <span id="nextPage"><img src="images/arrow_down.png" alt=""/></span>
 </div>
 
 <canvas width="" height="" id="canvasOut">请升级浏览器</canvas>
@@ -27,8 +27,8 @@
 
 <img class="loadPhoto" src="" alt=""/>
 
-<script src="${templateFolderPath}/zepto.min.js"></script>
-<script src="${templateFolderPath}/zepto.scroll.js"></script>
-<script src="${templateFolderPath}/play.js"></script>
+<script src="lib/zepto.min.js"></script>
+<script src="lib/zepto.scroll.js"></script>
+<script src="js/simVideo.js"></script>
 </body>
 </html>
