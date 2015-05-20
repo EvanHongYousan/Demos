@@ -595,7 +595,7 @@ var main = {
     init:function(){
 
         $("#canvasOut, #canvasIn").attr('width',document.body.clientWidth*0.9);
-        $("#canvasOut, #canvasIn").attr('height',document.body.clientHeight*3);
+        $("#canvasOut, #canvasIn").attr('height',document.body.clientHeight*30);
 
         compoments.init();
         this.loadUserInfo();
