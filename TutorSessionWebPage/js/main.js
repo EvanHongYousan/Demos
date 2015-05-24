@@ -87,6 +87,8 @@ var commons = {
 
         var mouseX = (e.pageX||e.touches[0].clientX) - $canvasOut[0].offsetLeft;
         var mouseY = e.pageY||e.touches[0].clientY + document.body.scrollTop;
+        console.log("x = "+ mouseX );
+        console.log("y = "+ mouseY - document.body.clientHeight * 0.13);
 
         ctxOut.moveTo(mouseX, mouseY);
         //JSNativeBridge.send('js_msg_drawData', {beginPath:'beginPath'});
