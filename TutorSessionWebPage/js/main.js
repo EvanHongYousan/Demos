@@ -428,14 +428,14 @@ var compoments = {
             commons.checkOtherBtn(this);
             if($(this).hasClass('hover')){
                 $(this).removeClass('hover');
-                $(this).find('img').eq(1).addClass('none').prev().removeClass('none');
+                //$(this).find('img').eq(1).addClass('none').prev().removeClass('none');
                 commons.showTips('pencil_tip');
                 isEraser = false;
                 ctxOut.strokeStyle = pencilColor;
                 ctxIn.strokeStyle = pencilColor;
             }else{
                 $(this).addClass('hover');
-                $(this).find('img').eq(0).addClass('none').next().removeClass('none');
+                //$(this).find('img').eq(0).addClass('none').next().removeClass('none');
                 commons.showTips('eraser_tip');
                 isEraser = true;
             }
@@ -597,7 +597,7 @@ var main = {
     init:function(){
 
         $("#canvasOut, #canvasIn").attr('width',document.body.clientWidth*0.9);
-        $("#canvasOut, #canvasIn").attr('height',document.body.clientHeight*30);
+        $("#canvasOut, #canvasIn").attr('height',document.body.clientHeight*20);
 
         compoments.init();
         this.loadUserInfo();

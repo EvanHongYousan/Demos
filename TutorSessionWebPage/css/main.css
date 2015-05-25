@@ -58,8 +58,10 @@ body img{
     width:100%;
 }
 
-.toolBar .hand.hover{
-    outline:1px dashed red;
+.toolBar .hand.hover, .toolBar .eraser.hover{
+    /*outline:1px dashed red;*/
+    background: url(../images/selected.png) no-repeat;
+    background-size: contain;
 }
 
 .colorSwitch{
