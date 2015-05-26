@@ -400,8 +400,8 @@ var compoments = {
         this.scrollBarBindEv();
         this.canvasBindEv();
         //this.JSNativeBrdgBindEv();
-        this.hangupBindEv();
-        this.avoidFixedBug();
+        //this.hangupBindEv();
+        //this.avoidFixedBug();
     },
     hangupBindEv:function(){
         $('.toolBar .hangup').click(function(){
