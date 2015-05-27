@@ -73,7 +73,7 @@
             };
 
             initModule = function( $container ){
-                $container.html( configMap.template_html );
+                $container.html( configMap.templated_html );
                 $chatSlider = $container.find('.spa-slider');
 
                 $chatSlider
@@ -86,9 +86,9 @@
             return { initModule : initModule };
         })(jQuery);
 
-        (function(){
-            spa.initModule( jQuery('#spa') );
-        })();
+        jQuery(document).ready(
+                function () { spa.initModule( jQuery('#spa') ); }
+        );
     </script>
 </head>
 <body>
