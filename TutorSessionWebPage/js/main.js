@@ -87,8 +87,6 @@ var commons = {
 
         var mouseX = (e.pageX||e.touches[0].clientX) - $canvasOut[0].offsetLeft;
         var mouseY = e.pageY||e.touches[0].clientY + document.body.scrollTop;
-        console.log("x = "+ mouseX );
-        console.log("y = "+ mouseY - document.body.clientHeight * 0.13);
 
         ctxOut.moveTo(mouseX, mouseY);
         //JSNativeBridge.send('js_msg_drawData', {beginPath:'beginPath'});
@@ -391,6 +389,9 @@ var commons = {
             $('.toolBar .hand').removeClass('hover');
             compoments.canvasBindEv();
         }
+        if($('.toolBar .colorSwitch').hasClass('focus') && !$(target).hasClass('colorSwitch')){
+            $('.toolBar .colorSwitch').removeClass('focus')
+        }
     }
 };
 
@@ -428,6 +429,7 @@ var compoments = {
             commons.checkOtherBtn(this);
             if($(this).hasClass('hover')){
                 $(this).removeClass('hover');
+                $('.colorSwitch').addClass('focus');
                 //$(this).find('img').eq(1).addClass('none').prev().removeClass('none');
                 commons.showTips('pencil_tip');
                 isEraser = false;
@@ -462,6 +464,7 @@ var compoments = {
                 pencilColor = 'black';
             }
             commons.showTips('pencil_tip');
+            $('.colorSwitch').addClass('focus');
         });
 
         $('.toolBar .photograph').click(function(){
@@ -470,10 +473,16 @@ var compoments = {
         });
 
         $('.colorSwitch > img').click(function(){
-            if($('.colorSwitch').hasClass('hover')){
-                $('.colorSwitch').removeClass('hover');
+            commons.checkOtherBtn($(this).parent());
+            if($('.colorSwitch').hasClass('focus')){
+                if($('.colorSwitch').hasClass('hover')){
+                    $('.colorSwitch').removeClass('hover');
+                }else{
+                    $('.colorSwitch').addClass('hover');
+                }
             }else{
-                $('.colorSwitch').addClass('hover');
+                $('.colorSwitch').addClass('focus');
+                commons.showTips('pencil_tip');
             }
         });
 
@@ -481,6 +490,7 @@ var compoments = {
             commons.checkOtherBtn(this);
             if($(this).hasClass('hover')){
                 $(this).removeClass('hover');
+                $('.colorSwitch').addClass('focus');
                 compoments.canvasBindEv();
                 commons.showTips('pencil_tip');
             }else{

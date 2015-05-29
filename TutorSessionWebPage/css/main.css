@@ -64,6 +64,14 @@ body img{
     background-size: contain;
 }
 
+.toolBar .colorSwitch.focus{
+    background: url(../images/selected.png) no-repeat 45% 0;
+    background-size: contain;
+}
+.toolBar .colorSwitch.hover.focus{
+    background-image: none;
+}
+
 .colorSwitch{
     position:relative;
 }
@@ -125,7 +133,7 @@ body img{
     border-radius: 0 50% 50% 0;
 }
 
-.colorSwitch.hover, .colorSwitch.hover .colorBar li{
+.colorSwitch.hover, .colorSwitch.hover.focus, .colorSwitch.hover .colorBar li{
     background-color:RGBA(0, 0, 0, 0.4);
     line-height: 0;
 }
