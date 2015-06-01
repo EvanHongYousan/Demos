@@ -428,13 +428,7 @@ var compoments = {
         $(".toolBar .eraser").click(function(){
             commons.checkOtherBtn(this);
             if($(this).hasClass('hover')){
-                $(this).removeClass('hover');
-                $('.colorSwitch').addClass('focus');
-                //$(this).find('img').eq(1).addClass('none').prev().removeClass('none');
-                commons.showTips('pencil_tip');
-                isEraser = false;
-                ctxOut.strokeStyle = pencilColor;
-                ctxIn.strokeStyle = pencilColor;
+                return;
             }else{
                 $(this).addClass('hover');
                 //$(this).find('img').eq(0).addClass('none').next().removeClass('none');
@@ -489,10 +483,7 @@ var compoments = {
         $('.toolBar .hand').click(function(){
             commons.checkOtherBtn(this);
             if($(this).hasClass('hover')){
-                $(this).removeClass('hover');
-                $('.colorSwitch').addClass('focus');
-                compoments.canvasBindEv();
-                commons.showTips('pencil_tip');
+                return;
             }else{
                 $(this).addClass('hover');
                 compoments.canvasUnBindEv();
