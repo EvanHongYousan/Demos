@@ -5,8 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <title>canvas</title>
     <link rel="stylesheet" href="css/main.css"/>
+    <style>
+        .pageLine{
+            color:#b0ada6;
+        }
+        .pageLine > li {
+            width:100%;
+        }
+        .pageLine > li > span{
+            display:inline-block;
+            width:85%;
+            height:5px;
+            border-bottom: 1px solid #b0ada6;
+            position:absolute;
+            right:0;
+        }
+        .pageLine > li > p {
+            margin:0;
+            text-align: right;
+        }
+    </style>
 </head>
 <body>
+<ul class="pageLine">
+    <li style=""> <p>1/5</p> <span></span> </li>
+    <li style=""> <p>2/5</p> <span></span> </li>
+    <li style=""> <p>3/5</p> <span></span> </li>
+    <li style=""> <p>4/5</p> <span></span> </li>
+    <li style=""> <p>5/5</p> <span></span> </li>
+    <li style=""> <p>6/10</p> <span></span> </li>
+    <li style=""> <p>7/10</p> <span></span> </li>
+    <li style=""> <p>8/10</p> <span></span> </li>
+    <li style=""> <p>9/10</p> <span></span> </li>
+    <li style=""> <p>10/10</p> <span></span> </li>
+    <li style=""> <p>11/15</p> <span></span> </li>
+    <li style=""> <p>12/15</p> <span></span> </li>
+    <li style=""> <p>13/15</p> <span></span> </li>
+    <li style=""> <p>14/15</p> <span></span> </li>
+    <li style=""> <p>15/15</p> <span></span> </li>
+    <li style=""> <p>16/20</p> <span></span> </li>
+    <li style=""> <p>17/20</p> <span></span> </li>
+    <li style=""> <p>18/20</p> <span></span> </li>
+    <li style=""> <p>19/20</p> <span></span> </li>
+    <li style=""> <p>20/20</p> <span></span> </li>
+</ul>
 
 <div class="toolBar">
     <!--<button id="pencilBtn">铅笔</button>-->
@@ -57,13 +99,13 @@
     </span>
 </div>
 
-<div class="scrollBar">
-<!--    <span id="prePage"><img src="${templateFolderPath}/arrow_up.png" alt=""/></span>-->
-    <span id="currentPage">1</span>
-    /
-    <span>10</span>
-<!--    <span id="nextPage"><img src="${templateFolderPath}/arrow_down.png" alt=""/></span>-->
-</div>
+<!--<div class="scrollBar">-->
+<!--&lt;!&ndash;    <span id="prePage"><img src="${templateFolderPath}/arrow_up.png" alt=""/></span>&ndash;&gt;-->
+    <!--<span id="currentPage">1</span>-->
+    <!--/-->
+    <!--<span>10</span>-->
+<!--&lt;!&ndash;    <span id="nextPage"><img src="${templateFolderPath}/arrow_down.png" alt=""/></span>&ndash;&gt;-->
+<!--</div>-->
 
 <div class="tips none">
     <img class="none" src="images/hand_tip.png" alt=""/>

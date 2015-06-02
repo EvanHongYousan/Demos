@@ -88,6 +88,8 @@ var commons = {
         var mouseX = (e.pageX||e.touches[0].clientX) - $canvasOut[0].offsetLeft;
         var mouseY = e.pageY||e.touches[0].clientY + document.body.scrollTop;
 
+        console.log(mouseY);
+
         ctxOut.moveTo(mouseX, mouseY);
         //JSNativeBridge.send('js_msg_drawData', {beginPath:'beginPath'});
         //JSNativeBridge.send('js_msg_drawData', {sx : mouseX / document.body.clientWidth/0.9, sy : mouseY/document.body.clientHeight/3, lineWidth:ctxOut.lineWidth, color:ctxOut.strokeStyle });
@@ -105,7 +107,6 @@ var commons = {
 
         var mouseX = (e.pageX||e.touches[0].clientX) - $canvasOut[0].offsetLeft;
         var mouseY = e.pageY||e.touches[0].clientY + document.body.scrollTop;
-
         if(isPaint && !isEraser){
             //ctxOut.strokeStyle = "#f98989";
             ctxOut.lineTo(mouseX, mouseY);
@@ -400,6 +401,7 @@ var compoments = {
         this.toolBarBindEv();
         this.scrollBarBindEv();
         this.canvasBindEv();
+        this.locatePageLine();
         //this.JSNativeBrdgBindEv();
         //this.hangupBindEv();
         //this.avoidFixedBug();
@@ -550,7 +552,7 @@ var compoments = {
 //                    }
 //                ]
 //            });
-            for(i = 0; i < 10 ; i++){
+            for(i = 0; i < 30 ; i++){
                 if( document.body.scrollTop > document.body.clientHeight * i && document.body.scrollTop < document.body.clientHeight * (i + 1)){
                     $('#currentPage').text(i+1);
                 }
@@ -588,6 +590,17 @@ var compoments = {
 //            window.scrollTo(0,document.body.scrollTop-1);
 //            return false;
 //        });
+    },
+    locatePageLine:function(){
+        var i = 0;
+        for( i = 0 ; i < 20 ; i++ ){
+            $('.pageLine > li ').eq(i).css({
+                position:'absolute',
+                right:'2%',
+                top:document.body.clientHeight * (i+1) - 20
+            });
+        }
+        $('.pageLine').css('width',document.body.clientWidth * 0.8);
     }
 };
 
