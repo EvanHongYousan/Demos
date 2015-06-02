@@ -1,0 +1,77 @@
+html, body, ul, li{
+    margin:0;
+    padding:0;
+}
+
+html, body{
+    -webkit-user-select: none;
+    -moz-user-select:none;
+    -o-user-select:none;
+    user-select: none;
+
+    tap-highlight-color:transparent;
+    tap-highlight-color: rgba(0,0,0,0);
+    -webkit-tap-highlight-color:transparent;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    -webkit-touch-callout: none;
+
+    font-size: 16px;
+    font-family: "Microsoft YaHei";
+}
+
+ul, li{
+    list-style: none;
+}
+.page1{
+    background: url(../images/bg1.jpg);
+}
+.page2{
+    background: url(../images/bg2.jpg);
+}
+.page3{
+    background: url(../images/bg3.jpg);
+}
+.page4{
+    background: url(../images/bg4.jpg);
+}
+.page5{
+    background: url(../images/bg5.jpg);
+}
+.page1, .page2, .page3, .page4, .page5{
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+
+    position: relative;
+}
+
+.logo{
+    position:absolute;
+    top:20px;
+    left:20px;
+    height:60px;
+}
+
+.logo img{
+    display:inline-block;
+    width:60px;
+    height:60px;
+}
+
+.logo li{
+    display:inline-block;
+    margin-left:10px;
+    color:white;
+}
+
+.logo li:first-of-type{
+    position:absolute;
+    top:5px;
+    font-size:27px;
+}
+.logo li:last-of-type{
+    font-size:18px;
+    position:relative;
+    top:-5px;
+}

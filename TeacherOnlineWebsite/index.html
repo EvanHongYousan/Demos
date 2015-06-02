@@ -5,73 +5,31 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <title></title>
     <link rel="stylesheet" href="css/jquery.fullPage.css"/>
-    <style>
-        #fullPage div{
-            text-align: center;
-            font-size: 20px;
-            font-family: "Microsoft YaHei";
-        }
-        /* Overwriting fullPage.js tooltip color
-	* --------------------------------------- */
-        
-        .fp-tooltip{
-            color: #AAA;
-        }
-        #fp-nav span, .fp-slidesNav span{
-            border-color: #AAA;
-        }
-        #fp-nav li .active span, .fp-slidesNav .active span{
-            background: #AAA;
-        }
-    </style>
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
     <div id="fullPage">
-        <div class="section">
-            <div class="shell">
-                <img src="images/plax_logo.png" width="136" height="70" data-xrange="20" data-yrange="20"/>
-                <img src="images/plax_sphere_small.png" width="93" height="92" data-xrange="40" data-yrange="40"/>
-                <img src="images/plax_sphere_large.png" width="215" height="215" data-xrange="10" data-yrange="10"/>
-                <img src="images/plax_sphere_small.png" width="93" height="92" data-xrange="40" data-yrange="40" data-invert="true"/>
-            </div>
+        <div class="section page1">
+            <ul class="logo"><img src="images/logo.png" alt=""/>
+                <li>呼叫老师</li>
+                <li>你的随身家教</li>
+            </ul>
         </div>
-        <div class="section">
-            <div class="slide">first</div>
-            <div class="slide">
-                <div class="shell">
-                    <img src="images/plax_logo.png" width="136" height="70" data-xrange="20" data-yrange="20"/>
-                    <img src="images/plax_sphere_small.png" width="93" height="92" data-xrange="40" data-yrange="40"/>
-                    <img src="images/plax_sphere_large.png" width="215" height="215" data-xrange="10" data-yrange="10"/>
-                    <img src="images/plax_sphere_small.png" width="93" height="92" data-xrange="40" data-yrange="40" data-invert="true"/>
-                </div>
-            </div>
-            <div class="slide">third</div>
-            <div class="slide">fourth</div>
-        </div>
-        <div class="section">3</div>
-        <div class="section">
-            <div class="shell">
-                <img src="images/plax_logo.png" width="136" height="70" data-xrange="20" data-yrange="20"/>
-                <img src="images/plax_sphere_small.png" width="93" height="92" data-xrange="40" data-yrange="40"/>
-                <img src="images/plax_sphere_large.png" width="215" height="215" data-xrange="10" data-yrange="10"/>
-                <img src="images/plax_sphere_small.png" width="93" height="92" data-xrange="40" data-yrange="40" data-invert="true"/>
-            </div>
-        </div>
-        <div class="section">5</div>
+        <div class="section page2"></div>
+        <div class="section page3"></div>
+        <div class="section page4"></div>
+        <div class="section page5"></div>
     </div>
     <script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
     <script src="js/jquery.fullPage.min.js"></script>
-    <script src="js/plax.js"></script>
     <script>
         $(document).ready(function() {
             $('#fullPage').fullpage({
-                sectionsColor: ['#d2d2f2', '#4BBFC3', '#7BAABE', '#475387', '#ccddff'],
+                //sectionsColor: ['#d2d2f2', '#4BBFC3', '#7BAABE', '#475387', '#ccddff'],
                 scrollingSpeed: 300,
                 'navigation': true,
                 'navigationPosition': 'right'
             });
-            $('.shell img').plaxify();
-            $.plax.enable()
         });
     </script>
 </body>
