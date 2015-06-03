@@ -22,6 +22,17 @@ html, body{
 ul, li{
     list-style: none;
 }
+
+h1, h2, h3, h4, h5, h6{
+    font-weight: normal;
+    font-size:30px;
+
+    position: absolute;
+    top:5%;
+    left:50%;
+    transform: translate(-50%, 0);
+}
+
 .page1{
     background: url(../images/bg1.jpg);
 }
@@ -65,12 +76,12 @@ ul, li{
     color:white;
 }
 
-.logo li:first-of-type{
+.logo li.row1{
     position:absolute;
     top:5px;
     font-size:27px;
 }
-.logo li:last-of-type{
+.logo li.row2{
     font-size:18px;
     position:relative;
     top:-5px;
@@ -89,11 +100,11 @@ ul, li{
     position:relative;
 }
 
-.copywriting > li:first-of-type{
+.copywriting > li.row1{
     font-size:40px;
 }
 
-.copywriting > li:nth-of-type(2){
+.copywriting > li.row2{
     font-size:30px;
 }
 
@@ -146,7 +157,7 @@ ul, li{
     height:120px;
 }
 
-.copywriting li:last-of-type{
+.copywriting li.row4{
     font-size:50px;
     color: #b2e0d3;
 }
