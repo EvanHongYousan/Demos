@@ -75,3 +75,78 @@ ul, li{
     position:relative;
     top:-5px;
 }
+
+.copywriting{
+    position:absolute;
+    left:50%;
+    top:30%;
+
+    color:white;
+}
+
+.copywriting > li{
+    margin-bottom: 40px;
+    position:relative;
+}
+
+.copywriting > li:first-of-type{
+    font-size:40px;
+}
+
+.copywriting > li:nth-of-type(2){
+    font-size:30px;
+}
+
+.copywriting .download-android, .copywriting .download-ios{
+    display:inline-block;
+    width:200px;
+    height:50px;
+    cursor: pointer;
+
+    margin-right:20px;
+}
+
+.copywriting .download-android{
+    background: url(../images/android_normal.png);
+    background-size: cover;
+}
+
+.copywriting .download-android:hover{
+    background: url(../images/android_hover.png);
+    background-size: cover;
+}
+
+.copywriting .download-android:active{
+    background: url(../images/android_active.png);
+    background-size: cover;
+}
+
+.copywriting .download-ios{
+    background: url(../images/ios_normal.png);
+    background-size: cover;
+}
+
+.copywriting .download-ios:hover{
+    background: url(../images/ios_hover.png);
+    background-size: cover;
+}
+
+.copywriting .download-ios:active{
+    background: url(../images/ios_active.png);
+    background-size: cover;
+}
+
+.copywriting .download-android{
+    position:absolute;
+    top:0;
+}
+
+.copywriting .QR-code{
+    width:120px;
+    height:120px;
+}
+
+.copywriting li:last-of-type{
+    font-size:50px;
+    color: #b2e0d3;
+}
