@@ -91,6 +91,7 @@ h1, h2, h3, h4, h5, h6{
     position:absolute;
     left:50%;
     top:30%;
+    z-index:1;
 
     color:white;
 }
@@ -160,4 +161,13 @@ h1, h2, h3, h4, h5, h6{
 .copywriting li.row4{
     font-size:50px;
     color: #b2e0d3;
+}
+
+.page1 .bigHand{
+    width:50%;
+    min-width:600px;
+
+    position:absolute;
+    bottom:-20px;
+    left:-20px;
 }
