@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        #canvas2{
+            z-index: -1;
+            position:absolute;
+            top:0;
+            left:0;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas1"></canvas>
+    <canvas id="canvas2"></canvas>
+    <script>
+        window.onload=function(){
+            var ctx1 = document.getElementById('canvas1').getContext('2d');
+            var ctx2 = document.getElementById('canvas2').getContext('2d');
+
+            ctx1.strokeStyle = '';
+
+            ctx1.beginPath();
+            ctx1.arc(50, 50, 16, 0, Math.PI * 2);
+            ctx1.fill();
+            ctx1.closePath();
+
+            ctx2.beginPath();
+            ctx2.arc(150, 150, 16, 0, Math.PI * 2);
+            ctx2.fill();
+            ctx2.closePath();
+        }
+    </script>
+</body>
+</html>

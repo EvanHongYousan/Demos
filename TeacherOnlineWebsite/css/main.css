@@ -57,6 +57,8 @@ h1, h2, h3, h4, h5, h6{
     position: relative;
 }
 
+/*page1 start*/
+
 .logo{
     position:absolute;
     top:20px;
@@ -171,3 +173,46 @@ h1, h2, h3, h4, h5, h6{
     bottom:-20px;
     left:-20px;
 }
+
+/*page1 end*/
+
+/*page2 start*/
+
+.page2 h2{
+    color:#05b380;
+}
+
+.page2 div{
+    text-align: center;
+}
+
+.page2 ul{
+    display:inline-block;
+    margin-left:150px;
+}
+
+.page2 .ul1{
+    margin-left:0;
+}
+
+.page2 ul > li{
+    text-align: center;
+    margin-bottom:35px;
+}
+
+.page2 ul > li > img{
+    width:250px;
+    height:250px;
+}
+
+.page2 ul > li.row1{
+    font-size:30px;
+}
+
+.page2 ul > li.row3, .page2 ul > li.row4{
+    margin-bottom:15px;
+    font-size:20px;
+    color:#3f4140;
+}
+
+/*page2 end*/
