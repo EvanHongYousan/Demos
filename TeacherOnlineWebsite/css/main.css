@@ -111,7 +111,7 @@ h1, h2, h3, h4, h5, h6{
     font-size:30px;
 }
 
-.copywriting .download-android, .copywriting .download-ios{
+.download-android, .download-ios{
     display:inline-block;
     width:200px;
     height:50px;
@@ -120,42 +120,42 @@ h1, h2, h3, h4, h5, h6{
     margin-right:20px;
 }
 
-.copywriting .download-android{
+.download-android{
     background: url(../images/android_normal.png);
     background-size: cover;
 }
 
-.copywriting .download-android:hover{
+.download-android:hover{
     background: url(../images/android_hover.png);
     background-size: cover;
 }
 
-.copywriting .download-android:active{
+.download-android:active{
     background: url(../images/android_active.png);
     background-size: cover;
 }
 
-.copywriting .download-ios{
+.download-ios{
     background: url(../images/ios_normal.png);
     background-size: cover;
 }
 
-.copywriting .download-ios:hover{
+.download-ios:hover{
     background: url(../images/ios_hover.png);
     background-size: cover;
 }
 
-.copywriting .download-ios:active{
+.download-ios:active{
     background: url(../images/ios_active.png);
     background-size: cover;
 }
 
-.copywriting .download-android{
+.download-android{
     position:absolute;
     top:0;
 }
 
-.copywriting .QR-code{
+.QR-code{
     width:120px;
     height:120px;
 }
@@ -180,6 +180,10 @@ h1, h2, h3, h4, h5, h6{
 
 .page2 h2{
     color:#05b380;
+}
+
+.page2 > div{
+    min-width:1100px;
 }
 
 .page2 div{
@@ -216,3 +220,98 @@ h1, h2, h3, h4, h5, h6{
 }
 
 /*page2 end*/
+
+/*page3 start*/
+
+.page3 div{
+    text-align: center;
+}
+
+.page3 h2{
+    color:white;
+}
+
+.page3 .page3-table{
+    width:70%;
+}
+
+.page3 .page3-teacher{
+    width:10%;
+    position:relative;
+    top:50px;
+}
+
+/*page3 end*/
+
+/*page4 start*/
+
+.page4 h2{
+    color:#f77125;
+}
+
+.page4 div{
+    text-align: center;
+}
+
+.page4 ul{
+    position:relative;
+    width:40%;
+    margin-top:5%;
+}
+
+.page4 ul.ul2, .page4 ul.ul4{
+    margin-left:10%;
+}
+
+.page4 ul, .page4 ul > img, .page4 ul > li{
+    display:inline-block;
+}
+
+.page4 ul > img{
+    width:30%;
+}
+
+.page4 ul > li.row1{
+    position:absolute;
+    top:20%;
+    font-size:30px;
+}
+
+.page4 ul > li.row2{
+    position:absolute;
+    top:110px;
+}
+
+.page4 ul > li.row3{
+    position:relative;
+    bottom:20px;
+}
+
+.page4 ul > li.row2, .page4 ul > li.row3{
+    font-size:20px;
+}
+
+/*page4 end*/
+
+/*page5 start*/
+
+.page5 div{
+    text-align: center;
+}
+
+.page5 .downloadContainer{
+    position:relative;
+    margin-bottom: 70px;
+}
+
+.page5 .footer{
+    position:absolute;
+    left:50%;
+    bottom:10px;
+    transform: translate(-50%, 0);
+
+    color:#838383;
+    font-size:10px;
+}
+
+/*page5 end*/
