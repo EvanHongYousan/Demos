@@ -594,10 +594,15 @@ var compoments = {
     locatePageLine:function(){
         var i = 0;
         for( i = 0 ; i < 20 ; i++ ){
-            $('.pageLine > li ').eq(i).css({
+            $('.pageLine > li ').eq(2*i).css({
                 position:'absolute',
                 right:'2%',
-                top:document.body.clientHeight * (i+1) - 20
+                top:document.body.clientHeight * (i) + 10
+            });
+            $('.pageLine > li ').eq(2*i+1).css({
+                position:'absolute',
+                right:'2%',
+                top:document.body.clientHeight * (i+1)
             });
         }
         $('.pageLine').css('width',document.body.clientWidth * 0.8);
