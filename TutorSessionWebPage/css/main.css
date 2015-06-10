@@ -109,21 +109,6 @@ body img{
     transform:translateX(0);
 }
 
-.colorSwitch .colorBarBG{
-    position:absolute;
-    top:-10px;
-    width:0px;
-    height:60px;
-    background-color: black;
-    opacity: 0.3;
-    border-radius: 60px;
-    z-index:-10;
-
-    -webkit-transition:width 0.2s;
-    -moz-transition:width 0.2s;
-    -o-transition:width 0.2s;
-    transition:width 0.2s;
-}
 
 .colorSwitch.hover .colorBar li > img{
     display:block;
@@ -143,30 +128,24 @@ body img{
 }
 
 .colorSwitch.hover .colorBar .black{
-    -webkit-transform:translateX(100%);
-    -moz-transform:translateX(100%);
-    -o-transform:translateX(100%);
+    -webkit-transform:-webkit-translateX(100%);
+    -moz-transform:-moz-translateX(100%);
+    -o-transform:-o-translateX(100%);
     transform:translateX(100%);
 }
 
 .colorSwitch.hover .colorBar .blue{
-    -webkit-transform:translateX(200%);
-    -moz-transform:translateX(200%);
-    -o-transform:translateX(200%);
+    -webkit-transform:-webkit-translateX(200%);
+    -moz-transform:-moz-translateX(200%);
+    -o-transform:-o-translateX(200%);
     transform:translateX(200%);
 }
 
 .colorSwitch.hover .colorBar .red{
-    -webkit-transform:translateX(300%);
-    -moz-transform:translateX(300%);
-    -o-transform:translateX(300%);
+    -webkit-transform:-webkit-translateX(300%);
+    -moz-transform:-moz-translateX(300%);
+    -o-transform:-o-translateX(300%);
     transform:translateX(300%);
-}
-
-.colorSwitch.hover .colorBarBG{
-    display:block;
-    width:260px;
-    transition:width 0.2s;
 }
 
 .scrollBar{

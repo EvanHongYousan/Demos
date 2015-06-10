@@ -128,11 +128,16 @@ var commons = {
         }
 
         if(isPaint && isEraser){
-            ctxOut.globalCompositeOperation = "destination-out";
-            ctxOut.arc(mouseX, mouseY, 15, 0, Math.PI * 2);
-            ctxOut.strokeStyle = "rgba(250,250,250,0)";
-            ctxOut.fill();
-            ctxOut.closePath();
+            //ctxOut.globalCompositeOperation = "destination-out";
+            //ctxOut.arc(mouseX, mouseY, 15, 0, Math.PI * 2);
+            //ctxOut.strokeStyle = "rgba(250,250,250,0)";
+            //ctxOut.fill();
+            //ctxOut.closePath();
+            //ctxOut.globalCompositeOperation = "source-over";
+            ctxOut.globalCompositeOperation = "destination-out"
+            ctxOut.lineWidth = 30;
+            ctxOut.lineTo(mouseX, mouseY);
+            ctxOut.stroke();
             ctxOut.globalCompositeOperation = "source-over";
 
             ctxIn.globalCompositeOperation = "destination-out";
