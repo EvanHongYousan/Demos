@@ -104,6 +104,7 @@ var commons = {
     },
     drawing:function(e){
         var temp = null;
+        ctxOut.lineWidth = 1;
 
         var mouseX = (e.pageX||e.touches[0].clientX) - $canvasOut[0].offsetLeft;
         var mouseY = e.pageY||e.touches[0].clientY + document.body.scrollTop;
@@ -134,7 +135,7 @@ var commons = {
             //ctxOut.fill();
             //ctxOut.closePath();
             //ctxOut.globalCompositeOperation = "source-over";
-            ctxOut.globalCompositeOperation = "destination-out"
+            ctxOut.globalCompositeOperation = "destination-out";
             ctxOut.lineWidth = 30;
             ctxOut.lineTo(mouseX, mouseY);
             ctxOut.stroke();
