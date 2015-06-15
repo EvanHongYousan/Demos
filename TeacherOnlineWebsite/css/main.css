@@ -63,29 +63,11 @@ h1, h2, h3, h4, h5, h6{
     position:absolute;
     top:20px;
     left:20px;
+    width:180px;
     height:60px;
-}
 
-.logo img{
-    display:inline-block;
-    height:60px;
-}
-
-.logo li{
-    display:inline-block;
-    margin-left:10px;
-    color:white;
-}
-
-.logo li.row1{
-    position:absolute;
-    top:5px;
-    font-size:27px;
-}
-.logo li.row2{
-    font-size:18px;
-    position:relative;
-    top:-5px;
+    background:url(../images/logo.png);
+    background-size:cover;
 }
 
 .copywriting{
@@ -166,11 +148,15 @@ h1, h2, h3, h4, h5, h6{
 
 .page1 .bigHand{
     width:50%;
-    min-width:600px;
+    /*min-width:600px;*/
 
     position:absolute;
     bottom:-20px;
     left:-20px;
+}
+
+.page1 .banner-MBdevice{
+    display:none;
 }
 
 /*page1 end*/
@@ -234,10 +220,18 @@ h1, h2, h3, h4, h5, h6{
     width:70%;
 }
 
+.page3 .page3-table-MBdevice{
+    display:none;
+}
+
 .page3 .page3-teacher{
     width:10%;
     position:relative;
     top:50px;
+}
+
+.page3 .page3-teacher.female2{
+    display:none;
 }
 
 /*page3 end*/
@@ -254,8 +248,10 @@ h1, h2, h3, h4, h5, h6{
 
 .page4 ul{
     position:relative;
-    width:40%;
     margin-top:5%;
+    display : inline-block;
+    width:40%;
+    height : 200px;
 }
 
 .page4 ul.ul2, .page4 ul.ul4{
@@ -267,23 +263,24 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .page4 ul > img{
-    width:30%;
+    width:150px;
+    position : absolute;
+}
+
+.page4 ul > li{
+    width:60%;
+    text-align: left;
+    margin-left: 180px;
+    line-height: 35px;
 }
 
 .page4 ul > li.row1{
-    position:absolute;
-    top:20%;
     font-size:30px;
+    margin-top:20px;
 }
 
 .page4 ul > li.row2{
-    position:absolute;
-    top:110px;
-}
-
-.page4 ul > li.row3{
-    position:relative;
-    bottom:20px;
+    margin-top : 10px;
 }
 
 .page4 ul > li.row2, .page4 ul > li.row3{
@@ -314,3 +311,133 @@ h1, h2, h3, h4, h5, h6{
 }
 
 /*page5 end*/
+
+@media screen and (max-width: 960px){
+
+    /*page1 start*/
+    .copywriting {
+        position:static;
+        margin:20px 0 0 20px;
+    }
+
+    .copywriting > li {
+        margin-bottom: 10px;
+        position: static;
+    }
+
+    .copywriting > li.row1{
+        font-size:20px;
+    }
+
+    .copywriting > li.row2{
+        font-size:16px;
+    }
+
+    .copywriting > li.row3, .copywriting > li.row4, .page1 .bigHand, #fp-nav, .logo{
+        display:none;
+    }
+
+    .page1 .banner-MBdevice{
+        display:block;
+    }
+
+    .page1 .banner-MBdevice img{
+        width:30%;
+        min-width:150px;
+        margin:20px auto;
+        display:block;
+    }
+
+    .download-android, .download-ios{
+        position:static;
+        display:block;
+        margin:20px auto;
+    }
+
+    .banner-MBdevice-copywriting{
+        text-align: center;
+        color:#afe4cf;
+        font-size:30px;
+        margin-top:100px;
+    }
+    /*page1 end*/
+
+    /*page3 start*/
+
+    .page3 h2{
+        font-size:23px;
+        position:static;
+        transform: none;
+    }
+
+    .page3 .page3-table{
+        display: none;
+    }
+
+    .page3 .page3-table-MBdevice{
+        display: inline;
+        width:100%;
+    }
+
+    .page3 .page3-teacher.female1{
+        display:none;
+    }
+
+    .page3 .page3-teacher.female2{
+        display:inline;
+        margin-right:80px;
+    }
+
+    .page3 .page3-teacher{
+        width:100px;
+        position: relative;
+        top: -30px;
+    }
+
+    /*page3 end*/
+
+    /*page4 start*/
+
+    .page4 h2{
+        position:static;
+        transform: none;
+    }
+
+    .page4 ul{
+        display:block;
+        margin:0;
+        width:100%;
+        height:20%;
+    }
+
+    .page4 ul.ul2, .page4 ul.ul4{
+        margin-left:0;
+    }
+
+    .page4 ul > img {
+        width: 100px;
+        position: absolute;
+        left: 30px;
+    }
+
+    .page4 ul > li {
+        width: 60%;
+        text-align: left;
+        margin-left: 150px;
+    }
+
+    .page4 ul > li.row1{
+        font-size:25px;
+        margin-top:0;
+    }
+
+    .page4 ul > li.row2{
+        margin-top : 0;
+    }
+
+    .page4 ul > li.row2, .page4 ul > li.row3{
+        font-size:15px;
+    }
+
+    /*page4 end*/
+}

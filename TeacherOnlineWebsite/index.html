@@ -6,21 +6,27 @@
     <title></title>
     <link rel="stylesheet" href="css/jquery.fullPage.css"/>
     <link rel="stylesheet" href="css/main.css"/>
+    <style>
+        .fp-tooltip{
+            color: #f9f9f9;
+        }
+        #fp-nav ul li a span{
+            background: #f9f9f9;
+        }
+        #fp-nav ul li a.active span{
+            background: #f9f9f9;
+        }
+    </style>
 </head>
 <body>
     <div id="fullPage">
         <div class="section page1">
-            <ul class="logo"><img src="images/logo.png" alt=""/>
-                <!--<li class="row1">呼叫老师</li>-->
-                <!--<li class="row2">你的随身家教</li>-->
-            </ul>
+            <span class="logo">
+            </span>
             <ul class="copywriting">
                 <li class="row1">一对一在线作业辅导</li>
                 <li class="row2">适用于小学与初中</li>
                 <li class="row3">
-                    <!--<img src="images/android_normal.png" alt=""/>-->
-                    <!--<img src="images/ios_normal.png" alt=""/>-->
-                    <!--<img src="images/QR-code.jpg" alt=""/>-->
                     <span class="download-android"></span>
                     <span class="download-ios"></span>
                     <img class="QR-code" src="images/QR-code.jpg" alt=""/>
@@ -28,6 +34,11 @@
                 <li class="row4">轻便·简洁·高效</li>
             </ul>
             <img class="bigHand" src="images/hand.png" alt=""/>
+            <div class="banner-MBdevice">
+                <img src="images/logo_MBdevice.png" alt=""/>
+                <span class="downloadSpan"></span>
+                <p class="banner-MBdevice-copywriting">轻便·简洁·高效</p>
+            </div>
         </div>
         <div class="section page2">
             <h2>轻便、快捷、高效, 随时随地问作业！</h2>
@@ -52,8 +63,10 @@
         </div>
         <div class="section page3">
             <h2>还在用传统家教？你OUT了！</h2>
-            <img class="page3-teacher" src="images/page3_teach_woman.png" alt=""/>
+            <img class="page3-teacher female1" src="images/page3_teach_woman.png" alt=""/>
             <img class="page3-table" src="images/page3_table.png" alt=""/>
+            <img class="page3-table-MBdevice" src="images/page3_table_MBdevice.png" alt=""/>
+            <img class="page3-teacher female2" src="images/page3_teach_woman.png" alt=""/>
             <img class="page3-teacher" src="images/page3_teacher_man.png" alt=""/>
         </div>
         <div class="section page4">
@@ -99,13 +112,73 @@
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.fullPage.min.js"></script>
     <script>
-        $(document).ready(function() {
+        $(function(){
+            /*fullPage构建 start*/
             $('#fullPage').fullpage({
-                //sectionsColor: ['#d2d2f2', '#4BBFC3', '#7BAABE', '#475387', '#ccddff'],
                 scrollingSpeed: 300,
                 'navigation': true,
                 'navigationPosition': 'right'
             });
+            /*fullPage构建 end*/
+        });
+    </script>
+    <script>
+        $(document).ready(function() {
+
+            var
+                    down_ios_forWeixin_url = '',
+                    down_ios_url = '',
+                    down_android_url = '',
+                    userAgent = window.navigator.userAgent.toLowerCase();
+
+            function getChannelId() {
+                var url = window.location.href,
+                        parts = url.split('?'),
+                        params = null, channel_id = '001';
+                if(parts.length > 1) {
+                    params = parts[1];
+                }
+                if(!params) return channel_id;
+                var start = params.indexOf('channel'),
+                        channel = params.substr(start).split('&')[0];
+                parts = channel.split('=');
+                if(parts.length > 1 && !!parts[1]) {
+                    channel_id = parts[1];
+                }
+                return channel_id;
+            }
+
+            function isWeixin() {
+                return userAgent.indexOf('micromessenger') > 0;
+            }
+
+            function isAndroid() {
+                return userAgent.indexOf('android') > 0;
+            }
+
+            function isIOS() {
+                return /iphone/i.test(userAgent) || /ipod/i.test(userAgent) || /ipad/i.test(userAgent);
+            }
+
+            function getReqPrm(name) {
+                var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+                var r = window.location.search.substr(1).match(reg);
+                if (r != null) {
+                    return unescape(r[2]);
+                }else{
+                    return null;
+                }
+            }
+
+            function init(){
+                if ( isAndroid() ) {
+                    $('.downloadSpan').addClass('download-android');
+                } else if ( isIOS() ) {
+                    $('.downloadSpan').addClass('download-ios');
+                }
+            }
+
+            init();
         });
     </script>
 </body>
