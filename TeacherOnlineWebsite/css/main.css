@@ -300,6 +300,10 @@ h1, h2, h3, h4, h5, h6{
     margin-bottom: 70px;
 }
 
+.page5 .downloadContainer-MBdevice{
+    display:none;
+}
+
 .page5 .footer{
     position:absolute;
     left:50%;
@@ -308,6 +312,8 @@ h1, h2, h3, h4, h5, h6{
 
     color:#838383;
     font-size:10px;
+
+    width:100%;
 }
 
 /*page5 end*/
@@ -316,8 +322,9 @@ h1, h2, h3, h4, h5, h6{
 
     /*page1 start*/
     .copywriting {
-        position:static;
-        margin:20px 0 0 20px;
+        position:absolute;
+        top:20px;
+        left:20px;
     }
 
     .copywriting > li {
@@ -401,6 +408,8 @@ h1, h2, h3, h4, h5, h6{
     .page4 h2{
         position:static;
         transform: none;
+        margin:0 0 20px 0;
+        font-size:25px;
     }
 
     .page4 ul{
@@ -415,15 +424,15 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page4 ul > img {
-        width: 100px;
+        width: 5em;
         position: absolute;
-        left: 30px;
+        left: 1em;
     }
 
     .page4 ul > li {
         width: 60%;
         text-align: left;
-        margin-left: 150px;
+        margin-left: 23%;
     }
 
     .page4 ul > li.row1{
@@ -440,4 +449,31 @@ h1, h2, h3, h4, h5, h6{
     }
 
     /*page4 end*/
+
+    /*page5 start*/
+
+    .page5 h2{
+        top:0;
+        font-size:22px;
+        line-height:25px;
+    }
+
+    .page5 .downloadContainer{
+        display:none;
+    }
+
+    .page5 .downloadContainer-MBdevice{
+        display:block;
+    }
+
+    .page5 .QR-code{
+        width:150px;
+        height:150px;
+    }
+
+    .page5 p{
+        margin:5px;
+    }
+
+    /*page5 end*/
 }
