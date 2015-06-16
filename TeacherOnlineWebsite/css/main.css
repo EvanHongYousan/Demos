@@ -177,7 +177,7 @@ h1, h2, h3, h4, h5, h6{
 
 .page2 ul{
     display:inline-block;
-    margin-left:150px;
+    margin-left:10%;
 }
 
 .page2 .ul1{
@@ -203,6 +203,13 @@ h1, h2, h3, h4, h5, h6{
     font-size:20px;
     color:#3f4140;
 }
+
+/*.page2 .slide, .page2 .fp-slides, .page2 .fp-controlArrow{*/
+    /*display:none;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*border: none;*/
+/*}*/
 
 /*page2 end*/
 

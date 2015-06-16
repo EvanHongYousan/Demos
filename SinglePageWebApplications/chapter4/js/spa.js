@@ -1,10 +1,20 @@
-/**
- * Created by Evan on 15/5/28.
- */
-var spa = (function(){
-    var initModule = function($container){
-        spa.shell.initModule( $container );
-    };
+/*
+ * spa.js
+ * Root namespace module
+*/
 
-    return { initModule : initModule };
-})();
+/*jslint           browser : true,   continue : true,
+  devel  : true,    indent : 2,       maxerr  : 50,
+  newcap : true,     nomen : true,   plusplus : true,
+  regexp : true,    sloppy : true,       vars : false,
+  white  : true
+*/
+/*global $, spa */
+
+var spa = (function () {
+  var initModule = function ( $container ) {
+    spa.shell.initModule( $container );
+  };
+
+  return { initModule: initModule };
+}());
