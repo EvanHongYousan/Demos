@@ -257,12 +257,12 @@ h1, h2, h3, h4, h5, h6{
     position:relative;
     margin-top:5%;
     display : inline-block;
-    width:40%;
+    width:45%;
     height : 200px;
 }
 
 .page4 ul.ul2, .page4 ul.ul4{
-    margin-left:10%;
+    margin-left:5%;
 }
 
 .page4 ul, .page4 ul > img, .page4 ul > li{
@@ -327,6 +327,10 @@ h1, h2, h3, h4, h5, h6{
 
 @media screen and (max-width: 960px){
 
+    .section h2{
+        display:none;
+    }
+
     /*page1 start*/
     .copywriting {
         position:absolute;
@@ -349,6 +353,10 @@ h1, h2, h3, h4, h5, h6{
 
     .copywriting > li.row3, .copywriting > li.row4, .page1 .bigHand, #fp-nav, .logo{
         display:none;
+    }
+
+    .page1 .fp-tableCell{
+        padding:30px;
     }
 
     .page1 .banner-MBdevice{
@@ -378,35 +386,43 @@ h1, h2, h3, h4, h5, h6{
 
     /*page2 start*/
 
-    .page2 h2{
+    /*.page2 h2{*/
         /*position:static;*/
         /*transform: none;*/
-        margin:0 0 20px 0;
-        font-size:25px;
+        /*margin:0 0 20px 0;*/
+        /*font-size:25px;*/
+    /*}*/
+
+    .page2 ul {
+         margin-left: 0;
+    }
+
+    .page2 ul li{
+        margin-bottom: 20px;
     }
 
     .page2 ul > li > img {
-        width: 5em;
-        height: 5em;
+        width: 12em;
+        height: 12em;
     }
 
     .page2 ul > li.row1 {
-        font-size: 20px;
+        font-size: 30px;
     }
 
     .page2 ul > li.row3, .page2 ul > li.row4 {
-        font-size: 12px;
+        font-size: 18px;
     }
 
     /*page2 end*/
 
     /*page3 start*/
 
-    .page3 h2{
-        font-size:23px;
-        position:static;
-        transform: none;
-    }
+    /*.page3 h2{*/
+        /*font-size:23px;*/
+        /*position:static;*/
+        /*transform: none;*/
+    /*}*/
 
     .page3 .page3-table{
         display: none;
@@ -436,12 +452,12 @@ h1, h2, h3, h4, h5, h6{
 
     /*page4 start*/
 
-    .page4 h2{
-        position:static;
-        transform: none;
-        margin:0 0 20px 0;
-        font-size:25px;
-    }
+    /*.page4 h2{*/
+        /*position:static;*/
+        /*transform: none;*/
+        /*margin:0 0 20px 0;*/
+        /*font-size:25px;*/
+    /*}*/
 
     .page4 ul{
         display:block;
@@ -484,11 +500,11 @@ h1, h2, h3, h4, h5, h6{
 
     /*page5 start*/
 
-    .page5 h2{
-        top:0;
-        font-size:22px;
-        line-height:25px;
-    }
+    /*.page5 h2{*/
+        /*top:0;*/
+        /*font-size:22px;*/
+        /*line-height:25px;*/
+    /*}*/
 
     .page5 .downloadContainer{
         display:none;
@@ -499,8 +515,8 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page5 .QR-code{
-        width:150px;
-        height:150px;
+        width:15em;
+        height:15em;
     }
 
     .page5 p{
@@ -508,4 +524,11 @@ h1, h2, h3, h4, h5, h6{
     }
 
     /*page5 end*/
+}
+
+@media screen and (max-height: 500px){
+    .page5 .footer{
+        position:static;
+        transform: none;
+    }
 }

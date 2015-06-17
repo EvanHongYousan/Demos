@@ -16,6 +16,37 @@
         #fp-nav ul li a.active span{
             background: #f9f9f9;
         }
+        #fp-nav ul li:first-of-type a span {
+            background: url(images/icon_home_normal.png);
+            background-size:cover;
+        }
+        #fp-nav ul li:first-of-type a.active span {
+            background: url(images/icon_home_active.png);
+            background-size:cover;
+        }
+
+        #fp-nav ul li a.active span, .fp-slidesNav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li:hover a.active span {
+            height: 20px;
+            width: 20px;
+            margin: -10px 0 0 -10px;
+            border-radius: 100%;
+        }
+
+        #fp-nav ul li a span, .fp-slidesNav ul li a span {
+            border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+            height: 10px;
+            width: 10px;
+            border: 0;
+            left: 50%;
+            top: 50%;
+            margin: -5px 0 0 -5px;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -o-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
     </style>
 </head>
 <body>
@@ -42,32 +73,32 @@
         </div>
         <div class="section page2">
             <h2>轻便、快捷、高效, 随时随地问作业！</h2>
-            <div class="slide">
+            <!--<div class="slide">-->
                 <ul class="ul1">
                     <li class="row1">轻便</li>
                     <li class="row2"><img src="images/page2_1.png" alt=""/></li>
                     <li class="row3">手机/平板</li>
                     <li class="row4">拍照上传作业</li>
                 </ul>
-            </div>
+            <!--</div>-->
 
-            <div class="slide">
+            <!--<div class="slide">-->
                 <ul>
                     <li class="row1">快捷</li>
                     <li class="row2"><img src="images/page2_2.png" alt=""/></li>
                     <li class="row3">各科老师在线</li>
                     <li class="row4">一对一辅导，问懂为止</li>
                 </ul>
-            </div>
+            <!--</div>-->
 
-            <div class="slide">
+            <!--<div class="slide">-->
                 <ul>
                     <li class="row1">高效</li>
                     <li class="row2"><img src="images/page2_3.png" alt=""/></li>
                     <li class="row3">一线老师</li>
                     <li class="row4">实名认证，辅导效果最优</li>
                 </ul>
-            </div>
+            <!--</div>-->
         </div>
         <div class="section page3">
             <h2>还在用传统家教？你OUT了！</h2>
@@ -126,17 +157,6 @@
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.fullPage.min.js"></script>
     <script>
-        $(function(){
-            /*fullPage构建 start*/
-            $('#fullPage').fullpage({
-                scrollingSpeed: 300,
-                'navigation': true,
-                'navigationPosition': 'right'
-            });
-            /*fullPage构建 end*/
-        });
-    </script>
-    <script>
         $(document).ready(function() {
 
             var
@@ -190,6 +210,32 @@
                 } else if ( isIOS() ) {
                     $('.downloadSpan').addClass('download-ios');
                 }
+
+                if ( isAndroid() || isIOS() || isWeixin() ) {
+                    (function(){
+                        var $slide_1 = $('<div class="slide"></div>');
+                        var $slide_2 = $('<div class="slide"></div>');
+                        var $slide_3 = $('<div class="slide"></div>');
+
+                        var $ul_1 = $('.page2  > ul').eq(0);
+                        var $ul_2 = $('.page2  > ul').eq(1);
+                        var $ul_3 = $('.page2  > ul').eq(2);
+
+                        $slide_1.append($ul_1);
+                        $slide_2.append($ul_2);
+                        $slide_3.append($ul_3);
+
+                        $('.page2').append($slide_1).append($slide_2).append($slide_3);
+
+                    })();
+                }
+
+
+                $('#fullPage').fullpage({
+                    scrollingSpeed: 300,
+                    'navigation': true,
+                    'navigationPosition': 'right'
+                });
             }
 
             init();
