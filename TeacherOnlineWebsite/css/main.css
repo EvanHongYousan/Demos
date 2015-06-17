@@ -167,9 +167,9 @@ h1, h2, h3, h4, h5, h6{
     color:#05b380;
 }
 
-.page2 > div{
-    min-width:1100px;
-}
+/*.page2 > div{*/
+    /*min-width:1100px;*/
+/*}*/
 
 .page2 div{
     text-align: center;
@@ -376,6 +376,30 @@ h1, h2, h3, h4, h5, h6{
     }
     /*page1 end*/
 
+    /*page2 start*/
+
+    .page2 h2{
+        /*position:static;*/
+        /*transform: none;*/
+        margin:0 0 20px 0;
+        font-size:25px;
+    }
+
+    .page2 ul > li > img {
+        width: 5em;
+        height: 5em;
+    }
+
+    .page2 ul > li.row1 {
+        font-size: 20px;
+    }
+
+    .page2 ul > li.row3, .page2 ul > li.row4 {
+        font-size: 12px;
+    }
+
+    /*page2 end*/
+
     /*page3 start*/
 
     .page3 h2{
@@ -439,11 +463,12 @@ h1, h2, h3, h4, h5, h6{
     .page4 ul > li {
         width: 60%;
         text-align: left;
-        margin-left: 23%;
+        margin-left: 30%;
+        line-height:26px;
     }
 
     .page4 ul > li.row1{
-        font-size:25px;
+        font-size:20px;
         margin-top:0;
     }
 
