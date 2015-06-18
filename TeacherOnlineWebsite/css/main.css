@@ -258,17 +258,23 @@ h1, h2, h3, h4, h5, h6{
     /*min-width:600px;*/
 
     position:absolute;
-    bottom:-120px;
-    left:-120px;
+    left:-20px;
+    bottom:-20px;
+    -webkit-transform: translate(-120px, 120px);
+    -moz-transform: translate(-120px, 120px);
+    -o-transform: translate(-120px, 120px);
+    transform: translate(-120px, 120px);
 }
 
 .page1.active .bigHand{
-    left:-20px;
-    bottom:-20px;
-    -webkit-transition:bottom 1s,left 1s;
-    -moz-transition:bottom 1s,left 1s;
-    -o-transition:bottom 1s,left 1s;
-    -transition:bottom 1s,left 1s;
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+    -webkit-transition:-webkit-transform 1s;
+    -moz-transition:-moz-transform 1s;
+    -o-transition:-o-transform 1s;
+    transition:transform 1s,left 1s;
 }
 
 .page1 .banner-MBdevice{
@@ -365,16 +371,29 @@ h1, h2, h3, h4, h5, h6{
     color:#3f4140;
 }
 
-.page2 ul{
-    margin-right:80px;
+.page2 ul.ul1{
+    -webkit-transform: translate(-80px, 0px);
+    -moz-transform: translate(-80px, 0px);
+    -o-transform: translate(-80px, 0px);
+    transform: translate(-80px, 0px);
+}
+
+.page2 ul.ul3{
+    -webkit-transform: translate(80px, 0px);
+    -moz-transform: translate(80px, 0px);
+    -o-transform: translate(80px, 0px);
+    transform: translate(80px, 0px);
 }
 
 .page2.active ul{
-    margin-right:0;
-    -webkit-transition:margin-right 0.8s;
-    -moz-transition:margin-right 0.8s;
-    -o-transition:margin-right 0.8s;
-    transition:margin-right 0.8s;
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    -webkit-transition:-webkit-transform 0.8s;
+    -moz-transition:-moz-transform 0.8s;
+    -o-transition:-o-transform 0.8s;
+    transition:transform 0.8s;
 }
 
 /*.page2 .slide, .page2 .fp-slides, .page2 .fp-controlArrow{*/
@@ -415,19 +434,28 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .page3 .page3-teacher{
-    margin-left:40px;
+    -webkit-transform: translate(-80px, 0px);
+    -moz-transform: translate(-80px, 0px);
+    -o-transform: translate(-80px, 0px);
+    transform: translate(-80px, 0px);
 }
 
 .page3 .female1{
-    margin-left:-40px;
+    -webkit-transform: translate(80px, 0px);
+    -moz-transform: translate(80px, 0px);
+    -o-transform: translate(80px, 0px);
+    transform: translate(80px, 0px);
 }
 
 .page3.active .page3-teacher, .page3.active .female1{
-    margin-left:0;
-    -webkit-transition:margin-left 0.8s;
-    -moz-transition:margin-left 0.8s;
-    -o-transition:margin-left 0.8s;
-    transition:margin-left 0.8s;
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    -webkit-transition:-webkit-transform 0.8s;
+    -moz-transition:-moz-transform 0.8s;
+    -o-transition:-o-transform 0.8s;
+    transition:transform 0.8s;
 }
 
 /*page3 end*/
