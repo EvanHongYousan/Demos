@@ -329,7 +329,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 /*.page2 > div{*/
-/*min-width:1100px;*/
+    /*min-width:1100px;*/
 /*}*/
 
 .page2 div{
@@ -378,10 +378,10 @@ h1, h2, h3, h4, h5, h6{
 }
 
 /*.page2 .slide, .page2 .fp-slides, .page2 .fp-controlArrow{*/
-/*display:none;*/
-/*margin: 0;*/
-/*padding: 0;*/
-/*border: none;*/
+    /*display:none;*/
+    /*margin: 0;*/
+    /*padding: 0;*/
+    /*border: none;*/
 /*}*/
 
 /*page2 end*/
@@ -484,7 +484,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 /*.page4 .ul1,.page4 .ul2,.page4 .ul3,.page4 .ul4{*/
-/*position:relative;*/
+    /*position:relative;*/
 /*}*/
 
 .page4 .ul1, .page4 .ul3{
@@ -532,6 +532,31 @@ h1, h2, h3, h4, h5, h6{
     font-size:10px;
 
     width:100%;
+}
+
+.page5 .downloadContainer{
+    -webkit-transform: translateX(50px);
+    -moz-transform: translateX(50px);
+    -o-transform: translateX(50%);
+    transform: translateX(50%);
+}
+
+.page5 p{
+    -webkit-transform: translateX(50%);
+    -moz-transform: translateX(50%);
+    -o-transform: translateX(50%);
+    transform: translateX(50%);
+}
+
+.page5.active .downloadContainer, .page5.active  p{
+    -webkit-transform: translateX(0%);
+    -moz-transform: translateX(0%);
+    -o-transform: translateX(0%);
+    transform: translateX(0%);
+    -webkit-transition:-webkit-transform 0.8s;
+    -moz-transition:-moz-transform 0.8s;
+    -o-transition:-o-transform 0.8s;
+    transition:transform 0.8s;
 }
 
 /*page5 end*/
@@ -602,14 +627,14 @@ h1, h2, h3, h4, h5, h6{
     /*page2 start*/
 
     /*.page2 h2{*/
-    /*position:static;*/
-    /*transform: none;*/
-    /*margin:0 0 20px 0;*/
-    /*font-size:25px;*/
+        /*position:static;*/
+        /*transform: none;*/
+        /*margin:0 0 20px 0;*/
+        /*font-size:25px;*/
     /*}*/
 
     .page2 ul {
-        margin-left: 0;
+         margin-left: 0;
     }
 
     .page2 ul li{
@@ -634,9 +659,9 @@ h1, h2, h3, h4, h5, h6{
     /*page3 start*/
 
     /*.page3 h2{*/
-    /*font-size:23px;*/
-    /*position:static;*/
-    /*transform: none;*/
+        /*font-size:23px;*/
+        /*position:static;*/
+        /*transform: none;*/
     /*}*/
 
     .page3 .page3-table{
@@ -668,10 +693,10 @@ h1, h2, h3, h4, h5, h6{
     /*page4 start*/
 
     /*.page4 h2{*/
-    /*position:static;*/
-    /*transform: none;*/
-    /*margin:0 0 20px 0;*/
-    /*font-size:25px;*/
+        /*position:static;*/
+        /*transform: none;*/
+        /*margin:0 0 20px 0;*/
+        /*font-size:25px;*/
     /*}*/
 
     .page4 ul{
@@ -716,9 +741,9 @@ h1, h2, h3, h4, h5, h6{
     /*page5 start*/
 
     /*.page5 h2{*/
-    /*top:0;*/
-    /*font-size:22px;*/
-    /*line-height:25px;*/
+        /*top:0;*/
+        /*font-size:22px;*/
+        /*line-height:25px;*/
     /*}*/
 
     .page5 .downloadContainer{
