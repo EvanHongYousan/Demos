@@ -2,10 +2,16 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <title></title>
     <link rel="stylesheet" href="css/jquery.fullPage.css"/>
-    <link rel="stylesheet" href="css/main.css"/>
+    <!--[if gte IE 8]><!-->
+        <link rel="stylesheet" href="css/main.css"/>
+    <!--<![endif]-->
+    <!--[if lt IE 8]>
+        <link rel="stylesheet" href="css/main_ie7.css"/>
+    <![endif]-->
     <style>
         .fp-tooltip{
             color: #f9f9f9;
@@ -62,13 +68,13 @@
                     <span class="download-ios"></span>
                     <img class="QR-code" src="images/QR-code.jpg" alt=""/>
                 </li>
-                <li class="row4">轻便·简洁·高效</li>
+                <li class="row4">轻便·快捷·高效</li>
             </ul>
             <img class="bigHand" src="images/hand.png" alt=""/>
             <div class="banner-MBdevice">
                 <img src="images/logo_MBdevice.png" alt=""/>
                 <span class="downloadSpan"></span>
-                <p class="banner-MBdevice-copywriting">轻便·简洁·高效</p>
+                <p class="banner-MBdevice-copywriting">轻便·快捷·高效</p>
             </div>
         </div>
         <div class="section page2">
