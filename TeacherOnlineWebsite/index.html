@@ -193,10 +193,9 @@
                 <img class="QR-code" src="images/QR-code.jpg" alt=""/>
                 <span class="downloadSpan"></span>
             </div>
-            <p>欢迎家长和孩子</p>
-            <p>加入我们的免费答疑群：383076598</p>
-            <p>特邀一线老师一对一辅导</p>
-            <p>欢迎各位家长和孩子加入！</p>
+            <p class="marginTop">特邀一线老师一对一辅导</p>
+            <p>欢迎各位家长和孩子</p>
+            <p>加入“呼叫老师”免费答疑QQ群：383076598</p>
             <div class="footer">
                 <p>@2013-2014 乐学 京ICP备09067472号-2</p>
                 <p>深圳乐学壹佰教育科技有限公司</p>
@@ -264,6 +263,15 @@
                 });
             }
 
+            function parallaxBind(){
+                $('.page1').on('mousemove',function(e){
+                    $('.bigHand').attr('style','transform:translate('+e.pageX*(-0.1)+'px,'+e.pageY*(-0.1)+'px)');
+                });
+                $('.page2').on('mousemove',function(e){
+                    $('.page2 ul').attr('style','transform:translate('+e.pageX*(-0.1)+'px,'+e.pageY*(-0.1)+'px)');
+                });
+            }
+
             function init(){
                 if ( isAndroid() ) {
                     $('.downloadSpan').addClass('download-android');
@@ -298,6 +306,7 @@
                 });
 
                 pageSwitchBtnEv();
+                //parallaxBind();
                 $('.page1.active').removeClass('active');
                 setTimeout(function(){
                     $('.page1').addClass('active');
