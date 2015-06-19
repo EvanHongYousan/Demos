@@ -181,7 +181,7 @@ h1, h2, h3, h4, h5, h6{
 
 .copywriting{
     position:absolute;
-    left:50%;
+    left:55%;
     top:30%;
     z-index:1;
 
@@ -476,7 +476,7 @@ h1, h2, h3, h4, h5, h6{
     position:relative;
     margin-top:5%;
     display : inline-block;
-    width:40%;
+    width:38%;
     height : 200px;
 }
 
@@ -513,24 +513,29 @@ h1, h2, h3, h4, h5, h6{
     font-size:20px;
 }
 
-/*.page4 .ul1,.page4 .ul2,.page4 .ul3,.page4 .ul4{*/
-/*position:relative;*/
-/*}*/
-
 .page4 .ul1, .page4 .ul3{
-    margin-left:-80px;
+    -webkit-transform: translate(80px, 0px);
+    -moz-transform: translate(80px, 0px);
+    -o-transform: translate(80px, 0px);
+    transform: translate(80px, 0px);
 }
 
 .page4 .ul2, .page4 .ul4{
-    margin-left:160px;
+    -webkit-transform: translate(-80px, 0px);
+    -moz-transform: translate(-80px, 0px);
+    -o-transform: translate(-80px, 0px);
+    transform: translate(-80px, 0px);
 }
 
 .page4.active .ul1,.page4.active .ul2,.page4.active .ul3,.page4.active .ul4{
-    margin-left:0;
-    -webkit-transition:margin-left 0.8s;
-    -moz-transition:margin-left 0.8s;
-    -o-transition:margin-left 0.8s;
-    transition:margin-left 0.8s;
+    -webkit-transform: translate(0px, 0px);
+    -moz-transform: translate(0px, 0px);
+    -o-transform: translate(0px, 0px);
+    transform: translate(0px, 0px);
+    -webkit-transition:-webkit-transform 0.8s;
+    -moz-transition:-moz-transform 0.8s;
+    -o-transition:-o-transform 0.8s;
+    transition:transform 0.8s;
 }
 
 /*page4 end*/
