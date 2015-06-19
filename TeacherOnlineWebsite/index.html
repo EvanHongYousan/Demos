@@ -265,7 +265,7 @@
 
             function parallaxBind(){
                 $('.page1').on('mousemove',function(e){
-                    $('.bigHand').attr('style','transform:translate('+e.pageX*(-0.1)+'px,'+e.pageY*(-0.1)+'px)');
+                    $('.bigHand').attr('style','transform:translate('+e.pageX*(-0.1)+'px,'+e.pageY*(-0.1)+'px);animate:none;');
                 });
                 $('.page2').on('mousemove',function(e){
                     $('.page2 ul').attr('style','transform:translate('+e.pageX*(-0.1)+'px,'+e.pageY*(-0.1)+'px)');
