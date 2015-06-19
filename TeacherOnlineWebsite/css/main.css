@@ -378,6 +378,7 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(-80px, 0px);
     -o-transform: translate(-80px, 0px);
     transform: translate(-80px, 0px);
+    opacity: 0;
 }
 
 .page2 ul.ul3{
@@ -385,17 +386,19 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(80px, 0px);
     -o-transform: translate(80px, 0px);
     transform: translate(80px, 0px);
+    opacity: 0;
 }
 
 .page2.active ul{
+    opacity: 1;
     -webkit-transform: translate(0px, 0px);
     -moz-transform: translate(0px, 0px);
     -o-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
-    -webkit-transition:-webkit-transform 0.8s;
-    -moz-transition:-moz-transform 0.8s;
-    -o-transition:-o-transform 0.8s;
-    transition:transform 0.8s;
+    -webkit-transition:-webkit-transform 0.8s, opacity 0.8s;
+    -moz-transition:-moz-transform 0.8s, opacity 0.8s;
+    -o-transition:-o-transform 0.8s, opacity 0.8s;
+    transition:transform 0.8s, opacity 0.8s;
 }
 
 /*.page2 .slide, .page2 .fp-slides, .page2 .fp-controlArrow{*/
@@ -440,24 +443,27 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(80px, 0px);
     -o-transform: translate(80px, 0px);
     transform: translate(80px, 0px);
+    opacity: 0;
 }
 
-.page3 .female1{
+.page3 .female1, .page3 .female2{
     -webkit-transform: translate(-80px, 0px);
     -moz-transform: translate(-80px, 0px);
     -o-transform: translate(-80px, 0px);
     transform: translate(-80px, 0px);
+    opacity: 0;
 }
 
 .page3.active .page3-teacher, .page3.active .female1{
+    opacity: 1;
     -webkit-transform: translate(0px, 0px);
     -moz-transform: translate(0px, 0px);
     -o-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
-    -webkit-transition:-webkit-transform 0.8s;
-    -moz-transition:-moz-transform 0.8s;
-    -o-transition:-o-transform 0.8s;
-    transition:transform 0.8s;
+    -webkit-transition:-webkit-transform 0.8s, opacity 0.8s;
+    -moz-transition:-moz-transform 0.8s, opacity 0.8s;
+    -o-transition:-o-transform 0.8s, opacity 0.8s;
+    transition:transform 0.8s, opacity 0.8s;
 }
 
 /*page3 end*/
@@ -518,6 +524,7 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(80px, 0px);
     -o-transform: translate(80px, 0px);
     transform: translate(80px, 0px);
+    opacity: 0;
 }
 
 .page4 .ul2, .page4 .ul4{
@@ -525,17 +532,19 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(-80px, 0px);
     -o-transform: translate(-80px, 0px);
     transform: translate(-80px, 0px);
+    opacity: 0;
 }
 
 .page4.active .ul1,.page4.active .ul2,.page4.active .ul3,.page4.active .ul4{
+    opacity: 1;
     -webkit-transform: translate(0px, 0px);
     -moz-transform: translate(0px, 0px);
     -o-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
-    -webkit-transition:-webkit-transform 0.8s;
-    -moz-transition:-moz-transform 0.8s;
-    -o-transition:-o-transform 0.8s;
-    transition:transform 0.8s;
+    -webkit-transition:-webkit-transform 0.8s, opacity 0.8s;
+    -moz-transition:-moz-transform 0.8s, opacity 0.8s;
+    -o-transition:-o-transform 0.8s, opacity 0.8s;
+    transition:transform 0.8s, opacity 0.8s;
 }
 
 /*page4 end*/
@@ -750,6 +759,38 @@ h1, h2, h3, h4, h5, h6{
 
     .page4 ul > li.row2, .page4 ul > li.row3{
         font-size:15px;
+    }
+
+    .page4 .ul1{
+        -webkit-transform: translate(80px, 0px);
+        -moz-transform: translate(80px, 0px);
+        -o-transform: translate(80px, 0px);
+        transform: translate(80px, 0px);
+        opacity: 0;
+    }
+
+    .page4 .ul2{
+        -webkit-transform: translate(160px, 0px);
+        -moz-transform: translate(160px, 0px);
+        -o-transform: translate(160px, 0px);
+        transform: translate(160px, 0px);
+        opacity: 0;
+    }
+
+    .page4 .ul3{
+        -webkit-transform: translate(240px, 0px);
+        -moz-transform: translate(240px, 0px);
+        -o-transform: translate(240px, 0px);
+        transform: translate(240px, 0px);
+        opacity: 0;
+    }
+
+    .page4 .ul4{
+        -webkit-transform: translate(320px, 0px);
+        -moz-transform: translate(320px, 0px);
+        -o-transform: translate(320px, 0px);
+        transform: translate(320px, 0px);
+        opacity: 0;
     }
 
     /*page4 end*/
