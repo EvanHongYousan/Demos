@@ -267,7 +267,9 @@
 
             function parallaxBind(){
                 $('.page1').on('mousemove',function(e){
-                    $('.bigHand').attr('style','transform:translate('+e.pageX*(-0.1)+'px,'+e.pageY*(-0.1)+'px);animate:none;');
+                    $('.bigHand').addClass('removeTransition');
+                    $('.bigHand').attr('style','transform:translate('+e.pageX*(-0.1)+'px,'+e.pageY*(-0.1)+'px);');
+                    //$('.bigHand').removeClass('removeTransition');
                 });
                 $('.page2').on('mousemove',function(e){
                     $('.page2 ul').attr('style','transform:translate('+e.pageX*(-0.1)+'px,'+e.pageY*(-0.1)+'px)');
@@ -308,7 +310,7 @@
                 });
 
                 pageSwitchBtnEv();
-                //parallaxBind();
+                parallaxBind();
                 $('.page1.active').removeClass('active');
                 setTimeout(function(){
                     $('.page1').addClass('active');
