@@ -256,12 +256,13 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .page1 .bigHand{
-    width:50%;
+    max-width:50%;
     /*min-width:600px;*/
+    max-height:90%;
 
     position:absolute;
-    left:-20px;
-    bottom:-20px;
+    left:-50px;
+    bottom:-50px;
     -webkit-transform: translate(-120px, 120px);
     -moz-transform: translate(-120px, 120px);
     -o-transform: translate(-120px, 120px);
@@ -273,10 +274,10 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(0, 0);
     -o-transform: translate(0, 0);
     transform: translate(0, 0);
-    -webkit-transition:-webkit-transform 1s;
-    -moz-transition:-moz-transform 1s;
-    -o-transition:-o-transform 1s;
-    transition:transform 1s,left 1s;
+    -webkit-transition:-webkit-transform 1s 0.2s;
+    -moz-transition:-moz-transform 1s 0.2s;
+    -o-transition:-o-transform 1s 0.2s;
+    transition:transform 1s 0.2s;
 }
 
 .page1 .banner-MBdevice{
@@ -314,18 +315,18 @@ h1, h2, h3, h4, h5, h6{
 .page1.active .copywriting > li.row1, .page1.active .copywriting > li.row2, .page1.active .copywriting > li.row3, .page1.active .copywriting > li.row4{
     margin-left:0;
     opacity: 1;
-    -webkit-transition:margin-left 0.6s, opacity 0.8s;
-    -moz-transition:margin-left 0.6s, opacity 0.8s;
-    -o-transition:margin-left 0.6s, opacity 0.8s;
-    transition:margin-left 0.6s, opacity 0.8s;
+    -webkit-transition:margin-left 0.6s 0.2s, opacity 0.8s 0.2s;
+    -moz-transition:margin-left 0.6s 0.2s, opacity 0.8s 0.2s;
+    -o-transition:margin-left 0.6s 0.2s, opacity 0.8s 0.2s;
+    transition:margin-left 0.6s 0.2s, opacity 0.8s 0.2s;
 }
 
 .page1.active .copywriting li.row3 .download-ios, .page1.active .copywriting li.row3 .QR-code{
     margin-left:0;
-    -webkit-transition:margin-left 1.0s;
-    -moz-transition:margin-left 1.0s;
-    -o-transition:margin-left 1.0s;
-    transition:margin-left 1.0s;
+    -webkit-transition:margin-left 1.0s 0.2s;
+    -moz-transition:margin-left 1.0s 0.2s;
+    -o-transition:margin-left 1.0s 0.2s;
+    transition:margin-left 1.0s 0.2s;
 }
 
 /*page1 end*/
@@ -395,10 +396,10 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(0px, 0px);
     -o-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
-    -webkit-transition:-webkit-transform 0.8s, opacity 0.8s;
-    -moz-transition:-moz-transform 0.8s, opacity 0.8s;
-    -o-transition:-o-transform 0.8s, opacity 0.8s;
-    transition:transform 0.8s, opacity 0.8s;
+    -webkit-transition:-webkit-transform 0.8s 0.2s, opacity 0.8s 0.2s;
+    -moz-transition:-moz-transform 0.8s 0.2s, opacity 0.8s 0.2s;
+    -o-transition:-o-transform 0.8s 0.2s, opacity 0.8s 0.2s;
+    transition:transform 0.8s 0.2s, opacity 0.8s 0.2s;
 }
 
 /*.page2 .slide, .page2 .fp-slides, .page2 .fp-controlArrow{*/
@@ -460,10 +461,10 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(0px, 0px);
     -o-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
-    -webkit-transition:-webkit-transform 0.8s, opacity 0.8s;
-    -moz-transition:-moz-transform 0.8s, opacity 0.8s;
-    -o-transition:-o-transform 0.8s, opacity 0.8s;
-    transition:transform 0.8s, opacity 0.8s;
+    -webkit-transition:-webkit-transform 0.8s 0.2s, opacity 0.8s 0.2s;
+    -moz-transition:-moz-transform 0.8s 0.2s, opacity 0.8s 0.2s;
+    -o-transition:-o-transform 0.8s 0.2s, opacity 0.8s 0.2s;
+    transition:transform 0.8s 0.2s, opacity 0.8s 0.2s;
 }
 
 /*page3 end*/
@@ -541,10 +542,10 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(0px, 0px);
     -o-transform: translate(0px, 0px);
     transform: translate(0px, 0px);
-    -webkit-transition:-webkit-transform 0.8s, opacity 0.8s;
-    -moz-transition:-moz-transform 0.8s, opacity 0.8s;
-    -o-transition:-o-transform 0.8s, opacity 0.8s;
-    transition:transform 0.8s, opacity 0.8s;
+    -webkit-transition:-webkit-transform 0.8s 0.2s, opacity 0.8s 0.2s;
+    -moz-transition:-moz-transform 0.8s 0.2s, opacity 0.8s 0.2s;
+    -o-transition:-o-transform 0.8s 0.2s, opacity 0.8s 0.2s;
+    transition:transform 0.8s 0.2s, opacity 0.8s 0.2s;
 }
 
 /*page4 end*/
