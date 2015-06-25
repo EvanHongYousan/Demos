@@ -209,6 +209,69 @@
     <script src="js/jquery-1.11.3.min.js"></script>
     <script src="js/jquery.fullPage.min.js"></script>
     <script>
+        ;(function($){
+            $.fn.extend({//局部插件，去掉.fn是全局插件
+                'swipeleft':function(fn){//手指左滑动，fn是回调函数
+                    $(this).on('touchstart',function(e){
+                        e=e.originalEvent.touches[0];//获取对应触摸对象
+                        var sx=0;
+                        sx=e.pageX;
+                        $(this).on('touchend',function(e){
+                            e=e.originalEvent.changedTouches[0];//获取对应触摸对象
+                            if((sx-e.pageX)>50){//如果滑动距离大于50px就认为是要触发左滑动事件了
+                                fn();//调用回调函数
+                            }
+                            $(this).unbind('touchend');
+                        });
+                    });
+                    return this;
+                },
+                'swiperight':function(fn){//手指右滑动，fn是回调函数
+                    $(this).on('touchstart',function(e){
+                        e=e.originalEvent.touches[0];//获取对应触摸对象
+                        var sx=0;
+                        sx=e.pageX;
+                        $(this).on('touchend',function(e){
+                            e=e.originalEvent.changedTouches[0];//获取对应触摸对象
+                            if((e.pageX-sx)>50){//如果滑动距离大于50px就认为是要触发右滑动事件了
+                                fn();//调用回调函数
+                            }
+                            $(this).unbind('touchend');
+                        });
+                    });
+                },
+                'swipetop':function(fn){//手指上滑动，fn是回调函数
+                    $(this).on('touchstart',function(e){
+                        e=e.originalEvent.touches[0];//获取对应触摸对象
+                        var sy=0;
+                        sy=e.pageY;
+                        $(this).on('touchend',function(e){
+                            e=e.originalEvent.changedTouches[0];//获取对应触摸对象
+                            if((sy-e.pageY)>50){//如果滑动距离大于50px就认为是要触发上滑动事件了
+                                fn();//调用回调函数
+                            }
+                            $(this).unbind('touchend');
+                        });
+                    });
+                },
+                'swipedown':function(fn){//手指下滑动，fn是回调函数
+                    $(this).on('touchstart',function(e){
+                        e=e.originalEvent.touches[0];//获取对应触摸对象
+                        var sy=0;
+                        sy=e.pageY;
+                        $(this).on('touchend',function(e){
+                            e=e.originalEvent.changedTouches[0];//获取对应触摸对象
+                            if((e.pageY-sy)>50){//如果滑动距离大于50px就认为是要触发下滑动事件了
+                                fn();//调用回调函数
+                            }
+                            $(this).unbind('touchend');
+                        });
+                    });
+                }
+            });
+        })(jQuery);
+    </script>
+    <script>
         $(document).ready(function() {
 
             var
@@ -292,20 +355,49 @@
 
                 if ( isAndroid() || isIOS() || isWeixin() ) {
                     (function(){
-                        var $slide_1 = $('<div class="slide"></div>');
-                        var $slide_2 = $('<div class="slide"></div>');
-                        var $slide_3 = $('<div class="slide"></div>');
+//                        var $slide_1 = $('<div class="slide"></div>');
+//                        var $slide_2 = $('<div class="slide"></div>');
+//                        var $slide_3 = $('<div class="slide"></div>');
+//
+//                        var $ul_1 = $('.page2  > ul').eq(0);
+//                        var $ul_2 = $('.page2  > ul').eq(1);
+//                        var $ul_3 = $('.page2  > ul').eq(2);
+//
+//                        $slide_1.append($ul_1);
+//                        $slide_2.append($ul_2);
+//                        $slide_3.append($ul_3);
+//
+//                        $('.page2').append($slide_1).append($slide_2).append($slide_3);
 
-                        var $ul_1 = $('.page2  > ul').eq(0);
-                        var $ul_2 = $('.page2  > ul').eq(1);
-                        var $ul_3 = $('.page2  > ul').eq(2);
+                        var $uls = $('.page2  > ul');
+                        var $slideBox = $('<div class="slideBox"></div>');
 
-                        $slide_1.append($ul_1);
-                        $slide_2.append($ul_2);
-                        $slide_3.append($ul_3);
+                        $slideBox.append($uls);
 
-                        $('.page2').append($slide_1).append($slide_2).append($slide_3);
+                        $('.page2').append($slideBox);
 
+                        $('.slideBox').swipeleft(function(e){
+                            if ( $('.slideBox').hasClass('slideLeft') ) { return false; }
+                            if ( $('.slideBox').hasClass('slideRight') ) {
+                                $('.slideBox').removeClass('slideRight');
+                                $('.slideBox .ul3').css('z-index','10');
+                                setTimeout(function(){
+                                    $('.slideBox .ul3').attr('style','');
+                                },800);
+                                return true;
+                            }
+                            $('.slideBox')[0].className = 'slideBox';
+                            $('.slideBox').addClass('slideLeft');
+                        });
+                        $('.slideBox').swiperight(function(e){
+                            if ( $('.slideBox').hasClass('slideRight') ) { return false; }
+                            if ( $('.slideBox').hasClass('slideLeft') ) {
+                                $('.slideBox').removeClass('slideLeft');
+                                return true;
+                            }
+                            $('.slideBox')[0].className = 'slideBox';
+                            $('.slideBox').addClass('slideRight');
+                        });
                     })();
                 }
 
@@ -317,6 +409,7 @@
                 });
 
                 pageSwitchBtnEv();
+
                 setTimeout(function(){
                     parallaxBind();
                 },1500);

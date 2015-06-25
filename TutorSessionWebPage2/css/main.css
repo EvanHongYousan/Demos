@@ -132,14 +132,14 @@ body img{
 
 .colorSwitch.hover, .colorSwitch.hover.focus, .colorSwitch.hover .colorBar li{
     background-color:RGBA(0, 0, 0, 0.4);
-    -webkit-transition:background-color 0.2s;
-    -moz-transition:background-color 0.2s;
-    -o-transition:background-color 0.2s;
-    transition:background-color 0.2s;
-    -webkit-animation: slideRight 2s infinite;
-    -moz-animation: slideRight 2s infinite;
-    -o-animation: slideRight 2s infinite;
-    animation: slideRight 2s infinite;
+    /*-webkit-transition:background-color 0.2s;*/
+    /*-moz-transition:background-color 0.2s;*/
+    /*-o-transition:background-color 0.2s;*/
+    /*transition:background-color 0.2s;*/
+    -webkit-animation: slideRight 2s ;
+    -moz-animation: slideRight 2s ;
+    -o-animation: slideRight 2s ;
+    animation: slideRight 2s ;
 }
 
 @-webkit-keyframes slideRight {
