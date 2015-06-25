@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <title>canvas</title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <style>
+        #asd{
+            position:absolute;
+            top:50px;
+            left:50px;
+            width:100px;
+            height:100px;
+            background-color:red;
+        }
+    .asd{
+        
+        -webkit-transform:translateX(100%);
+        -moz-transform:translateX(100%);
+        -o-transform:translateX(100%);
+        transform:translateX(100%);
+        -webkit-transition:-webkit-transform 1s;
+        -moz-transition:-moz-transform 1s;
+        -o-transition:-o-transform 1s;
+        transition:transform 1s;
+    }
+        </style>
+</head>
+<body ondblclick="return false;">
+    <div id='asd'></div>
+    <ul class="pageLine">
+        <li> <p>1/5</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>2/5</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>3/5</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>4/5</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>5/5</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>6/10</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>7/10</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>8/10</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>9/10</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>10/10</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>11/15</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>12/15</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>13/15</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>14/15</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>15/15</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>16/20</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>17/20</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>18/20</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>19/20</p> </li>
+        <li style=""><span></span> </li>
+        <li> <p>20/20</p> </li>
+        <li style=""><span></span> </li>
+    </ul>
+
+<div class="toolBar">
+    <span class="hangup">
+        <img src="images/hangup.png" alt=""/>
+        <img class="none" src="images/hangup_hover.png" alt=""/>
+    </span>
+    <span class="rotate none">
+        <img src="images/rotate.png" alt=""/>
+        <img class="none" src="images/rotate_hover.png" alt=""/>
+    </span>
+    <span class="photograph ">
+        <img src="images/photograph.png" alt=""/>
+        <img class="none" src="images/photograph_hover.png" alt=""/>
+    </span>
+    <div class="colorSwitch focus ">
+        <img class="black" src="images/blackpencil.png" alt=""/>
+        <img class="none red" src="images/redpencil.png" alt=""/>
+        <img class="none blue" src="images/bluepencil.png" alt=""/>
+
+        <ul class="colorBar">
+            <li class="colorli black">
+                <img src="images/blackpencil.png" alt=""/>
+            </li>
+            <li class="colorli red">
+                <img src="images/redpencil.png" alt=""/>
+            </li>
+            <li class="colorli blue">
+                <img src="images/bluepencil.png" alt=""/>
+            </li>
+        </ul>
+    </div>
+    <span class="eraser ">
+        <img src="images/eraser.png" alt=""/>
+        <img class="none" src="images/eraser_hover.png" alt=""/>
+    </span>
+    <span class="hand ">
+        <img src="images/hand.png" alt=""/>
+    </span>
+</div>
+
+<div class="scrollBar">
+    <span id="prePage"><img src="images/arrow_up.png" alt=""/></span>
+<!--    <span id="currentPage">1</span>-->
+<!--    /-->
+<!--    <span id="totalPage">5</span>-->
+    <span id="nextPage"><img src="images/arrow_down.png" alt=""/></span>
+</div>
+
+<div class="tips none">
+    <img class="none" src="images/hand_tip.png" alt=""/>
+    <img class="none" src="images/pencil_tip.png" alt=""/>
+    <img class="none" src="images/eraser_tip.png" alt=""/>
+</div>
+
+<span class="closeSpan none">
+    <img src="images/close.png" alt=""/>
+</span>
+
+<canvas width="" height="" id="canvasOut">请升级浏览器</canvas>
+<canvas width="" height="" id="canvasIn">请升级浏览器</canvas>
+<div class="loadPhoto">
+</div>
+
+<img id="drawingPencil" class="none" src="images/pencil_drawing.png" />
+<div id="templateFolderPath" class="none">${templateFolderPath}</div>
+<script src="lib/zepto.min.js"></script>
+<script src="lib/zepto.scroll.js"></script>
+<script src="lib/tools.js"></script>
+<script src="js/main.js"></script>
+</body>
+</html>
