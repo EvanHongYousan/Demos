@@ -614,7 +614,8 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .section h2{
-        display:none;
+        font-size:20px;
+        position:static;
     }
 
     /*page1 start*/
@@ -630,11 +631,11 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .copywriting > li.row1{
-        font-size:20px;
+        font-size:15px;
     }
 
     .copywriting > li.row2{
-        font-size:16px;
+        font-size:13px;
     }
 
     .copywriting > li.row3, .copywriting > li.row4, .page1 .bigHand, #fp-nav, .logo{
@@ -665,7 +666,7 @@ h1, h2, h3, h4, h5, h6{
     .banner-MBdevice-copywriting{
         text-align: center;
         color:#afe4cf;
-        font-size:30px;
+        font-size:20px;
         margin-top:100px;
     }
     /*page1 end*/
@@ -686,11 +687,11 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page2 ul > li.row1 {
-        font-size: 30px;
+        font-size: 20px;
     }
 
     .page2 ul > li.row3, .page2 ul > li.row4 {
-        font-size: 18px;
+        font-size: 14px;
     }
 
     /*page2 end*/
@@ -750,7 +751,8 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page4 ul > li.row1{
-        font-size:20px;
+        font-size:16px;
+        font-weight:bolder;
         margin-top:0;
     }
 
@@ -759,7 +761,7 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page4 ul > li.row2, .page4 ul > li.row3{
-        font-size:15px;
+        font-size:9px;
     }
 
     .page4 .ul1{
@@ -871,6 +873,9 @@ h1, h2, h3, h4, h5, h6{
 }
 
 @media screen and (max-height: 500px){
+    .page1 .banner-MBdevice-copywriting{
+        margin-top:20px;
+    }
     .page5 .footer{
         position:static;
         transform: none;

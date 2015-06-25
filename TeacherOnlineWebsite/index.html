@@ -368,16 +368,19 @@
 //                        $slide_3.append($ul_3);
 //
 //                        $('.page2').append($slide_1).append($slide_2).append($slide_3);
-
+                        var $h2 = $('.page2 h2');
                         var $uls = $('.page2  > ul');
                         var $slideBox = $('<div class="slideBox"></div>');
 
-                        $slideBox.append($uls);
+                        $slideBox.append($h2).append($uls);
 
                         $('.page2').append($slideBox);
 
                         $('.slideBox').swipeleft(function(e){
-                            if ( $('.slideBox').hasClass('slideLeft') ) { return false; }
+                            if ( $('.slideBox').hasClass('slideLeft') ) {
+                                $('.slideBox').removeClass('slideLeft').addClass('slideRight');
+                                return true;
+                            }
                             if ( $('.slideBox').hasClass('slideRight') ) {
                                 $('.slideBox').removeClass('slideRight');
                                 $('.slideBox .ul3').css('z-index','10');
@@ -394,7 +397,10 @@
                             setTimeout(function(){
                                 $('.slideBox .ul3').attr('style','');
                             },800);
-                            if ( $('.slideBox').hasClass('slideRight') ) { return false; }
+                            if ( $('.slideBox').hasClass('slideRight') ) {
+                                $('.slideBox').removeClass('slideRight').addClass('slideLeft');
+                                return false;
+                            }
                             if ( $('.slideBox').hasClass('slideLeft') ) {
                                 $('.slideBox').removeClass('slideLeft');
                                 return true;
