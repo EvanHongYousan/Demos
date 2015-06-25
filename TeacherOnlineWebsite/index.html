@@ -390,6 +390,10 @@
                             $('.slideBox').addClass('slideLeft');
                         });
                         $('.slideBox').swiperight(function(e){
+                            $('.slideBox .ul3').attr('style','z-index:10;');
+                            setTimeout(function(){
+                                $('.slideBox .ul3').attr('style','');
+                            },800);
                             if ( $('.slideBox').hasClass('slideRight') ) { return false; }
                             if ( $('.slideBox').hasClass('slideLeft') ) {
                                 $('.slideBox').removeClass('slideLeft');

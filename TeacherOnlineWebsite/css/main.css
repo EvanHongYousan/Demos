@@ -904,76 +904,133 @@ h1, h2, h3, h4, h5, h6{
     transition:all 0.5s;
 }
 
+.slideBox ul img{
+    -webkit-transition:all 0.5s;
+    -moz-transition:all 0.5s;
+    -o-transition:all 0.5s;
+    transition:all 0.5s;
+}
+
+.slideBox ul li{
+    -webkit-transition:all 0.5s;
+    -moz-transition:all 0.5s;
+    -o-transition:all 0.5s;
+    transition:all 0.5s;
+}
+
 .slideBox ul.ul1{
     /*left:10%;*/
-    -webkit-transform: translate(-120%, -50%) rotateY(70deg) !important;
-    -moz-transform: translate(-120%, -50%) rotateY(70deg) !important;
-    -o-transform: translate(-120%, -50%) rotateY(70deg) !important;
-    transform: translate(-120%, -50%) rotateY(70deg) !important;
+    -webkit-transform: translate(-200%, -50%) !important;
+    -moz-transform: translate(-200%, -50%) !important;
+    -o-transform: translate(-200%, -50%) !important;
+    transform: translate(-200%, -50%) !important;
 }
 
 .slideBox ul.ul2{
     /*left:20%;*/
-    -webkit-transform: translate(-50%, -50%) rotateY(0deg) !important;
-    -moz-transform: translate(-50%, -50%) rotateY(0deg) !important;
-    -o-transform: translate(-50%, -50%) rotateY(0deg) !important;
-    transform: translate(-50%, -50%) rotateY(0deg) !important;
+    -webkit-transform: translate(-50%, -50%) !important;
+    -moz-transform: translate(-50%, -50%) !important;
+    -o-transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
 }
 
 .slideBox ul.ul3{
     /*left:30%;*/
-    -webkit-transform: translate(20%, -50%) rotateY(-70deg) !important;
-    -moz-transform: translate(20%, -50%) rotateY(-70deg) !important;
-    -o-transform: translate(20%, -50%) rotateY(-70deg) !important;
-    transform: translate(20%, -50%) rotateY(-70deg) !important;
+    -webkit-transform: translate(50%, -50%) !important;
+    -moz-transform: translate(50%, -50%)  !important;
+    -o-transform: translate(50%, -50%) !important;
+    transform: translate(50%, -50%) !important;
 }
 
-.slideBox.slideRight ul.ul1{
-    /*left:10%;*/
-    -webkit-transform: translate(-50%, -50%) rotateY(0deg) !important;
-    -moz-transform: translate(-50%, -50%) rotateY(0deg) !important;
-    -o-transform: translate(-50%, -50%) rotateY(0deg) !important;
-    transform: translate(-50%, -50%) rotateY(0deg) !important;
+.slideBox ul.ul1 .row1, .slideBox ul.ul1 .row3, .slideBox ul.ul1 .row4, .slideBox ul.ul3 .row1, .slideBox ul.ul3 .row3, .slideBox ul.ul3 .row4{
+    opacity:0;
 }
 
-.slideBox.slideRight ul.ul2{
-    /*left:20%;*/
-    -webkit-transform: translate(20%, -50%) rotateY(-70deg) !important;
-    -moz-transform: translate(20%, -50%) rotateY(-70deg) !important;
-    -o-transform: translate(20%, -50%) rotateY(-70deg) !important;
-    transform: translate(20%, -50%) rotateY(-70deg) !important;
-}
-
-.slideBox.slideRight ul.ul3{
-    /*left:30%;*/
-    z-index:10;
-    -webkit-transform: translate(-120%, -50%) rotateY(70deg) !important;
-    -moz-transform: translate(-120%, -50%) rotateY(70deg) !important;
-    -o-transform: translate(-120%, -50%) rotateY(70deg) !important;
-    transform: translate(-120%, -50%) rotateY(70deg) !important;
-}
-
-
-.slideBox.slideLeft ul.ul1{
-    /*left:10%;*/
-    -webkit-transform: translate(20%, -50%) rotateY(-70deg) !important;
-    -moz-transform: translate(20%, -50%) rotateY(-70deg) !important;
-    -o-transform: translate(20%, -50%) rotateY(-70deg) !important;
-    transform: translate(20%, -50%) rotateY(-70deg) !important;
+.slideBox ul.ul1 .row2 img, .slideBox ul.ul3 .row2 img{
+    width:6em;
+    height:6em;
 }
 
 .slideBox.slideLeft ul.ul2{
-    /*left:20%;*/
-    -webkit-transform: translate(-120%, -50%) rotateY(70deg) !important;
-    -moz-transform: translate(-120%, -50%) rotateY(70deg) !important;
-    -o-transform: translate(-120%, -50%) rotateY(70deg) !important;
-    transform: translate(-120%, -50%) rotateY(70deg) !important;
+    /*left:10%;*/
+    -webkit-transform: translate(-150%, -50%) !important;
+    -moz-transform: translate(-150%, -50%) !important;
+    -o-transform: translate(-150%, -50%) !important;
+    transform: translate(-150%, -50%) !important;
 }
 
 .slideBox.slideLeft ul.ul3{
+    /*left:20%;*/
+    -webkit-transform: translate(-50%, -50%) !important;
+    -moz-transform: translate(-50%, -50%) !important;
+    -o-transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.slideBox.slideLeft ul.ul1{
     /*left:30%;*/
-    -webkit-transform: translate(-50%, -50%) rotateY(0deg) !important;
-    -moz-transform: translate(-50%, -50%) rotateY(0deg) !important;
-    -o-transform: translate(-50%, -50%) rotateY(0deg) !important;
-    transform: translate(-50%, -50%) rotateY(0deg) !important;
+    -webkit-transform: translate(50%, -50%) !important;
+    -moz-transform: translate(50%, -50%)  !important;
+    -o-transform: translate(50%, -50%) !important;
+    transform: translate(50%, -50%) !important;
+}
+
+.slideBox.slideLeft ul.ul1 .row1, .slideBox.slideLeft ul.ul1 .row3, .slideBox.slideLeft ul.ul1 .row4, .slideBox.slideLeft ul.ul2 .row1, .slideBox.slideLeft ul.ul2 .row3, .slideBox.slideLeft ul.ul2 .row4{
+    opacity:0;
+}
+
+.slideBox.slideLeft ul.ul3 .row1, .slideBox.slideLeft ul.ul3 .row3, .slideBox.slideLeft ul.ul3 .row4{
+    opacity:1;
+}
+
+.slideBox.slideLeft ul.ul3 .row2 img{
+    width:12em;
+    height:12em;
+}
+
+.slideBox.slideLeft ul.ul1 .row2 img, .slideBox.slideLeft ul.ul2 .row2 img{
+    width:6em;
+    height:6em;
+}
+
+.slideBox.slideRight ul.ul3{
+    /*left:10%;*/
+    -webkit-transform: translate(-150%, -50%) !important;
+    -moz-transform: translate(-150%, -50%) !important;
+    -o-transform: translate(-150%, -50%) !important;
+    transform: translate(-150%, -50%) !important;
+}
+
+.slideBox.slideRight ul.ul1{
+    /*left:20%;*/
+    -webkit-transform: translate(-50%, -50%) !important;
+    -moz-transform: translate(-50%, -50%) !important;
+    -o-transform: translate(-50%, -50%) !important;
+    transform: translate(-50%, -50%) !important;
+}
+
+.slideBox.slideRight ul.ul2{
+    /*left:30%;*/
+    -webkit-transform: translate(50%, -50%) !important;
+    -moz-transform: translate(50%, -50%)  !important;
+    -o-transform: translate(50%, -50%) !important;
+    transform: translate(50%, -50%) !important;
+}
+
+.slideBox.slideRight ul.ul3 .row1, .slideBox.slideRight ul.ul3 .row3, .slideBox.slideRight ul.ul3 .row4, .slideBox.slideRight ul.ul2 .row1, .slideBox.slideRight ul.ul2 .row3, .slideBox.slideRight ul.ul2 .row4{
+    opacity:0;
+}
+
+.slideBox.slideRight ul.ul1 .row1, .slideBox.slideRight ul.ul1 .row3, .slideBox.slideRight ul.ul1 .row4{
+    opacity:1;
+}
+
+.slideBox.slideRight ul.ul1 .row2 img{
+    width:12em;
+    height:12em;
+}
+
+.slideBox.slideRight ul.ul3 .row2 img, .slideBox.slideRight ul.ul2 .row2 img{
+    width:6em;
+    height:6em;
 }
