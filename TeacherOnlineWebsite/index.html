@@ -405,16 +405,36 @@
                             $('.slideBox').addClass('slideRight');
                         });
                     })();
+                    $('#fullPage').fullpage({
+                        scrollingSpeed: 300,
+                        'navigation': true,
+                        'navigationPosition': 'right',
+                        touchSensitivity: 10,
+                        paddingTop:0,
+                        afterLoad: function(anchorLink, index){
+                            var loadedSection = $(this);
+                            if(index == 2){
+                                $('.slideBox')[0].className = 'slideBox';
+                                $('.slideBox').addClass('slideLeft');
+                                setTimeout(function(){
+                                    $('.slideBox').removeClass('slideLeft');
+                                    $('.slideBox').addClass('slideRight');
+                                },800)
+                            }
+                        }
+                    });
+                } else {
+                    $('#fullPage').fullpage({
+                        scrollingSpeed: 300,
+                        'navigation': true,
+                        'navigationPosition': 'right',
+                        touchSensitivity: 10,
+                        paddingTop:0
+                    });
                 }
 
 
-                $('#fullPage').fullpage({
-                    scrollingSpeed: 300,
-                    'navigation': true,
-                    'navigationPosition': 'right',
-                    touchSensitivity: 10,
-                    paddingTop:0
-                });
+
 
                 pageSwitchBtnEv();
 

@@ -773,11 +773,8 @@ h1, h2, h3, h4, h5, h6{
         font-size: 14px;
     }
 
-    .page2.active ul{
-        -webkit-transition:none;
-        -moz-transition:none;
-        -o-transition:none;
-        transition:none;
+    .page2 ul{
+        opacity:1 !important;
     }
 
     /*page2 end*/
@@ -807,7 +804,7 @@ h1, h2, h3, h4, h5, h6{
         /*width:100px;*/
         /*position: relative;*/
         top: -30px;
-        width:88px;
+        width:65px;
     }
 
     /*page3 end*/
@@ -826,9 +823,9 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page4 ul > img {
-        width: 5em;
+        width: 4em;
         position: absolute;
-        left: 1em;
+        left: 1.5em;
     }
 
     .page4 ul > li {
@@ -850,6 +847,7 @@ h1, h2, h3, h4, h5, h6{
 
     .page4 ul > li.row2, .page4 ul > li.row3{
         font-size:0.8em;
+        line-height: 12px;
     }
 
     .page4 .ul1{
