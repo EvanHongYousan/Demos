@@ -661,6 +661,8 @@ h1, h2, h3, h4, h5, h6{
         position:static;
         display:block;
         margin:20px auto;
+        width: 160px;
+        height: 40px;
     }
 
     .banner-MBdevice-copywriting{
@@ -751,7 +753,7 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page4 ul > li.row1{
-        font-size:16px;
+        font-size:14px;
         font-weight:bolder;
         margin-top:0;
     }
@@ -857,8 +859,8 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page5 .QR-code{
-        width:10em;
-        height:10em;
+        width:8em;
+        height:8em;
     }
 
     .page5 .marginTop{
@@ -905,24 +907,24 @@ h1, h2, h3, h4, h5, h6{
     /*-moz-transform: translate(-50%, -50%) !important;*/
     /*-o-transform: translate(-50%, -50%) !important;*/
     /*transform: translate(-50%, -50%) !important;*/
-    -webkit-transition:all 0.5s;
-    -moz-transition:all 0.5s;
-    -o-transition:all 0.5s;
-    transition:all 0.5s;
+    -webkit-transition:all 0.2s;
+    -moz-transition:all 0.2s;
+    -o-transition:all 0.2s;
+    transition:all 0.2s;
 }
 
 .slideBox ul img{
-    -webkit-transition:all 0.5s;
-    -moz-transition:all 0.5s;
-    -o-transition:all 0.5s;
-    transition:all 0.5s;
+    -webkit-transition:all 0.2s;
+    -moz-transition:all 0.2s;
+    -o-transition:all 0.2s;
+    transition:all 0.2s;
 }
 
 .slideBox ul li{
-    -webkit-transition:all 0.5s;
-    -moz-transition:all 0.5s;
-    -o-transition:all 0.5s;
-    transition:all 0.5s;
+    -webkit-transition:all 0.2s;
+    -moz-transition:all 0.2s;
+    -o-transition:all 0.2s;
+    transition:all 0.2s;
 }
 
 .slideBox ul.ul1{
