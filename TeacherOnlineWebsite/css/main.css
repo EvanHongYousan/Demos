@@ -517,7 +517,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .page4 ul > li.row2, .page4 ul > li.row3{
-    font-size:20px;
+    font-size:17px;
 }
 
 .page4 .ul1, .page4 .ul3{
@@ -707,6 +707,7 @@ h1, h2, h3, h4, h5, h6{
     .page3 .page3-table-MBdevice{
         display: inline;
         width:100%;
+        max-width: 350px;
     }
 
     .page3 .page3-teacher.female1{
