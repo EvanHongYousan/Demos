@@ -610,7 +610,7 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .arrow-container-up, .arrow-container-down{
-        display:none;
+        /*display:none;*/
     }
 
     .section h2{
@@ -764,7 +764,7 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page4 ul > li.row2, .page4 ul > li.row3{
-        font-size:9px;
+        font-size:0.8em;
     }
 
     .page4 .ul1{
