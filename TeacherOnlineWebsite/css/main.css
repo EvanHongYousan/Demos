@@ -937,6 +937,7 @@ h1, h2, h3, h4, h5, h6{
 
 .slideBox ul.ul2{
     /*left:50%;*/
+    z-index:30;
     -webkit-transform: translate(-50%, -50%) !important;
     -moz-transform: translate(-50%, -50%) !important;
     -o-transform: translate(-50%, -50%) !important;
@@ -962,6 +963,7 @@ h1, h2, h3, h4, h5, h6{
 
 .slideBox.slideLeft ul.ul2{
     /*left:0;*/
+    z-index:20;
     -webkit-transform: translate(-160%, -50%) !important;
     -moz-transform: translate(-160%, -50%) !important;
     -o-transform: translate(-160%, -50%) !important;
@@ -970,6 +972,7 @@ h1, h2, h3, h4, h5, h6{
 
 .slideBox.slideLeft ul.ul3{
     /*left:50%;*/
+    z-index:30;
     -webkit-transform: translate(-50%, -50%) !important;
     -moz-transform: translate(-50%, -50%) !important;
     -o-transform: translate(-50%, -50%) !important;
@@ -1012,6 +1015,7 @@ h1, h2, h3, h4, h5, h6{
 
 .slideBox.slideRight ul.ul1{
     /*left:50%;*/
+    z-index:30;
     -webkit-transform: translate(-50%, -50%) !important;
     -moz-transform: translate(-50%, -50%) !important;
     -o-transform: translate(-50%, -50%) !important;
@@ -1020,6 +1024,7 @@ h1, h2, h3, h4, h5, h6{
 
 .slideBox.slideRight ul.ul2{
     /*right:0;*/
+    z-index:20;
     -webkit-transform: translate(60%, -50%) !important;
     -moz-transform: translate(60%, -50%)  !important;
     -o-transform: translate(60%, -50%) !important;

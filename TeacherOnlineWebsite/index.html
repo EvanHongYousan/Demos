@@ -383,20 +383,12 @@
                             }
                             if ( $('.slideBox').hasClass('slideRight') ) {
                                 $('.slideBox').removeClass('slideRight');
-                                $('.slideBox .ul3').css('z-index','10');
-                                setTimeout(function(){
-                                    $('.slideBox .ul3').attr('style','');
-                                },800);
                                 return true;
                             }
                             $('.slideBox')[0].className = 'slideBox';
                             $('.slideBox').addClass('slideLeft');
                         });
                         $('.slideBox').swiperight(function(e){
-                            $('.slideBox .ul3').attr('style','z-index:10;');
-                            setTimeout(function(){
-                                $('.slideBox .ul3').attr('style','');
-                            },800);
                             if ( $('.slideBox').hasClass('slideRight') ) {
                                 $('.slideBox').removeClass('slideRight').addClass('slideLeft');
                                 return false;
