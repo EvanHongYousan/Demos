@@ -614,7 +614,7 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .section h2{
-        font-size:20px;
+        font-size:18px;
         position:static;
     }
 
@@ -868,6 +868,7 @@ h1, h2, h3, h4, h5, h6{
     .page5 p{
         margin:5px;
         font-size:12px;
+        line-height:12px;
     }
 
     /*page5 end*/
