@@ -867,6 +867,7 @@ h1, h2, h3, h4, h5, h6{
 
     .page5 p{
         margin:5px;
+        font-size:12px;
     }
 
     /*page5 end*/
@@ -924,15 +925,15 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .slideBox ul.ul1{
-    left:0;
-    -webkit-transform: translate(-50%, -50%) !important;
-    -moz-transform: translate(-50%, -50%) !important;
-    -o-transform: translate(-50%, -50%) !important;
-    transform: translate(-50%, -50%) !important;
+    /*left:0;*/
+    -webkit-transform: translate(-210%, -50%) !important;
+    -moz-transform: translate(-210%, -50%) !important;
+    -o-transform: translate(-210%, -50%) !important;
+    transform: translate(-210%, -50%) !important;
 }
 
 .slideBox ul.ul2{
-    left:50%;
+    /*left:50%;*/
     -webkit-transform: translate(-50%, -50%) !important;
     -moz-transform: translate(-50%, -50%) !important;
     -o-transform: translate(-50%, -50%) !important;
@@ -940,7 +941,7 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .slideBox ul.ul3{
-    right:0;
+    /*right:0;*/
     -webkit-transform: translate(50%, -50%) !important;
     -moz-transform: translate(50%, -50%)  !important;
     -o-transform: translate(50%, -50%) !important;
@@ -957,15 +958,15 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .slideBox.slideLeft ul.ul2{
-    left:0;
-    -webkit-transform: translate(-50%, -50%) !important;
-    -moz-transform: translate(-50%, -50%) !important;
-    -o-transform: translate(-50%, -50%) !important;
-    transform: translate(-50%, -50%) !important;
+    /*left:0;*/
+    -webkit-transform: translate(-160%, -50%) !important;
+    -moz-transform: translate(-160%, -50%) !important;
+    -o-transform: translate(-160%, -50%) !important;
+    transform: translate(-160%, -50%) !important;
 }
 
 .slideBox.slideLeft ul.ul3{
-    left:50%;
+    /*left:50%;*/
     -webkit-transform: translate(-50%, -50%) !important;
     -moz-transform: translate(-50%, -50%) !important;
     -o-transform: translate(-50%, -50%) !important;
@@ -973,11 +974,11 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .slideBox.slideLeft ul.ul1{
-    right:0;
-    -webkit-transform: translate(50%, -50%) !important;
-    -moz-transform: translate(50%, -50%)  !important;
-    -o-transform: translate(50%, -50%) !important;
-    transform: translate(50%, -50%) !important;
+    /*right:0;*/
+    -webkit-transform: translate(110%, -50%) !important;
+    -moz-transform: translate(110%, -50%)  !important;
+    -o-transform: translate(110%, -50%) !important;
+    transform: translate(110%, -50%) !important;
 }
 
 .slideBox.slideLeft ul.ul1 .row1, .slideBox.slideLeft ul.ul1 .row3, .slideBox.slideLeft ul.ul1 .row4, .slideBox.slideLeft ul.ul2 .row1, .slideBox.slideLeft ul.ul2 .row3, .slideBox.slideLeft ul.ul2 .row4{
@@ -999,15 +1000,15 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .slideBox.slideRight ul.ul3{
-    left:0;
-    -webkit-transform: translate(-50%, -50%) !important;
-    -moz-transform: translate(-50%, -50%) !important;
-    -o-transform: translate(-50%, -50%) !important;
-    transform: translate(-50%, -50%) !important;
+    /*left:0;*/
+    -webkit-transform: translate(-150%, -50%) !important;
+    -moz-transform: translate(-150%, -50%) !important;
+    -o-transform: translate(-150%, -50%) !important;
+    transform: translate(-150%, -50%) !important;
 }
 
 .slideBox.slideRight ul.ul1{
-    left:50%;
+    /*left:50%;*/
     -webkit-transform: translate(-50%, -50%) !important;
     -moz-transform: translate(-50%, -50%) !important;
     -o-transform: translate(-50%, -50%) !important;
@@ -1015,11 +1016,11 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .slideBox.slideRight ul.ul2{
-    right:0;
-    -webkit-transform: translate(50%, -50%) !important;
-    -moz-transform: translate(50%, -50%)  !important;
-    -o-transform: translate(50%, -50%) !important;
-    transform: translate(50%, -50%) !important;
+    /*right:0;*/
+    -webkit-transform: translate(60%, -50%) !important;
+    -moz-transform: translate(60%, -50%)  !important;
+    -o-transform: translate(60%, -50%) !important;
+    transform: translate(60%, -50%) !important;
 }
 
 .slideBox.slideRight ul.ul3 .row1, .slideBox.slideRight ul.ul3 .row3, .slideBox.slideRight ul.ul3 .row4, .slideBox.slideRight ul.ul2 .row1, .slideBox.slideRight ul.ul2 .row3, .slideBox.slideRight ul.ul2 .row4{
