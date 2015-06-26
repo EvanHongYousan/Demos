@@ -166,6 +166,79 @@ h1, h2, h3, h4, h5, h6{
     }
 }
 
+.arrow-MBdevice{
+    display:none;
+    position:absolute;
+    bottom:0;
+    left:50%;
+    width:30px;
+    height:15px;
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
+    -webkit-animation: toggleMB 0.8s infinite;
+    -moz-animation: toggleMB 0.8s infinite;
+    -o-animation: toggleMB 0.8s infinite;
+    animation:toggleMB 0.8s infinite;
+}
+
+@-webkit-keyframes toggleMB {
+    0% {
+        bottom:0px;
+    }
+
+    50% {
+        bottom:12px;
+    }
+
+    100%{
+        bottom:0px;
+    }
+}
+
+@-moz-keyframes toggleMB {
+    0% {
+        bottom:0px;
+    }
+
+    50% {
+        bottom:12px;
+    }
+
+    100%{
+        bottom:0px;
+    }
+}
+
+@-o-keyframes toggleMB {
+    0% {
+        bottom:0px;
+    }
+
+    50% {
+        bottom:12px;
+    }
+
+    100%{
+        bottom:0px;
+    }
+}
+
+@keyframes toggleMB {
+    0% {
+        bottom:0px;
+    }
+
+    50% {
+        bottom:12px;
+    }
+
+    100%{
+        bottom:0px;
+    }
+}
+
 /*page1 start*/
 
 .logo{
@@ -610,7 +683,11 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .arrow-container-up, .arrow-container-down{
-        /*display:none;*/
+        display:none;
+    }
+
+    .arrow-MBdevice{
+        display:block;
     }
 
     .section h2{
@@ -643,7 +720,7 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page1 .fp-tableCell{
-        padding:30px;
+        /*padding:30px;*/
     }
 
     .page1 .banner-MBdevice{
@@ -696,6 +773,13 @@ h1, h2, h3, h4, h5, h6{
         font-size: 14px;
     }
 
+    .page2.active ul{
+        -webkit-transition:none;
+        -moz-transition:none;
+        -o-transition:none;
+        transition:none;
+    }
+
     /*page2 end*/
 
     /*page3 start*/
@@ -720,9 +804,10 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page3 .page3-teacher{
-        width:100px;
-        position: relative;
+        /*width:100px;*/
+        /*position: relative;*/
         top: -30px;
+        width:88px;
     }
 
     /*page3 end*/
