@@ -413,12 +413,15 @@
                         paddingTop:0,
                         afterLoad: function(anchorLink, index){
                             var loadedSection = $(this);
+                            if(index == 1 || index == 3){
+                                $('.slideBox').addClass('slideHide');
+                            }
                             if(index == 2){
                                 $('.slideBox')[0].className = 'slideBox';
-                                $('.slideBox').addClass('rotate');
+                                $('.slideBox').addClass('slideHide');
                                 setTimeout(function(){
                                     $('.slideBox')[0].className = 'slideBox';
-                                },750);
+                                },100);
                             }
                         }
                     });
