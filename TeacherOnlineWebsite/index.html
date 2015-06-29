@@ -415,11 +415,10 @@
                             var loadedSection = $(this);
                             if(index == 2){
                                 $('.slideBox')[0].className = 'slideBox';
-                                $('.slideBox').addClass('slideLeft');
+                                $('.slideBox').addClass('rotate');
                                 setTimeout(function(){
-                                    $('.slideBox').removeClass('slideLeft');
-                                    $('.slideBox').addClass('slideRight');
-                                },800)
+                                    $('.slideBox')[0].className = 'slideBox';
+                                },1000);
                             }
                         }
                     });
@@ -428,7 +427,7 @@
                         scrollingSpeed: 300,
                         'navigation': true,
                         'navigationPosition': 'right',
-                        touchSensitivity: 10,
+                        touchSensitivity: 20,
                         paddingTop:0
                     });
                 }
