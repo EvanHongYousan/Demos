@@ -202,11 +202,11 @@
             <!--<p class="marginTop">特邀一线老师一对一辅导</p>-->
             <p class="marginTop">欢迎各位家长和孩子下载体验</p>
             <p>同时邀请你加入”呼叫老师“免费答疑QQ群383076598</p>
+            <br/>
             <div class="footer">
                 <p>@2013-2014 乐学 粤ICP备15050819号</p>
                 <p>深圳乐学壹佰教育科技有限公司</p>
                 <p>一家专做互联网教育产品的公司</p>
-                <p>地址：深圳市南山区花园城数码大厦B座301B</p>
             </div>
         </div>
     </div>
@@ -418,7 +418,7 @@
                                 $('.slideBox').addClass('rotate');
                                 setTimeout(function(){
                                     $('.slideBox')[0].className = 'slideBox';
-                                },1000);
+                                },750);
                             }
                         }
                     });
@@ -430,6 +430,10 @@
                         touchSensitivity: 20,
                         paddingTop:0
                     });
+
+                    setTimeout(function(){
+                        parallaxBind();
+                    },1500);
                 }
 
 
@@ -437,9 +441,6 @@
 
                 pageSwitchBtnEv();
 
-                setTimeout(function(){
-                    parallaxBind();
-                },1500);
                 $('.page1.active').removeClass('active');
                 setTimeout(function(){
                     $('.page1').addClass('active');

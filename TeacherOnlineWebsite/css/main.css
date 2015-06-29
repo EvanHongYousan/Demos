@@ -766,6 +766,7 @@ h1, h2, h3, h4, h5, h6{
     }
 
     .page2 ul > li.row1 {
+        display:none;
         font-size: 20px;
     }
 
@@ -1149,10 +1150,10 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(-120%, -50%) !important;
     -o-transform: translate(-120%, -50%) !important;
     transform: translate(-120%, -50%) !important;
-    -webkit-animation: rotateForUl1 0.4s infinite;
-    -moz-animation: rotateForUl1 0.4s infinite;
-    -o-animation: rotateForUl1 0.4s infinite;
-    animation:rotateForUl1 0.4s infinite;
+    -webkit-animation: rotateForUl1 0.4s 0.3s infinite;
+    -moz-animation: rotateForUl1 0.4s 0.3s infinite;
+    -o-animation: rotateForUl1 0.4s 0.3s infinite;
+    animation:rotateForUl1 0.4s 0.3s infinite;
 }
 
 .slideBox.rotate ul.ul2{
@@ -1162,10 +1163,10 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(-50%, -50%) !important;
     -o-transform: translate(-50%, -50%) !important;
     transform: translate(-50%, -50%) !important;
-    -webkit-animation: rotateForUl2 0.4s infinite;
-    -moz-animation: rotateForUl2 0.4s infinite;
-    -o-animation: rotateForUl2 0.4s infinite;
-    animation:rotateForUl2 0.4s infinite;
+    -webkit-animation: rotateForUl2 0.4s 0.3s infinite;
+    -moz-animation: rotateForUl2 0.4s 0.3s infinite;
+    -o-animation: rotateForUl2 0.4s 0.3s infinite;
+    animation:rotateForUl2 0.4s 0.3s infinite;
 }
 
 .slideBox.rotate ul.ul3{
@@ -1174,10 +1175,10 @@ h1, h2, h3, h4, h5, h6{
     -moz-transform: translate(0%, -50%)  !important;
     -o-transform: translate(0%, -50%) !important;
     transform: translate(0%, -50%) !important;
-    -webkit-animation: rotateForUl3 0.4s infinite;
-    -moz-animation: rotateForUl3 0.4s infinite;
-    -o-animation: rotateForUl3 0.4s infinite;
-    animation:rotateForUl3 0.4s infinite;
+    -webkit-animation: rotateForUl3 0.4s 0.3s infinite;
+    -moz-animation: rotateForUl3 0.4s 0.3s infinite;
+    -o-animation: rotateForUl3 0.4s 0.3s infinite;
+    animation:rotateForUl3 0.4s 0.3s infinite;
 }
 
 @-webkit-keyframes rotateForUl1 {
