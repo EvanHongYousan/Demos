@@ -37,6 +37,35 @@ h1, h2, h3, h4, h5, h6{
     width:100%;
 }
 
+.weixin_tip {
+    display: none;
+    color: white;
+    margin-top: -25px;
+    font-size: 14px;
+    text-align: right;
+    -webkit-transform: translate(100%, 0);
+    -moz-transform: translate(100%, 0);
+    -o-transform: translate(100%, 0);
+    transform: translate(100%, 0);
+    background-color:rgba(0, 0, 0, 0.3);
+    border-radius:12px;
+    position:absolute;
+    right:0;
+    width:150px;
+    padding:0 10px;
+}
+
+.weixin_tip.active{
+    -webkit-transform: translate(0, 0);
+    -moz-transform: translate(0, 0);
+    -o-transform: translate(0, 0);
+    transform: translate(0, 0);
+    -webkit-transition:all 0.5s;
+    -moz-transition:all 0.5s;
+    -o-transition:all 0.5s;
+    transition:all 0.5s;
+}
+
 .page1{
     background: url(../images/bg1.jpg);
 }
