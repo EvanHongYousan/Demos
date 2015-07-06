@@ -328,19 +328,22 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .download-ios{
-    background: url(../images/ios_normal.png);
+    background: url(../images/ios_disable.png);
     background-size: cover;
+    cursor: not-allowed;
 }
 
-.download-ios:hover{
-    background: url(../images/ios_hover.png);
-    background-size: cover;
-}
+/*TODO iOS上线后要把这个地方改回来 start*/
+/*.download-ios:hover{*/
+    /*background: url(../images/ios_hover.png);*/
+    /*background-size: cover;*/
+/*}*/
 
-.download-ios:active{
-    background: url(../images/ios_active.png);
-    background-size: cover;
-}
+/*.download-ios:active{*/
+    /*background: url(../images/ios_active.png);*/
+    /*background-size: cover;*/
+/*}*/
+/*TODO iOS上线后要把这个地方改回来 end*/
 
 .download-android{
     position:absolute;

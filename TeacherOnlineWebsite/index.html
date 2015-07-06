@@ -352,7 +352,7 @@
                     }
                 });
                 $('.download-ios').on('click', function(){
-                    alert('iOS版本还未上线，敬请期待');
+                    //alert('iOS版本还未上线，敬请期待');
                     //document.location.href = down_ios_url;
                 });
             }
@@ -377,8 +377,8 @@
 
             function init(){
 
-                /*若渠道号为002，则直接根据机型下载安装包 start*/
-                if ( getChannelId() == '002' ) {
+                /*若参数dwnldnow为true，则直接根据机型下载安装包 start*/
+                if ( getReqPrm('dwnldnow') == 'true' || getReqPrm('dwnldnow') == true ) {
                     if ( isWeixin() ){
                         $('.weixin_tip').css('display','block');
                         setTimeout(function(){
@@ -386,12 +386,9 @@
                         },100)
                     } else if ( isAndroid() ) {
                         document.location.href = down_android_url;
-                    } else if ( isIOS() )  {
-                        alert('iOS版本还未上线，敬请期待');
-                        //document.location.href = down_ios_url;
                     }
                 }
-                /*若渠道号为002，则直接根据机型下载安装包 end*/
+                /*若参数dwnldnow为true，则直接根据机型下载安装包 end*/
 
                 /*移动端页面只有一个按钮 start*/
                 if ( isAndroid() ) {
@@ -477,7 +474,7 @@
                 $('.page1.active').removeClass('active');
                 setTimeout(function(){
                     $('.page1').addClass('active');
-                },100)
+                },100);
 
                 $('html').css('opacity',1);
             }
