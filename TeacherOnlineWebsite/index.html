@@ -211,7 +211,7 @@
             <p>同时邀请你加入“呼叫老师”QQ交流群205386465</p>
             <br/>
             <div class="footer">
-                <p>@2013-2014 乐学 粤ICP备15050819号</p>
+                <p>@2014-2015 乐学 粤ICP备15050819号</p>
                 <p>深圳乐学壹佰教育科技有限公司</p>
                 <p>一家专做互联网教育产品的公司</p>
             </div>
@@ -283,12 +283,13 @@
         })(jQuery);
     </script>
     <script>
+        $('html').css('opacity',0);
         $(document).ready(function() {
 
             var
                     down_ios_forWeixin_url = '',
                     down_ios_url = '',
-                    down_android_url = '',
+                    down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/001/hjlaoshi.apk',
                     userAgent = window.navigator.userAgent.toLowerCase();
 
             function getChannelId() {
@@ -340,8 +341,6 @@
             }
 
             function downloadEvBind(){
-                var android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/001/hjlaoshi.apk';
-                var iOS_url = '';
                 $('.download-android').on('click', function(){
                     if ( isWeixin() ){
                         $('.weixin_tip').css('display','block');
@@ -349,11 +348,12 @@
                             $('.weixin_tip').addClass('active');
                         },100)
                     } else {
-                        document.location.href = android_url;
+                        document.location.href = down_android_url;
                     }
                 });
-                $('.download-ios-android').on('click', function(){
-                    document.location.href = iOS_url;
+                $('.download-ios').on('click', function(){
+                    alert('iOS版本还未上线，敬请期待');
+                    //document.location.href = down_ios_url;
                 });
             }
 
@@ -376,27 +376,33 @@
             }
 
             function init(){
+
+                /*若渠道号为002，则直接根据机型下载安装包 start*/
+                if ( getChannelId() == '002' ) {
+                    if ( isWeixin() ){
+                        $('.weixin_tip').css('display','block');
+                        setTimeout(function(){
+                            $('.weixin_tip').addClass('active');
+                        },100)
+                    } else if ( isAndroid() ) {
+                        document.location.href = down_android_url;
+                    } else if ( isIOS() )  {
+                        alert('iOS版本还未上线，敬请期待');
+                        //document.location.href = down_ios_url;
+                    }
+                }
+                /*若渠道号为002，则直接根据机型下载安装包 end*/
+
+                /*移动端页面只有一个按钮 start*/
                 if ( isAndroid() ) {
                     $('.downloadSpan').addClass('download-android');
                 } else if ( isIOS() ) {
                     $('.downloadSpan').addClass('download-ios');
                 }
+                /*移动端页面只有一个按钮 end*/
 
                 if ( isAndroid() || isIOS() || isWeixin() ) {
                     (function(){
-//                        var $slide_1 = $('<div class="slide"></div>');
-//                        var $slide_2 = $('<div class="slide"></div>');
-//                        var $slide_3 = $('<div class="slide"></div>');
-//
-//                        var $ul_1 = $('.page2  > ul').eq(0);
-//                        var $ul_2 = $('.page2  > ul').eq(1);
-//                        var $ul_3 = $('.page2  > ul').eq(2);
-//
-//                        $slide_1.append($ul_1);
-//                        $slide_2.append($ul_2);
-//                        $slide_3.append($ul_3);
-//
-//                        $('.page2').append($slide_1).append($slide_2).append($slide_3);
                         var $h2 = $('.page2 h2');
                         var $uls = $('.page2  > ul').css('marginLeft','0');
                         var $slideBox = $('<div class="slideBox"></div>');
@@ -473,6 +479,7 @@
                     $('.page1').addClass('active');
                 },100)
 
+                $('html').css('opacity',1);
             }
 
             init();
