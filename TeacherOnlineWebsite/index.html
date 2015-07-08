@@ -378,16 +378,16 @@
             function init(){
 
                 /*若参数dwnldnow为true，则直接根据机型下载安装包 start*/
-                if ( getReqPrm('dwnldnow') == 'true' || getReqPrm('dwnldnow') == true ) {
-                    if ( isWeixin() ){
-                        $('.weixin_tip').css('display','block');
-                        setTimeout(function(){
-                            $('.weixin_tip').addClass('active');
-                        },100)
-                    } else if ( isAndroid() ) {
-                        document.location.href = down_android_url;
-                    }
-                }
+//                if ( getReqPrm('dwnldnow') == 'true' || getReqPrm('dwnldnow') == true ) {
+//                    if ( isWeixin() ){
+//                        $('.weixin_tip').css('display','block');
+//                        setTimeout(function(){
+//                            $('.weixin_tip').addClass('active');
+//                        },100)
+//                    } else if ( isAndroid() ) {
+//                        document.location.href = down_android_url;
+//                    }
+//                }
                 /*若参数dwnldnow为true，则直接根据机型下载安装包 end*/
 
                 /*移动端页面只有一个按钮 start*/

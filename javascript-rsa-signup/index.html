@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="true">
+    <head>
+
+        <title>login</title>
+
+        <meta http-equiv="pragma" content="no-cache">
+        <meta http-equiv="cache-control" content="no-cache">
+        <meta http-equiv="expires" content="0">
+        <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
+        <meta http-equiv="description" content="This is my page">
+        <!--
+        <link rel="stylesheet" type="text/css" href="styles.css">
+        -->
+        <script type="text/javascript" src="RSA.js"></script>
+        <script type="text/javascript" src="BigInt.js"></script>
+        <script type="text/javascript" src="Barrett.js"></script>
+        <script type="text/javascript">
+            function rsalogin()
+            {
+                bodyRSA();
+                var result = encryptedString(key, document.getElementById("pwd").value);
+                alert(result);
+//                loginForm.action="login.do?result="+result;
+//                loginForm.submit();
+            }
+            var key ;
+            function bodyRSA()
+            {
+                setMaxDigits(130);
+                key = new RSAKeyPair("10001","","8c1cd09a04ed01aafe70dc84c5f32ae23a16fe8fc8898aba6797c5a9c708720de4f08dbf086af429fc51c0636208f56de20a8ab5686affd9bdfb643ae1e90d5617155c4867eef06b0884ba8ecd187907c7069ae3eed4f0155eeca6573411864035ae803ad8fd91a0cc479f27e41b19c13465ab30f3cfbfd14de56f49cbd09481");
+            }
+
+        </script>
+    </head>
+
+    <body >
+        <form action="login" method="post" focus="username">
+            <table border="0">
+                <tr>
+                    <td>Login:</td>
+                    <td><input type="text" name="username" /></td>
+                </tr>
+                <tr>
+                    <td>Password:</td>
+                    <td><input type="password" name="password" id="pwd" /></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="button" value="SUBMIT" onclick="rsalogin();"/></td>
+                </tr>
+            </table>
+        </form>
+    </body>
+</html>
