@@ -1,54 +1,44 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="true">
-    <head>
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="crypto-js/core.js"></script>
+<script src="crypto-js/sha1.js"></script>
+<script src="crypto-js/md5.js"></script>
+<script src="crypto-js/sha256.js"></script>
 
-        <title>login</title>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/ext/jsbn.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/ext/jsbn2.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/ext/prng4.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/ext/rng.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/ext/rsa.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/ext/rsa2.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/ext/base64.js"></script>
 
-        <meta http-equiv="pragma" content="no-cache">
-        <meta http-equiv="cache-control" content="no-cache">
-        <meta http-equiv="expires" content="0">
-        <meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
-        <meta http-equiv="description" content="This is my page">
-        <!--
-        <link rel="stylesheet" type="text/css" href="styles.css">
-        -->
-        <script type="text/javascript" src="RSA.js"></script>
-        <script type="text/javascript" src="BigInt.js"></script>
-        <script type="text/javascript" src="Barrett.js"></script>
-        <script type="text/javascript">
-            function rsalogin()
-            {
-                bodyRSA();
-                var result = encryptedString(key, document.getElementById("pwd").value);
-                alert(result);
-//                loginForm.action="login.do?result="+result;
-//                loginForm.submit();
-            }
-            var key ;
-            function bodyRSA()
-            {
-                setMaxDigits(130);
-                key = new RSAKeyPair("10001","","8c1cd09a04ed01aafe70dc84c5f32ae23a16fe8fc8898aba6797c5a9c708720de4f08dbf086af429fc51c0636208f56de20a8ab5686affd9bdfb643ae1e90d5617155c4867eef06b0884ba8ecd187907c7069ae3eed4f0155eeca6573411864035ae803ad8fd91a0cc479f27e41b19c13465ab30f3cfbfd14de56f49cbd09481");
-            }
 
-        </script>
-    </head>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/rsapem-1.1.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/rsasign-1.2.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/asn1hex-1.1.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/crypto-1.1.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/pkcs5pkey-1.0.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/base64x-1.1.js"></script>
+<script language="JavaScript" type="text/javascript" src="jsrsasign/keyutil-1.0.js"></script>
 
-    <body >
-        <form action="login" method="post" focus="username">
-            <table border="0">
-                <tr>
-                    <td>Login:</td>
-                    <td><input type="text" name="username" /></td>
-                </tr>
-                <tr>
-                    <td>Password:</td>
-                    <td><input type="password" name="password" id="pwd" /></td>
-                </tr>
-                <tr>
-                    <td colspan="2" align="center"><input type="button" value="SUBMIT" onclick="rsalogin();"/></td>
-                </tr>
-            </table>
-        </form>
-    </body>
+<script>
+    var pem = '-----BEGIN PRIVATE KEY-----\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBANHVz+xNY9SvV0jA1yq9Gf6NsP79WoJEW9ICE5/6G6FeGYGnDyho4j1Jm5yEo7qm3dozJXKgKlMZ6J7to4yICuJ2/ZOM/zXav2KAzrgdgUu4XUuT30NAG7I1xw1SBz4CbH0GrtK6+jIjPDR9y00PEbDAEzdptR3OQeQe3keuUfhJAgMBAAECgYBAjrqopeq37bY58PKB+Kn9shQpb0MgXu2s/+yPxIAptmy8gexc71/joTjZ/8jrzRjmX+P+jx5WcNsrwksWGmjWUtaZhVHEzi8Fh3qdQGK3bPhbfdWTx5MDJ11trZVbmwjiQkPe2sFnAHyeqoC970Vj4KnxKjKbV/AzYM/706VvTQJBAPtOa07RmtZR8hJWYFKj3EvbBJULivXFH+sVwWbuNKOKRDHezGy2MpzwEKlEflhBzk+r3/4TWfY28uV5wDqJG/sCQQDVwRsDnjwcg9bpWGBjU0Lp8MtxcAtcn7G1+8YYyskYien4pzqrwnImdMeTYCQZGrqIgQQapMeonUQEnxCN1aWLAkA7xPvqpBmCbbz4NYj1PrmvZOjjFfq312lu/R6hf3gPiVwMzGOsW20QPFyKFZtDHGuYMVW11R5pW8pLX7ijc2avAkEAmusrswGZu2jp95Cvuwz7MCXurLZx5Z1v5N8nAYznFjvOMQKyiQ2SQcDdbDh/sRooGwq2eMD4W4Iva9IE42b2ZQJAF4saRZahRXmHBevfwlVivj3RvA5g6UL2ero6/SrrtBHZ3R40K8rzUPHynLfHewf+TAIMAZaKDSkHkHNjgX5kag==\n-----END PRIVATE KEY-----';
+    var prvKey = KEYUTIL.getRSAKeyFromPlainPKCS8PEM(pem); // KEYUTIL提供了PKCS#8的pem读取，这是一般用openssl生成的默认。而jsrsasign的默认是PKCS#1 所以需要用keyutil
+    var signString = 'out_trade_no="5599ecd90cf23134de6eac71"&partner="2088911430043568"';
+    var sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA", "prov": "cryptojs/jsrsa"}); // alg为MD5WithRSA，这个还有个常见的是SHA1WithRSA，不过貌似支付宝是用的MD5，所以我们公司用的也是MD5，也许java默认的就是这个格式。
+
+    sig.initSign(prvKey);  // 设置key
+
+    sig.signString(signString);  // 签名
+
+    var sign = hex2b64(sig.hSign);  // 得到签名Hex，并转成base64string
+    console.log(sign);
+</script>
+</body>
 </html>

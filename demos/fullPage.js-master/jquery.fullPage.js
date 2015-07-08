@@ -8,7 +8,7 @@
 (function(global, factory) {
     'use strict';
     if (typeof define === 'function' && define.amd) {
-        define(['jquery'], function($) {
+        define(['jquery.fullPage'], function($) {
           return factory($, global, global.document, global.Math);
         });
     } else if (typeof exports !== 'undefined') {
@@ -1027,7 +1027,7 @@
         /**
          * Detecting mousewheel scrolling
          *
-         * http://blogs.sitepointstatic.com/examples/tech/mouse-wheel/index.html
+         * http://blogs.sitepointstatic.com/examples/tech/mouse-wheel/rsa加密.html
          * http://www.sitepoint.com/html5-javascript-mouse-wheel/
          */
         var prevTime = new Date().getTime();
