@@ -390,48 +390,72 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .page1 .copywriting li.row1{
-    margin-left:40px;
+    -webkit-transform: translate(40px, 0);
+    -moz-transform: translate(40px, 0);
+    -o-transform: translate(40px, 0);
+    transform: translate(40px, 0);
     opacity: 0;
 }
 
 .page1 .copywriting li.row2{
-    margin-left:80px;
+    -webkit-transform: translate(80px, 0);
+    -moz-transform: translate(80px, 0);
+    -o-transform: translate(80px, 0);
+    transform: translate(80px, 0);
     opacity: 0;
 }
 
 .page1 .copywriting li.row3{
-    margin-left:120px;
+    -webkit-transform: translate(120px, 0);
+    -moz-transform: translate(120px, 0);
+    -o-transform: translate(120px, 0);
+    transform: translate(120px, 0);
     opacity: 0;
 }
 
 .page1 .copywriting li.row4{
-    margin-left:160px;
+    -webkit-transform: translate(160px, 0);
+    -moz-transform: translate(160px, 0);
+    -o-transform: translate(160px, 0);
+    transform: translate(160px, 0);
     opacity: 0;
 }
 
 .page1 .copywriting li.row3 .download-ios{
-    margin-left:40px;
+    -webkit-transform: translate(40px, 0);
+    -moz-transform: translate(40px, 0);
+    -o-transform: translate(40px, 0);
+    transform: translate(40px, 0);
 }
 
 .page1 .copywriting li.row3 .QR-code{
-    margin-left:80px;
+    -webkit-transform: translate(80px, 0);
+    -moz-transform: translate(80px, 0);
+    -o-transform: translate(80px, 0);
+    transform: translate(80px, 0);
 }
 
 .page1.active .copywriting > li.row1, .page1.active .copywriting > li.row2, .page1.active .copywriting > li.row3, .page1.active .copywriting > li.row4{
-    margin-left:0;
+    -webkit-transform: translate(0px, 0);
+    -moz-transform: translate(0px, 0);
+    -o-transform: translate(0px, 0);
+    transform: translate(0px, 0);
     opacity: 1;
-    -webkit-transition:margin-left 0.6s 0.2s, opacity 0.8s 0.2s;
-    -moz-transition:margin-left 0.6s 0.2s, opacity 0.8s 0.2s;
-    -o-transition:margin-left 0.6s 0.2s, opacity 0.8s 0.2s;
-    transition:margin-left 0.6s 0.2s, opacity 0.8s 0.2s;
+    -webkit-transition:-webkit-transform 0.6s 0.2s, opacity 0.8s 0.2s;
+    -moz-transition:-moz-transform 0.6s 0.2s, opacity 0.8s 0.2s;
+    -o-transition:-o-transform 0.6s 0.2s, opacity 0.8s 0.2s;
+    transition:transform 0.6s 0.2s, opacity 0.8s 0.2s;
 }
 
 .page1.active .copywriting li.row3 .download-ios, .page1.active .copywriting li.row3 .QR-code{
-    margin-left:0;
-    -webkit-transition:margin-left 1.0s 0.2s;
-    -moz-transition:margin-left 1.0s 0.2s;
-    -o-transition:margin-left 1.0s 0.2s;
-    transition:margin-left 1.0s 0.2s;
+    -webkit-transform: translate(0px, 0);
+    -moz-transform: translate(0px, 0);
+    -o-transform: translate(0px, 0);
+    transform: translate(0px, 0);
+    -webkit-transition:-webkit-transform 1.0s 0.2s;
+    -moz-transition:-moz-transform 1.0s 0.2s;
+    -o-transition:-o-transform 1.0s 0.2s;
+    transition:transform 1.0s 0.2s;
 }
 
 /*page1 end*/
@@ -451,11 +475,11 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .page2 img{
-    -webkit-transform: translateZ(0);
-    -moz-transform: translateZ(0);
-    -ms-transform: translateZ(0);
-    -o-transform: translateZ(0);
-    transform: translateZ(0);
+    -webkit-transform: translate(0,0);
+    -moz-transform: translate(0,0);
+    -ms-transform: translate(0,0);
+    -o-transform: translate(0,0);
+    transform: translate(0,0);
 }
 
 .page2 ul{
