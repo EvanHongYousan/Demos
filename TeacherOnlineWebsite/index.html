@@ -286,11 +286,10 @@
         $('html').css('opacity',0);
         $(document).ready(function() {
 
-            var
-                    down_ios_forWeixin_url = '',
-                    down_ios_url = '',
-                    down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/001/hjlaoshi.apk',
-                    userAgent = window.navigator.userAgent.toLowerCase();
+            var down_ios_forWeixin_url = '';
+            var down_ios_url = '';
+            var down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/' + getChannelId() + '/hjlaoshi.apk';
+            var userAgent = window.navigator.userAgent.toLowerCase();
 
             function getChannelId() {
                 var url = window.location.href,
@@ -466,7 +465,7 @@
                 $('html').css('opacity',1);
 
                 /*若参数dwnldnow为true，则直接根据机型下载安装包 start*/
-                if ( getReqPrm('dwnldnow') == 'true' || getReqPrm('dwnldnow') == true ) {
+                if ( getReqPrm('dwnldnow') == 'true' || getReqPrm('dwnldnow') == true || getChannelId() == '055') {
                     if ( isWeixin() ){
                         $('.weixin_tip').css('display','block');
                         setTimeout(function(){
