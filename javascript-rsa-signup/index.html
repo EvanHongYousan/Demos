@@ -30,7 +30,7 @@
 <script>
     var pem = '-----BEGIN PRIVATE KEY-----\nMIICdgIBADANBgkqhkiG9w0BAQEFAASCAmAwggJcAgEAAoGBANHVz+xNY9SvV0jA1yq9Gf6NsP79WoJEW9ICE5/6G6FeGYGnDyho4j1Jm5yEo7qm3dozJXKgKlMZ6J7to4yICuJ2/ZOM/zXav2KAzrgdgUu4XUuT30NAG7I1xw1SBz4CbH0GrtK6+jIjPDR9y00PEbDAEzdptR3OQeQe3keuUfhJAgMBAAECgYBAjrqopeq37bY58PKB+Kn9shQpb0MgXu2s/+yPxIAptmy8gexc71/joTjZ/8jrzRjmX+P+jx5WcNsrwksWGmjWUtaZhVHEzi8Fh3qdQGK3bPhbfdWTx5MDJ11trZVbmwjiQkPe2sFnAHyeqoC970Vj4KnxKjKbV/AzYM/706VvTQJBAPtOa07RmtZR8hJWYFKj3EvbBJULivXFH+sVwWbuNKOKRDHezGy2MpzwEKlEflhBzk+r3/4TWfY28uV5wDqJG/sCQQDVwRsDnjwcg9bpWGBjU0Lp8MtxcAtcn7G1+8YYyskYien4pzqrwnImdMeTYCQZGrqIgQQapMeonUQEnxCN1aWLAkA7xPvqpBmCbbz4NYj1PrmvZOjjFfq312lu/R6hf3gPiVwMzGOsW20QPFyKFZtDHGuYMVW11R5pW8pLX7ijc2avAkEAmusrswGZu2jp95Cvuwz7MCXurLZx5Z1v5N8nAYznFjvOMQKyiQ2SQcDdbDh/sRooGwq2eMD4W4Iva9IE42b2ZQJAF4saRZahRXmHBevfwlVivj3RvA5g6UL2ero6/SrrtBHZ3R40K8rzUPHynLfHewf+TAIMAZaKDSkHkHNjgX5kag==\n-----END PRIVATE KEY-----';
     var prvKey = KEYUTIL.getRSAKeyFromPlainPKCS8PEM(pem); // KEYUTIL提供了PKCS#8的pem读取，这是一般用openssl生成的默认。而jsrsasign的默认是PKCS#1 所以需要用keyutil
-    var signString = 'out_trade_no="5599ecd90cf23134de6eac71"&partner="2088911430043568"';
+    var signString = 'partner="2088911430043568"&seller_id="3247045607@qq.com"&out_trade_no="5599ecd90cf23134de6eac71"&subject="强化辅导卡（小学）"&body="强化辅导卡（小学）"&total_fee="0.01"&notify_url="http://test.hjlaoshi.com/app/pay/notify"&service="mobile.securitypay.pay"&payment_type="1"&_input_charset="utf-8"&it_b_pay="1h"&show_url="m.alipay.com"';
     var sig = new KJUR.crypto.Signature({"alg": "SHA1withRSA", "prov": "cryptojs/jsrsa"}); // alg为MD5WithRSA，这个还有个常见的是SHA1WithRSA，不过貌似支付宝是用的MD5，所以我们公司用的也是MD5，也许java默认的就是这个格式。
 
     sig.initSign(prvKey);  // 设置key
@@ -38,7 +38,7 @@
     sig.signString(signString);  // 签名
 
     var sign = hex2b64(sig.hSign);  // 得到签名Hex，并转成base64string
-    console.log(sign);
+    console.log(encodeURIComponent(sign));
 </script>
 </body>
 </html>
