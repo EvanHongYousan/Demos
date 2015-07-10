@@ -283,7 +283,6 @@
         })(jQuery);
     </script>
     <script>
-        $('html').css('opacity',0);
         $(document).ready(function() {
 
             var down_ios_forWeixin_url = '';
@@ -462,17 +461,17 @@
                     $('.page1').addClass('active');
                 },100);
 
-                $('html').css('opacity',1);
-
                 /*若参数dwnldnow为true，则直接根据机型下载安装包 start*/
                 if ( getReqPrm('dwnldnow') == 'true' || getReqPrm('dwnldnow') == true || getChannelId() == '055') {
-                    if ( isWeixin() ){
+                    if ( isWeixin()&&isAndroid() ){
                         $('.weixin_tip').css('display','block');
                         setTimeout(function(){
                             $('.weixin_tip').addClass('active');
                         },100)
                     } else if ( isAndroid() ) {
-                        document.location.href = down_android_url;
+                        setTimeout(function(){
+                            document.location.href = down_android_url;
+                        },0);
                     }
                 }
                 /*若参数dwnldnow为true，则直接根据机型下载安装包 end*/
