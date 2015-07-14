@@ -256,6 +256,7 @@ var canvasVideo = (function(){
     }
 
     function clearCanvas(){
+        $('.imgContainer').remove();
         ctxOut.clearRect(0, 0, configMap.canvasWidth, configMap.canvasHeight);
         ctxIn.clearRect(0, 0, configMap.canvasWidth, configMap.canvasHeight);
     }
