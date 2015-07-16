@@ -1,0 +1,14 @@
+{
+  "name": "lesson7",
+  "version": "1.0.0",
+  "description": "",
+  "main": "cookie.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Evan",
+  "license": "ISC",
+  "dependencies": {
+    "chai": "^2.2.0"
+  }
+}

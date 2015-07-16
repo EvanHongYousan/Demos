@@ -1,0 +1,14 @@
+{
+  "name": "concurrencyControlByAsync",
+  "version": "1.0.0",
+  "description": "concurrency control by async",
+  "main": "cookie.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "EvanHongYousan",
+  "license": "ISC",
+  "dependencies": {
+    "async": "^0.9.0"
+  }
+}

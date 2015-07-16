@@ -1,0 +1,16 @@
+{
+  "name": "lesson6",
+  "version": "1.0.0",
+  "description": "测试用例：mocha，should，istanbul",
+  "main": "cookie.js",
+  "scripts": {
+    "test": "mocha --recursive --timeout 500000 test/ --bail",
+    "test-cov": "node node_modules/istanbul-harmony/lib/cli.js cover ./node_modules/mocha/bin/_mocha  -- --timeout 500000 --recursive test/ --bail"
+  },
+  "author": "Evan",
+  "license": "ISC",
+  "dependencies": {
+    "mocha": "^2.2.4",
+    "should": "^5.2.0"
+  }
+}

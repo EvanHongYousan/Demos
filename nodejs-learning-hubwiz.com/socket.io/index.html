@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input id="data" type="text" />
+<button id="btn">send</button>
+<input id="data2" type="text" />
+<button id="btn2">send</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+        var socket = io.connect('/chat');
+        socket.on('connect',function(){
+            //连接成功
+            //document.write("socket连接成功...");
+            //socket.send('前端socket连接成功...');
+            socket.emit('message','前端socket连接成功...');
+        });
+        socket.on('disconnect',function(){
+            //连接断开
+            alert("socket连接断开...");
+        });
+        socket.on('message',function(data){
+            alert(data);
+        });
+        document.getElementById("btn").onclick = function(){
+            var data = document.getElementById("data").value;
+            //socket.send(data);
+            socket.emit('message',data);
+        };
+        document.getElementById("btn2").onclick = function(){
+            var data = document.getElementById("data2").value;
+            //socket.send(data);
+            socket.emit('message2',data);
+        };
+    </script>
+</body>
+</html>

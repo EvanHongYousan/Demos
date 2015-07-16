@@ -1,0 +1,93 @@
+<!DOCTYPE>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <title>canvas画板</title>
+    <style type="text/css">
+        body,html{
+            padding:0;
+            margin:0;
+            width:100%;
+            height:100%;
+        }
+    </style>
+</head>
+<body>
+<canvas width="" height="" id="canvas">请升级浏览器</canvas>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script type="text/javascript">
+    var socket = io.connect('/');
+    socket.on('connect',function(){
+        //连接成功
+        //document.write("socket连接成功...");
+        //socket.send('前端socket连接成功...');
+        socket.emit('message','前端socket连接成功...');
+    });
+
+    socket.on('message',function(data){
+        var ex, ey, e = data;
+
+        if (e.sx && e.sy) {
+            ex = e.sx;
+            ey = e.sy;
+            ctx.beginPath();
+            ctx.moveTo(ex, ey);
+        }
+        if (e.ex && e.ey) {
+
+            ctx.moveTo(ex, ey);
+            ctx.lineTo(e.ex, e.ey);
+            ctx.stroke();
+        }
+    });
+
+    $("#canvas").attr('width',document.body.clientWidth);
+    $("#canvas").attr('height',document.body.clientHeight);
+
+
+    var $canvas = $("#canvas");
+    var ctx = $canvas[0].getContext("2d");
+    var isPaint = false;
+
+    //ctx.lineWidth = 3;
+    ctx.strokeStyle = "green";
+
+    function drawStart(e){
+
+        isPaint = true;
+
+        var mouseX = e.pageX||e.changedTouches[0].clientX - this.offsetLeft;
+        var mouseY = e.pageY||e.changedTouches[0].clientY - this.offsetTop;
+
+        ctx.moveTo(mouseX, mouseY);
+        socket.emit('message',{sx:mouseX,sy:mouseY});
+    }
+
+    function drawEnd(e){
+        isPaint = false;
+    }
+
+    function drawing(e){
+        var mouseX = e.pageX||e.changedTouches[0].clientX - this.offsetLeft;
+        var mouseY = e.pageY||e.changedTouches[0].clientY - this.offsetTop;
+
+        if(isPaint){
+            ctx.lineTo(mouseX, mouseY);
+            ctx.stroke();
+            socket.emit('message',{ex:mouseX,ey:mouseY});
+        }
+    }
+
+    $("#canvas").mousedown(drawStart);
+    $("#canvas").mouseup(drawEnd);
+    $("#canvas").mousemove(drawing);
+
+    $("#canvas")[0].addEventListener("touchstart",drawStart,false);
+    $("#canvas")[0].addEventListener("touchmove",drawing,false);
+    $("#canvas")[0].addEventListener("touchend",drawEnd,false);
+
+</script>
+</body>
+</html>

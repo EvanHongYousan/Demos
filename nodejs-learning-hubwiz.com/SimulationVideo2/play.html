@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <link rel="stylesheet" href="css/main.css"/>
+</head>
+<body>
+<div class="toolBar" style="display: none;">
+    <button id="play">原图</button>
+    <button id="clear" disabled>清除数据</button>
+    <button id="reload">清空画板</button>
+    <button id="playMedia">播放视频</button>
+</div>
+
+<audio id="audio" src="test.mp3" controls="controls"></audio>
+
+<canvas id="canvas">请升级浏览器</canvas>
+
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="lib/sea.js"></script>
+<script>
+    seajs.use('./js/play');
+</script>
+</body>
+</html>

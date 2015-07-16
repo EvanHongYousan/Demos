@@ -1,0 +1,15 @@
+{
+  "name": "nodejs-learning-hubwiz.com",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "express": "*",
+    "ejs": "*",
+    "body-parser":"*",
+    "multer":"*",
+    "express-session":"*"
+  }
+}
