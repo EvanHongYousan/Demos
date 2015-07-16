@@ -89,7 +89,6 @@ var canvasVideo = (function(){
             });
         }
     }
-    pageLineInit();
 
     function embPointToSend(x, y){
         return { x : x / configMap.screenWidth, y : (y ) / configMap.screenHeight };
@@ -261,16 +260,21 @@ var canvasVideo = (function(){
         ctxIn.clearRect(0, 0, configMap.canvasWidth, configMap.canvasHeight);
     }
 
+    function init(canvasData){
+        pageLineInit();
+        setCanvasData(canvasData);
+    }
+
     return {
         playVideo : playVideo,
-        setCanvasData : setCanvasData,
         jumpToFrame : jumpToFrame,
         stopVideo : stopVideo,
-        clearCanvas : clearCanvas
+        clearCanvas : clearCanvas,
+        init : init
     }
 
 })();
-canvasVideo.setCanvasData(JSON.parse($('#canvasData').text()));
+canvasVideo.init(JSON.parse($('#canvasData').text()));
 
 var audioObj = (function(){
     var $audio = $('#audio');
