@@ -1,0 +1,21 @@
+{
+  "name": "lesson6",
+  "version": "1.0.0",
+  "description": "test case",
+  "main": "app.js",
+  "scripts": {
+    "test": "none"
+  },
+  "repository": {
+    "type": "git",
+    "url": "none"
+  },
+  "keywords": [
+    "none"
+  ],
+  "author": "Evan",
+  "license": "ISC",
+  "dependencies": {
+    "should": "^7.0.2"
+  }
+}
