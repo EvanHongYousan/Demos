@@ -22,10 +22,10 @@ app.get('/',function(request, response){
                     href:$element.attr('href')
                 });
             });
-            response.send(items);
         })
 });
 
+var a = 1;
 app.listen(3000,function(){
     console.log("app is running at port 3000");
 });

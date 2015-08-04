@@ -164,3 +164,7 @@ pip-log.txt
 
 /node_modules
 .idea/
+
+toycode.sublime-workspace
+
+toycode.sublime-project
