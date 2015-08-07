@@ -67,19 +67,19 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .page1{
-    background: url(../images/bg1.jpg);
+    background: url(http://img.hjlaoshi.com/images/bg1.jpg);
 }
 .page2{
-    background: url(../images/bg2.jpg);
+    background: url(http://img.hjlaoshi.com/images/bg2.jpg);
 }
 .page3{
-    background: url(../images/bg3.jpg);
+    background: url(http://img.hjlaoshi.com/images/bg3.jpg);
 }
 .page4{
-    background: url(../images/bg4.jpg);
+    background: url(http://img.hjlaoshi.com/images/bg4.jpg);
 }
 .page5{
-    background: url(../images/bg5.jpg);
+    background: url(http://img.hjlaoshi.com/images/bg5.jpg);
 }
 .page1, .page2, .page3, .page4, .page5{
     -webkit-background-size: cover;
@@ -102,7 +102,7 @@ h1, h2, h3, h4, h5, h6{
     display:inline-block;
     width:60px;
     height:30px;
-    background:url(../images/arrow_down_bg.png);
+    background:url(http://img.hjlaoshi.com/images/arrow_down_bg.png);
     background-size:cover;
     cursor: pointer;
 }
@@ -128,7 +128,7 @@ h1, h2, h3, h4, h5, h6{
     display:inline-block;
     width:60px;
     height:30px;
-    background:url(../images/arrow_up_bg.png);
+    background:url(http://img.hjlaoshi.com/images/arrow_up_bg.png);
     background-size:cover;
     cursor: pointer;
 }
@@ -277,7 +277,7 @@ h1, h2, h3, h4, h5, h6{
     width:240px;
     height:60px;
 
-    background:url(../images/logo.png);
+    background:url(http://img.hjlaoshi.com/images/logo.png);
     background-size:cover;
 }
 
@@ -313,22 +313,22 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .download-android{
-    background: url(../images/android_normal.png);
+    background: url(http://img.hjlaoshi.com/images/android_normal.png);
     background-size: cover;
 }
 
 .download-android:hover{
-    background: url(../images/android_hover.png);
+    background: url(http://img.hjlaoshi.com/images/android_hover.png);
     background-size: cover;
 }
 
 .download-android:active{
-    background: url(../images/android_active.png);
+    background: url(http://img.hjlaoshi.com/images/android_active.png);
     background-size: cover;
 }
 
 .download-ios{
-    background: url(../images/ios_disable.png);
+    background: url(http://img.hjlaoshi.com/images/ios_disable.png);
     background-size: cover;
     cursor: not-allowed;
 }
@@ -725,19 +725,19 @@ h1, h2, h3, h4, h5, h6{
 @media screen and (max-width: 960px){
 
     .page1{
-        background: url(../images/bg1_MBDevice.jpg);
+        background: url(http://img.hjlaoshi.com/images/bg1_MBDevice.jpg);
     }
     .page2{
-        background: url(../images/bg2_MBDevice.jpg);
+        background: url(http://img.hjlaoshi.com/images/bg2_MBDevice.jpg);
     }
     .page3{
-        background: url(../images/bg3_MBDevice.jpg);
+        background: url(http://img.hjlaoshi.com/images/bg3_MBDevice.jpg);
     }
     .page4{
-        background: url(../images/bg4_MBDevice.jpg);
+        background: url(http://img.hjlaoshi.com/images/bg4_MBDevice.jpg);
     }
     .page5{
-        background: url(../images/bg5_MBDevice.jpg);
+        background: url(http://img.hjlaoshi.com/images/bg5_MBDevice.jpg);
     }
     .page1, .page2, .page3, .page4, .page5{
         -webkit-background-size: cover;

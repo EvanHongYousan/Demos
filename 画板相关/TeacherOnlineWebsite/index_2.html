@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <link rel="shortcut icon" href="favicon.ico">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta name="description" content="呼叫老师，是一款在线家教APP。老师在线给学生进行即时的一对一作业答疑。暑假期间可免费试用。在孩子学习遇到作业难题时，可以随时通过手机呼叫老师解答。" />
+    <title>呼叫老师-老师实时作业答疑APP</title>
+    <link rel="stylesheet" href="css/jquery.fullPage.css?v=0.8"/>
+    <!--[if gte IE 8]><!-->
+    <link rel="stylesheet" href="css/main.css?v=0.8"/>
+    <!--<![endif]-->
+    <!--[if lt IE 8]>
+    <link rel="stylesheet" href="css/main_ie7.css?v=0.8"/>
+    <![endif]-->
+    <style>
+        .fp-tooltip{
+            color: #f9f9f9;
+        }
+        #fp-nav ul li a span{
+            background: #f9f9f9;
+        }
+        #fp-nav ul li a.active span{
+            background: #f9f9f9;
+        }
+        #fp-nav ul li:first-of-type a span {
+            background: url(http://img.hjlaoshi.com/images/icon_home_normal.png);
+            background-size:cover;
+        }
+        #fp-nav ul li:first-of-type a.active span {
+            background: url(http://img.hjlaoshi.com/images/icon_home_active.png);
+            background-size:cover;
+        }
+
+        #fp-nav ul li a.active span, .fp-slidesNav ul li a.active span, #fp-nav ul li:hover a.active span, .fp-slidesNav ul li:hover a.active span {
+            height: 20px;
+            width: 20px;
+            margin: -10px 0 0 -10px;
+            border-radius: 100%;
+        }
+
+        #fp-nav ul li a span, .fp-slidesNav ul li a span {
+            border-radius: 50%;
+            position: absolute;
+            z-index: 1;
+            height: 10px;
+            width: 10px;
+            border: 0;
+            left: 50%;
+            top: 50%;
+            margin: -5px 0 0 -5px;
+            -webkit-transition: all 0.1s ease-in-out;
+            -moz-transition: all 0.1s ease-in-out;
+            -o-transition: all 0.1s ease-in-out;
+            transition: all 0.1s ease-in-out;
+        }
+
+        #fp-nav ul li, .fp-slidesNav ul li {
+            margin: 17px 7px;
+        }
+    </style>
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f380b5dedd2cc060ad1d24345ed545fd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<div id="fullPage">
+    <div class="section page1">
+        <h3 class="weixin_tip">
+            点击右上方目录<br>"在浏览器中打开"下载哦
+        </h3>
+            <span class="logo">
+            </span>
+        <ul class="copywriting">
+            <li class="row1">一对一在线作业辅导</li>
+            <li class="row2">适用于小学与初中</li>
+            <li class="row3">
+                <span class="download-android"></span>
+                <span class="download-ios"></span>
+                <img class="QR-code" src="http://img.hjlaoshi.com/images/QR-code.png" alt=""/>
+            </li>
+            <li class="row4">轻便 · 快捷 · 高效</li>
+        </ul>
+        <img class="bigHand" src="http://img.hjlaoshi.com/images/hand.png" alt=""/>
+        <div class="banner-MBdevice">
+            <img src="http://img.hjlaoshi.com/images/logo_MBdevice.png" alt=""/>
+            <span class="downloadSpan"></span>
+            <p class="banner-MBdevice-copywriting">轻便·快捷·高效</p>
+        </div>
+
+        <div class="arrow-container-down">
+                <span>
+                    <img src="http://img.hjlaoshi.com/images/arrow_down.png" alt=""/>
+                </span>
+        </div>
+        <img class="arrow-MBdevice" src="http://img.hjlaoshi.com/images/arrow_down_white.png" alt=""/>
+    </div>
+    <div class="section page2">
+        <div class="arrow-container-up">
+                <span>
+                    <img src="http://img.hjlaoshi.com/images/arrow_up.png" alt=""/>
+                </span>
+        </div>
+        <h2>轻便、快捷、高效, 随时随地问作业！</h2>
+        <!--<div class="slide">-->
+        <ul class="ul1">
+            <li class="row1">轻便</li>
+            <li class="row2"><img src="http://img.hjlaoshi.com/images/page2_1.png" alt=""/></li>
+            <li class="row3">手机/平板</li>
+            <li class="row4">拍照上传作业</li>
+        </ul>
+        <!--</div>-->
+
+        <!--<div class="slide">-->
+        <ul class="ul2">
+            <li class="row1">快捷</li>
+            <li class="row2"><img src="http://img.hjlaoshi.com/images/page2_2.png" alt=""/></li>
+            <li class="row3">各科老师在线</li>
+            <li class="row4">一对一辅导，问懂为止</li>
+        </ul>
+        <!--</div>-->
+
+        <!--<div class="slide">-->
+        <ul class="ul3">
+            <li class="row1">高效</li>
+            <li class="row2"><img src="http://img.hjlaoshi.com/images/page2_3.png" alt=""/></li>
+            <li class="row3">一线老师</li>
+            <li class="row4">实名认证，辅导效果最优</li>
+        </ul>
+        <!--</div>-->
+        <div class="arrow-container-down">
+                <span>
+                    <img src="http://img.hjlaoshi.com/images/arrow_down.png" alt=""/>
+                </span>
+        </div>
+        <img class="arrow-MBdevice" src="http://img.hjlaoshi.com/images/arrow_down_white.png" alt=""/>
+    </div>
+    <div class="section page3">
+        <div class="arrow-container-up">
+                <span>
+                    <img src="http://img.hjlaoshi.com/images/arrow_up.png" alt=""/>
+                </span>
+        </div>
+        <h2>还在用传统家教？你OUT了！</h2>
+        <img class="page3-teacher female1" src="http://img.hjlaoshi.com/images/page3_teach_woman.png" alt=""/>
+        <img class="page3-table" src="http://img.hjlaoshi.com/images/page3_table.png" alt=""/>
+        <img class="page3-table-MBdevice" src="http://img.hjlaoshi.com/images/page3_table_MBdevice.png" alt=""/>
+        <img class="page3-teacher female2" src="http://img.hjlaoshi.com/images/page3_teach_woman.png" alt=""/>
+        <img class="page3-teacher" src="http://img.hjlaoshi.com/images/page3_teacher_man.png" alt=""/>
+        <div class="arrow-container-down">
+                <span>
+                    <img src="http://img.hjlaoshi.com/images/arrow_down.png" alt=""/>
+                </span>
+        </div>
+        <img class="arrow-MBdevice" src="http://img.hjlaoshi.com/images/arrow_down_white.png" alt=""/>
+    </div>
+    <div class="section page4">
+        <div class="arrow-container-up">
+                <span>
+                    <img src="http://img.hjlaoshi.com/images/arrow_up.png" alt=""/>
+                </span>
+        </div>
+        <h2>贴心服务，让你爱不释手！</h2>
+        <ul class="ul1"><img src="http://img.hjlaoshi.com/images/page4_1.png" alt=""/>
+            <li class="row1">一对一答疑</li>
+            <li class="row2">针对不同的学习基础</li>
+            <li class="row3">给予耐心、有效的讲解</li>
+        </ul>
+        <ul class="ul2"><img src="http://img.hjlaoshi.com/images/page4_2.png" alt=""/>
+            <li class="row1">个性化学习报告</li>
+            <li class="row2">记录每次答疑</li>
+            <li class="row3">形成学习报告，发现学习短板</li>
+        </ul>
+        <ul class="ul3"><img src="http://img.hjlaoshi.com/images/page4_3.png" alt=""/>
+            <li class="row1">个性化课程设置</li>
+            <li class="row2">针对不同的学习目的</li>
+            <li class="row3">提供相应的学习套餐</li>
+        </ul>
+        <ul class="ul4"><img src="http://img.hjlaoshi.com/images/page4_4.png" alt=""/>
+            <li class="row1">班主任服务</li>
+            <li class="row2">汇总老师评语</li>
+            <li class="row3">反馈学习报告，提出优化建议</li>
+        </ul>
+        <div class="arrow-container-down">
+                <span>
+                    <img src="http://img.hjlaoshi.com/images/arrow_down.png" alt=""/>
+                </span>
+        </div>
+        <img class="arrow-MBdevice" src="http://img.hjlaoshi.com/images/arrow_down_white.png" alt=""/>
+    </div>
+    <div class="section page5">
+        <h3 class="weixin_tip">
+            点击右上方目录<br>"在浏览器中打开"下载哦
+        </h3>
+        <div class="arrow-container-up">
+                <span>
+                    <img src="http://img.hjlaoshi.com/images/arrow_up.png" alt=""/>
+                </span>
+        </div>
+        <h2>试过的人，都爱上了，你呢？</h2>
+        <div class="downloadContainer">
+            <span class="download-android"></span>
+            <span class="download-ios"></span>
+            <img class="QR-code" src="http://img.hjlaoshi.com/images/QR-code.png" alt=""/>
+        </div>
+        <div class="downloadContainer-MBdevice">
+            <img class="QR-code" src="http://img.hjlaoshi.com/images/QR-code.png" alt=""/>
+            <span class="downloadSpan"></span>
+        </div>
+        <!--<p class="marginTop">特邀一线老师一对一辅导</p>-->
+        <p class="marginTop">欢迎各位家长和学生下载体验</p>
+        <p>同时邀请你加入“呼叫老师”QQ交流群205386465</p>
+        <br/>
+        <div class="footer">
+            <p>@2014-2015 乐学 粤ICP备15050819号</p>
+            <p>深圳乐学壹佰教育科技有限公司</p>
+            <p>一家专做互联网教育产品的公司</p>
+        </div>
+    </div>
+</div>
+<script src="js/jquery-1.11.3.min.js?v=0.8"></script>
+<script src="js/jquery.fullPage.min.js?v=0.8"></script>
+<script>
+    ;(function($){
+        $.fn.extend({//局部插件，去掉.fn是全局插件
+            'swipeleft':function(fn){//手指左滑动，fn是回调函数
+                $(this).on('touchstart',function(e){
+                    e=e.originalEvent.touches[0];//获取对应触摸对象
+                    var sx=0;
+                    sx=e.pageX;
+                    $(this).on('touchend',function(e){
+                        e=e.originalEvent.changedTouches[0];//获取对应触摸对象
+                        if((sx-e.pageX)>50){//如果滑动距离大于50px就认为是要触发左滑动事件了
+                            fn();//调用回调函数
+                        }
+                        $(this).unbind('touchend');
+                    });
+                });
+                return this;
+            },
+            'swiperight':function(fn){//手指右滑动，fn是回调函数
+                $(this).on('touchstart',function(e){
+                    e=e.originalEvent.touches[0];//获取对应触摸对象
+                    var sx=0;
+                    sx=e.pageX;
+                    $(this).on('touchend',function(e){
+                        e=e.originalEvent.changedTouches[0];//获取对应触摸对象
+                        if((e.pageX-sx)>50){//如果滑动距离大于50px就认为是要触发右滑动事件了
+                            fn();//调用回调函数
+                        }
+                        $(this).unbind('touchend');
+                    });
+                });
+            },
+            'swipetop':function(fn){//手指上滑动，fn是回调函数
+                $(this).on('touchstart',function(e){
+                    e=e.originalEvent.touches[0];//获取对应触摸对象
+                    var sy=0;
+                    sy=e.pageY;
+                    $(this).on('touchend',function(e){
+                        e=e.originalEvent.changedTouches[0];//获取对应触摸对象
+                        if((sy-e.pageY)>50){//如果滑动距离大于50px就认为是要触发上滑动事件了
+                            fn();//调用回调函数
+                        }
+                        $(this).unbind('touchend');
+                    });
+                });
+            },
+            'swipedown':function(fn){//手指下滑动，fn是回调函数
+                $(this).on('touchstart',function(e){
+                    e=e.originalEvent.touches[0];//获取对应触摸对象
+                    var sy=0;
+                    sy=e.pageY;
+                    $(this).on('touchend',function(e){
+                        e=e.originalEvent.changedTouches[0];//获取对应触摸对象
+                        if((e.pageY-sy)>50){//如果滑动距离大于50px就认为是要触发下滑动事件了
+                            fn();//调用回调函数
+                        }
+                        $(this).unbind('touchend');
+                    });
+                });
+            }
+        });
+    })(jQuery);
+</script>
+<script>
+    $(document).ready(function() {
+
+        var down_ios_forWeixin_url = '';
+        var down_ios_url = '';
+        var down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/' + getChannelId() + '/hjlaoshi.apk';
+        var userAgent = window.navigator.userAgent.toLowerCase();
+
+        function getChannelId() {
+            var url = window.location.href,
+                    parts = url.split('?'),
+                    params = null, channel_id = '001';
+            if(parts.length > 1) {
+                params = parts[1];
+            }
+            if(!params) return channel_id;
+            var start = params.indexOf('channel'),
+                    channel = params.substr(start).split('&')[0];
+            parts = channel.split('=');
+            if(parts.length > 1 && !!parts[1]) {
+                channel_id = parts[1];
+            }
+            return channel_id;
+        }
+
+        function isWeixin() {
+            return userAgent.indexOf('micromessenger') > 0;
+        }
+
+        function isAndroid() {
+            return userAgent.indexOf('android') > 0;
+        }
+
+        function isIOS() {
+            return /iphone/i.test(userAgent) || /ipod/i.test(userAgent) || /ipad/i.test(userAgent);
+        }
+
+        function getReqPrm(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            }else{
+                return null;
+            }
+        }
+
+        function pageSwitchBtnEv(){
+            $('.arrow-container-down span').click(function(){
+                $.fn.fullpage.moveSectionDown();
+            });
+            $('.arrow-container-up span').click(function(){
+                $.fn.fullpage.moveSectionUp();
+            });
+        }
+
+        function downloadEvBind(){
+            $('.download-android').on('click', function(){
+                if ( isWeixin() ){
+                    $('.weixin_tip').css('display','block');
+                    setTimeout(function(){
+                        $('.weixin_tip').addClass('active');
+                    },100)
+                } else {
+                    document.location.href = down_android_url;
+                }
+            });
+            $('.download-ios').on('click', function(){
+                //alert('iOS版本还未上线，敬请期待');
+                //document.location.href = down_ios_url;
+            });
+        }
+
+        function parallaxBind(){
+            $('.page1').on('mousemove',function(e){
+                $('.bigHand').addClass('removeTransition');
+                $('.bigHand').attr('style','transform:translate('+(e.pageX - document.body.clientWidth*0.5)*(0.02)+'px,'+(e.pageY - document.body.clientHeight*0.5)*(0.02)+'px);');
+                //$('.page1').attr('style','transform:translate('+(e.pageX - document.body.clientWidth*0.5)*(-0.02)+'px,'+(e.pageY - document.body.clientHeight*0.5)*(-0.02)+'px);');
+                $('.bigHand').removeClass('removeTransition');
+            });
+            $('.page2').on('mousemove',function(e){
+                $('.page2 ul img').attr('style','transform:translate('+(e.pageX - document.body.clientWidth*0.5)*(0.05)+'px,'+(e.pageY - document.body.clientHeight*0.5)*(0.05)+'px);');
+            });
+            $('.page3').on('mousemove',function(e){
+                $('.page3 .page3-table').attr('style','transform:translate('+(e.pageX - document.body.clientWidth*0.5)*(0.05)+'px,'+(e.pageY - document.body.clientHeight*0.5)*(0.05)+'px);');
+            });
+            $('.page4').on('mousemove',function(e){
+                $('.page4 ul > img').attr('style','transform:translate('+(e.pageX - document.body.clientWidth*0.5)*(0.05)+'px,'+(e.pageY - document.body.clientHeight*0.5)*(0.05)+'px);');
+            });
+        }
+
+        function init(){
+
+            /*移动端页面只有一个按钮 start*/
+            if ( isAndroid() ) {
+                $('.downloadSpan').addClass('download-android');
+            } else if ( isIOS() ) {
+                $('.downloadSpan').addClass('download-ios');
+            }
+            /*移动端页面只有一个按钮 end*/
+
+            if ( isAndroid() || isIOS() || isWeixin() ) {
+                (function(){
+                    var $h2 = $('.page2 h2');
+                    var $uls = $('.page2  > ul').css('marginLeft','0');
+                    var $slideBox = $('<div class="slideBox"></div>');
+
+                    $slideBox.append($h2).append($uls);
+
+                    $('.page2').append($slideBox);
+
+                    $('.slideBox').swipeleft(function(e){
+                        if ( $('.slideBox').hasClass('slideLeft') ) {
+                            $('.slideBox').removeClass('slideLeft').addClass('slideRight');
+                            return true;
+                        }
+                        if ( $('.slideBox').hasClass('slideRight') ) {
+                            $('.slideBox').removeClass('slideRight');
+                            return true;
+                        }
+                        $('.slideBox')[0].className = 'slideBox';
+                        $('.slideBox').addClass('slideLeft');
+                    });
+                    $('.slideBox').swiperight(function(e){
+                        if ( $('.slideBox').hasClass('slideRight') ) {
+                            $('.slideBox').removeClass('slideRight').addClass('slideLeft');
+                            return false;
+                        }
+                        if ( $('.slideBox').hasClass('slideLeft') ) {
+                            $('.slideBox').removeClass('slideLeft');
+                            return true;
+                        }
+                        $('.slideBox')[0].className = 'slideBox';
+                        $('.slideBox').addClass('slideRight');
+                    });
+                })();
+                $('#fullPage').fullpage({
+                    scrollingSpeed: 300,
+                    'navigation': true,
+                    'navigationPosition': 'right',
+                    touchSensitivity: 10,
+                    paddingTop:0,
+                    afterLoad: function(anchorLink, index){
+                        var loadedSection = $(this);
+                        if(index == 1 || index == 3){
+                            $('.slideBox').addClass('slideHide');
+                        }
+                        if(index == 2){
+                            $('.slideBox')[0].className = 'slideBox';
+                            $('.slideBox').addClass('slideHide');
+                            setTimeout(function(){
+                                $('.slideBox')[0].className = 'slideBox';
+                            },100);
+                        }
+                    }
+                });
+            } else {
+                $('#fullPage').fullpage({
+                    scrollingSpeed: 300,
+                    'navigation': true,
+                    'navigationPosition': 'right',
+                    touchSensitivity: 20,
+                    paddingTop:0
+                });
+
+                setTimeout(function(){
+                    parallaxBind();
+                },1500);
+            }
+
+            downloadEvBind();
+
+            pageSwitchBtnEv();
+
+            $('.page1.active').removeClass('active');
+            setTimeout(function(){
+                $('.page1').addClass('active');
+            },100);
+
+            /*若参数dwnldnow为true，则直接根据机型下载安装包 start*/
+            if ( getReqPrm('dwnldnow') == 'true' || getReqPrm('dwnldnow') == true || getChannelId() == '055') {
+                if ( isWeixin()&&isAndroid() ){
+                    $('.weixin_tip').css('display','block');
+                    setTimeout(function(){
+                        $('.weixin_tip').addClass('active');
+                    },100)
+                } else if ( isAndroid() ) {
+                    setTimeout(function(){
+//                            document.location.href = down_android_url;
+                    },5000);
+                }
+            }
+            /*若参数dwnldnow为true，则直接根据机型下载安装包 end*/
+        }
+
+        init();
+    });
+</script>
+</body>
+</html>
