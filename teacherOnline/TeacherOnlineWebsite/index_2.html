@@ -73,7 +73,8 @@
     </script>
 </head>
 <body>
-<div id="fullPage">
+<div class="loader">加载中...</div>
+<div id="fullPage" class="opacity0">
     <div class="section page1">
         <h3 class="weixin_tip">
             点击右上方目录<br>"在浏览器中打开"下载哦
@@ -467,9 +468,16 @@
             pageSwitchBtnEv();
 
             $('.page1.active').removeClass('active');
-            setTimeout(function(){
-                $('.page1').addClass('active');
-            },100);
+
+            (function(){
+                var theBigHand = new Image();
+                theBigHand.src = 'http://img.hjlaoshi.com/images/hand.png';
+                theBigHand.onload = function(){
+                    $('.loader').remove();
+                    $('#fullPage').css('opacity','1');
+                    $('.page1').addClass('active');
+                }
+            })();
 
             /*若参数dwnldnow为true，则直接根据机型下载安装包 start*/
             if ( getReqPrm('dwnldnow') == 'true' || getReqPrm('dwnldnow') == true || getChannelId() == '055') {

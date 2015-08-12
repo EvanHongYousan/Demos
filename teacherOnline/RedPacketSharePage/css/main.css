@@ -1,0 +1,62 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+dl, dt, dd {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    border: none;
+    word-spacing: 0;
+    letter-spacing: 0;
+}
+
+dl {
+    width: 25%;
+}
+
+dd, dt {
+    width: 100%;
+    text-align: center;
+}
+
+dd {
+    font-size: 15px;
+}
+
+img{
+    display:block;
+    max-width:100%;
+    margin:20px auto;
+}
+
+.shareDiv img {
+    width: 80%;
+    margin: 0 auto;
+    padding: 0;
+}
+
+.shareDiv {
+    width: 90%;
+    max-width: 600px;
+    margin: 0 auto;
+    background: #efefef;
+    padding: 20px;
+    font-size: 0;
+}
+
+p{
+    padding: 0 20px;
+}
