@@ -2,9 +2,21 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <title></title>
+    <link rel="stylesheet" href="css/main.css"/>
 </head>
 <body>
-
+<button>Show Dialog</button>
+<div class="dialog">fdsa fdsa asdf fdsa asdf dsaf dsa sdf dsa sdfs afas</div>
+<div class="overlay none"></div>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script>
+    $('button').click(function () {
+        $('.none').removeClass('none');
+        $('.dialog').addClass('active');
+    });
+</script>
 </body>
 </html>
