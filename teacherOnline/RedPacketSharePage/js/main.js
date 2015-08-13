@@ -3,17 +3,14 @@
  */
 compoments = (function () {
     function shareDivBindEv() {
-        $('.shareDiv dt').eq(0).click(function () {
-            JSNativeBridge.send('share', {text: '00000'});
-        });
-        $('.shareDiv dt').eq(1).click(function () {
-            JSNativeBridge.send('share', {text: '11111'});
-        });
-        $('.shareDiv dt').eq(2).click(function () {
-            JSNativeBridge.send('share', {text: '22222'});
-        });
-        $('.shareDiv dt').eq(3).click(function () {
-            JSNativeBridge.send('share', {text: '33333'});
+        $('.shareDiv dt').click(function () {
+            JSNativeBridge.send('share', {
+                "content": null,
+                "title": "真题馍馍考前冲刺，高分神器！",
+                "type": 0,
+                "image_url": "http://192.168.0.233/ztmomo/activity/a6uttgTd5/images/CZSXKD1008.jpg",
+                "target_url": "http://192.168.0.233/ztmomo/activity/a6uttgTd5/hd.html"
+            });
         });
     }
 
