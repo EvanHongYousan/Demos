@@ -1,47 +1,50 @@
-html, body {
+html, body, img, ul, li, div {
     padding: 0;
     margin: 0;
+    border:none;
 }
 
 .none {
     display: none;
 }
 
-.overlay {
-    background-color: rgba(0, 0, 0, 0.5);
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    z-index: 5;
+.container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 1000px;
+    font-size:0;
 }
 
-.dialog {
-    position: fixed;
-    padding: 20px;
-    top: 20%;
-    bottom: 20%;
-    right: 20%;
-    left: 20%;
-    z-index: 10;
-    background-color: #ffffff;
-    border-radius: 12px;
-
-    -webkit-transform: translate(0, -1000px);
-    -moz-transform: translate(0, -1000px);
-    -o-transform: translate(0, -1000px);
-    transform: translate(0, -1000px);
-
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
+.top {
+    width: 100%;
 }
 
-.dialog.active {
-    -webkit-transform: translate(0, 0px);
-    -moz-transform: translate(0, 0px);
-    -o-transform: translate(0, 0px);
-    transform: translate(0, 0px);
+.container > .bottom {
+    background: url(../images/bg3.jpg) no-repeat;;
+    background-size: 100% 100%;
+    color: white;
+    padding: 0 0 100px 0;
+}
+
+.bottom > h3 {
+    text-align: center;
+    margin:0 0 10px 0;
+    font-size:20px;
+    font-weight: normal;
+}
+
+.bottom > h3 > span{
+    letter-spacing: -1px;
+}
+
+ul {
+    padding: 0 40px;
+    list-style: none;
+}
+
+ul > li {
+    line-height: 20px;
+    font-size: 14px;
+    padding-left: 12px;
+    text-indent: -12px;
 }

@@ -1,0 +1,47 @@
+html, body {
+    padding: 0;
+    margin: 0;
+}
+
+.none {
+    display: none;
+}
+
+.overlay {
+    background-color: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 5;
+}
+
+.dialog {
+    position: fixed;
+    padding: 20px;
+    top: 20%;
+    bottom: 20%;
+    right: 20%;
+    left: 20%;
+    z-index: 10;
+    background-color: #ffffff;
+    border-radius: 12px;
+
+    -webkit-transform: translate(0, -1000px);
+    -moz-transform: translate(0, -1000px);
+    -o-transform: translate(0, -1000px);
+    transform: translate(0, -1000px);
+
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.dialog.active {
+    -webkit-transform: translate(0, 0px);
+    -moz-transform: translate(0, 0px);
+    -o-transform: translate(0, 0px);
+    transform: translate(0, 0px);
+}

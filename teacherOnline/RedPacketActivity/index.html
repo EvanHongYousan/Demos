@@ -2,21 +2,25 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <meta name="viewport"
-          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <title></title>
     <link rel="stylesheet" href="css/main.css"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
 </head>
 <body>
-<button>Show Dialog</button>
-<div class="dialog">fdsa fdsa asdf fdsa asdf dsaf dsa sdf dsa sdfs afas</div>
-<div class="overlay none"></div>
+<div class="container">
+    <img class="top" src="images/bg1.jpg" alt=""/>
+
+    <div class="bottom">
+        <h3><span>--------------</span>活动规则<span>--------------</span></h3>
+        <ul>
+            <li>1.输入手机号，抢红包。手气越好红包越多哦~</li>
+            <li>2.下载呼叫老师APP，用该手机登陆，就可以用红包换学时啦~</li>
+            <li>3.没人只能抢一次，多抢木有~</li>
+            <li>4.呼叫老师团队对本次活动保留最终解释权。</li>
+        </ul>
+    </div>
+</div>
 <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
-<script>
-    $('button').click(function () {
-        $('.none').removeClass('none');
-        $('.dialog').addClass('active');
-    });
-</script>
 </body>
 </html>
