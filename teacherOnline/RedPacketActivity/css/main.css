@@ -1,7 +1,7 @@
 html, body, img, ul, li, div {
     padding: 0;
     margin: 0;
-    border:none;
+    border: none;
 }
 
 .none {
@@ -12,7 +12,7 @@ html, body, img, ul, li, div {
     margin: 0 auto;
     width: 100%;
     max-width: 1000px;
-    font-size:0;
+    font-size: 0;
 }
 
 .top {
@@ -20,31 +20,37 @@ html, body, img, ul, li, div {
 }
 
 .container > .bottom {
-    background: url(../images/bg3.jpg) no-repeat;;
-    background-size: 100% 100%;
     color: white;
-    padding: 0 0 100px 0;
+    font-size: 14px;
+    position: relative;
+}
+
+.container > .bottom > img {
+    width: 100%;
 }
 
 .bottom > h3 {
+    position: absolute;
+    top: 0;
     text-align: center;
-    margin:0 0 10px 0;
-    font-size:20px;
-    font-weight: normal;
+    width: 100%;
 }
 
-.bottom > h3 > span{
+.bottom > h3 > span {
     letter-spacing: -1px;
 }
 
-ul {
-    padding: 0 40px;
+.bottom > ul {
+    position: absolute;
+    top: 50px;
+    /*padding: 0 50px;*/
     list-style: none;
+    line-height: 17px;
+    width:100%;
 }
 
-ul > li {
-    line-height: 20px;
-    font-size: 14px;
+.bottom > ul > li {
     padding-left: 12px;
     text-indent: -12px;
+    margin:0 10%;
 }
