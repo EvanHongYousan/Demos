@@ -3,8 +3,39 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
 </head>
 <body>
+<div class="container">
+    <img src="images/bg2_up1.jpg" alt="" class="top"/>
+    <div class="bottom">
+        <div class="voucher">
+            <span><small>￥</small>500</span>
+        </div>
+        <img src="images/tickets.png" alt="" class="tickets"/>
+        <img src="images/bg2_down.jpg" alt=""/>
 
+        <div class="text">
+            <p>现金券已放入手机账户</p>
+
+            <p>18912345678</p>
+            <span id="submit">下载呼叫老师APP</span>
+        </div>
+
+    </div>
+</div>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script>
+    $('#submit').click(function(){
+        alert('submit');
+    });
+    $('.tickets').click(function(){
+        alert('tickets');
+    });
+</script>
 </body>
 </html>
