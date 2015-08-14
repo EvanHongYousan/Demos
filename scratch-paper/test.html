@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<div id="create_1">
+    <div class="row">
+        <label class="col-xs-3 control-label">生成条件*</label>
+
+        <div class="col-xs-1" id="add_1"><i class="fa fa-plus"></i></div>
+        <div class='col-xs-8'>
+
+            <span>满&nbsp;<input type='text' size='6' class='num'>&nbsp;减&nbsp;<input type='text' size='6' class='num'>&nbsp;至&nbsp;<input
+                    type='text' size='6' class='num'> &nbsp;&nbsp;&nbsp;&nbsp;数量&nbsp;<input type='text' size='7'
+                                                                                             class='num'> </span>
+        </div>
+    </div>
+</div>
+<button>btnbtntdsajdfisajoifasdjf</button>
+<script src="http://libs.baidu.com/jquery/2.0.0/jquery.min.js"></script>
+<script>
+    $('button').click(function(){
+        $('#create_1 .num').each(function (index, element) {
+            console.log(index);
+            console.log($(element).val());
+        });
+    });
+</script>
+</body>
+</html>
