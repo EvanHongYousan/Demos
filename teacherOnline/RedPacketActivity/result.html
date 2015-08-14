@@ -10,11 +10,13 @@
     <meta name="format-detection" content="email=no">
 </head>
 <body>
-<div class="container">
+<div class="loader">加载中...</div>
+<div class="container opacity0">
     <img src="images/bg2_up1.jpg" alt="" class="top"/>
+
     <div class="bottom">
         <div class="voucher">
-            <span><small>￥</small>500</span>
+            <span><small>￥</small><span>500</span></span>
         </div>
         <img src="images/tickets.png" alt="" class="tickets"/>
         <img src="images/bg2_down.jpg" alt=""/>
@@ -30,12 +32,28 @@
 </div>
 <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
 <script>
-    $('#submit').click(function(){
-        alert('submit');
+    $('#submit').click(function () {
+        window.location = 'http://www.hjlaoshi.com';
     });
-    $('.tickets').click(function(){
-        alert('tickets');
-    });
+    setTimeout(function () {
+        $('.opacity0').removeClass('opacity0');
+        $('.loader').remove();
+        switchPage(getReqPrm('phoneNum'), 567);
+    }, 3000);
+    function switchPage(phoneNum, money) {
+        $('.text p').eq(1).text(phoneNum);
+        $('.voucher span > span').text(money);
+
+    }
+    function getReqPrm(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        } else {
+            return null;
+        }
+    }
 </script>
 </body>
 </html>
