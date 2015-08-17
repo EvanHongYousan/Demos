@@ -134,10 +134,10 @@ input, input:hover, input:active, input:focus {
     top: 50%;
     color: #f6594d;
     font-size: 45px;
-    -webkit-animation: twinkle 0.9s infinite;
-    -moz-animation: twinkle 0.9s infinite;
-    -o-animation: twinkle 0.9s infinite;
-    animation: twinkle 0.9s infinite;
+    /*-webkit-animation: twinkle 0.9s infinite;*/
+    /*-moz-animation: twinkle 0.9s infinite;*/
+    /*-o-animation: twinkle 0.9s infinite;*/
+    /*animation: twinkle 0.9s infinite;*/
 
     -webkit-transform: translate(0, -50%);
     -moz-transform: translate(0, -50%);
