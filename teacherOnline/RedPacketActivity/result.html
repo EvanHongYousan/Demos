@@ -12,7 +12,7 @@
 <body>
 <div class="loader">加载中...</div>
 <div class="container opacity0">
-    <img src="images/bg2_up1.jpg" alt="" class="top"/>
+    <img src="images/bg3_up.jpg" alt="" class="top"/>
 
     <div class="bottom">
         <div class="voucher">
@@ -35,14 +35,10 @@
     $('#submit').click(function () {
         window.location = 'http://www.hjlaoshi.com';
     });
-    setTimeout(function () {
-        $('.opacity0').removeClass('opacity0');
-        $('.loader').remove();
-        switchPage(getReqPrm('phoneNum'), 567);
-    }, 3000);
     function switchPage(phoneNum, money) {
         $('.text p').eq(1).text(phoneNum);
         $('.voucher span > span').text(money);
+        $('.container > img').eq(0).attr('src', 'images/bg2_up' + parseInt(Math.random() * 4 + 1) + '.jpg');
 
     }
     function getReqPrm(name) {
@@ -54,6 +50,26 @@
             return null;
         }
     }
+    $.getJSON(
+            'http://192.168.0.131:9091/app/spread/activity?id=55d1a27d4ec235c18260b31b&phone=' + getReqPrm('phoneNum') + '&callback=?',
+            function (data) {
+                if (data.status == '7') {
+                    $('.voucher').remove();
+                    $('.container > img').eq(0).attr('src', 'images/bg3_up.jpg');
+                    $('.opacity0').removeClass('opacity0');
+                    $('.loader').remove();
+                    $('.text p').eq(1).text(getReqPrm('phoneNum'));
+                }
+                if (data.status == '1') {
+                    $('.opacity0').removeClass('opacity0');
+                    $('.loader').remove();
+                    switchPage(getReqPrm('phoneNum'), data.price);
+                }
+                if (data.status == '8') {
+                    alert(data.msg);
+                }
+            }
+    );
 </script>
 </body>
 </html>
