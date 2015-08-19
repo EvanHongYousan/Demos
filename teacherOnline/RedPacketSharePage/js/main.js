@@ -3,7 +3,7 @@
  */
 compoments = (function () {
     function shareDivBindEv() {
-        $('.shareDiv dt').click(function () {
+        $('#shareBtn').click(function(){
             JSNativeBridge.send('share', {
                 "content": null,
                 "title": "真题馍馍考前冲刺，高分神器！",

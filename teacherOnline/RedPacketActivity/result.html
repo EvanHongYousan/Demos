@@ -60,12 +60,12 @@
                     $('.loader').remove();
                     $('.text p').eq(1).text(getReqPrm('phoneNum'));
                 }
-                if (data.status == '1') {
+                else if (data.status == '1') {
                     $('.opacity0').removeClass('opacity0');
                     $('.loader').remove();
                     switchPage(getReqPrm('phoneNum'), data.price);
                 }
-                if (data.status == '8') {
+                else {
                     alert(data.msg);
                 }
             }
