@@ -1,2 +1,5 @@
 Python is a programming language that lets you work quickly
 and integrate systems more effectively. Learn More
+解释器的选项路径为：File->Setting->Build, Execution, Deployment-> Console-> Python Console:
+将Python interpreter参数修改为你希望的。就可以解决console中解释器（默认）版本。
+ External Libraries 修改方法为：File -> Settings->Projec...

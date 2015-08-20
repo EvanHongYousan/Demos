@@ -30,6 +30,7 @@
 
     </div>
 </div>
+<script src="../common/spread.js"></script>
 <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
 <script>
     $('#submit').click(function () {
@@ -51,7 +52,7 @@
         }
     }
     $.getJSON(
-            'http://192.168.0.131:9091/app/spread/activity?id=55d1a27d4ec235c18260b31b&phone=' + getReqPrm('phoneNum') + '&callback=?',
+            spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + getReqPrm('phoneNum') + '&callback=?',
             function (data) {
                 if (data.status == '7') {
                     $('.voucher').remove();

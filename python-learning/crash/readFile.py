@@ -1,7 +1,16 @@
 __author__ = 'yantianyu'
 
-f = open('1.txt')
 
-s = f.read()
+def readFile():
+    f = open('1.txt')
 
-print(s)
+    s = f.read()
+
+    print(s)
+
+    print(s.split())
+
+    return s
+
+
+# readFile()
