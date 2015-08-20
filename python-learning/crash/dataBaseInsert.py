@@ -1,7 +1,7 @@
 __author__ = 'yantianyu'
 
 import mysql.connector
-import sys
+import datetime
 
 username = 'root'
 password = ''
@@ -15,7 +15,7 @@ with open(r'1.txt') as f:
     s = f.read()
     b = s.split()
     for word in b:
-        sql = "replace test_x (msg) values ('"+word +"');"
+        sql = "replace test_x (msg,date) values ('%s','%s');" % (word, datetime.date(year=2005,month=7,day=25))
         cursor.execute(sql)
 
 # cursor.execute("insert into test_x (msg) values('YYYYUUUUUIIIIIOOOOO')")
