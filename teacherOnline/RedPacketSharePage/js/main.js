@@ -9,7 +9,7 @@ compoments = (function () {
                 "title": "真题馍馍考前冲刺，高分神器！",
                 "type": 0,
                 "image_url": "http://192.168.0.233/ztmomo/activity/a6uttgTd5/images/CZSXKD1008.jpg",
-                "target_url": "http://192.168.0.233/ztmomo/activity/a6uttgTd5/hd.html"
+                "target_url": "http://192.168.0.233:8088/rtc/spread/55d1a27d4ec235c18260b31b/index.html"
             });
         });
     }

@@ -33,30 +33,33 @@ html, body {
     max-width: 600px;
     background: url(../images/bg.jpg) no-repeat;
     background-size: 100%;
-    padding-top:20px;
+    padding-top: 20px;
 }
 
 .container .title {
     width: 90%;
     display: block;
-    margin: 0 auto 20px auto;
+    margin: 0 auto 0 auto;
 }
 
 .container .redText {
     color: #f65a41;
     text-align: center;
-    font-size: 15px;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 .container .divider {
     border-bottom: 2px solid #dfdfdf;
     width: 90%;
-    margin: 40px auto 30px auto;
+    margin: 20px auto 30px auto;
 }
 
 .container h3, .container p {
     width: 85%;
-    margin: 15px auto;
+    margin: 10px auto;
+    font-weight: normal;
+    font-size: 15px;
 }
 
 .container p {
@@ -68,7 +71,7 @@ html, body {
 #shareBtn {
     background-color: #29c999;
     padding: 15px;
-    font-size: 20px;
+    font-size: 15px;
     border-radius: 5px;
     margin: 20px auto;
     width: 85%;
@@ -77,6 +80,7 @@ html, body {
     display: block;
 }
 
-#shareBtn:hover{
-    background-color: #1d906c;;
+#shareBtn:hover {
+    background-color: #1d906c;
+    margin-bottom: 20px;
 }
