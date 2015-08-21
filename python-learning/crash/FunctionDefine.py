@@ -30,7 +30,7 @@ class D(C, E):
 
 
 d = D();
-print d.g()
-print d.k()
+print(d.g())
+print(d.k())
 
 

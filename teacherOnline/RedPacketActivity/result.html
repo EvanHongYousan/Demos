@@ -22,6 +22,7 @@
         <img src="images/bg2_down.jpg" alt=""/>
 
         <div class="text">
+            <p class="whiteText">你已经抢过红包啦~<br/>快去问作业吧</p>
             <p>现金券已放入手机账户</p>
 
             <p>18912345678</p>
@@ -59,7 +60,8 @@
                     $('.container > img').eq(0).attr('src', 'images/bg3_up.jpg');
                     $('.opacity0').removeClass('opacity0');
                     $('.loader').remove();
-                    $('.text p').eq(1).text(getReqPrm('phoneNum'));
+                    $('.text p').eq(2).text(getReqPrm('phoneNum'));
+                    $('.text > .whiteText').show();
                 }
                 else if (data.status == '1') {
                     $('.opacity0').removeClass('opacity0');

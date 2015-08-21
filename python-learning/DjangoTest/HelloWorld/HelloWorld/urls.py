@@ -1,3 +1,6 @@
 from django.conf.urls import *
+from HelloWorld.views import hello
 
-print(__name__)
+urlpatterns = patterns("",
+	('^hello/$', hello),
+)
