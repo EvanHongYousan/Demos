@@ -10,4 +10,6 @@ try:
 
     print(a_list)
 except IOError as error:
-    print('File error : '+str(error))
+    print('File error : ' + str(error))
+except pickle.PickleError as perror:
+    print('pickle error: ' + str(perror))
