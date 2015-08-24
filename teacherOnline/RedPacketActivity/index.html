@@ -52,13 +52,15 @@
             $('.mask').show();
         }
     });
-    $('.mask .tip-footer').click(function () {
-        $('.mask').hide();
-    });
-    $('.mask').on('touchmove', function () {
-        return false;
-    });
-    $('.mask').height(document.body.clientHeight);
+    (function () {
+        $('.mask .tip-footer').click(function () {
+            $('.mask').hide();
+        });
+        $('.mask').on('touchmove', function () {
+            return false;
+        });
+        $('.mask').height(document.body.clientHeight);
+    })();
 </script>
 </body>
 </html>

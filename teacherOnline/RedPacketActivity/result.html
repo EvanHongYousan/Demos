@@ -80,9 +80,12 @@
                 }
             }
     );
-    $('.mask .tip-footer').click(function(){
-        document.location.href = 'http://www.hjlaoshi.com';
-    });
+    (function(){
+        $('.mask .tip-footer').click(function(){
+            document.location.href = 'http://www.hjlaoshi.com';
+        });
+        $('.mask').height(document.body.clientHeight);
+    })();
 </script>
 </body>
 </html>
