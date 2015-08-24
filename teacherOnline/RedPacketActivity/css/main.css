@@ -2,6 +2,10 @@ html, body, img, ul, li, div {
     padding: 0;
     margin: 0;
     border: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -o-user-select: none;
+    user-select: none;
 }
 
 body {
@@ -73,7 +77,7 @@ input, input:hover, input:active, input:focus {
     padding: 20px 30px;
 }
 
-#submit:hover {
+#submit:active {
     background: url('../images/submit_hover.png') no-repeat;
     background-size: 100% 100%;
 }
@@ -184,11 +188,11 @@ input, input:hover, input:active, input:focus {
 
 .bottom > .text > .whiteText {
     color: white;
-    position:absolute;
-    top:-50%;
-    width:100%;
-    font-size:20px;
-    display:none;
+    position: absolute;
+    top: -50%;
+    width: 100%;
+    font-size: 20px;
+    display: none;
 }
 
 .bottom > .text > #submit {
@@ -300,4 +304,45 @@ input, input:hover, input:active, input:focus {
         -webkit-transform: rotate(360deg);
         transform: rotate(360deg);
     }
+}
+
+.mask {
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+    display: none;
+}
+
+.mask .tip {
+    width: 250px;
+    text-align: center;
+    background-color: white;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -moz-transform: translate(-50%, -50%);
+    -o-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    border-radius: 5px;
+}
+
+.mask .tip > .tip-footer {
+    border-top: 1px solid #00b3ee;
+}
+
+.mask .tip > .tip-content {
+    padding: 30px;
+}
+
+.mask .tip > .tip-footer {
+    padding: 15px;
+    color: #00B7FF;
+}
+
+.mask .tip > .tip-footer:active {
+    background-color:#efefef;
 }
