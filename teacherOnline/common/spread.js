@@ -9,5 +9,5 @@ var spreadData = {
     jsonPURL: 'http://test.hjlaoshi.com/app/spread/activity',
     shareURL: 'http://ftp.ztmomo.com/rtc/spread/55d58fb60cf24143181607e0/share/index.html',
     beginTime: "2015-08-20 08:27:00",
-    endTime: "2015-09-22 15:25:00"
+    endTime: "2015-07-22 15:25:00"
 }

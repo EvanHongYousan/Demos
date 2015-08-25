@@ -5,11 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <title>优惠活动</title>
     <link rel="stylesheet" href="css/main.css"/>
-    <script>
-        if (new Date() > new Date(spreadData.endTime) || new Date() < new Date(spreadData.beginTime)){
-            document.location.href = './activity_over.html';
-        }
-    </script>
 </head>
 <body>
 <div class="container">
@@ -24,6 +19,11 @@
     <p>4.本次活动只限学生参与，老师暂时抢不了哦~</p>
 </div>
 <script src="../common/spread.js"></script>
+<script>
+    if (new Date() > new Date(spreadData.endTime) || new Date() < new Date(spreadData.beginTime)){
+        document.location.href = './activity_over.html';
+    }
+</script>
 <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
 <script src="js/tools.js"></script>
 <script src="js/main.js"></script>
