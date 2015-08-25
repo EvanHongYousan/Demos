@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <title>优惠活动</title>
     <link rel="stylesheet" href="css/main.css"/>
+    <script>
+        if (new Date() > new Date(spreadData.endTime) || new Date() < new Date(spreadData.beginTime)){
+            document.location.href = './activity_over.html';
+        }
+    </script>
 </head>
 <body>
 <div class="container">

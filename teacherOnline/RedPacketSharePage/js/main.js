@@ -5,7 +5,7 @@ compoments = (function () {
     function shareDivBindEv() {
         $('#shareBtn').click(function () {
             JSNativeBridge.send('share', {
-                "content": spreadData.shareWording,
+                "content": spreadData.shareWording[Math.floor(Math.random()*3)],
                 "title": spreadData.name,
                 "type": 0,
                 "image_url": spreadData.pic,
