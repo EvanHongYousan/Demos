@@ -29,8 +29,10 @@
 
             <p class="phoneNumber">18912345678</p>
             <span id="submit">下载呼叫老师APP</span>
+            <p style="font-size: 20px;">马上问作业</p>
         </div>
 
+        <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
     </div>
 </div>
 <div class="mask">
@@ -65,7 +67,9 @@
         $('.mask .tip-footer').click(function () {
             document.location.href = 'http://www.hjlaoshi.com';
         });
-        $('.mask').height(document.body.clientHeight);
+        setTimeout(function () {
+            $('.mask').height(document.body.clientHeight);
+        }, 500);
         $.getJSON(
                 spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + getReqPrm('phoneNum') + '&callback=?',
                 function (data) {

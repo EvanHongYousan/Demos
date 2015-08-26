@@ -201,6 +201,26 @@ input, input:hover, input:active, input:focus {
     margin-top: 10px;
 }
 
+.bottom > .href {
+    position: absolute;
+    bottom: 5px;
+    width: 100%;
+    text-align: center;
+    color: #404040 !important;
+}
+
+.href > a{
+    color:#404040;
+    font-size:18px;
+}
+
+.hrefAfter {
+    position: absolute;
+    bottom: 0px;
+    width: 100%;
+    text-align: center;
+}
+
 .tickets {
     width: 100%;
     height: 120%;
@@ -344,5 +364,5 @@ input, input:hover, input:active, input:focus {
 }
 
 .mask .tip > .tip-footer:active {
-    background-color:#efefef;
+    background-color: #efefef;
 }

@@ -10,7 +10,10 @@ smtpserver = 'smtp.qq.com'
 username = '1370204201@qq.com'
 password = 'yty199107041234'
 
-msg = MIMEText(u'你好22222', 'plain', 'utf-8')  # 中文需参数‘utf-8'，单字节字符不需要
+msg = MIMEText(u'''<h1>hahahah</h1>
+<p>11111111111</p>
+<p>22222222222</p>
+''', 'html', 'utf-8')  # 中文需参数‘utf-8'，单字节字符不需要
 msg['Subject'] = Header(subject, 'utf-8')
 
 smtp = smtplib.SMTP()
