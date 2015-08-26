@@ -6,7 +6,7 @@ compoments = (function () {
         $('#shareBtn').click(function () {
             JSNativeBridge.send('share', {
                 "content": spreadData.shareWording[Math.floor(Math.random()*3)],
-                "title": spreadData.name,
+                "title": spreadData.name[Math.floor(Math.random()*3)],
                 "type": 0,
                 "image_url": spreadData.pic,
                 "target_url": spreadData.shareURL
@@ -47,3 +47,5 @@ compoments = (function () {
 })();
 
 compoments.init();
+$('title').text(spreadData.name[Math.floor(Math.random()*3)]);
+$('.none').text(spreadData.shareWording[Math.floor(Math.random()*3)]);

@@ -10,6 +10,7 @@
     <meta name="format-detection" content="email=no">
 </head>
 <body>
+<div class="none"></div>
 <div class="container">
     <img class="top" src="images/bg1_top.jpg" alt=""/>
 
@@ -41,6 +42,7 @@
         <div class="tip-footer">确定</div>
     </div>
 </div>
+<script src="../common/spread.js"></script>
 <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
 <script>
     $('#submit').click(function () {
@@ -60,6 +62,8 @@
             return false;
         });
         $('.mask').height(document.body.clientHeight);
+        $('title').text(spreadData.name[Math.floor(Math.random() * 3)]);
+        $('.none').text(spreadData.shareWording[Math.floor(Math.random() * 3)]);
     })();
 </script>
 </body>

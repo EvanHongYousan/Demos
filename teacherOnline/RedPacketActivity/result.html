@@ -2,7 +2,7 @@
 <html>
 <head lang="en">
     <meta charset="UTF-8">
-    <title></title>
+    <title>抢红包，免费问作业！</title>
     <link rel="stylesheet" href="css/main.css"/>
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
@@ -10,6 +10,7 @@
     <meta name="format-detection" content="email=no">
 </head>
 <body>
+<div style="display:none;">抢红包，免费答疑！呼叫老师在线解答，轻轻松松做作业！</div>
 <div class="loader">加载中...</div>
 <div class="container opacity0">
     <img src="images/bg3_up.jpg" alt="" class="top"/>
@@ -23,6 +24,7 @@
 
         <div class="text">
             <p class="whiteText">你已经抢过红包啦~<br/>快去问作业吧</p>
+
             <p>现金券已放入手机账户</p>
 
             <p class="phoneNumber">18912345678</p>
@@ -58,33 +60,36 @@
             return null;
         }
     }
-    $.getJSON(
-            spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + getReqPrm('phoneNum') + '&callback=?',
-            function (data) {
-                if (data.status == '7') {
-                    $('.voucher').remove();
-                    $('.container > img').eq(0).attr('src', 'images/bg3_up.jpg');
-                    $('.opacity0').removeClass('opacity0');
-                    $('.loader').remove();
-                    $('.text p.phoneNumber').text(getReqPrm('phoneNum'));
-                    $('.text > .whiteText').show();
-                }
-                else if (data.status == '1') {
-                    $('.opacity0').removeClass('opacity0');
-                    $('.loader').remove();
-                    switchPage(getReqPrm('phoneNum'), data.price);
-                }
-                else {
-                    $('.mask .tip-content').text(data.msg);
-                    $('.mask').show();
-                }
-            }
-    );
-    (function(){
-        $('.mask .tip-footer').click(function(){
+
+    (function () {
+        $('.mask .tip-footer').click(function () {
             document.location.href = 'http://www.hjlaoshi.com';
         });
         $('.mask').height(document.body.clientHeight);
+        $.getJSON(
+                spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + getReqPrm('phoneNum') + '&callback=?',
+                function (data) {
+                    if (data.status == '7') {
+                        $('.voucher').remove();
+                        $('.container > img').eq(0).attr('src', 'images/bg3_up.jpg');
+                        $('.opacity0').removeClass('opacity0');
+                        $('.loader').remove();
+                        $('.text p.phoneNumber').text(getReqPrm('phoneNum'));
+                        $('.text > .whiteText').show();
+                    }
+                    else if (data.status == '1') {
+                        $('.opacity0').removeClass('opacity0');
+                        $('.loader').remove();
+                        switchPage(getReqPrm('phoneNum'), data.price);
+                    }
+                    else {
+                        $('.mask .tip-content').text(data.msg);
+                        $('.mask').show();
+                    }
+                }
+        );
+        $('title').text(spreadData.name[Math.floor(Math.random() * 3)]);
+        $('.none').text(spreadData.shareWording[Math.floor(Math.random() * 3)]);
     })();
 </script>
 </body>
