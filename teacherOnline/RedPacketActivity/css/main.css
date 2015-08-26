@@ -134,7 +134,7 @@ input, input:hover, input:active, input:focus {
 
 .bottom > .voucher > span {
     position: absolute;
-    right: 15px;
+    right: 30px;
     top: 50%;
     color: #f6594d;
     font-size: 35px;
