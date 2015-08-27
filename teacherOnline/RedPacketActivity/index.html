@@ -46,12 +46,29 @@
 <script src="../common/spread.js"></script>
 <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
 <script>
+    Date.prototype.Format = function (fmt) { //author: meizz
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    };
+</script>
+<script>
     $('#submit').click(function () {
         if (/^1[345678]\d{9}$/.test($('#phoneNum').val())) {
             window.location = './result.html?phoneNum=' + $('#phoneNum').val();
         } else {
-            $('#phoneNum').attr('placeholder', '请输入正确的手机号码')
-            $('#phoneNum').val('')
+            $('#phoneNum').attr('placeholder', '请输入正确的手机号码');
+            $('#phoneNum').val('');
             $('.mask').show();
         }
     });
@@ -64,6 +81,13 @@
         });
         setTimeout(function () {
             $('.mask').height(document.body.clientHeight);
+            if ((new Date()).Format("yyyy-MM-dd hh:mm:ss") > spreadData.endTime || (new Date()).Format("yyyy-MM-dd hh:mm:ss") < spreadData.beginTime) {
+                $('.tip .tip-content').html('好可惜，来晚啦~~红包已经抢完啦~下载呼叫老师期待下次优惠活动吧~~');
+                $('.mask .tip-footer').click(function () {
+                    document.location.href = "http://www.hjlaoshi.com"
+                });
+                $('.mask').show();
+            }
         }, 500);
         $('title').text(spreadData.name[Math.floor(Math.random() * 3)]);
         $('.none').text(spreadData.shareWording[Math.floor(Math.random() * 3)]);

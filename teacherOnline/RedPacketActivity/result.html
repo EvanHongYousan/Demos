@@ -29,6 +29,7 @@
 
             <p class="phoneNumber">18912345678</p>
             <span id="submit">下载呼叫老师APP</span>
+
             <p style="font-size: 20px;">马上问作业</p>
         </div>
 
@@ -63,6 +64,13 @@
         }
     }
 
+    function isIOS() {
+        var userAgent = window.navigator.userAgent.toLowerCase();
+        if (userAgent.indexOf('android') > 0) return 1;     //android
+        if (/iphone/i.test(userAgent) || /ipod/i.test(userAgent) || /ipad/i.test(userAgent)) return 2;      //IOS
+        return 'anyotherelse';
+    }
+
     (function () {
         $('.mask .tip-footer').click(function () {
             document.location.href = 'http://www.hjlaoshi.com';
@@ -71,7 +79,7 @@
             $('.mask').height(document.body.clientHeight);
         }, 500);
         $.getJSON(
-                spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + getReqPrm('phoneNum') + '&callback=?',
+                        spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + getReqPrm('phoneNum') + '&client=' + isIOS() + '&callback=?',
                 function (data) {
                     if (data.status == '7') {
                         $('.voucher').remove();
