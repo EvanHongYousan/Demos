@@ -27,7 +27,7 @@
 
             <p>现金券已放入手机账户</p>
 
-            <p class="phoneNumber">18912345678</p>
+            <p class="phoneNumber">快去问作业吧</p>
             <span id="submit">下载呼叫老师APP</span>
 
             <p style="font-size: 20px;">马上问作业</p>
@@ -42,9 +42,14 @@
         <div class="tip-footer">确定</div>
     </div>
 </div>
+<a class="alreadycatch" href="#alreadycatch"></a>
 <script src="../common/spread.js"></script>
 <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
 <script>
+    if (location.href.toString().indexOf('alreadycatch') != -1){
+        document.location.href = './index.html';
+    }
+    $('a.alreadycatch').click();
     $('#submit').click(function () {
         window.location = 'http://www.hjlaoshi.com';
     });

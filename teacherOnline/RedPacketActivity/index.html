@@ -80,7 +80,9 @@
             return false;
         });
         setTimeout(function () {
-            $('.mask').height(document.body.clientHeight);
+            setTimeout(function () {
+                $('.mask').height(document.body.clientHeight);
+            }, 1000);
             if ((new Date()).Format("yyyy-MM-dd hh:mm:ss") > spreadData.endTime || (new Date()).Format("yyyy-MM-dd hh:mm:ss") < spreadData.beginTime) {
                 $('.tip .tip-content').html('好可惜，来晚啦~~红包已经抢完啦~下载呼叫老师期待下次优惠活动吧~~');
                 $('.mask .tip-footer').click(function () {
