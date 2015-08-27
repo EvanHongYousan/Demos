@@ -11,7 +11,7 @@
 </head>
 <body>
 <div class="none"></div>
-<div class="container">
+<div class="container index">
     <img class="top" src="images/bg1_top.jpg" alt=""/>
 
     <div class="middle">
@@ -34,6 +34,30 @@
             <li>4.本次活动限学生参与,老师抢不了哦~</li>
             <li>5.呼叫老师团队对本次活动保留最终解释权。</li>
         </ul>
+        <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
+    </div>
+</div>
+<div class="container result opacity0">
+    <img src="images/bg3_up.jpg" alt="" class="top"/>
+
+    <div class="bottom">
+        <div class="voucher">
+            <span><small>￥</small><span>500</span></span>
+        </div>
+        <img src="images/tickets.png" alt="" class="tickets"/>
+        <img src="images/bg2_down.jpg" alt=""/>
+
+        <div class="text">
+            <p class="whiteText">你已经抢过红包啦~<br/>快去问作业吧</p>
+
+            <p>现金券已放入手机账户</p>
+
+            <p class="phoneNumber">快去问作业吧</p>
+            <span id="downloadBtn">下载呼叫老师APP</span>
+
+            <p style="font-size: 20px;">马上问作业</p>
+        </div>
+
         <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
     </div>
 </div>
@@ -63,16 +87,74 @@
     };
 </script>
 <script>
-    $('#submit').click(function () {
-        if (/^1[345678]\d{9}$/.test($('#phoneNum').val())) {
-            window.location = './result.html?phoneNum=' + $('#phoneNum').val();
-        } else {
-            $('#phoneNum').attr('placeholder', '请输入正确的手机号码');
-            $('#phoneNum').val('');
-            $('.mask').show();
-        }
-    });
     (function () {
+        function switchPage(phoneNum, money) {
+            $('.result .text p.phoneNumber').text(phoneNum);
+            $('.result .voucher span > span').text(money);
+            $('.result > img').eq(0).attr('src', 'images/bg2_up' + parseInt(Math.random() * 4 + 1) + '.jpg');
+
+        }
+
+        function getReqPrm(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            } else {
+                return null;
+            }
+        }
+
+        function isIOS() {
+            var userAgent = window.navigator.userAgent.toLowerCase();
+            if (userAgent.indexOf('android') > 0) return 1;     //android
+            if (/iphone/i.test(userAgent) || /ipod/i.test(userAgent) || /ipad/i.test(userAgent)) return 2;      //IOS
+            return 'anyotherelse';
+        }
+
+        function getData(phoneNum) {
+            $.getJSON(
+                            spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + phoneNum + '&client=' + isIOS() + '&callback=?',
+                    function (data) {
+                        console.log(data);
+                        if (data.status == '7') {
+                            $('.index').hide();
+                            $('.result').removeClass('none').removeClass('opacity0');
+                            $('.result .voucher').remove();
+                            $('.result > img').eq(0).attr('src', 'images/bg3_up.jpg');
+                            $('.opacity0').removeClass('opacity0');
+                            $('.loader').remove();
+                            $('.result .text p.phoneNumber').text(getReqPrm('phoneNum'));
+                            $('.result .text > .whiteText').show();
+                        }
+                        else if (data.status == '1') {
+                            $('.index').hide();
+                            $('.result').removeClass('none').removeClass('opacity0');
+                            $('.opacity0').removeClass('opacity0');
+                            $('.loader').remove();
+                            switchPage(getReqPrm('phoneNum'), data.price);
+                        }
+                        else {
+                            $('.mask .tip-content').text(data.msg);
+                            $('.mask').show();
+                        }
+                    }
+            );
+        }
+
+        $('#submit').click(function () {
+            if (/^1[345678]\d{9}$/.test($('#phoneNum').val())) {
+//                window.location = './result.html?phoneNum=' + $('#phoneNum').val();
+                getData($('#phoneNum').val());
+            } else {
+                $('#phoneNum').attr('placeholder', '请输入正确的手机号码');
+//                $('#phoneNum').val('');
+                $('.mask').show();
+            }
+        });
+        $('#downloadBtn').click(function () {
+            location.href = 'http://www.hjlaoshi.com'
+        });
         $('.mask .tip-footer').click(function () {
             $('.mask').hide();
         });
@@ -82,6 +164,7 @@
         setTimeout(function () {
             setTimeout(function () {
                 $('.mask').height(document.body.clientHeight);
+                $('.result').addClass('none');
             }, 1000);
             if ((new Date()).Format("yyyy-MM-dd hh:mm:ss") > spreadData.endTime || (new Date()).Format("yyyy-MM-dd hh:mm:ss") < spreadData.beginTime) {
                 $('.tip .tip-content').html('好可惜，来晚啦~~红包已经抢完啦~下载呼叫老师期待下次优惠活动吧~~');

@@ -11,8 +11,8 @@
 </head>
 <body>
 <div style="display:none;">抢红包，免费答疑！呼叫老师在线解答，轻轻松松做作业！</div>
-<div class="loader">加载中...</div>
-<div class="container opacity0">
+<!--<div class="loader">加载中...</div>-->
+<div class="container ">
     <img src="images/bg3_up.jpg" alt="" class="top"/>
 
     <div class="bottom">
@@ -28,7 +28,7 @@
             <p>现金券已放入手机账户</p>
 
             <p class="phoneNumber">快去问作业吧</p>
-            <span id="submit">下载呼叫老师APP</span>
+            <span id="downloadBtn">下载呼叫老师APP</span>
 
             <p style="font-size: 20px;">马上问作业</p>
         </div>
@@ -36,12 +36,12 @@
         <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
     </div>
 </div>
-<div class="mask">
-    <div class="tip">
-        <div class="tip-content">请输入正确的手机号码</div>
-        <div class="tip-footer">确定</div>
-    </div>
-</div>
+<!--<div class="mask">-->
+    <!--<div class="tip">-->
+        <!--<div class="tip-content">请输入正确的手机号码</div>-->
+        <!--<div class="tip-footer">确定</div>-->
+    <!--</div>-->
+<!--</div>-->
 <a class="alreadycatch" href="#alreadycatch"></a>
 <script src="../common/spread.js"></script>
 <script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
@@ -50,8 +50,8 @@
         document.location.href = './index.html';
     }
     $('a.alreadycatch').click();
-    $('#submit').click(function () {
-        window.location = 'http://www.hjlaoshi.com';
+    $('#downloadBtn').click(function () {
+//        window.location = 'http://www.hjlaoshi.com';
     });
     function switchPage(phoneNum, money) {
         $('.text p.phoneNumber').text(phoneNum);

@@ -55,7 +55,7 @@ input, input:hover, input:active, input:focus {
     border: none;
 }
 
-#phoneNum, #submit {
+#phoneNum, #submit,#downloadBtn {
     font-size: 20px;
     width: 60%;
     border-radius: 30px;
@@ -70,14 +70,14 @@ input, input:hover, input:active, input:focus {
     margin: 15px 0;
 }
 
-#submit {
+#submit, #downloadBtn {
     background: url("../images/submit.png") no-repeat;
     background-size: 100% 100%;
     color: #e43829;
     padding: 20px 30px;
 }
 
-#submit:active {
+#submit:active, #downloadBtn:active {
     background: url('../images/submit_hover.png') no-repeat;
     background-size: 100% 100%;
 }
@@ -195,7 +195,7 @@ input, input:hover, input:active, input:focus {
     display: none;
 }
 
-.bottom > .text > #submit {
+.bottom > .text > #submit, .bottom > .text > #downloadBtn {
     width: 50%;
     padding: 20px;
     margin-top: 10px;
@@ -334,6 +334,7 @@ input, input:hover, input:active, input:focus {
     top: 0;
     left: 0;
     display: none;
+    z-index:1000;
 }
 
 .mask .tip {
