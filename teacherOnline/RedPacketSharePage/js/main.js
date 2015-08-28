@@ -9,7 +9,8 @@ compoments = (function () {
                 "title": spreadData.name[Math.floor(Math.random()*3)],
                 "type": 0,
                 "image_url": spreadData.pic,
-                "target_url": spreadData.shareURL
+                "target_url": spreadData.shareURL,
+                "target_url_forQQ":spreadData.shareURL_forQQ
             });
         });
     }

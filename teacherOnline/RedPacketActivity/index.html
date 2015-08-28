@@ -114,7 +114,7 @@
 
         function getData(phoneNum) {
             $.getJSON(
-                            spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + phoneNum + '&client=' + isIOS() + '&callback=?',
+                            spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + phoneNum + '&callback=?',
                     function (data) {
                         console.log(data);
                         if (data.status == '7') {
@@ -132,7 +132,7 @@
                             $('.result').removeClass('none').removeClass('opacity0');
                             $('.opacity0').removeClass('opacity0');
                             $('.loader').remove();
-                            switchPage(getReqPrm('phoneNum'), data.price);
+                            switchPage(phoneNum, data.price);
                         }
                         else {
                             $('.mask .tip-content').text(data.msg);
