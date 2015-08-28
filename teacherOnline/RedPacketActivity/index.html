@@ -124,7 +124,7 @@
                             $('.result > img').eq(0).attr('src', 'images/bg3_up.jpg');
                             $('.opacity0').removeClass('opacity0');
                             $('.loader').remove();
-                            $('.result .text p.phoneNumber').text(getReqPrm('phoneNum'));
+                            $('.result .text p.phoneNumber').text(phoneNum);
                             $('.result .text > .whiteText').show();
                         }
                         else if (data.status == '1') {
