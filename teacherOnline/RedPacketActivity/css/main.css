@@ -55,7 +55,7 @@ input, input:hover, input:active, input:focus {
     border: none;
 }
 
-#phoneNum, #submit,#downloadBtn {
+#phoneNum, #submit, #downloadBtn {
     font-size: 20px;
     width: 60%;
     border-radius: 30px;
@@ -71,15 +71,17 @@ input, input:hover, input:active, input:focus {
 }
 
 #submit, #downloadBtn {
-    background: url("../images/submit.png") no-repeat;
-    background-size: 100% 100%;
+    /*background: url("../images/submit.png") no-repeat;*/
+    /*background-size: 100% 100%;*/
+    background-color: #ffe34a;
     color: #e43829;
-    padding: 20px 30px;
+    padding: 15px 30px;
 }
 
 #submit:active, #downloadBtn:active {
-    background: url('../images/submit_hover.png') no-repeat;
-    background-size: 100% 100%;
+    /*background: url('../images/submit_hover.png') no-repeat;*/
+    /*background-size: 100% 100%;*/
+    background-color: #ccb63b;
 }
 
 .container > .bottom {
@@ -197,7 +199,7 @@ input, input:hover, input:active, input:focus {
 
 .bottom > .text > #submit, .bottom > .text > #downloadBtn {
     width: 50%;
-    padding: 20px;
+    padding: 15px 20px;
     margin-top: 10px;
 }
 
@@ -209,9 +211,9 @@ input, input:hover, input:active, input:focus {
     color: #404040 !important;
 }
 
-.href > a{
-    color:#404040;
-    font-size:18px;
+.href > a {
+    color: #404040;
+    font-size: 18px;
 }
 
 .hrefAfter {
@@ -334,7 +336,7 @@ input, input:hover, input:active, input:focus {
     top: 0;
     left: 0;
     display: none;
-    z-index:1000;
+    z-index: 1000;
 }
 
 .mask .tip {

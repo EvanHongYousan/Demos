@@ -10,7 +10,7 @@
     <meta name="format-detection" content="email=no">
     <script>
         var _hmt = _hmt || [];
-        (function() {
+        (function () {
             var hm = document.createElement("script");
             hm.src = "//hm.baidu.com/hm.js?f380b5dedd2cc060ad1d24345ed545fd";
             var s = document.getElementsByTagName("script")[0];
@@ -24,7 +24,7 @@
     <img class="top" src="images/bg1_top.jpg" alt=""/>
 
     <div class="middle">
-        <img src="images/bg1_middle.jpg" alt=""/>
+        <img src="images/bg1_middle.jpg" alt="" style="min-height: 160px;"/>
 
         <div>
             <input type="text" id="phoneNum" value="" placeholder="输入手机号码"/>
@@ -97,11 +97,32 @@
 </script>
 <script>
     (function () {
+        var down_ios_forWeixin_url = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.teaching';
+        var down_ios_url = 'https://itunes.apple.com/cn/app/hu-jiao-lao-shi/id991664018?l=en&mt=8';
+        var down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/' + getChannelId() + '/hjlaoshi.apk';
+        var userAgent = window.navigator.userAgent.toLowerCase();
+
         function switchPage(phoneNum, money) {
+            money = parseInt(money);
             $('.result .text p.phoneNumber').text(phoneNum);
             $('.result .voucher span > span').text(money);
             $('.result > img').eq(0).attr('src', 'images/bg2_up' + parseInt(Math.random() * 4 + 1) + '.jpg');
-
+            switch (true) {
+                case money >= 15 && money <= 17:
+                    $('.result > img').eq(0).attr('src', 'images/bg2_up3.jpg');
+                    break;
+                case money >= 18 && money <= 20:
+                    $('.result > img').eq(0).attr('src', 'images/bg2_up4.jpg');
+                    break;
+                case money >= 50 && money <= 99:
+                    $('.result > img').eq(0).attr('src', 'images/bg2_up1.jpg');
+                    break;
+                case money >= 150 && money <= 199:
+                    $('.result > img').eq(0).attr('src', 'images/bg2_up2.jpg');
+                    break;
+                default :
+                    break;
+            }
         }
 
         function getReqPrm(name) {
@@ -118,17 +139,25 @@
             var url = window.location.href,
                     parts = url.split('?'),
                     params = null, channel_id = '001';
-            if(parts.length > 1) {
+            if (parts.length > 1) {
                 params = parts[1];
             }
-            if(!params) return channel_id;
+            if (!params) return channel_id;
             var start = params.indexOf('channel'),
                     channel = params.substr(start).split('&')[0];
             parts = channel.split('=');
-            if(parts.length > 1 && !!parts[1]) {
+            if (parts.length > 1 && !!parts[1]) {
                 channel_id = parts[1];
             }
             return channel_id;
+        }
+
+        function isWeixin() {
+            return userAgent.indexOf('micromessenger') > 0;
+        }
+
+        function isAndroid() {
+            return userAgent.indexOf('android') > 0;
         }
 
         function isIOS() {
@@ -140,7 +169,7 @@
 
         function getData(phoneNum) {
             $.getJSON(
-                            spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + phoneNum + '&callback=?',
+                    spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + phoneNum + '&callback=?',
                     function (data) {
                         console.log(data);
                         if (data.status == '7') {
@@ -168,6 +197,9 @@
             );
         }
 
+        $('#phoneNum').on('focus', function () {
+            window.scrollTo(0, 200)
+        });
         $('#submit').click(function () {
             if (/^1[345678]\d{9}$/.test($('#phoneNum').val())) {
 //                window.location = './result.html?phoneNum=' + $('#phoneNum').val();
@@ -179,7 +211,15 @@
             }
         });
         $('#downloadBtn').click(function () {
-            location.href = 'http://www.hjlaoshi.com?channelid='+getChannelId()+"&dontMove=true";
+            if (isWeixin() && isAndroid()) {
+                location.href = 'http://www.hjlaoshi.com';
+            } else if (!isWeixin() && isAndroid()) {
+                location.href = down_android_url;
+            } else if (isWeixin() && isIOS()) {
+                location.href = down_ios_forWeixin_url;
+            } else if (!isWeixin() && isIOS()) {
+                location.href = down_ios_url;
+            }
         });
         $('.mask .tip-footer').click(function () {
             $('.mask').hide();
