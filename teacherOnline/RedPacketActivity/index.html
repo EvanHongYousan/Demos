@@ -8,6 +8,15 @@
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     <meta name="format-detection" content="telephone=no">
     <meta name="format-detection" content="email=no">
+    <script>
+        var _hmt = _hmt || [];
+        (function() {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f380b5dedd2cc060ad1d24345ed545fd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
 </head>
 <body>
 <div class="none"></div>
@@ -105,6 +114,23 @@
             }
         }
 
+        function getChannelId() {
+            var url = window.location.href,
+                    parts = url.split('?'),
+                    params = null, channel_id = '001';
+            if(parts.length > 1) {
+                params = parts[1];
+            }
+            if(!params) return channel_id;
+            var start = params.indexOf('channel'),
+                    channel = params.substr(start).split('&')[0];
+            parts = channel.split('=');
+            if(parts.length > 1 && !!parts[1]) {
+                channel_id = parts[1];
+            }
+            return channel_id;
+        }
+
         function isIOS() {
             var userAgent = window.navigator.userAgent.toLowerCase();
             if (userAgent.indexOf('android') > 0) return 1;     //android
@@ -153,7 +179,7 @@
             }
         });
         $('#downloadBtn').click(function () {
-            location.href = 'http://www.hjlaoshi.com'
+            location.href = 'http://www.hjlaoshi.com?channelid='+getChannelId()+"&dontMove=true";
         });
         $('.mask .tip-footer').click(function () {
             $('.mask').hide();
