@@ -108,7 +108,7 @@
 
         function switchPage(phoneNum, money) {
             money = parseInt(money);
-            $('.result p.phoneNumber').text(phoneNum);
+            $('.result .phoneNumber').text(phoneNum);
             $('.result .voucher span > span').text(money);
             $('.result img.top').attr('src', 'images/bg2_up' + parseInt(Math.random() * 4 + 1) + '.jpg');
             switch (true) {
@@ -184,7 +184,7 @@
                             $('.result img.downBG').attr('src','images/bg3_down.jpg');
                             $('.opacity0').removeClass('opacity0');
                             $('.loader').remove();
-                            $('.result .text p.phoneNumber').text(phoneNum);
+                            $('.result .text .phoneNumber').text(phoneNum);
                             $('.result .text > .whiteText').show();
                         }
                         else if (data.status == '1') {
