@@ -21,6 +21,7 @@
 <body>
 <div class="none"></div>
 <div class="container index">
+    <img class="logo" src="images/logo.png" alt=""/>
     <img class="top" src="images/bg1_top.jpg" alt=""/>
 
     <div class="middle">
@@ -47,24 +48,27 @@
     </div>
 </div>
 <div class="container result opacity0">
+    <img class="logo" src="images/logo.png" alt=""/>
     <img src="images/bg3_up.jpg" alt="" class="top"/>
 
     <div class="bottom">
+        <div class="pickle">
+            <p class="description">现金券已放入手机账户</p>
+            <p class="phoneNumber">快去问作业吧</p>
+        </div>
         <div class="voucher">
             <span><small>￥</small><span>500</span></span>
         </div>
         <img src="images/tickets.png" alt="" class="tickets"/>
-        <img src="images/bg2_down.jpg" alt=""/>
+        <img class="downBG" src="images/bg2_down.jpg" alt=""/>
 
         <div class="text">
-            <p class="whiteText">你已经抢过红包啦~<br/>快去问作业吧</p>
+            <p class="whiteText">之前抢过红包啦~</p>
 
-            <p>现金券已放入手机账户</p>
+            <p class="description">现金券已放入手机账户</p>
 
             <p class="phoneNumber">快去问作业吧</p>
             <span id="downloadBtn">下载呼叫老师APP</span>
-
-            <p style="font-size: 20px;">马上问作业</p>
         </div>
 
         <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
@@ -104,21 +108,21 @@
 
         function switchPage(phoneNum, money) {
             money = parseInt(money);
-            $('.result .text p.phoneNumber').text(phoneNum);
+            $('.result p.phoneNumber').text(phoneNum);
             $('.result .voucher span > span').text(money);
-            $('.result > img').eq(0).attr('src', 'images/bg2_up' + parseInt(Math.random() * 4 + 1) + '.jpg');
+            $('.result img.top').attr('src', 'images/bg2_up' + parseInt(Math.random() * 4 + 1) + '.jpg');
             switch (true) {
                 case money >= 15 && money <= 17:
-                    $('.result > img').eq(0).attr('src', 'images/bg2_up3.jpg');
+                    $('.result img.top').attr('src', 'images/bg2_up3.jpg');
                     break;
                 case money >= 18 && money <= 20:
-                    $('.result > img').eq(0).attr('src', 'images/bg2_up4.jpg');
+                    $('.result img.top').attr('src', 'images/bg2_up4.jpg');
                     break;
                 case money >= 50 && money <= 99:
-                    $('.result > img').eq(0).attr('src', 'images/bg2_up1.jpg');
+                    $('.result img.top').attr('src', 'images/bg2_up1.jpg');
                     break;
                 case money >= 150 && money <= 199:
-                    $('.result > img').eq(0).attr('src', 'images/bg2_up2.jpg');
+                    $('.result img.top').attr('src', 'images/bg2_up2.jpg');
                     break;
                 default :
                     break;
@@ -176,7 +180,8 @@
                             $('.index').hide();
                             $('.result').removeClass('none').removeClass('opacity0');
                             $('.result .voucher').remove();
-                            $('.result > img').eq(0).attr('src', 'images/bg3_up.jpg');
+                            $('.result img.top').attr('src', 'images/bg3_up.jpg');
+                            $('.result img.downBG').attr('src','images/bg3_down.jpg');
                             $('.opacity0').removeClass('opacity0');
                             $('.loader').remove();
                             $('.result .text p.phoneNumber').text(phoneNum);
@@ -187,6 +192,7 @@
                             $('.result').removeClass('none').removeClass('opacity0');
                             $('.opacity0').removeClass('opacity0');
                             $('.loader').remove();
+                            $('.text .description, .text .phoneNumber').css('opacity','0');
                             switchPage(phoneNum, data.price);
                         }
                         else {

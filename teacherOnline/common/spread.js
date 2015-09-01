@@ -12,3 +12,8 @@ var spreadData = {
     endTime:"2015-09-28 23:55:00",
     shareWording : ['抢红包，免费答疑！呼叫老师在线解答，轻轻松松做作业！','券券送你，免费问老师。作业包问包答！呼叫老师，随时在线']
 }
+
+
+
+//id : '55e55506ad3437b5399a2692',
+//jsonPURL : 'http://192.168.0.231/app/spread/activity',

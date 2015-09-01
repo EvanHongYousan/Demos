@@ -35,6 +35,13 @@ body {
     width: 100%;
 }
 
+.container .logo {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    width: 170px;
+}
+
 .container > .middle {
     position: relative;
     /*font-size: 24px;*/
@@ -121,10 +128,10 @@ input, input:hover, input:active, input:focus {
 }
 
 .bottom > .voucher {
-    width: 180px;
+    width: 220px;
     height: 100px;
     position: absolute;
-    top: -100px;
+    top: 20px;
     left: 50%;
     -webkit-transform: translate(-50%, 0);
     -moz-transform: translate(-50%, 0);
@@ -140,6 +147,7 @@ input, input:hover, input:active, input:focus {
     top: 50%;
     color: #f6594d;
     font-size: 35px;
+    font-weight: bolder;
     /*-webkit-animation: twinkle 0.9s infinite;*/
     /*-moz-animation: twinkle 0.9s infinite;*/
     /*-o-animation: twinkle 0.9s infinite;*/
@@ -177,7 +185,7 @@ input, input:hover, input:active, input:focus {
 
 .bottom > .text {
     position: absolute;
-    top: 20px;
+    top: 80px;
     width: 100%;
     text-align: center;
     color: #fee44a;
@@ -189,9 +197,9 @@ input, input:hover, input:active, input:focus {
 }
 
 .bottom > .text > .whiteText {
-    color: white;
+    color: #fee44a;
     position: absolute;
-    top: -50%;
+    top: -100%;
     width: 100%;
     font-size: 20px;
     display: none;
@@ -211,13 +219,13 @@ input, input:hover, input:active, input:focus {
     color: #404040 !important;
 }
 
-.bottom .divider{
-    border-top:1px solid white;
-    width:25%;
-    height:2px;
-    display:inline-block;
-    position:relative;
-    top:-3px;
+.bottom .divider {
+    border-top: 1px solid white;
+    width: 25%;
+    height: 2px;
+    display: inline-block;
+    position: relative;
+    top: -3px;
 }
 
 .href > a {
@@ -377,4 +385,17 @@ input, input:hover, input:active, input:focus {
 
 .mask .tip > .tip-footer:active {
     background-color: #efefef;
+}
+
+.result .bottom .pickle {
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    top: -50px;
+    color: #f6594d;
+    font-size: 18px;
+}
+
+.result .bottom .pickle p {
+    margin: 0;
 }
