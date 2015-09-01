@@ -211,6 +211,15 @@ input, input:hover, input:active, input:focus {
     color: #404040 !important;
 }
 
+.bottom .divider{
+    border-top:1px solid white;
+    width:25%;
+    height:2px;
+    display:inline-block;
+    position:relative;
+    top:-3px;
+}
+
 .href > a {
     color: #404040;
     font-size: 18px;
