@@ -95,6 +95,11 @@ input, input:hover, input:active, input:focus {
     color: white;
     font-size: 14px;
     position: relative;
+    font-size: 0;
+}
+
+.container > .bottom h3, .container > .bottom ul{
+    font-size:14px;
 }
 
 .container > .bottom > img {
@@ -185,7 +190,7 @@ input, input:hover, input:active, input:focus {
 
 .bottom > .text {
     position: absolute;
-    top: 60px;
+    top: 10px;
     width: 100%;
     text-align: center;
     color: #fee44a;
@@ -194,12 +199,13 @@ input, input:hover, input:active, input:focus {
 
 .bottom > .text > p {
     margin: 5px 0;
+    font-size: 14px;
 }
 
 .bottom > .text > .whiteText {
     color: white;
     position: absolute;
-    top: -80%;
+    top: -40%;
     width: 100%;
     font-size: 20px;
     display: none;
@@ -217,7 +223,7 @@ input, input:hover, input:active, input:focus {
     width: 100%;
     text-align: center;
     color: #404040 !important;
-    z-index:1000;
+    z-index: 1000;
 }
 
 .bottom .divider {
@@ -232,7 +238,7 @@ input, input:hover, input:active, input:focus {
 .href > a {
     color: #404040;
     font-size: 18px;
-    padding:20px 20px 0 20px;
+    padding: 20px 20px 0 20px;
 }
 
 .hrefAfter {

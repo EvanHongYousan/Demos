@@ -40,7 +40,7 @@
         <ul>
             <li>1.输手机号抢红包，手气越好金额越高</li>
             <li>2.下载呼叫老师,用该手机号注册,就可以用红包换学时啦</li>
-            <li>3.红包只限学生使用，老师抢了送学生</li>
+            <li>3.红包只限学生使用，老师推荐学生来抢</li>
             <li>4.安卓用户更新版本即可用，苹果用户请再等两周哦>.<</li>
             <li>5.呼叫老师团队对本活动保留最终解释权</li>
         </ul>
@@ -72,8 +72,7 @@
         </div>
 
         <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
-    </div>
-    <img style="width:100%;max-width:600px;" src="images/introduce.jpg" alt=""/>
+    </div><img style="width:100%;max-width:600px;" src="images/introduce.jpg" alt=""/>
 </div>
 <div class="mask">
     <div class="tip">
@@ -189,6 +188,7 @@
                             $('.result .text .phoneNumber').text(phoneNum);
                             $('.result .text .price').text(parseInt(data.price));
                             $('.result .text > .whiteText').show();
+                            $('.result .bottom .pickle').hide();
                         }
                         else if (data.status == '1') {
                             $('.index').hide();
@@ -196,6 +196,7 @@
                             $('.opacity0').removeClass('opacity0');
                             $('.loader').remove();
                             $('.text .description, .text .phoneNumberContainer').css('opacity','0');
+                            $('.bottom > .text').css('top','60px');
                             switchPage(phoneNum, data.price);
                         }
                         else {
