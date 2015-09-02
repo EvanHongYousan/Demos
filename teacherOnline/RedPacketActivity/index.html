@@ -19,7 +19,7 @@
     </script>
 </head>
 <body>
-<div class="none"></div>
+<div class="none noneText"></div>
 <div class="container index">
     <img class="logo" src="images/logo.png" alt=""/>
     <img class="top" src="images/bg1_top.jpg" alt=""/>
@@ -47,7 +47,7 @@
         <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
     </div>
 </div>
-<div class="container result opacity0">
+<div class="container result opacity0 none" style="">
     <img class="logo" src="images/logo.png" alt=""/>
     <img src="images/bg3_up.jpg" alt="" class="top"/>
 
@@ -73,6 +73,7 @@
 
         <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
     </div>
+    <img style="width:100%;max-width:600px;" src="images/introduce.jpg" alt=""/>
 </div>
 <div class="mask">
     <div class="tip">
@@ -176,6 +177,7 @@
                     spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + phoneNum + '&callback=?',
                     function (data) {
                         console.log(data);
+                        window.scrollTo(0,0);
                         if (data.status == '7') {
                             $('.index').hide();
                             $('.result').removeClass('none').removeClass('opacity0');
@@ -244,7 +246,7 @@
             setTimeout(function () {
                 $('.mask').height(document.body.clientHeight);
                 $('.result').addClass('none');
-            }, 1000);
+            }, 500);
             if ((new Date()).Format("yyyy-MM-dd hh:mm:ss") > spreadData.endTime || (new Date()).Format("yyyy-MM-dd hh:mm:ss") < spreadData.beginTime) {
                 $('.tip .tip-content').html('好可惜，来晚啦~~红包已经抢完啦~下载呼叫老师期待下次优惠活动吧~~');
                 $('.mask .tip-footer').click(function () {
@@ -254,7 +256,7 @@
             }
         }, 500);
         $('title').text(spreadData.name[Math.floor(Math.random() * 3)]);
-        $('.none').text(spreadData.shareWording[Math.floor(Math.random() * 3)]);
+        $('.noneText').text(spreadData.shareWording[Math.floor(Math.random() * 3)]);
     })();
 </script>
 </body>
