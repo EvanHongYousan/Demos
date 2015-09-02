@@ -65,9 +65,9 @@
         <div class="text">
             <p class="whiteText">之前抢过红包啦~</p>
 
-            <p class="description">现金券已放入手机账户</p>
+            <p class="description"><span class="price"></span>元现金券</p>
 
-            <p class="phoneNumber">快去问作业吧</p>
+            <p class="phoneNumberContainer">已放入<span class="phoneNumber"></span>账户</p>
             <span id="downloadBtn">下载呼叫老师APP</span>
         </div>
 
@@ -185,6 +185,7 @@
                             $('.opacity0').removeClass('opacity0');
                             $('.loader').remove();
                             $('.result .text .phoneNumber').text(phoneNum);
+                            $('.result .text .price').text(parseInt(data.price));
                             $('.result .text > .whiteText').show();
                         }
                         else if (data.status == '1') {
@@ -192,7 +193,7 @@
                             $('.result').removeClass('none').removeClass('opacity0');
                             $('.opacity0').removeClass('opacity0');
                             $('.loader').remove();
-                            $('.text .description, .text .phoneNumber').css('opacity','0');
+                            $('.text .description, .text .phoneNumberContainer').css('opacity','0');
                             switchPage(phoneNum, data.price);
                         }
                         else {
@@ -204,7 +205,13 @@
         }
 
         $('#phoneNum').on('focus', function () {
-            window.scrollTo(0, 200)
+            setTimeout(function(){
+                window.scrollTo(0, 200)
+            },500);
+            window.scrollTo(0, 200);
+        });
+        $('.href').click(function(){
+            location.href='http://www.hjlaoshi.com';
         });
         $('#submit').click(function () {
             if (/^1[345678]\d{9}$/.test($('#phoneNum').val())) {

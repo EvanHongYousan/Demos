@@ -2,7 +2,7 @@
  * Created by yantianyu on 15/8/20.
  */
 var spreadData = {
-    id : '55e55506ad3437b5399a2692',
+    id : '55e65ef6ad3497a03371e406',
     name:["抢红包，免费问作业！","100万提问券，送你！","拼手气，抢100万红包！"],
     pic : 'http://ftp.ztmomo.com/rtc/spread/share/724854cb96d9450da6fbb984f7b8e86c.jpg',
     jsonPURL : 'http://192.168.0.231/app/spread/activity',
