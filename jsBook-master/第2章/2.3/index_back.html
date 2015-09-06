@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" value="禁止\不禁止输入" id="inhibitingInput"/>
+<input type="text" value="禁止\不禁止输入" readonly/>
+<input type="text" value="禁止\不禁止输入" disabled/>
+<input type="text" value="禁止\不禁止输入" disabled="disabled"/>
+<input type="text" value="禁止\不禁止输入" />
+<input type="text" value="禁止\不禁止输入"/>
+<script>
+    var inhibitingInput=document.getElementById('inhibitingInput');
+    inhibitingInput.onfocus=function(){
+        this.blur();
+    }
+</script>
+</body>
+</html>

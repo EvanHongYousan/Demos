@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" maxlength="6"/>
+<input type="text" id="input" data-length="5"/>
+<script>
+    window.onload=function(){
+        var input=document.getElementById('input');
+        var dataLength=parseInt(input.getAttribute('data-length'));
+        var clearStr=function(){
+            var _v=this.value;
+            if(_v.length>dataLength){
+                this.value=_v.substr(0,dataLength);
+            }
+        }
+        input.onblur=function(){
+            clearStr.call(input)
+        };
+        input.onkeyup=function(){
+            clearStr.call(input)
+        };
+        input.onfocus=function(){
+            clearStr.call(input)
+        };
+    }
+</script>
+</body>
+</html>

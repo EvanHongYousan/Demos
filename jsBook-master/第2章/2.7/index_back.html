@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="input"/>
+<script>
+    window.onload = function () {
+        var input = document.getElementById('input');
+        var clearStr = function (_this) {
+            var _v = _this.value;
+            _this.value = _v.replace(/[^\u4e00-\u9fa5]/g, '')
+            console.log(/[^\u4e00-\u9fa5]/.test(_v));
+        }
+        input.onblur = function () {
+            clearStr(this)
+        }
+        input.onfocus = function () {
+            clearStr(this)
+        }
+        input.onkeyup = function () {
+            clearStr(this)
+        }
+    }
+</script>
+</body>
+</html>

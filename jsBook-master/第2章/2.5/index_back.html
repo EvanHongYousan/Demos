@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="fobit"/>
+<script>
+    window.onload=function(){
+        var fobit=document.getElementById('fobit');
+        fobit.oncopy=function(){
+            return false;
+        };
+        fobit.onpaste=function(){
+            return false;
+        };
+    }
+</script>
+</body>
+</html>

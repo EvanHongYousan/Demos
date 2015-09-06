@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="number"/>
+<input type="text" pattern=[0-9]/>
+<input type="text" id="banNum"/>
+<script>
+    var banNum = document.getElementById('banNum'),
+            clearNonnumber = function () {
+                var _v = this.value;
+                this.value = _v.replace(/\D/g, '')
+            };
+    banNum.onblur = function () {
+        clearNonnumber.call(this);
+    };
+    banNum.onkeyup = function () {
+        clearNonnumber.call(this);
+    };
+    banNum.onfocus = function () {
+        clearNonnumber.call(this);
+    };
+</script>
+</body>
+</html>
