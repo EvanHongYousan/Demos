@@ -276,8 +276,8 @@ h1, h2, h3, h4, h5, h6{
 
 .logo{
     position:absolute;
-    top:20px;
-    left:20px;
+    top:40px;
+    left:60px;
     width:240px;
     height:60px;
 
@@ -300,11 +300,13 @@ h1, h2, h3, h4, h5, h6{
 }
 
 .copywriting > li.row1{
-    font-size:40px;
+    font-size:50px;
+    margin-bottom:30px;
 }
 
 .copywriting > li.row2{
-    font-size:30px;
+    font-size:40px;
+    margin-bottom:50px;
 }
 
 .download-android, .download-ios{
