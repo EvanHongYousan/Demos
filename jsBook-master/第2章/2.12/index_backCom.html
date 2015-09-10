@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="rollContent" class="rollContent" data-rwidth="100" data-rhight="100">
+    111111111111
+    222222222222
+    333333333333
+    333333333333
+    333333333333
+    333333333333
+</div>
+<script>
+    window.onload = function () {
+        var
+                setCss = function (_this, cssOption) {
+                    if (!_this || _this.nodeValue === 3 || _this.nodeValue === 8 || !_this.style) {
+                        return;
+                    }
+                    for (var cs in cssOption) {
+                        _this.style[cs] = cssOption[cs];
+                    }
+                    return _this;
+                },
+                rollContent = document.getElementById('rollContent'),
+                _div = rollContent.innerHTML;
+        rollContent.innerHTML = '<div id="rollContent_roll">' + _div + '</div>';
+        setCss(rollContent, {
+            'position': 'relavite',
+            'overflow': 'hidden',
+            'wordWrap': 'break-word',
+            'wordBreak': 'break-all',
+            'width': rollContent.getAttribute('data-rwidth') + 'px',
+            'height': rollContent.getAttribute('data-rhight') + 'px'
+        });
+        var
+                timeRoll = document.getElementById('rollContent_roll'),
+                _h = timeRoll.offsetHeight,
+                timeoutRoll = function () {
+                    var
+                            _h = timeRoll.offsetHeight,
+                            _t = parseInt(timeRoll.style.top, 10),
+                            _tt = _h > Math.abs(_t) || _t >= 0 ? _t - 10 : (_h || 0);
+                    setCss(timeRoll, {
+                        'top': _tt + 'px'
+                    });
+                    setTimeout(timeoutRoll, 200);
+                };
+        setCss(timeRoll,{
+            'transition':'all 1s'
+        });
+        if (_h > rollContent.getAttribute('data-rhight')) {
+            timeoutRoll();
+            setCss(timeRoll, {
+                'position': 'relative',
+                'top': '0px  '
+            });
+        }
+    };
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" placeholder="提示信息"/>
+<input type="password" id="hintInput" data-hint="提示信息" value=""/>
+<script>
+    window.onload = function () {
+        var
+                setCss = function (_this, cssOption) {
+                    if (!_this || _this.nodeType === 3 || _this.nodeType === 8 || !_this.style) {
+                        return;
+                    }
+                    for (var cs in cssOption) {
+                        _this.style[cs] = cssOption[cs];
+                    }
+                    return _this;
+                },
+                hintInput = document.getElementById('hintInput'),
+                _span = document.createElement('span'),
+                dataHint = hintInput.getAttribute('data-hint');
+
+        _span.innerText = dataHint;
+        setCss(_span, {
+            'position': 'absolute',
+            'left': hintInput.offsetLeft + 2,
+            'top': hintInput.offsetTop,
+            'zIndex': 2
+        });
+        _span.className = 'hintInput';
+        hintInput.value = '';
+        _span.setAttribute('id', 'hint0');
+        hintInput.parentNode.insertBefore(_span, hintInput);
+
+        var onhint = function(e){
+            setCss(_span,{
+                'display':'none'
+            });
+            hintInput.focus();
+        };
+        hintInput.onblur = function(e){
+
+        }
+    }
+</script>
+</body>
+</html>
