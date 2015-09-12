@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="password" class="passwordStrength" data-hint="请输入密码"/><span id="showStrength"></span>
+<script>
+    window.onload = function () {
+        function setCss(_this, cssOption) {
+            if (!_this || _this.nodeType === 3 || _this.nodeType === 8 || !_this.style) {
+                return;
+            }
+            for (var cs in cssOption) {
+                _this.style[cs] = cssOption[cs];
+            }
+            return _this;
+        }
+
+        function trim(chars) {
+            return (chars || '').replace(/^(\s|\u00a0)+|(\s|\u00a0)+$/g, '');
+        }
+
+        function passwordStrength(passwordStrength, showStrength) {
+            var _self = this;
+
+        }
+    };
+</script>
+</body>
+</html>
