@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" id="cursorPos" value="光标在文字后面"/>
+<script>
+    window.onload = function () {
+        var cursorPos = document.getElementById('cursorPos');
+
+        cursorPos.onclick = cursorPos.onkeyup = function () {
+            var _vLen = this.value.length;
+
+            if (this.setSelectionRange) {
+                this.setSelectionRange(_vLen, _vLen);
+            } else {
+                var a = this.createTextRange();
+                a.moveStart('character', _vLen);
+                a.collapse();
+                a.select();
+            }
+        }
+    };
+</script>
+</body>
+</html>

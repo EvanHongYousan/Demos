@@ -5,7 +5,7 @@
     <title></title>
 </head>
 <body>
-<input type="password" class="passwordStrength" data-hint="请输入密码"/><span id="showStrength"></span>
+<input type="password" id="passwordStrength" data-hint="请输入密码"/><span id="showStrength"></span>
 <script>
     window.onload = function () {
         function setCss(_this, cssOption) {
@@ -24,8 +24,58 @@
 
         function passwordStrength(passwordStrength, showStrength) {
             var _self = this;
+            passwordStrength.onkeyup = function (char) {
+                var
+                        _color = ['red', 'yellow', 'orange', 'green'],
+                        msgs = ["密码太短", "弱", "中", "强"],
+                        _strength = 0,
+                        _v = trim(passwordStrength.value),
+                        _vL = _v.length,
+                        i = 0;
 
+                var charStrength = function (char) {
+                    if (char >= 48 && char <= 57) {
+                        return 1;
+                    }
+                    if (char >= 97 && char <= 122) {
+                        return 2;
+                    }
+                    else {
+                        return 3;
+                    }
+                }
+
+                if (_vL < 6) {
+                    showStrength.innerHTML = msgs[0];
+                    setCss(showStrength, {
+                        'color': _color[0]
+                    });
+                } else {
+                    for (; i < _vL; i++) {
+                        _strength += charStrength(_v.toLocaleLowerCase().charCodeAt(i));
+                    }
+                    if (_strength < 10) {
+                        showStrength.innerText = msgs[1];
+                        setCss(showStrength, {
+                            "color": _color[1]
+                        })
+                    }
+                    if (_strength >= 10 && _strength < 15) {
+                        showStrength.innerText = msgs[2];
+                        setCss(showStrength, {
+                            "color": _color[2]
+                        })
+                    }
+                    if (_strength >= 15) {
+                        showStrength.innerText = msgs[3];
+                        setCss(showStrength, {
+                            "color": _color[3]
+                        })
+                    }
+                }
+            }
         }
+        passwordStrength(document.getElementById('passwordStrength'),document.getElementById('showStrength'));
     };
 </script>
 </body>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<input type="text" value='修改样式' data-fClass='fboder' data-bClass='bboder' data-fCss='{"color":"red"}' data-bCss='{"color":"green"}' id='autoUpdateCss' />
+<script>
+    window.onload = function () {
+        var
+                strToJson = function (str) {
+                    return typeof JSON == 'object' ? JSON.parse(str) : (new Function('return ' + str))();
+                },
+                setCss = function (_this, _cssOption) {
+                    if (!_this || _this.nodeType === 3 || _this.nodeType === 8 || !_this.style) {
+                        return;
+                    }
+                    for (var cs in _cssOption) {
+                        _this.style[cs] = _cssOption[cs];
+                    }
+                    return _this;
+                },
+                autoUpdateCss = document.getElementById('autoUpdateCss'),
+                fCss = autoUpdateCss.getAttribute('data-fCss'),
+                fClass = autoUpdateCss.getAttribute('data-fClass'),
+                bCss = autoUpdateCss.getAttribute('data-bCss'),
+                bClass = autoUpdateCss.getAttribute('data-bClass');
+
+        autoUpdateCss.onfocus = function () {
+            fCss && setCss(this, strToJson(fCss));
+            fClass && (this.className = fClass);
+        };
+        autoUpdateCss.onblur = function () {
+            bCss && setCss(this, strToJson(bCss));
+            bClass && (this.className = bClass);
+        };
+    };
+</script>
+</body>
+</html>
