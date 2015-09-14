@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <style>
+        * {
+            -webkit-transform: translate3d(0, 0, 0);
+            -moz-transform: translate3d(0, 0, 0);
+            -ms-transform: translate3d(0, 0, 0);
+            transform: translate3d(0, 0, 0);
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+        }
+
+        html, body {
+            width: 100%;
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .center {
+            position: absolute;
+            top: 10%;
+            left: 30%;
+            -webkit-transform: translate(-50%, -50%);
+            -moz-transform: translate(-50%, -50%);
+            -o-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+        }
+
+        .dialog {
+            -webkit-transition: all 0.3s;
+            -moz-transition: all 0.3s;
+            -o-transition: all 0.3s;
+            transition: all 0.3s;
+
+            width: 0;
+            height: 0;
+            background-color: #a6ef76;
+            z-index: 2;
+        }
+
+        .dialog.hover {
+            width: 300px;
+            height: 150px;
+            top: 50%;
+            left: 50%;
+        }
+
+        #btn {
+            background-color: purple;
+            color: white;
+            padding: 10px 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="dialog center"></div>
+<span id="btn" class="center">Click</span>
+<script>
+    window.onload = function () {
+        var
+                btn = document.getElementById('btn'),
+                dialog = document.getElementsByClassName('dialog')[0],
+                addClass = function (className) {
+                    if (this.className.search(className) != -1) {
+                        return;
+                    } else {
+                        this.className = this.className + ' ' + className;
+                    }
+                },
+                removeClass = function (className) {
+                    if (this.className.search(className) == -1) {
+                        return;
+                    } else {
+                        this.className = this.className.replace(' ' + className, '');
+                    }
+                }
+        Object.prototype.addClass = addClass;
+        Object.prototype.removeClass = removeClass;
+        btn.onclick = btn.ontouchstart = function () {
+            dialog.addClass('hover');
+        };
+        dialog.onclick = btn.ontouchstart = function () {
+            dialog.removeClass('hover');
+        };
+    };
+</script>
+</body>
+</html>
