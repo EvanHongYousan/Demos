@@ -8,6 +8,14 @@ html, body, img, div {
     user-select: none;
 }
 
+body {
+    background-color: #dfceb4;
+}
+
+.none {
+    display: none;
+}
+
 .container {
     margin: 0 auto;
     width: 100%;
@@ -51,9 +59,35 @@ html, body, img, div {
 .container .top .boy {
     top: auto;
     right: 20%;
-    bottom: 10%;
+    bottom: 9%;
     width: 18%;
     z-index: 6;
+}
+
+.container .top .board {
+    top: auto;
+    right: 0%;
+    bottom: 6%;
+    width: 24%;
+    z-index: 5;
+}
+
+.container .top .top-text {
+    position: absolute;
+    bottom: 0;
+    color: #6c4713;
+    width: 100%;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bolder;
+}
+
+.container .top .top-text .splitline {
+    display: inline-block;
+    width: 20px;
+    border-top: 2px solid #6c4713;
+    position: relative;
+    top: -4px;
 }
 
 @keyframes darkleaf {
@@ -110,106 +144,245 @@ html, body, img, div {
     }
 }
 
-.container .top .apple{
-    position:absolute;
-    width:50px;
-    height:100px;
+.container .top .apple {
+    position: absolute;
+    width: 50px;
+    height: 100px;
     z-index: 8;
 }
 
-.apple1{
-    background:url(../images/apple1.png) no-repeat;
-    background-size:100% 100%;
-    top:45%;
-    left:25%;
-    -webkit-animation: shake 1s infinite;
-    -moz-animation: shake 1s infinite;
-    -o-animation: shake 1s infinite;
-    animation: shake 1s infinite;
+.apple1 {
+    background: url(../images/apple1.png) no-repeat;
+    background-size: 100% 100%;
+    top: 45%;
+    left: 25%;
 }
-.apple2{
-    background:url(../images/apple2.png) no-repeat;
-    background-size:100% 100%;
-    top:40%;
-    left:45%;
-    -webkit-animation: shake 1s infinite 0.5s;
-    -moz-animation: shake 1s infinite 0.5s;
-    -o-animation: shake 1s infinite 0.5s;
-    animation: shake 1s infinite 0.5s;
+
+.apple2 {
+    background: url(../images/apple2.png) no-repeat;
+    background-size: 100% 100%;
+    top: 40%;
+    left: 45%;
 }
-.apple3{
-    background:url(../images/apple3.png) no-repeat;
-    background-size:100% 100%;
-    top:30%;
-    left:65%;
-    -webkit-animation: shake 1s infinite 0.8s;
-    -moz-animation: shake 1s infinite 0.8s;
-    -o-animation: shake 1s infinite 0.8s;
-    animation: shake 1s infinite 0.8s;
+
+.apple3 {
+    background: url(../images/apple3.png) no-repeat;
+    background-size: 100% 100%;
+    top: 35%;
+    left: 68%;
 }
-.apple4{
-    background:url(../images/apple4.png) no-repeat;
-    background-size:100% 100%;
-    top:30%;
-    left:25%;
-    -webkit-animation: shake 1s infinite 0.3s;
-    -moz-animation: shake 1s infinite 0.3s;
-    -o-animation: shake 1s infinite 0.3s;
-    animation: shake 1s infinite 0.3s;
+
+.apple4 {
+    background: url(../images/apple4.png) no-repeat;
+    background-size: 100% 100%;
+    top: 30%;
+    left: 25%;
 }
-.apple5{
-    background:url(../images/apple5.png) no-repeat;
-    background-size:100% 100%;
-    top:20%;
-    left:60%;
-    -webkit-animation: shake 1.3s infinite;
-    -moz-animation: shake 1.3s infinite;
-    -o-animation: shake 1.3s infinite;
-    animation: shake 1.3s infinite;
+
+.apple5 {
+    background: url(../images/apple5.png) no-repeat;
+    background-size: 100% 100%;
+    top: 20%;
+    left: 60%;
 }
-.apple6{
-    background:url(../images/apple6.png) no-repeat;
+
+.apple6 {
+    background: url(../images/apple6.png) no-repeat;
+    background-size: 100% 100%;
+    top: 16%;
+    left: 35%;
+}
+
+.apple1.hover{
+    background:url(../images/apple1_hover.png) no-repeat;
     background-size:100% 100%;
-    top:16%;
-    left:35%;
-    -webkit-animation: shake 0.8s infinite;
-    -moz-animation: shake 0.8s infinite;
-    -o-animation: shake 0.8s infinite;
-    animation: shake 0.8s infinite;
+    -webkit-animation: shake 1.5s infinite;
+    -moz-animation: shake 1.5s infinite;
+    -o-animation: shake 1.5s infinite;
+    animation: shake 1.5s infinite;
+}
+.apple2.hover{
+    background:url(../images/apple2_hover.png) no-repeat;
+    background-size:100% 100%;
+    -webkit-animation: shake 1.5s infinite 0.5s;
+    -moz-animation: shake 1.5s infinite 0.5s;
+    -o-animation: shake 1.5s infinite 0.5s;
+    animation: shake 1.5s infinite 0.5s;
+}
+.apple3.hover{
+    background:url(../images/apple3_hover.png) no-repeat;
+    background-size:100% 100%;
+    -webkit-animation: shake 1.5s infinite 0.8s;
+    -moz-animation: shake 1.5s infinite 0.8s;
+    -o-animation: shake 1.5s infinite 0.8s;
+    animation: shake 1.5s infinite 0.8s;
+}
+.apple4.hover{
+    background:url(../images/apple4_hover.png) no-repeat;
+    background-size:100% 100%;
+    -webkit-animation: shake 1.5s infinite 0.3s;
+    -moz-animation: shake 1.5s infinite 0.3s;
+    -o-animation: shake 1.5s infinite 0.3s;
+    animation: shake 1.5s infinite 0.3s;
+}
+.apple5.hover{
+    background:url(../images/apple5_hover.png) no-repeat;
+    background-size:100% 100%;
+    -webkit-animation: shake 1.8s infinite;
+    -moz-animation: shake 1.8s infinite;
+    -o-animation: shake 1.8s infinite;
+    animation: shake 1.8s infinite;
+}
+.apple6.hover{
+    background:url(../images/apple6_hover.png) no-repeat;
+    background-size:100% 100%;
+    -webkit-animation: shake 1.2s infinite;
+    -moz-animation: shake 1.2s infinite;
+    -o-animation: shake 1.2s infinite;
+    animation: shake 1.2s infinite;
+}
+
+@keyframes shake {
+    0% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    50% {
+        -webkit-transform: rotate(-5deg);
+        -moz-transform: rotate(-5deg);
+        -o-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    100% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+}
+
+
+#btn_invite {
+    display: block;
+    margin: 0 auto;
+    width: 150px;
+    height: 60px;
+    /*background: url(../images/btn_invite.png);*/
+    /*background-size: 100% 100%;*/
+    position: relative;
+}
+
+#btn_invite img:nth-of-type(2) {
+    position: absolute;
+    top: 0;
+    left: 0;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+#btn_invite:active img:nth-of-type(2) {
+    opacity: 0;
 }
 
 .container .bottom h4 {
     text-align: center;
     color: #664713;
+    font-size: 20px;
+    line-height: 18px;
+}
+
+.container .bottom p.row1, .container .bottom p.row2, .container .bottom p.row3, .container .bottom p.row4 {
+    text-align: center;
+    font-size: 16px;
+    color: #b68e53;
+    font-weight: bold;
+    text-shadow: 0px -1px 0px #664713;
+}
+
+.container .bottom p.row2 {
+    margin-bottom: 20px;
+}
+
+.container .bottom p {
+    color: #a57938;
+    padding: 0 10px;
+    font-size: 13px;
+    margin: 7px 0;
 }
 
 .container .bottom img {
     width: 100%;
 }
 
-@keyframes shake {
-    0%{
-        -webkit-transform: rotate(2deg);
-        -moz-transform: rotate(2deg);
-        -o-transform: rotate(2deg);
-        transform: rotate(2deg);
+.loader {
+    font-size: 90px;
+    text-indent: -9999em;
+    overflow: hidden;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+    margin: 33% auto;
+    position: relative;
+    -webkit-animation: load6 1.7s infinite ease;
+    -moz-animation: load6 1.7s infinite ease;
+    -o-animation: load6 1.7s infinite ease;
+    animation: load6 1.7s infinite ease;
+}
+
+@-webkit-keyframes load6 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        box-shadow: -0.11em -0.83em 0 -0.4em #ffffff, -0.11em -0.83em 0 -0.42em #ffffff, -0.11em -0.83em 0 -0.44em #ffffff, -0.11em -0.83em 0 -0.46em #ffffff, -0.11em -0.83em 0 -0.477em #ffffff;
     }
-    33%{
-        -webkit-transform: rotate(-2deg);
-        -moz-transform: rotate(-2deg);
-        -o-transform: rotate(-2deg);
-        transform: rotate(-2deg);
+    5%,
+    95% {
+        box-shadow: -0.11em -0.83em 0 -0.4em #ffffff, -0.11em -0.83em 0 -0.42em #ffffff, -0.11em -0.83em 0 -0.44em #ffffff, -0.11em -0.83em 0 -0.46em #ffffff, -0.11em -0.83em 0 -0.477em #ffffff;
     }
-    66%{
-        -webkit-transform: rotate(4deg);
-        -moz-transform: rotate(4deg);
-        -o-transform: rotate(4deg);
-        transform: rotate(4deg);
+    30% {
+        box-shadow: -0.11em -0.83em 0 -0.4em #ffffff, -0.51em -0.66em 0 -0.42em #ffffff, -0.75em -0.36em 0 -0.44em #ffffff, -0.83em -0.03em 0 -0.46em #ffffff, -0.81em 0.21em 0 -0.477em #ffffff;
     }
-    100%{
-        -webkit-transform: rotate(2deg);
-        -moz-transform: rotate(2deg);
-        -o-transform: rotate(2deg);
-        transform: rotate(2deg);
+    55% {
+        box-shadow: -0.11em -0.83em 0 -0.4em #ffffff, -0.29em -0.78em 0 -0.42em #ffffff, -0.43em -0.72em 0 -0.44em #ffffff, -0.52em -0.65em 0 -0.46em #ffffff, -0.57em -0.61em 0 -0.477em #ffffff;
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+        box-shadow: -0.11em -0.83em 0 -0.4em #ffffff, -0.11em -0.83em 0 -0.42em #ffffff, -0.11em -0.83em 0 -0.44em #ffffff, -0.11em -0.83em 0 -0.46em #ffffff, -0.11em -0.83em 0 -0.477em #ffffff;
+    }
+}
+
+@keyframes load6 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        box-shadow: -0.11em -0.83em 0 -0.4em #ffffff, -0.11em -0.83em 0 -0.42em #ffffff, -0.11em -0.83em 0 -0.44em #ffffff, -0.11em -0.83em 0 -0.46em #ffffff, -0.11em -0.83em 0 -0.477em #ffffff;
+    }
+    5%,
+    95% {
+        box-shadow: -0.11em -0.83em 0 -0.4em #ffffff, -0.11em -0.83em 0 -0.42em #ffffff, -0.11em -0.83em 0 -0.44em #ffffff, -0.11em -0.83em 0 -0.46em #ffffff, -0.11em -0.83em 0 -0.477em #ffffff;
+    }
+    30% {
+        box-shadow: -0.11em -0.83em 0 -0.4em #ffffff, -0.51em -0.66em 0 -0.42em #ffffff, -0.75em -0.36em 0 -0.44em #ffffff, -0.83em -0.03em 0 -0.46em #ffffff, -0.81em 0.21em 0 -0.477em #ffffff;
+    }
+    55% {
+        box-shadow: -0.11em -0.83em 0 -0.4em #ffffff, -0.29em -0.78em 0 -0.42em #ffffff, -0.43em -0.72em 0 -0.44em #ffffff, -0.52em -0.65em 0 -0.46em #ffffff, -0.57em -0.61em 0 -0.477em #ffffff;
+    }
+    100% {
+        -webkit-transform: rotate(360deg);
+        -moz-transform: rotate(360deg);
+        -o-transform: rotate(360deg);
+        transform: rotate(360deg);
+        box-shadow: -0.11em -0.83em 0 -0.4em #ffffff, -0.11em -0.83em 0 -0.42em #ffffff, -0.11em -0.83em 0 -0.44em #ffffff, -0.11em -0.83em 0 -0.46em #ffffff, -0.11em -0.83em 0 -0.477em #ffffff;
     }
 }

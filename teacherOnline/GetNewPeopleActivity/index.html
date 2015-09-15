@@ -8,28 +8,39 @@
     <link rel="stylesheet" href="./css/main.css"/>
 </head>
 <body>
-<div class="container">
+<div class="loader">加载中...</div>
+<div class="container none">
     <div class="top">
-        <img src="./images/bg_top.jpg" class="tree" alt=""/>
-        <img src="./images/darkleaf.png" class="darkleaf" alt=""/>
-        <img src="./images/lightleaf.png" class="lightleaf" alt=""/>
+        <img src="./images/bg_top.png" class="tree" alt=""/>
         <img src="./images/boy.png" class="boy" alt=""/>
-        <span class="apple apple1"></span>
-        <span class="apple apple2"></span>
+        <img src="./images/board.png" alt="" class="board"/>
+        <span class="apple apple1 hover"></span>
+        <span class="apple apple2 hover"></span>
         <span class="apple apple3"></span>
         <span class="apple apple4"></span>
         <span class="apple apple5"></span>
         <span class="apple apple6"></span>
+        <p class="top-text"><span class="splitline"></span>你有<span>0</span>次摘果实机会<span class="splitline"></span></p>
     </div>
     <div class="bottom">
+        <span id="btn_invite">
+            <img src="./images/btn_invite_hover.png" alt=""/>
+            <img src="./images/btn_invite.png" alt=""/>
+        </span>
+        <p class="row1">邀请码</p>
+        <p class="row2">HJGUY75637285</p>
+        <p class="row3">推荐好友安装APP，激活你的邀请码</p>
+        <p class="row4">即可获得抽奖机会哦~</p>
         <h4>活动规则</h4>
-        <p>1.点击【邀请好友】，发送你的激活码给对方。</p>
+        <p>1.点击【邀请好友】，发送你的邀请码给对方。</p>
         <p>2.好友下载呼叫老师，并在【我的优惠】中激活兑换码，你就获得1次抽奖机会。</p>
-        <p>1.点击【邀请好友】，发送你的激活码给对方。</p>
-        <p>1.点击【邀请好友】，发送你的激活码给对方。</p>
+        <p>3.每人最多赢得6次抽奖机会，奖项逐步增大哦~现金券、学时卡、好玩的时尚的应有尽有！</p>
+        <p>4.本活动最终解释权归呼叫老师团队所有</p>
         <img src="./images/trunk.png" alt=""/>
     </div>
 </div>
+<img src="./images/btn_invite_hover.png" alt="" style="position:absolute;top:0;left:0;opacity:0;"/>
 <script src="http://libs.baidu.com/zepto/0.8/zepto.min.js"></script>
+<script src="./js/main.js"></script>
 </body>
 </html>
