@@ -193,49 +193,54 @@ body {
     left: 35%;
 }
 
-.apple1.hover{
-    background:url(../images/apple1_hover.png) no-repeat;
-    background-size:100% 100%;
+.apple1.hover {
+    background: url(../images/apple1_hover.png) no-repeat;
+    background-size: 100% 100%;
     -webkit-animation: shake 1.5s infinite;
     -moz-animation: shake 1.5s infinite;
     -o-animation: shake 1.5s infinite;
     animation: shake 1.5s infinite;
 }
-.apple2.hover{
-    background:url(../images/apple2_hover.png) no-repeat;
-    background-size:100% 100%;
+
+.apple2.hover {
+    background: url(../images/apple2_hover.png) no-repeat;
+    background-size: 100% 100%;
     -webkit-animation: shake 1.5s infinite 0.5s;
     -moz-animation: shake 1.5s infinite 0.5s;
     -o-animation: shake 1.5s infinite 0.5s;
     animation: shake 1.5s infinite 0.5s;
 }
-.apple3.hover{
-    background:url(../images/apple3_hover.png) no-repeat;
-    background-size:100% 100%;
+
+.apple3.hover {
+    background: url(../images/apple3_hover.png) no-repeat;
+    background-size: 100% 100%;
     -webkit-animation: shake 1.5s infinite 0.8s;
     -moz-animation: shake 1.5s infinite 0.8s;
     -o-animation: shake 1.5s infinite 0.8s;
     animation: shake 1.5s infinite 0.8s;
 }
-.apple4.hover{
-    background:url(../images/apple4_hover.png) no-repeat;
-    background-size:100% 100%;
+
+.apple4.hover {
+    background: url(../images/apple4_hover.png) no-repeat;
+    background-size: 100% 100%;
     -webkit-animation: shake 1.5s infinite 0.3s;
     -moz-animation: shake 1.5s infinite 0.3s;
     -o-animation: shake 1.5s infinite 0.3s;
     animation: shake 1.5s infinite 0.3s;
 }
-.apple5.hover{
-    background:url(../images/apple5_hover.png) no-repeat;
-    background-size:100% 100%;
+
+.apple5.hover {
+    background: url(../images/apple5_hover.png) no-repeat;
+    background-size: 100% 100%;
     -webkit-animation: shake 1.8s infinite;
     -moz-animation: shake 1.8s infinite;
     -o-animation: shake 1.8s infinite;
     animation: shake 1.8s infinite;
 }
-.apple6.hover{
-    background:url(../images/apple6_hover.png) no-repeat;
-    background-size:100% 100%;
+
+.apple6.hover {
+    background: url(../images/apple6_hover.png) no-repeat;
+    background-size: 100% 100%;
     -webkit-animation: shake 1.2s infinite;
     -moz-animation: shake 1.2s infinite;
     -o-animation: shake 1.2s infinite;
@@ -263,8 +268,70 @@ body {
     }
 }
 
+@-webkit-keyframes shake {
+    0% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    50% {
+        -webkit-transform: rotate(-5deg);
+        -moz-transform: rotate(-5deg);
+        -o-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    100% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+}
 
-#btn_invite {
+@-moz-keyframes shake {
+    0% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    50% {
+        -webkit-transform: rotate(-5deg);
+        -moz-transform: rotate(-5deg);
+        -o-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    100% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+}
+
+@-o-keyframes shake {
+    0% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+    50% {
+        -webkit-transform: rotate(-5deg);
+        -moz-transform: rotate(-5deg);
+        -o-transform: rotate(-5deg);
+        transform: rotate(-5deg);
+    }
+    100% {
+        -webkit-transform: rotate(5deg);
+        -moz-transform: rotate(5deg);
+        -o-transform: rotate(5deg);
+        transform: rotate(5deg);
+    }
+}
+
+#btn_invite, #btn_gotoInvite {
     display: block;
     margin: 0 auto;
     width: 150px;
@@ -274,7 +341,7 @@ body {
     position: relative;
 }
 
-#btn_invite img:nth-of-type(2) {
+#btn_invite img:nth-of-type(2), #btn_gotoInvite img:nth-of-type(2) {
     position: absolute;
     top: 0;
     left: 0;
@@ -284,8 +351,17 @@ body {
     transition: all 0.5s;
 }
 
-#btn_invite:active img:nth-of-type(2) {
+#btn_invite:active img:nth-of-type(2), #btn_gotoInvite:active img:nth-of-type(2) {
     opacity: 0;
+}
+
+#btn_gotoInvite {
+    width: 120px;
+    height: 30px;
+}
+
+#btn_gotoInvite img {
+    width: 100%;
 }
 
 .container .bottom h4 {
@@ -316,6 +392,50 @@ body {
 
 .container .bottom img {
     width: 100%;
+}
+
+.mask {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 10;
+}
+
+.mask .dialogGotInvite {
+    position: fixed;
+    top: 10%;
+    left: 10%;
+    width: 80%;
+    height: 200px;
+    padding-top: 100px;
+    background: url(../images/apple_dialog.png) no-repeat;
+    background-size: 100% 100%;
+    /*background-position-x:50%;*/
+}
+
+.mask .dialogGotInvite .cancel {
+    width: 30px;
+    height: 30px;
+    background: url(../images/btn_cancel.png);
+    background-size: 100% 100%;
+    position: absolute;
+    right: 20px;
+    top: 30%;
+}
+
+.mask .dialogGotInvite .cancel:active {
+    background: url(../images/btn_cancel_hover.png);
+    background-size: 100% 100%;
+}
+
+.mask .dialogGotInvite p {
+    text-align: center;
+    color: #fee7c5;
+    font-size: 20px;
+    font-weight: bolder;
 }
 
 .loader {
