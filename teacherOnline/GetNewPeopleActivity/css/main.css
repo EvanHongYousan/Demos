@@ -1,4 +1,4 @@
-html, body {
+html, body, img, div {
     padding: 0;
     margin: 0;
     border: none;
@@ -12,4 +12,204 @@ html, body {
     margin: 0 auto;
     width: 100%;
     max-width: 600px;
+    overflow: hidden;
+    /*font-size: 0;*/
+    background-image: url(../images/bg_basic.jpg);
+}
+
+.container .top, .container .bottom {
+    width: 100%;
+    position: relative;
+}
+
+.container .top img {
+    width: 100%;
+    position: absolute;
+    top: 0;
+}
+
+.container .top img.tree {
+    position: static;
+}
+
+.container .top .darkleaf {
+    /*-webkit-animation: darkleaf 1s infinite;*/
+    /*-moz-animation: darkleaf 1s infinite;*/
+    /*-o-animation: darkleaf 1s infinite;*/
+    /*animation: darkleaf 1s infinite;*/
+    z-index: 2;
+}
+
+.container .top .lightleaf {
+    /*-webkit-animation: lightleaf 1s infinite;*/
+    /*-moz-animation: lightleaf 1s infinite;*/
+    /*-o-animation: lightleaf 1s infinite;*/
+    /*animation: lightleaf 1s infinite;*/
+    z-index: 4;
+}
+
+.container .top .boy {
+    top: auto;
+    right: 20%;
+    bottom: 10%;
+    width: 18%;
+    z-index: 6;
+}
+
+@keyframes darkleaf {
+    0% {
+        -webkit-transform: rotate(4deg);
+        -moz-transform: rotate(4deg);
+        -o-transform: rotate(4deg);
+        transform: rotate(4deg);
+    }
+    25% {
+        -webkit-transform: rotate(-4deg);
+        -moz-transform: rotate(-4deg);
+        -o-transform: rotate(-4deg);
+        transform: rotate(-4deg);
+    }
+    50% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+@keyframes lightleaf {
+    0% {
+        -webkit-transform: rotate(-4deg);
+        -moz-transform: rotate(-4deg);
+        -o-transform: rotate(-4deg);
+        transform: rotate(-4deg);
+    }
+    25% {
+        -webkit-transform: rotate(4deg);
+        -moz-transform: rotate(4deg);
+        -o-transform: rotate(4deg);
+        transform: rotate(4deg);
+    }
+    50% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+    100% {
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+}
+
+.container .top .apple{
+    position:absolute;
+    width:50px;
+    height:100px;
+    z-index: 8;
+}
+
+.apple1{
+    background:url(../images/apple1.png) no-repeat;
+    background-size:100% 100%;
+    top:45%;
+    left:25%;
+    -webkit-animation: shake 1s infinite;
+    -moz-animation: shake 1s infinite;
+    -o-animation: shake 1s infinite;
+    animation: shake 1s infinite;
+}
+.apple2{
+    background:url(../images/apple2.png) no-repeat;
+    background-size:100% 100%;
+    top:40%;
+    left:45%;
+    -webkit-animation: shake 1s infinite 0.5s;
+    -moz-animation: shake 1s infinite 0.5s;
+    -o-animation: shake 1s infinite 0.5s;
+    animation: shake 1s infinite 0.5s;
+}
+.apple3{
+    background:url(../images/apple3.png) no-repeat;
+    background-size:100% 100%;
+    top:30%;
+    left:65%;
+    -webkit-animation: shake 1s infinite 0.8s;
+    -moz-animation: shake 1s infinite 0.8s;
+    -o-animation: shake 1s infinite 0.8s;
+    animation: shake 1s infinite 0.8s;
+}
+.apple4{
+    background:url(../images/apple4.png) no-repeat;
+    background-size:100% 100%;
+    top:30%;
+    left:25%;
+    -webkit-animation: shake 1s infinite 0.3s;
+    -moz-animation: shake 1s infinite 0.3s;
+    -o-animation: shake 1s infinite 0.3s;
+    animation: shake 1s infinite 0.3s;
+}
+.apple5{
+    background:url(../images/apple5.png) no-repeat;
+    background-size:100% 100%;
+    top:20%;
+    left:60%;
+    -webkit-animation: shake 1.3s infinite;
+    -moz-animation: shake 1.3s infinite;
+    -o-animation: shake 1.3s infinite;
+    animation: shake 1.3s infinite;
+}
+.apple6{
+    background:url(../images/apple6.png) no-repeat;
+    background-size:100% 100%;
+    top:16%;
+    left:35%;
+    -webkit-animation: shake 0.8s infinite;
+    -moz-animation: shake 0.8s infinite;
+    -o-animation: shake 0.8s infinite;
+    animation: shake 0.8s infinite;
+}
+
+.container .bottom h4 {
+    text-align: center;
+    color: #664713;
+}
+
+.container .bottom img {
+    width: 100%;
+}
+
+@keyframes shake {
+    0%{
+        -webkit-transform: rotate(2deg);
+        -moz-transform: rotate(2deg);
+        -o-transform: rotate(2deg);
+        transform: rotate(2deg);
+    }
+    33%{
+        -webkit-transform: rotate(-2deg);
+        -moz-transform: rotate(-2deg);
+        -o-transform: rotate(-2deg);
+        transform: rotate(-2deg);
+    }
+    66%{
+        -webkit-transform: rotate(4deg);
+        -moz-transform: rotate(4deg);
+        -o-transform: rotate(4deg);
+        transform: rotate(4deg);
+    }
+    100%{
+        -webkit-transform: rotate(2deg);
+        -moz-transform: rotate(2deg);
+        -o-transform: rotate(2deg);
+        transform: rotate(2deg);
+    }
 }
