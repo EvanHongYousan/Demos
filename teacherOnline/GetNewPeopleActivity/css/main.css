@@ -331,7 +331,7 @@ body {
     }
 }
 
-#btn_invite, #btn_gotoInvite {
+#btn_invite, #btn_gotoInvite, #btn_getAward {
     display: block;
     margin: 0 auto;
     width: 150px;
@@ -341,7 +341,7 @@ body {
     position: relative;
 }
 
-#btn_invite img:nth-of-type(2), #btn_gotoInvite img:nth-of-type(2) {
+#btn_invite img:nth-of-type(2), #btn_gotoInvite img:nth-of-type(2), #btn_getAward img:nth-last-of-type(2) {
     position: absolute;
     top: 0;
     left: 0;
@@ -351,16 +351,22 @@ body {
     transition: all 0.5s;
 }
 
-#btn_invite:active img:nth-of-type(2), #btn_gotoInvite:active img:nth-of-type(2) {
+#btn_invite:active img:nth-of-type(2), #btn_gotoInvite:active img:nth-of-type(2), #btn_getAward:active img:nth-of-type(2) {
     opacity: 0;
 }
 
-#btn_gotoInvite {
-    width: 120px;
+#btn_gotoInvite, #btn_getAward {
+    width: 190px;
     height: 30px;
+    position: relative;
+    bottom: -150px;
 }
 
-#btn_gotoInvite img {
+#btn_getAward {
+    bottom: -160px;
+}
+
+#btn_gotoInvite img, #btn_getAward img {
     width: 100%;
 }
 
@@ -404,7 +410,16 @@ body {
     z-index: 10;
 }
 
-.mask .dialogGotInvite {
+.mask .close {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    font-size: 25px;
+    color: #fee7c5;
+    font-weight: bolder;
+}
+
+.mask .dialogGotInvite, .mask .dialogInviteSuccess, .mask .dialogGetAward {
     position: fixed;
     top: 10%;
     left: 10%;
@@ -416,7 +431,18 @@ body {
     /*background-position-x:50%;*/
 }
 
-.mask .dialogGotInvite .cancel {
+.mask .dialogInviteSuccess {
+    padding-top: 10px;
+    background: url(../images/inviteSuccess.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.mask .dialogGetAward {
+    background: url(../images/appleCuted.png) no-repeat;
+    background-size: 100% 100%;
+}
+
+.mask .dialogGotInvite .cancel, .mask .dialogInviteSuccess .cancel {
     width: 30px;
     height: 30px;
     background: url(../images/btn_cancel.png);
@@ -426,16 +452,51 @@ body {
     top: 30%;
 }
 
-.mask .dialogGotInvite .cancel:active {
+.mask .dialogGotInvite .cancel:active, .mask .dialogInviteSuccess .cancel:active {
     background: url(../images/btn_cancel_hover.png);
     background-size: 100% 100%;
 }
 
-.mask .dialogGotInvite p {
+.mask .dialogInviteSuccess h4, .mask .dialogGetAward h4 {
+    text-align: center;
+    font-size: 25px;
+    color: #764a1e;
+    font-weight: bolder;
+    margin: 20px 0;
+}
+
+.mask .dialogGetAward h4 {
+    margin-top: 0;
+    font-weight: bolder;
+    color: #a58758;
+}
+
+.mask .dialogInviteSuccess p {
+    margin: 0;
+}
+
+.mask .dialogInviteSuccess p.specialStyle {
+    color: #764a1e;
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.mask .dialogGotInvite p, .mask .dialogInviteSuccess p, .mask .dialogGetAward p {
     text-align: center;
     color: #fee7c5;
     font-size: 20px;
     font-weight: bolder;
+}
+
+.mask .dialogGetAward p {
+    color: #a58758;
+    margin: 0;
+}
+
+.mask .dialogGetAward p.specialStyle {
+    color: #ffbc05;
+    margin: 20px 0;
+    font-size: 25px;
 }
 
 .loader {
