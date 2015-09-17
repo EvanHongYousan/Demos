@@ -155,14 +155,14 @@ body {
     width: 50px;
     height: 100px;
     z-index: 8;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
+    -webkit-transition: all 0.2s ease-in;
+    -moz-transition: all 0.2s ease-in;
+    -o-transition: all 0.2s ease-in;
+    transition: all 0.2s ease-in;
 }
 
 .container .top .apple.drop {
-    top: 325px;
+    top: 72%;
 }
 
 .apple1 {
@@ -345,7 +345,7 @@ body {
     }
 }
 
-#btn_invite, #btn_gotoInvite, #btn_getAward {
+#btn_invite, #btn_gotoInvite, #btn_getAward, #btn_share {
     display: block;
     margin: 0 auto;
     width: 150px;
@@ -355,7 +355,7 @@ body {
     position: relative;
 }
 
-#btn_invite img:nth-of-type(2), #btn_gotoInvite img:nth-of-type(2), #btn_getAward img:nth-last-of-type(2) {
+#btn_invite img:nth-of-type(2), #btn_gotoInvite img:nth-of-type(2), #btn_getAward img:nth-last-of-type(2), #btn_share img:nth-of-type(2) {
     position: absolute;
     top: 0;
     left: 0;
@@ -365,22 +365,18 @@ body {
     transition: all 0.5s;
 }
 
-#btn_invite:active img:nth-of-type(2), #btn_gotoInvite:active img:nth-of-type(2), #btn_getAward:active img:nth-of-type(2) {
+#btn_invite:active img:nth-of-type(2), #btn_gotoInvite:active img:nth-of-type(2), #btn_getAward:active img:nth-of-type(2), #btn_share:active img:nth-of-type(2) {
     opacity: 0;
 }
 
-#btn_gotoInvite, #btn_getAward {
+#btn_gotoInvite, #btn_getAward, #btn_share {
     width: 190px;
     height: 30px;
     position: relative;
-    bottom: -150px;
+    bottom: -50px;
 }
 
-#btn_getAward {
-    bottom: -160px;
-}
-
-#btn_gotoInvite img, #btn_getAward img {
+#btn_gotoInvite img, #btn_getAward img, #btn_share img {
     width: 100%;
 }
 
@@ -445,7 +441,7 @@ body {
     font-weight: bolder;
 }
 
-.mask .dialogGotInvite, .mask .dialogInviteSuccess, .mask .dialogGetAward {
+.mask .dialogGotInvite, .mask .dialogInviteSuccess, .mask .dialogGetAward, .mask .dialogFinalAward {
     position: fixed;
     top: 10%;
     left: 10%;
@@ -463,7 +459,7 @@ body {
     background-size: 100% 100%;
 }
 
-.mask .dialogGetAward {
+.mask .dialogGetAward, .mask .dialogFinalAward {
     background: url(../images/appleCuted.png) no-repeat;
     background-size: 100% 100%;
 }
@@ -507,22 +503,27 @@ body {
     margin: 10px 0;
 }
 
-.mask .dialogGotInvite p, .mask .dialogInviteSuccess p, .mask .dialogGetAward p {
+.mask .dialogGotInvite p, .mask .dialogInviteSuccess p, .mask .dialogGetAward p, .mask .dialogFinalAward p {
     text-align: center;
     color: #fee7c5;
-    font-size: 20px;
+    font-size: 1.1rem;
     font-weight: bolder;
 }
 
-.mask .dialogGetAward p {
+.mask .dialogGetAward p, .mask .dialogFinalAward p {
     color: #a58758;
     margin: 0;
 }
 
-.mask .dialogGetAward p.specialStyle {
+.mask .dialogGetAward p.specialStyle, .mask .dialogFinalAward p.specialStyle {
     color: #ffbc05;
     margin: 20px 0;
     font-size: 25px;
+}
+
+.mask .dialogFinalAward p.redText {
+    color: #e32127;
+    font-size: 16px;
 }
 
 .loader {

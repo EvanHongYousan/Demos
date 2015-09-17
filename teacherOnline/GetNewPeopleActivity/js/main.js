@@ -23,7 +23,9 @@ $(document).ready(function () {
 
     var components = (function () {
 
-        var userId = null;
+        var
+            userId = null,
+            isShowMask = false;
 
         function maskBindEv() {
             $('.mask').height($(document).height() + 56);
@@ -32,6 +34,8 @@ $(document).ready(function () {
             });
             $('.mask .close').click(function () {
                 $('.mask').addClass('none');
+                $('.mask > div').addClass('none');
+                isShowMask = false;
             });
         }
 
@@ -46,7 +50,10 @@ $(document).ready(function () {
                         });
                         break;
                     case 'client_msg_shake':
-                        alert('摇一摇啊摇一摇');
+                        if (isShowMask) break;
+                        isShowMask = true;
+                        $('.boy').trigger('touchend');
+                        break;
                     default :
                         break;
                 }
@@ -64,6 +71,16 @@ $(document).ready(function () {
                     "target_url_forQQ": location.href.toString()
                 });
             });
+            $('#btn_share').click(function () {
+                JSNativeBridge.send('share', {
+                    "content": '测测测是事实范德萨发打发时间来看之这里是content',
+                    "title": '范德萨开发商打范德萨姐姐之这里是title',
+                    "type": 0,
+                    "image_url": 'http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E8%8B%B9%E6%9E%9C&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&cs=3058169762,2736869049&os=508208126,2953768013&pn=3&rn=1&di=156292703630&ln=1948&fr=&fmq=1442386142859_R&ic=undefined&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=10&gsm=0&objurl=http%3A%2F%2Fpic.baike.soso.com%2Fp%2F20140126%2F20140126160937-284473768.jpg',
+                    "target_url": location.href.toString().replace('index.html', 'supershare.html') + '?username=' + Base64.encodeURI('啊测试测试') + "&award=898989元奖券",
+                    "target_url_forQQ": location.href.toString()
+                });
+            });
         }
 
         function doLottery() {
@@ -71,10 +88,17 @@ $(document).ready(function () {
                 'http://192.168.0.164:9091/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
                 function (data) {
                     console.log(data);
-                    $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
-                    $('.mask .dialogGetAward').removeClass('none');
-                    $('.mask .dialogGetAward .specialStyle').text(data._APP_RESULT_OPT_DATA.lottery);
-                    $('.mask').removeClass('none');
+                    if (data._APP_RESULT_OPT_DATA.count == 0) {
+                        $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
+                        $('.dialogFinalAward .specialStyle').text(data._APP_RESULT_OPT_DATA.lottery);
+                        $('.dialogFinalAward').removeClass('none');
+                        $('.mask').removeClass('none');
+                    } else {
+                        $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
+                        $('.mask .dialogGetAward').removeClass('none');
+                        $('.mask .dialogGetAward .specialStyle').text(data._APP_RESULT_OPT_DATA.lottery);
+                        $('.mask').removeClass('none');
+                    }
                 }
             );
         }

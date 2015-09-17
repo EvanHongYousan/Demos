@@ -45,14 +45,15 @@
             text-align: center;
             color: #A67b34;
             font-weight: bolder;
-            margin-top: -20px;
         }
 
         .container .bottom p {
-            font-size: 22px;
-            color: #664612;
+            font-size: 18px;
+            line-height: 30px;
+            color: #71522a;
             text-align: center;
             font-weight: 900;
+            margin: 0;
         }
 
         .container .bottom .copy {
@@ -69,11 +70,16 @@
             color: #af8b52;
         }
 
+        .container .bottom .littleText {
+            font-weight: normal;
+            font-size: 12px;
+        }
+
         #download {
             display: block;
-            margin: 20px auto;
+            margin: 5px auto 0 auto;
             width: 220px;
-            height: 60px;
+            height: 50px;
             /*background: url(../images/btn_invite.png);*/
             /*background-size: 100% 100%;*/
             position: relative;
@@ -101,27 +107,36 @@
         #invitecode {
             color: #43a00f;
         }
+
+        #award {
+            color: #fdf100;
+        }
     </style>
 </head>
 <body>
 <div class="container">
-    <img src="./images/bg_invite_top.png" alt="" class="top"/>
+    <img src="./images/bg_finalaward_top.png" alt="" class="top"/>
 
     <div class="bottom">
         <img src="./images/trunk2.png" alt="" class="trunk"/>
 
-        <h3><span id="username">小小明</span> 邀请码</h3>
+        <p style="margin-top:-20px;">太厉害了</p>
 
-        <p id="invitecode">HJLS5743957973</p>
+        <p>您的好友<span id="username">小小明</span> 获得了呼叫老师的</p>
 
-        <p class="slogan">"下载APP，输入邀请码，</p>
+        <p id="award">199元现金券</p>
 
-        <p class="slogan">快帮我激活抽奖机会么么哒"</p>
+        <p>终极大礼</p>
+
+
+        <p class="littleText" style="margin-top:20px;">赶紧下载呼叫老师，领取终极大礼吧~</p>
 
         <span id="download">
             <img src="./images/btn_download_hover.png" alt=""/>
             <img src="./images/btn_download.png" alt=""/>
         </span>
+
+        <p class="littleText">www.hjlaoshi.com</p>
 
     </div>
 </div>
@@ -173,8 +188,8 @@
         if (getReqPrm('username')) {
             document.getElementById('username').innerHTML = Base64.decode(getReqPrm('username'));
         }
-        if (getReqPrm('invitecode')) {
-            document.getElementById('invitecode').innerHTML = getReqPrm('invitecode');
+        if (getReqPrm('award')) {
+            document.getElementById('award').innerHTML = getReqPrm('award');
         }
     }
 </script>
