@@ -498,6 +498,14 @@
             if ( getChannelId() == '058' || getChannelId() == '066' || getChannelId() == '070' ){
                 document.location.href = 'http://ftp.ztmomo.com/rtc/spread/55dec930a8d691178677f8d3/share/index.html';
             }
+            if(getChannelId() == '054'){
+                if(isIOS()){
+                    document.location.href = down_ios_forWeixin_url;
+                }
+                if(isAndroid()){
+                    document.location.href = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/054/hjlaoshi.apk';
+                }
+            }
             /*若参数dwnldnow为true，则直接根据机型下载安装包 end*/
         }
 
