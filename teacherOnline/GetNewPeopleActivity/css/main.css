@@ -526,6 +526,23 @@ body {
     font-size: 16px;
 }
 
+.invitenotice {
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+    height: 200px;
+    background: url(../images/bg_invitenotice.png) no-repeat;
+    background-size: 100% 100%;
+    z-index: 1000;
+}
+
+.invitenotice p {
+    text-align: center;
+    color: #b68e53;
+    text-shadow: 0px -1px 0px #664713;
+    font-weight: bolder;
+}
+
 .loader {
     font-size: 90px;
     text-indent: -9999em;
