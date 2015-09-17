@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <title></title>
+    <style>
+        html, body, img, div {
+            padding: 0;
+            margin: 0;
+            border: none;
+            font-family: '微软雅黑';
+        }
+
+        body {
+            background: url(./images/bg_invite_bottom_basic.png);
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 0;
+        }
+
+        .container img {
+            width: 100%;
+        }
+
+        .container .bottom {
+            /*background: url(./images/bg_invite_bottom_basic.png);*/
+            padding-top: 60px;
+            position: relative;
+        }
+
+        .container .bottom .trunk {
+            position: absolute;
+            top: -10px;
+            left: 0;
+        }
+
+        .container .bottom h3 {
+            font-size: 22px;
+            text-align: center;
+            color: #A67b34;
+            font-weight: bolder;
+        }
+
+        .container .bottom p {
+            font-size: 22px;
+            color: #664612;
+            text-align: center;
+            font-weight: 900;
+        }
+
+        .container .bottom .copy {
+            border-radius: 5px;
+            border: 2px solid #664612;
+            font-size: 14px;
+            /*font-weight: normal;*/
+            padding: 3px 5px;
+        }
+
+        .container .bottom .slogan {
+            font-size: 16px;
+            margin: 0;
+            color: #af8b52;
+        }
+
+        #download {
+            display: block;
+            margin: 20px auto;
+            width: 220px;
+            height: 60px;
+            /*background: url(../images/btn_invite.png);*/
+            /*background-size: 100% 100%;*/
+            position: relative;
+        }
+
+        #download img:nth-of-type(2) {
+            position: absolute;
+            top: 0;
+            left: 0;
+            -webkit-transition: all 0.5s;
+            -moz-transition: all 0.5s;
+            -o-transition: all 0.5s;
+            transition: all 0.5s;
+        }
+
+        #download:active img:nth-of-type(2) {
+            opacity: 0;
+        }
+
+        #username {
+            color: #feedd6;
+            font-size: 20px;
+        }
+
+        #invitecode {
+            color: #43a00f;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img src="./images/bg_invite_top.png" alt="" class="top"/>
+
+    <div class="bottom">
+        <img src="./images/trunk2.png" alt="" class="trunk"/>
+
+        <h3><span id="username">小小明</span> 邀请码</h3>
+
+        <p id="invitecode">HJLS5743957973</p>
+
+        <p class="slogan">"下载APP，输入邀请码，</p>
+
+        <p class="slogan">快帮我激活抽奖机会么么哒"</p>
+
+        <span id="download">
+            <img src="./images/btn_download_hover.png" alt=""/>
+            <img src="./images/btn_download.png" alt=""/>
+        </span>
+
+    </div>
+</div>
+<script src="./js/base64.min.js"></script>
+<script>
+    window.onload = function () {
+        var down_ios_forWeixin_url = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.teaching';
+        var down_ios_url = 'https://itunes.apple.com/cn/app/hu-jiao-lao-shi/id991664018?l=en&mt=8';
+        var down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/073/hjlaoshi.apk';
+        var userAgent = window.navigator.userAgent.toLowerCase();
+
+        function isWeixin() {
+            return userAgent.indexOf('micromessenger') > 0;
+        }
+
+        function isAndroid() {
+            return userAgent.indexOf('android') > 0;
+        }
+
+        function isIOS() {
+            return /iphone/i.test(userAgent) || /ipod/i.test(userAgent) || /ipad/i.test(userAgent);
+        }
+
+        function getReqPrm(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            } else {
+                return null;
+            }
+        }
+
+        document.getElementById('download').onclick = function () {
+            if (isWeixin() && isAndroid()) {
+                location.href = 'http://www.hjlaoshi.com/?channelid=073';
+            }
+            if (!isWeixin() && isAndroid()) {
+                location.href = down_android_url;
+            }
+            if (isWeixin() && isIOS()) {
+                location.href = down_ios_forWeixin_url;
+            }
+            if (!isWeixin() && isIOS()) {
+                location.href = down_ios_url;
+            }
+        };
+
+        if(getReqPrm('username')){
+            document.getElementById('username').innerHTML = Base64.decode(getReqPrm('username'));
+        }
+        if(getReqPrm('invitecode')){
+            document.getElementById('invitecode').innerHTML = getReqPrm('invitecode');
+        }
+    }
+</script>
+</body>
+</html>
+
+<!--%7B%22username%22%3A%22%E5%93%88%E5%93%88%E4%BA%86%22%2C%22invitecode%22%3A%22HJKL8695%22%7D-->

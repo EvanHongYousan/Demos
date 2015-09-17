@@ -6,6 +6,7 @@ html, body, img, div {
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+    font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
 }
 
 body {
@@ -90,6 +91,11 @@ body {
     top: -4px;
 }
 
+.container .top .top-text .count {
+    color: #DE222B;
+    font-size: 18px;
+}
+
 @keyframes darkleaf {
     0% {
         -webkit-transform: rotate(4deg);
@@ -149,13 +155,21 @@ body {
     width: 50px;
     height: 100px;
     z-index: 8;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.container .top .apple.drop {
+    top: 325px;
 }
 
 .apple1 {
     background: url(../images/apple1.png) no-repeat;
     background-size: 100% 100%;
     top: 45%;
-    left: 25%;
+    left: 20%;
 }
 
 .apple2 {
@@ -389,15 +403,27 @@ body {
     margin-bottom: 20px;
 }
 
+.container .bottom p.row2 .invitecode {
+    color: #419b01;
+    text-shadow: none;
+    font-size: 20px;
+}
+
 .container .bottom p {
     color: #a57938;
     padding: 0 10px;
     font-size: 13px;
     margin: 7px 0;
+    font-weight: bolder;
 }
 
 .container .bottom img {
     width: 100%;
+}
+
+.container .bottom .trunk {
+    position: relative;
+    top: 5px;
 }
 
 .mask {
