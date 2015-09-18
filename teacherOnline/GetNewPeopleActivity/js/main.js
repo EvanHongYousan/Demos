@@ -36,6 +36,13 @@ $(document).ready(function () {
                 $('.mask').addClass('none');
                 $('.mask > div').addClass('none');
                 isShowMask = false;
+                if ($('.top .top-text .count').text() == '0') {
+                    window.scrollTo(0, 0);
+                    $('.invitenotice').removeClass('none');
+                    $('body').on('touchmove', function () {
+                        return false;
+                    });
+                }
             });
         }
 
@@ -61,24 +68,24 @@ $(document).ready(function () {
         }
 
         function shareBtnBindEv() {
-            $('#btn_invite,#btn_gotoInvite,#btn_getAward').click(function () {
+            $('#btn_invite,#btn_invite2,#btn_gotoInvite,#btn_getAward').click(function () {
                 JSNativeBridge.send('share', {
-                    "content": '²â²â²âÊÇÊÂÊµ·¶µÂÈø·¢´ò·¢Ê±¼äÀ´¿´Ö®ÕâÀïÊÇcontent',
-                    "title": '·¶µÂÈø¿ª·¢ÉÌ´ò·¶µÂÈø½ã½ãÖ®ÕâÀïÊÇtitle',
+                    "content": 'æµ‹è¯•èŒƒå¾·è¨èŒƒå¾·è¨åå¯¹è¨èŠ¬åŒæ‰“content',
+                    "title": 'å•æ‰€å°±æ”¾å‡äº†å¼€å‘å»ºè®¾ç‹¬ç«‹å¼€å‘å»ºè®¾çš„äº†æ”¾å‡äº†æ”¾å‡çš„title',
                     "type": 0,
                     "image_url": 'http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E8%8B%B9%E6%9E%9C&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&cs=3058169762,2736869049&os=508208126,2953768013&pn=3&rn=1&di=156292703630&ln=1948&fr=&fmq=1442386142859_R&ic=undefined&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=10&gsm=0&objurl=http%3A%2F%2Fpic.baike.soso.com%2Fp%2F20140126%2F20140126160937-284473768.jpg',
-                    "target_url": location.href.toString().replace('index.html', 'invitepage.html') + '?username=' + Base64.encodeURI('°¡²âÊÔ²âÊÔ') + "&invitecode=JLK789",
-                    "target_url_forQQ": location.href.toString()
+                    "target_url": location.href.toString().replace('index.html', 'invitepage.html') + '?username=' + Base64.encodeURI('èŒƒå¾·è¨å‘å«æ’’å•Šå“ˆå“ˆ') + "&invitecode=JLK789",
+                    "target_url_forQQ": location.href.toString().replace('index.html', 'invitepage.html') + '&username=' + Base64.encodeURI('èŒƒå¾·è¨å‘å«æ’’å•Šå“ˆå“ˆ') + "&invitecode=JLK789"
                 });
             });
             $('#btn_share').click(function () {
                 JSNativeBridge.send('share', {
-                    "content": '²â²â²âÊÇÊÂÊµ·¶µÂÈø·¢´ò·¢Ê±¼äÀ´¿´Ö®ÕâÀïÊÇcontent',
-                    "title": '·¶µÂÈø¿ª·¢ÉÌ´ò·¶µÂÈø½ã½ãÖ®ÕâÀïÊÇtitle',
+                    "content": 'æ³•å¾‹ç”µè§†å‰§å•Šæ”¾å‡å•ŠèŒƒå¾·è¨æ°å¼—é‡Œæ–¯å¤§æ³•å¾‹çš„æ’’é…’ç–¯ç¦»å¼€çš„æ—¶é—´å•Šcontent',
+                    "title": 'æµªè´¹ç®€å•æ¥è¯´å‡è‚¥ç¦å»ºç”µè§†äº†æ”¾å‡äº†æ˜¯å¤§æµ®ç”Ÿå…­è®°ç¦åˆ©æ—¶é—´å‘äº†æ‰‹æœºè´¹äº†title',
                     "type": 0,
                     "image_url": 'http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E8%8B%B9%E6%9E%9C&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&cs=3058169762,2736869049&os=508208126,2953768013&pn=3&rn=1&di=156292703630&ln=1948&fr=&fmq=1442386142859_R&ic=undefined&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=10&gsm=0&objurl=http%3A%2F%2Fpic.baike.soso.com%2Fp%2F20140126%2F20140126160937-284473768.jpg',
-                    "target_url": location.href.toString().replace('index.html', 'supershare.html') + '?username=' + Base64.encodeURI('°¡²âÊÔ²âÊÔ') + "&award=898989Ôª½±È¯",
-                    "target_url_forQQ": location.href.toString()
+                    "target_url": location.href.toString().replace('index.html', 'supershare.html') + '?username=' + Base64.encodeURI('æ”¾äº†å¤šä¹…å•Š') + "&award=898å…ƒåˆ¸",
+                    "target_url_forQQ": location.href.toString().replace('index.html', 'supershare.html') + '&username=' + Base64.encodeURI('æ”¾äº†å¤šä¹…å•Š') + "&award=898å…ƒåˆ¸"
                 });
             });
         }
@@ -87,7 +94,6 @@ $(document).ready(function () {
             $.getJSON(
                 'http://192.168.0.164:9091/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
                 function (data) {
-                    console.log(data);
                     if (data._APP_RESULT_OPT_DATA.count == 0) {
                         $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
                         $('.dialogFinalAward .specialStyle').text(data._APP_RESULT_OPT_DATA.lottery);
@@ -122,7 +128,6 @@ $(document).ready(function () {
             } catch (e) {
                 console.log(e);
             }
-            console.log(userId);
 
             $.getJSON(
                 'http://192.168.0.164:9091/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
