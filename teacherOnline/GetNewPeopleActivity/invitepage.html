@@ -30,15 +30,14 @@
 
         .container .bottom {
             /*background: url(./images/bg_invite_bottom_basic.png);*/
-            padding-top: 60px;
             position: relative;
         }
 
-        .container .bottom .trunk {
-            position: absolute;
-            top: -10px;
-            left: 0;
-        }
+        /*.container .bottom .trunk {*/
+            /*position: absolute;*/
+            /*top: -10px;*/
+            /*left: 0;*/
+        /*}*/
 
         .container .bottom h3 {
             font-size: 22px;
@@ -46,6 +45,7 @@
             color: #A67b34;
             font-weight: bolder;
             margin-top: -20px;
+            margin-bottom: 0;
         }
 
         .container .bottom p {
@@ -66,12 +66,12 @@
         .container .bottom .slogan {
             font-size: 16px;
             margin: 0;
-            color: #af8b52;
+            color: white;
         }
 
         #download {
             display: block;
-            margin: 20px auto;
+            margin: -20px auto 20px auto;
             width: 220px;
             height: 60px;
             /*background: url(../images/btn_invite.png);*/
@@ -100,6 +100,23 @@
 
         #invitecode {
             color: #43a00f;
+            margin-top: 0;
+        }
+
+        .container .bottom h4 {
+            text-align: center;
+            color: #664713;
+            font-size: 20px;
+            line-height: 18px;
+        }
+
+        .container .bottom p.rule {
+            color: #a57938;
+            padding: 0 10px;
+            font-size: 13px;
+            margin: 7px 0;
+            font-weight: bolder;
+            text-align: left;
         }
     </style>
 </head>
@@ -108,7 +125,11 @@
     <img src="./images/bg_invite_top.png" alt="" class="top"/>
 
     <div class="bottom">
-        <img src="./images/trunk2.png" alt="" class="trunk"/>
+
+        <span id="download">
+            <img src="./images/btn_download_hover.png" alt=""/>
+            <img src="./images/btn_download.png" alt=""/>
+        </span>
 
         <h3><span id="username">小小明</span> 邀请码</h3>
 
@@ -118,11 +139,17 @@
 
         <p class="slogan">快帮我激活抽奖机会么么哒"</p>
 
-        <span id="download">
-            <img src="./images/btn_download_hover.png" alt=""/>
-            <img src="./images/btn_download.png" alt=""/>
-        </span>
+        <h4>活动规则&奖励</h4>
 
+        <p class="rule">1.点击【邀请好友】，发送你的邀请码给对方。</p>
+
+        <p class="rule">2.好友下载呼叫老师，并在【我的优惠】中激活兑换码，你就获得1次抽奖机会。</p>
+
+        <p class="rule">3.每人最多赢得6次抽奖机会，奖项逐步增大哦~现金券、学时卡、好玩的时尚的应有尽有！</p>
+
+        <p class="rule">4.本活动最终解释权归呼叫老师团队所有</p>
+
+        <img src="./images/trunk.png" alt="" class="trunk"/>
     </div>
 </div>
 <script src="./js/base64.min.js"></script>
@@ -130,7 +157,7 @@
     window.onload = function () {
         var down_ios_forWeixin_url = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.teaching';
         var down_ios_url = 'https://itunes.apple.com/cn/app/hu-jiao-lao-shi/id991664018?l=en&mt=8';
-        var down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/073/hjlaoshi.apk';
+        var down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/065/hjlaoshi.apk';
         var userAgent = window.navigator.userAgent.toLowerCase();
 
         function isWeixin() {
@@ -157,7 +184,7 @@
 
         document.getElementById('download').onclick = function () {
             if (isWeixin() && isAndroid()) {
-                location.href = 'http://www.hjlaoshi.com/?channelid=073';
+                location.href = 'http://www.hjlaoshi.com/?channelid=065';
             }
             if (!isWeixin() && isAndroid()) {
                 location.href = down_android_url;

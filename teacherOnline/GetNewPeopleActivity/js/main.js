@@ -25,6 +25,7 @@ $(document).ready(function () {
 
         var
             userId = null,
+            userName = null,
             isShowMask = false;
 
         function maskBindEv() {
@@ -36,13 +37,13 @@ $(document).ready(function () {
                 $('.mask').addClass('none');
                 $('.mask > div').addClass('none');
                 isShowMask = false;
-                if ($('.top .top-text .count').text() == '0') {
-                    window.scrollTo(0, 0);
-                    $('.invitenotice').removeClass('none');
-                    $('body').on('touchmove', function () {
-                        return false;
-                    });
-                }
+                //if ($('.top .top-text .count').text() == '0') {
+                //    window.scrollTo(0, 0);
+                //    $('.invitenotice').removeClass('none');
+                //    $('body').on('touchmove', function () {
+                //        return false;
+                //    });
+                //}
             });
         }
 
@@ -92,19 +93,28 @@ $(document).ready(function () {
 
         function doLottery() {
             $.getJSON(
-                'http://192.168.0.164:9091/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
+                'http://192.168.0.164:9091/app/share/spreadServlet' + "?user_id=15397048023@192.168.0.164&method=" + 'myLottery' + '&callback=?',
                 function (data) {
-                    if (data._APP_RESULT_OPT_DATA.count == 0) {
-                        $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
-                        $('.dialogFinalAward .specialStyle').text(data._APP_RESULT_OPT_DATA.lottery);
-                        $('.dialogFinalAward').removeClass('none');
-                        $('.mask').removeClass('none');
-                    } else {
-                        $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
-                        $('.mask .dialogGetAward').removeClass('none');
-                        $('.mask .dialogGetAward .specialStyle').text(data._APP_RESULT_OPT_DATA.lottery);
-                        $('.mask').removeClass('none');
+                    console.log(data);
+                    if (data._APP_RESULT_OPT_CODE != 110) {
+                        return;
                     }
+
+                    $('.top .apple.hover').eq('0').addClass('drop').removeClass('hover');
+
+                    setTimeout(function () {
+                        if (data._APP_RESULT_OPT_DATA.count == 0 && data._APP_RESULT_OPT_DATA.residue_count == 0) {
+                            $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
+                            $('.dialogFinalAward .specialStyle').text(data._APP_RESULT_OPT_DATA.lottery);
+                            $('.dialogFinalAward').removeClass('none');
+                            $('.mask').removeClass('none');
+                        } else {
+                            $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
+                            $('.mask .dialogGetAward').removeClass('none');
+                            $('.mask .dialogGetAward .specialStyle').text(data._APP_RESULT_OPT_DATA.lottery);
+                            $('.mask').removeClass('none');
+                        }
+                    }, 500);
                 }
             );
         }
@@ -115,10 +125,11 @@ $(document).ready(function () {
             });
             $('.boy,.board').on('touchend', function () {
                 $('.board')[0].src = $('.board')[0].src.toString().replace('board_hover.png', 'board.png');
-                $('.top .apple.hover').eq('0').addClass('drop').removeClass('hover');
-                setTimeout(function () {
-                    doLottery();
-                }, 500);
+                if ($('.top .top-text .count').text() == '0') {
+                    $('.mask, .mask .dialogGotInvite').removeClass('none');
+                    return;
+                }
+                doLottery();
             });
         }
 
@@ -130,17 +141,60 @@ $(document).ready(function () {
             }
 
             $.getJSON(
-                'http://192.168.0.164:9091/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
+                'http://192.168.0.164:9091/app/share/spreadServlet' + "?user_id=15397048023@192.168.0.164" + "&method=" + 'myCount' + '&callback=?',
                 function (data) {
+                    console.log(data);
+                    if (data._APP_RESULT_OPT_CODE != 110) {
+                        return;
+                    }
                     $('.bottom p.row2 .invitecode').text(data._APP_RESULT_OPT_DATA.code);
                     $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
-                    for (var i = 0; i < data._APP_RESULT_OPT_DATA.count; i++) {
+                    userName = data._APP_RESULT_OPT_DATA.my_name;
+                    if (data._APP_RESULT_OPT_DATA.residue_count != undefined) {
+                        for (var i = 0; i < (6 - data._APP_RESULT_OPT_DATA.residue_count - data._APP_RESULT_OPT_DATA.count); i++) {
+                            if (i == 5) {
+                                $('.boy,.board').off('touchstart').off('touchend');
+                                $('.top .apple').addClass('drop');
+                                $('.bottom .row3').text('大奖领完啦~');
+                                $('.bottom .row4').text('邀请更多好友来“摘果实”吧!');
+                                $('.top .top-text').remove();
+                                $('#btn_invite').css('margin-top', '-40px');
+                                $('.mask').remove();
+                                break;
+                            }
+                            $('.top .apple').eq(0).remove();
+                        }
+                    }
+                    for (i = 0; i < data._APP_RESULT_OPT_DATA.count; i++) {
                         $('.top .apple').eq(i).addClass('hover');
                     }
 
-                    if (data._APP_RESULT_OPT_DATA.count == 0) {
-                        $('.dialogGotInvite').removeClass('none');
+                    if (data._APP_RESULT_OPT_DATA.users != null) {
+                        var
+                            temp1 = '',
+                            temp2 = '',
+                            i = 0;
+                        for (i = 0; i < data._APP_RESULT_OPT_DATA.users.length; i++) {
+                            if (i >= 3)break;
+                            temp1 += ' ' + data._APP_RESULT_OPT_DATA.users[i];
+                        }
+                        if (data._APP_RESULT_OPT_DATA.users[3]) {
+                            for (i = 3; i < data._APP_RESULT_OPT_DATA.users.length; i++) {
+                                temp2 += ' ' + data._APP_RESULT_OPT_DATA.users[i];
+                            }
+                        }
+                        $('.dialogInviteSuccess .dialogInviteSuccessUsers1').text(temp1);
+                        $('.dialogInviteSuccess .dialogInviteSuccessUsers2').text(temp2);
+                        $('.dialogInviteSuccess').removeClass('none');
                         $('.mask').removeClass('none');
+                        setTimeout(function () {
+                            $('.mask,.mask > div').addClass('none');
+                        }, 3000);
+                    }
+
+                    if (data._APP_RESULT_OPT_DATA.count == 0) {
+                        //$('.dialogGotInvite').removeClass('none');
+                        //$('.mask').removeClass('none');
                     }
                 }
             );
@@ -148,10 +202,10 @@ $(document).ready(function () {
 
         function init() {
             JSNativeBridgeBindEv();
+            boyBtnBindEv();
             getInviteCode();
             maskBindEv();
             shareBtnBindEv();
-            boyBtnBindEv();
         }
 
         return {'init': init};

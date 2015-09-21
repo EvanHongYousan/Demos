@@ -60,7 +60,7 @@ body {
 .container .top .boy {
     top: auto;
     right: 20%;
-    bottom: 9%;
+    bottom: 10%;
     width: 18%;
     z-index: 6;
 }
@@ -68,7 +68,7 @@ body {
 .container .top .board {
     top: auto;
     right: 0%;
-    bottom: 6%;
+    bottom: 7%;
     width: 24%;
     z-index: 5;
 }
@@ -162,49 +162,50 @@ body {
 }
 
 .container .top .apple.drop {
-    top: 72%;
+    top: 66%;
 }
 
 .apple1 {
     background: url(../images/apple1.png) no-repeat;
     background-size: 100% 100%;
-    top: 45%;
-    left: 20%;
+    top: 39%;
+    left: 25%;
 }
 
 .apple2 {
     background: url(../images/apple2.png) no-repeat;
     background-size: 100% 100%;
-    top: 40%;
+    top: 28%;
     left: 45%;
 }
 
 .apple3 {
     background: url(../images/apple3.png) no-repeat;
     background-size: 100% 100%;
-    top: 35%;
+    top: 23%;
     left: 68%;
 }
 
 .apple4 {
     background: url(../images/apple4.png) no-repeat;
     background-size: 100% 100%;
-    top: 30%;
+    top: 15%;
     left: 25%;
 }
 
 .apple5 {
     background: url(../images/apple5.png) no-repeat;
     background-size: 100% 100%;
-    top: 20%;
+    top: 7%;
     left: 60%;
 }
 
 .apple6 {
     background: url(../images/apple6.png) no-repeat;
     background-size: 100% 100%;
-    top: 16%;
+    top: 0%;
     left: 35%;
+    width:65px !important;
 }
 
 .apple1.hover {
