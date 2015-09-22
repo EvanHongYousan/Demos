@@ -74,7 +74,7 @@ window.onload = function () {
                     "content": '呼叫老师缤纷六重壕礼，快来领取吧！',
                     "title": '小伙伴们，快来帮我拿壕礼啊~',
                     "type": 0,
-                    "image_url":'http://ftp.ztmomo.com/rtc/spread/test/55ffe0010cf22b0d7a51f1a7/shareicon.png',
+                    "image_url": location.href.toString().replace('index.html', 'shareicon.png'),
                     "target_url": location.href.toString().replace('index.html', 'invitepage.html') + '?username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text(),
                     "target_url_forQQ": location.href.toString().replace('index.html', 'invitepage.html') + '&username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text()
                 });
@@ -84,7 +84,7 @@ window.onload = function () {
                     "content": '呼叫老师缤纷六重壕礼，快来领取吧！',
                     "title": '好开心啊，我拿到终极大礼啦~！',
                     "type": 0,
-                    "image_url":'http://ftp.ztmomo.com/rtc/spread/test/55ffe0010cf22b0d7a51f1a7/shareicon.png',
+                    "image_url": location.href.toString().replace('index.html', 'shareicon.png'),
                     "target_url": location.href.toString().replace('index.html', 'supershare.html') + '?username=' + Base64.encodeURI(userName) + "&award=" + Base64.encodeURI($('.mask .dialogFinalAward .specialStyle').text()),
                     "target_url_forQQ": location.href.toString().replace('index.html', 'supershare.html') + '&username=' + Base64.encodeURI(userName) + "&award=" + Base64.encodeURI($('.mask .dialogFinalAward .specialStyle').text())
                 });
