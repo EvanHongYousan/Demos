@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
     <title></title>
     <style>
         html, body, img, div {
@@ -164,7 +167,7 @@
     window.onload = function () {
         var down_ios_forWeixin_url = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.teaching';
         var down_ios_url = 'https://itunes.apple.com/cn/app/hu-jiao-lao-shi/id991664018?l=en&mt=8';
-        var down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/073/hjlaoshi.apk';
+        var down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/065/hjlaoshi.apk';
         var userAgent = window.navigator.userAgent.toLowerCase();
 
         function isWeixin() {
@@ -191,7 +194,7 @@
 
         document.getElementById('download').onclick = function () {
             if (isWeixin() && isAndroid()) {
-                location.href = 'http://www.hjlaoshi.com/?channelid=073';
+                location.href = 'http://www.hjlaoshi.com/?channelid=065';
             }
             if (!isWeixin() && isAndroid()) {
                 location.href = down_android_url;
@@ -202,13 +205,16 @@
             if (!isWeixin() && isIOS()) {
                 location.href = down_ios_url;
             }
+            if (!isAndroid() && !isIOS()){
+                location.href = 'http://www.hjlaoshi.com';
+            }
         };
 
         if (getReqPrm('username')) {
             document.getElementById('username').innerHTML = Base64.decode(getReqPrm('username'));
         }
         if (getReqPrm('award')) {
-            document.getElementById('award').innerHTML = getReqPrm('award');
+            document.getElementById('award').innerHTML = Base64.decode(getReqPrm('award'));
         }
     }
 </script>

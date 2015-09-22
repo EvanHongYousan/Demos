@@ -3,7 +3,7 @@
  * Created by yantianyu on 15/9/15.
  */
 
-$(document).ready(function () {
+window.onload = function () {
     $('.container').removeClass('none');
     $('.loader').remove();
 
@@ -25,7 +25,7 @@ $(document).ready(function () {
 
         var
             userId = null,
-            userName = null,
+            userName = '小小明',
             isShowMask = false;
 
         function maskBindEv() {
@@ -71,29 +71,29 @@ $(document).ready(function () {
         function shareBtnBindEv() {
             $('#btn_invite,#btn_invite2,#btn_gotoInvite,#btn_getAward').click(function () {
                 JSNativeBridge.send('share', {
-                    "content": '测试范德萨范德萨反对萨芬双打content',
-                    "title": '厕所就放假了开发建设独立开发建设的了放假了放假的title',
+                    "content": '呼叫老师缤纷六重壕礼，快来领取吧！',
+                    "title": '小伙伴们，快来帮我拿壕礼啊~',
                     "type": 0,
-                    "image_url": 'http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E8%8B%B9%E6%9E%9C&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&cs=3058169762,2736869049&os=508208126,2953768013&pn=3&rn=1&di=156292703630&ln=1948&fr=&fmq=1442386142859_R&ic=undefined&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=10&gsm=0&objurl=http%3A%2F%2Fpic.baike.soso.com%2Fp%2F20140126%2F20140126160937-284473768.jpg',
-                    "target_url": location.href.toString().replace('index.html', 'invitepage.html') + '?username=' + Base64.encodeURI('范德萨发叫撒啊哈哈') + "&invitecode=JLK789",
-                    "target_url_forQQ": location.href.toString().replace('index.html', 'invitepage.html') + '&username=' + Base64.encodeURI('范德萨发叫撒啊哈哈') + "&invitecode=JLK789"
+                    "image_url":'http://ftp.ztmomo.com/rtc/spread/test/55ffe0010cf22b0d7a51f1a7/shareicon.png',
+                    "target_url": location.href.toString().replace('index.html', 'invitepage.html') + '?username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text(),
+                    "target_url_forQQ": location.href.toString().replace('index.html', 'invitepage.html') + '&username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text()
                 });
             });
             $('#btn_share').click(function () {
                 JSNativeBridge.send('share', {
-                    "content": '法律电视剧啊放假啊范德萨杰弗里斯大法律的撒酒疯离开的时间啊content',
-                    "title": '浪费简单来说减肥福建电视了放假了是大浮生六记福利时间发了手机费了title',
+                    "content": '呼叫老师缤纷六重壕礼，快来领取吧！',
+                    "title": '好开心啊，我拿到终极大礼啦~！',
                     "type": 0,
-                    "image_url": 'http://image.baidu.com/search/detail?ct=503316480&z=undefined&tn=baiduimagedetail&ipn=d&word=%E8%8B%B9%E6%9E%9C&step_word=&ie=utf-8&in=&cl=2&lm=-1&st=undefined&cs=3058169762,2736869049&os=508208126,2953768013&pn=3&rn=1&di=156292703630&ln=1948&fr=&fmq=1442386142859_R&ic=undefined&s=undefined&se=&sme=&tab=0&width=&height=&face=undefined&is=0,0&istype=0&ist=&jit=&bdtype=10&gsm=0&objurl=http%3A%2F%2Fpic.baike.soso.com%2Fp%2F20140126%2F20140126160937-284473768.jpg',
-                    "target_url": location.href.toString().replace('index.html', 'supershare.html') + '?username=' + Base64.encodeURI('放了多久啊') + "&award=898元券",
-                    "target_url_forQQ": location.href.toString().replace('index.html', 'supershare.html') + '&username=' + Base64.encodeURI('放了多久啊') + "&award=898元券"
+                    "image_url":'http://ftp.ztmomo.com/rtc/spread/test/55ffe0010cf22b0d7a51f1a7/shareicon.png',
+                    "target_url": location.href.toString().replace('index.html', 'supershare.html') + '?username=' + Base64.encodeURI(userName) + "&award=" + Base64.encodeURI($('.mask .dialogFinalAward .specialStyle').text()),
+                    "target_url_forQQ": location.href.toString().replace('index.html', 'supershare.html') + '&username=' + Base64.encodeURI(userName) + "&award=" + Base64.encodeURI($('.mask .dialogFinalAward .specialStyle').text())
                 });
             });
         }
 
         function doLottery() {
             $.getJSON(
-                'http://192.168.0.164:9091/app/share/spreadServlet' + "?user_id=15397048023@192.168.0.164&method=" + 'myLottery' + '&callback=?',
+                'http://test.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
                 function (data) {
                     console.log(data);
                     if (data._APP_RESULT_OPT_CODE != 110) {
@@ -139,9 +139,12 @@ $(document).ready(function () {
             } catch (e) {
                 console.log(e);
             }
+            if (userId == null) {
+                userId = '15397048023@test.hjlaoshi.com';
+            }
 
             $.getJSON(
-                'http://192.168.0.164:9091/app/share/spreadServlet' + "?user_id=15397048023@192.168.0.164" + "&method=" + 'myCount' + '&callback=?',
+                'http://test.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
                 function (data) {
                     console.log(data);
                     if (data._APP_RESULT_OPT_CODE != 110) {
@@ -211,4 +214,4 @@ $(document).ready(function () {
         return {'init': init};
     })();
     components.init();
-});
+};

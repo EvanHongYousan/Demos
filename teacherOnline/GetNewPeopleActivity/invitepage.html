@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
     <title></title>
     <style>
         html, body, img, div {
@@ -194,6 +197,9 @@
             }
             if (!isWeixin() && isIOS()) {
                 location.href = down_ios_url;
+            }
+            if (!isAndroid() && !isIOS()){
+                location.href = 'http://www.hjlaoshi.com';
             }
         };
 
