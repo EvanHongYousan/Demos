@@ -143,7 +143,7 @@
             <img src="./images/btn_download.png" alt=""/>
         </span>
 
-        <p>哇! <span id="username">小小明</span> 居然抽到</p>
+        <p>哇! <span id="username">太棒了</span> 居然抽到</p>
 
         <p id="award">199元现金券</p>
 
@@ -212,6 +212,8 @@
 
         if (getReqPrm('username')) {
             document.getElementById('username').innerHTML = Base64.decode(getReqPrm('username'));
+        } else{
+            document.getElementById('username').innerHTML = '小小明';
         }
         if (getReqPrm('award')) {
             document.getElementById('award').innerHTML = Base64.decode(getReqPrm('award'));

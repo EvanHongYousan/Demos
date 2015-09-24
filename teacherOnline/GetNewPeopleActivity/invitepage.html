@@ -134,7 +134,7 @@
             <img src="./images/btn_download.png" alt=""/>
         </span>
 
-        <h3><span id="username">小小明</span> 邀请码</h3>
+        <h3><span id="username">快来抢</span> 邀请码</h3>
 
         <p id="invitecode">HJLS5743957973</p>
 
@@ -205,6 +205,8 @@
 
         if (getReqPrm('username')) {
             document.getElementById('username').innerHTML = Base64.decode(getReqPrm('username'));
+        } else{
+            document.getElementById('username').innerHTML = '小小明';
         }
         if (getReqPrm('invitecode')) {
             document.getElementById('invitecode').innerHTML = getReqPrm('invitecode');

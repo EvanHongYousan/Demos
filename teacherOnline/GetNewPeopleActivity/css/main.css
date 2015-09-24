@@ -205,7 +205,7 @@ body {
     background-size: 100% 100%;
     top: 0%;
     left: 35%;
-    width:65px !important;
+    width: 65px !important;
 }
 
 .apple1.hover {
@@ -349,7 +349,7 @@ body {
 #btn_invite, #btn_gotoInvite, #btn_getAward, #btn_share, #btn_invite2 {
     display: block;
     margin: 0 auto;
-    width: 150px;
+    width: 180px;
     height: 60px;
     /*background: url(../images/btn_invite.png);*/
     /*background-size: 100% 100%;*/
@@ -360,10 +360,10 @@ body {
     position: absolute;
     top: 0;
     left: 0;
-    -webkit-transition: all 0.5s;
-    -moz-transition: all 0.5s;
-    -o-transition: all 0.5s;
-    transition: all 0.5s;
+    /*-webkit-transition: all 0.5s;*/
+    /*-moz-transition: all 0.5s;*/
+    /*-o-transition: all 0.5s;*/
+    /*transition: all 0.5s;*/
 }
 
 #btn_invite:active img:nth-of-type(2), #btn_gotoInvite:active img:nth-of-type(2), #btn_getAward:active img:nth-of-type(2), #btn_share:active img:nth-of-type(2), #btn_invite2:active img:nth-of-type(2) {
@@ -397,11 +397,12 @@ body {
     font-size: 16px;
     color: #b68e53;
     font-weight: bold;
-    text-shadow: 0px -1px 0px #664713;
+    /*text-shadow: 0px -1px 0px #664713;*/
 }
 
 .container .bottom p.row2 {
     margin-bottom: 20px;
+    color: #6c4713;
 }
 
 .container .bottom p.row2 .invitecode {
