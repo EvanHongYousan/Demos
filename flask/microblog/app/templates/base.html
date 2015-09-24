@@ -1,15 +1,26 @@
 <html>
-  <head>
+<head>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
     {% if title %}
-    <title>{{title}} - microblog</title>
+        <title>{{ title }} - microblog</title>
     {% else %}
-    <title>microblog</title>
+        <title>microblog</title>
     {% endif %}
-  </head>
-  <body>
-    <div>Microblog: <a href="/index">Home</a></div>
-    <hr>
-    {% block content %}
-    {% endblock %}
-  </body>
+</head>
+<body>
+<div>Microblog: <a href="/index">Home</a></div>
+<hr>
+{% with message = get_flashed_messages() %}
+    {% if messages %}
+        <ul>
+            {% for message in messages %}
+                <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+{% endwith %}
+{% block content %}
+{% endblock %}
+</body>
 </html>
