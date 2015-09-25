@@ -164,7 +164,7 @@ window.onload = function () {
                                 $('.bottom .row3').text('大奖领完啦~');
                                 $('.bottom .row4').text('邀请更多好友来“摘果实”吧!');
                                 $('.top .top-text').remove();
-                                $('#btn_invite').css('margin-top', '-40px');
+                                $('#btn_invite').css('margin-top', '-30px');
                                 $('.mask').remove();
                                 break;
                             }
