@@ -68,7 +68,7 @@ window.onload = function () {
                     "content": '呼叫老师缤纷六重壕礼，快来领取吧！',
                     "title": '小伙伴们，快来帮我拿壕礼啊~',
                     "type": 0,
-                    "image_url": 'http://testftp.hjlaoshi.com/rtc/spread/share/72c5e1507c7b44b981e124a9cbb08421.png',
+                    "image_url": 'http://testftp.hjlaoshi.com/rtc/spread/shareicon.png',
                     "target_url": locationURL + 'invitepage.html?username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text(),
                     "target_url_forQQ": locationURL + 'invitepage.html?username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text()
                 });
@@ -79,7 +79,7 @@ window.onload = function () {
                     "content": '呼叫老师缤纷六重壕礼，快来领取吧！',
                     "title": '好开心啊，我拿到终极大礼啦~！',
                     "type": 0,
-                    "image_url": 'http://testftp.hjlaoshi.com/rtc/spread/share/72c5e1507c7b44b981e124a9cbb08421.png',
+                    "image_url": 'http://testftp.hjlaoshi.com/rtc/spread/shareicon.png',
                     "target_url": locationURL + 'supershare.html?username=' + Base64.encodeURI(userName) + "&award=" + Base64.encodeURI($('.mask .dialogFinalAward .specialStyle').text()),
                     "target_url_forQQ": locationURL + 'supershare.html?username=' + Base64.encodeURI(userName) + "&award=" + Base64.encodeURI($('.mask .dialogFinalAward .specialStyle').text())
                 });
