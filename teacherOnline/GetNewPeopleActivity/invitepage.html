@@ -37,9 +37,9 @@
         }
 
         /*.container .bottom .trunk {*/
-            /*position: absolute;*/
-            /*top: -10px;*/
-            /*left: 0;*/
+        /*position: absolute;*/
+        /*top: -10px;*/
+        /*left: 0;*/
         /*}*/
 
         .container .bottom h3 {
@@ -76,7 +76,7 @@
             display: block;
             margin: -20px auto 20px auto;
             width: 220px;
-            height: 60px;
+            height: 45px;
             /*background: url(../images/btn_invite.png);*/
             /*background-size: 100% 100%;*/
             position: relative;
@@ -129,14 +129,14 @@
 
     <div class="bottom">
 
+        <h3><span id="username">快来抢</span> 邀请码</h3>
+
+        <p id="invitecode"></p>
+
         <span id="download">
             <img src="./images/btn_download_hover.png" alt=""/>
             <img src="./images/btn_download.png" alt=""/>
         </span>
-
-        <h3><span id="username">快来抢</span> 邀请码</h3>
-
-        <p id="invitecode">HJLS5743957973</p>
 
         <p class="slogan">"下载APP，输入邀请码，</p>
 
@@ -144,13 +144,13 @@
 
         <h4>活动规则&奖励</h4>
 
-        <p class="rule">1.点击【邀请好友】，发送你的邀请码给对方。</p>
+        <p class="rule">1.欢迎参加“好友邀请活动”，每人可领一张19元抵价券，免费问作业哦。</p>
 
-        <p class="rule">2.好友下载呼叫老师，并在【我的优惠】中激活兑换码，你就获得1次抽奖机会。</p>
+        <p class="rule">2.领券方法：下载安装“呼叫老师”，在【我的优惠】中，点击【兑换】，输入邀请码，即可成功激活。</p>
 
-        <p class="rule">3.每人最多赢得6次抽奖机会，奖励逐步增大哦~现金券、学时卡、好玩的时尚的应有尽有！</p>
+        <p class="rule">3.安装后，可参加更丰富的抽奖活动，最多获得六重大礼包，请在【优惠活动】中查看。</p>
 
-        <p class="rule">4.本活动最终解释权归呼叫老师团队所有</p>
+        <p class="rule">4.本次活动最终解释权归呼叫老师团队所有。</p>
 
         <img src="./images/trunk.png" alt="" class="trunk"/>
     </div>
@@ -198,18 +198,20 @@
             if (!isWeixin() && isIOS()) {
                 location.href = down_ios_url;
             }
-            if (!isAndroid() && !isIOS()){
+            if (!isAndroid() && !isIOS()) {
                 location.href = 'http://www.hjlaoshi.com';
             }
         };
 
         if (getReqPrm('username')) {
             document.getElementById('username').innerHTML = Base64.decode(getReqPrm('username'));
-        } else{
+        } else {
             document.getElementById('username').innerHTML = '小小明';
         }
         if (getReqPrm('invitecode')) {
             document.getElementById('invitecode').innerHTML = getReqPrm('invitecode');
+        } else {
+            document.getElementById('invitecode').innerHTML = 'HJLS57';
         }
     }
 </script>

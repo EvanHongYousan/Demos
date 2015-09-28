@@ -37,13 +37,6 @@ window.onload = function () {
                 $('.mask').addClass('none');
                 $('.mask > div').addClass('none');
                 isShowMask = false;
-                //if ($('.top .top-text .count').text() == '0') {
-                //    window.scrollTo(0, 0);
-                //    $('.invitenotice').removeClass('none');
-                //    $('body').on('touchmove', function () {
-                //        return false;
-                //    });
-                //}
             });
         }
 
@@ -98,7 +91,16 @@ window.onload = function () {
                 'http://test.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
                 function (data) {
                     console.log(data);
-                    if (data._APP_RESULT_OPT_CODE != 110) {
+                    if (data._APP_RESULT_OPT_CODE == 90) {
+                        return;
+                    }
+                    if (data._APP_RESULT_OPT_CODE == 92) {
+                        $('#btn_invite,#btn_invite2,#btn_gotoInvite,#btn_getAward,#btn_share').off();
+                        $('.boy,.board').off();
+                        $('.dialogInviteSuccess .dialogInviteSuccessUsers1').html(data._APP_RESULT_OPT_DESC);
+                        $('.dialogInviteSuccess h4').css('opacity', 0);
+                        $('.dialogInviteSuccess .specialStyle').remove();
+                        $('.mask, .mask .dialogInviteSuccess').removeClass('none');
                         return;
                     }
 
@@ -107,13 +109,19 @@ window.onload = function () {
                     setTimeout(function () {
                         if (data._APP_RESULT_OPT_DATA.count == 0 && data._APP_RESULT_OPT_DATA.residue_count == 0) {
                             $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
-                            $('.dialogFinalAward .specialStyle').text(data._APP_RESULT_OPT_DATA.lottery);
+                            $('.dialogFinalAward .specialStyle').html(data._APP_RESULT_OPT_DATA.lottery);
                             $('.dialogFinalAward').removeClass('none');
                             $('.mask').removeClass('none');
                         } else {
+                            if(data._APP_RESULT_OPT_DATA.lottery.toString().search('这号苹果领完了') != -1){
+                                $('.mask .dialogGetAward h4,.mask .dialogGetAward p').css('opacity','0');
+                                $('.mask .dialogGetAward p.specialStyle').css('opacity','1');
+                            }else{
+                                $('.mask .dialogGetAward h4,.mask .dialogGetAward p').css('opacity','1');
+                            }
                             $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
                             $('.mask .dialogGetAward').removeClass('none');
-                            $('.mask .dialogGetAward .specialStyle').text(data._APP_RESULT_OPT_DATA.lottery);
+                            $('.mask .dialogGetAward .specialStyle').html(data._APP_RESULT_OPT_DATA.lottery);
                             $('.mask').removeClass('none');
                         }
                     }, 500);
@@ -142,19 +150,35 @@ window.onload = function () {
                 console.log(e);
             }
             if (userId == null) {
-                userId = '15397048023@test.hjlaoshi.com';
+                userId = '15800031138@test.hjlaoshi.com';
             }
 
             $.getJSON(
                 'http://test.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
                 function (data) {
                     console.log(data);
-                    if (data._APP_RESULT_OPT_CODE != 110) {
+                    if (data._APP_RESULT_OPT_CODE == 90) {
                         $('.bottom p.row2 .invitecode').text('邀请码获取失败');
+                        $('#btn_invite,#btn_invite2,#btn_gotoInvite,#btn_getAward,#btn_share').off();
+                        $('.boy,.board').off();
+                        $('#btn_invite img').eq(0)[0].src = $('#btn_invite img').eq(0)[0].src.toString().replace('btn_invite_hover.png', 'btn_invite_disable.png');
+                        $('#btn_invite img').eq(1)[0].src = $('#btn_invite img').eq(1)[0].src.toString().replace('btn_invite.png', 'btn_invite_disable.png');
                         return;
                     }
-                    $('.bottom p.row2 .invitecode').text(data._APP_RESULT_OPT_DATA.code);
-                    $('.top .top-text span.count').text(data._APP_RESULT_OPT_DATA.count);
+                    if (data._APP_RESULT_OPT_CODE == 92) {
+                        $('.bottom p.row2 .invitecode').html('邀请码获取失败');
+                        $('#btn_invite,#btn_invite2,#btn_gotoInvite,#btn_getAward,#btn_share').off();
+                        $('.boy,.board').off();
+                        $('.dialogInviteSuccess .dialogInviteSuccessUsers1').html(data._APP_RESULT_OPT_DESC);
+                        $('.dialogInviteSuccess h4').css('opacity', 0);
+                        $('.dialogInviteSuccess .specialStyle').remove();
+                        $('.mask .close').remove();
+                        $('.mask, .mask .dialogInviteSuccess').removeClass('none');
+                        $('.bottom .row2').remove();
+                        return;
+                    }
+                    $('.bottom p.row2 .invitecode').html(data._APP_RESULT_OPT_DATA.code);
+                    $('.top .top-text span.count').html(data._APP_RESULT_OPT_DATA.count);
                     userName = data._APP_RESULT_OPT_DATA.my_name;
                     if (data._APP_RESULT_OPT_DATA.residue_count != undefined) {
                         for (var i = 0; i < (6 - data._APP_RESULT_OPT_DATA.residue_count - data._APP_RESULT_OPT_DATA.count); i++) {
@@ -209,9 +233,9 @@ window.onload = function () {
         function init() {
             JSNativeBridgeBindEv();
             boyBtnBindEv();
-            getInviteCode();
             maskBindEv();
             shareBtnBindEv();
+            getInviteCode();
         }
 
         return {'init': init};

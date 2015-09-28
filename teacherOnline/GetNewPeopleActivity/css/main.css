@@ -459,6 +459,13 @@ body {
     /*background-position-x:50%;*/
 }
 
+@media screen and (min-width: 700px) {
+    .mask .dialogGotInvite, .mask .dialogInviteSuccess, .mask .dialogGetAward, .mask .dialogFinalAward {
+        width: 40%;
+        left: 30%;
+    }
+}
+
 .mask .dialogInviteSuccess {
     padding-top: 10px;
     background: url(../images/inviteSuccess.png) no-repeat;
