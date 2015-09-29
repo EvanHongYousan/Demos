@@ -46,7 +46,7 @@ window.onload = function () {
                     case 'get_available_operation_of_current_page':
                         JSNativeBridge.send('send_available_operation_of_current_page', {
                             'shake': true,
-                            'share': true,
+                            'share': false,
                             'scratch_paper': false
                         });
                         break;
@@ -65,10 +65,10 @@ window.onload = function () {
             $('#btn_invite,#btn_invite2,#btn_gotoInvite,#btn_getAward').click(function () {
                 var locationURL = location.href.toString().split('index')[0];
                 JSNativeBridge.send('share', {
-                    "content": '呼叫老师缤纷六重壕礼，快来领取吧！',
-                    "title": '小伙伴们，快来帮我拿壕礼啊~',
+                    "content": '呼叫老师强势来袭， 每人抽奖6次，每次必中哈哈哈',
+                    "title": '送你19元！免费问作业~快抢！',
                     "type": 0,
-                    "image_url": 'http://testftp.hjlaoshi.com/rtc/spread/shareicon.png',
+                    "image_url": 'http://ftp.hjlaoshi.com/rtc/spread/shareicon.png',
                     "target_url": locationURL + 'invitepage.html?username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text(),
                     "target_url_forQQ": locationURL + 'invitepage.html?username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text()
                 });
@@ -79,7 +79,7 @@ window.onload = function () {
                     "content": '呼叫老师缤纷六重壕礼，快来领取吧！',
                     "title": '好开心啊，我拿到终极大礼啦~！',
                     "type": 0,
-                    "image_url": 'http://testftp.hjlaoshi.com/rtc/spread/shareicon.png',
+                    "image_url": 'http://ftp.hjlaoshi.com/rtc/spread/shareicon.png',
                     "target_url": locationURL + 'supershare.html?username=' + Base64.encodeURI(userName) + "&award=" + Base64.encodeURI($('.mask .dialogFinalAward .specialStyle').text()),
                     "target_url_forQQ": locationURL + 'supershare.html?username=' + Base64.encodeURI(userName) + "&award=" + Base64.encodeURI($('.mask .dialogFinalAward .specialStyle').text())
                 });

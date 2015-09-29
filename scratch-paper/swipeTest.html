@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
+    <title></title>
+    <style>
+        .swipe {
+            overflow: hidden;
+            visibility: hidden;
+            position: relative;
+        }
+
+        .swipe-wrap {
+            overflow: hidden;
+            position: relative;
+        }
+
+        .swipe-wrap > div {
+            float: left;
+            width: 100%;
+            position: relative;
+        }
+
+        html, body {
+            height: 100%;
+            padding: 0;
+            margin: 0;
+        }
+
+        .swipe-wrap, .swipe-wrap > div {
+            height: 100%;
+        }
+    </style>
+</head>
+<body>
+<div class="swipe" id="container">
+    <div class="swipe-wrap">
+        <div style="background-color:red;">1</div>
+        <div style="background-color:yellow;">2</div>
+        <div style="background-color:blue;">3</div>
+        <div style="background-color:green;">4</div>
+    </div>
+</div>
+<script src="./swipe2.js"></script>
+<script>
+    new Swipe(document.getElementById('container'));
+    document.getElementById('container').style['height'] = document.body.clientHeight + 'px';
+</script>
+</body>
+</html>
