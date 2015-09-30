@@ -5,16 +5,16 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0,user-scalable=no,minimal-ui">
     <title></title>
     <style>
-        .swipe {
-            overflow: hidden;
-            visibility: hidden;
-            position: relative;
-        }
+        /*.swipe {*/
+        /*overflow: hidden;*/
+        /*visibility: hidden;*/
+        /*position: relative;*/
+        /*}*/
 
-        .swipe-wrap {
-            overflow: hidden;
-            position: relative;
-        }
+        /*.swipe-wrap {*/
+        /*overflow: hidden;*/
+        /*position: relative;*/
+        /*}*/
 
         .swipe-wrap > div {
             float: left;
@@ -30,6 +30,9 @@
 
         .swipe-wrap, .swipe-wrap > div {
             height: 100%;
+            text-align: center;
+            color: white;
+            font-size: 36px;
         }
     </style>
 </head>
@@ -42,9 +45,9 @@
         <div style="background-color:green;">4</div>
     </div>
 </div>
-<script src="./swipe2.js"></script>
+<script src="./swipe.js"></script>
 <script>
-    new Swipe(document.getElementById('container'));
+    var swipe = new Swipe(document.getElementById('container'));
     document.getElementById('container').style['height'] = document.body.clientHeight + 'px';
 </script>
 </body>
