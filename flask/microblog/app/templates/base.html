@@ -1,10 +1,7 @@
 <html>
 <head>
-<<<<<<< Updated upstream
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-=======
->>>>>>> Stashed changes
     {% if title %}
         <title>{{ title }} - microblog</title>
     {% else %}
@@ -12,7 +9,6 @@
     {% endif %}
 </head>
 <body>
-<<<<<<< Updated upstream
 <div>Microblog: <a href="/index">Home</a></div>
 <hr>
 {% with message = get_flashed_messages() %}
@@ -24,19 +20,6 @@
         </ul>
     {% endif %}
 {% endwith %}
-=======
-<div>Microblog: <a href="/index">Home</a> <a href="/login">Login</a></div>
-<hr>
-    {% with messages = get_flashed_messages() %}
-    {% if messages %}
-    <ul>
-        {% for message in messages %}
-            <li>{{ message }}</li>
-        {% endfor %}
-    </ul>
-    {% endif %}
-    {% endwith %}
->>>>>>> Stashed changes
 {% block content %}
 {% endblock %}
 </body>
