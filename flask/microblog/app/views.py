@@ -37,6 +37,10 @@ def index():
 def login():
     form = LoginForm()
     if form.validate_on_submit():
+<<<<<<< Updated upstream
         flash('Login requested for OpenID=" ' + form.openid.data + '", remember_me=' + str(form.remember_me.data))
+=======
+        flash('Login request for OpenID= ' + form.openid.data + ', remember_me = ' + str(form.remember_me.data))
+>>>>>>> Stashed changes
         return redirect('/index')
     return render_template('login.html', title='Sign In', form=form, providers=app.config['OPENID_PROVIDERS'])
