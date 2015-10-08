@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<button>Click Here</button>
+<script>
+    window.onload = function () {
+        function BTNTest(element, options) {
+            this.element = element;
+            if (this.element.addEventListener) {
+                this.element.addEventListener('click', this, false);
+            }
+        }
+
+        BTNTest.prototype = {
+            handleEvent: function (e) {
+                console.log(e);
+                switch (e.type) {
+                    case 'click':
+                        this.onClick(e);
+                        break;
+                }
+            },
+            onClick: function (e) {
+                alert(this.element.innerHTML);
+            }
+        };
+
+        var btn = new BTNTest(document.getElementsByTagName('button')[0]);
+    };
+</script>
+</body>
+</html>
