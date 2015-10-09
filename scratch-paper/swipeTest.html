@@ -24,7 +24,7 @@
 
         html, body {
             height: 100%;
-            padding: 0;
+            /*padding: 0;*/
             margin: 0;
         }
 
@@ -40,14 +40,16 @@
 <div class="swipe" id="container">
     <div class="swipe-wrap">
         <div style="background-color:red;">1</div>
-        <div style="background-color:yellow;">2</div>
+        <div style="background-color:greenyellow;">2</div>
         <div style="background-color:blue;">3</div>
         <div style="background-color:green;">4</div>
     </div>
 </div>
 <script src="./swipe.js"></script>
 <script>
-    var swipe = new Swipe(document.getElementById('container'));
+    var swipe = new Swipe(document.getElementById('container'),{
+        Distance:00
+    });
     document.getElementById('container').style['height'] = document.body.clientHeight + 'px';
 </script>
 </body>
