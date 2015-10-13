@@ -46,7 +46,7 @@ window.onload = function () {
                     case 'get_available_operation_of_current_page':
                         JSNativeBridge.send('send_available_operation_of_current_page', {
                             'shake': true,
-                            'share': false,
+                            'share': true,
                             'scratch_paper': false
                         });
                         break;
