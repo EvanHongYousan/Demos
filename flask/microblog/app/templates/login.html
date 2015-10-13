@@ -5,21 +5,12 @@
     <form action="" method="post" name="login">
         {{ form.hidden_tag() }}
         <p>
-<<<<<<< Updated upstream
             Please enter your OpenID: <br>
             {{ form.openid(size=80) }} <br>
-=======
-            Please enter your OpenID:<br>
-            {{ form.openid(size=80) }}<br>
->>>>>>> Stashed changes
             {% for error in form.openid.errors %}
                 <span style="color:red;">[{{ error }}]</span>
             {% endfor %}<br>
             {% for pr in providers %}
-<<<<<<< Updated upstream
-                <a href="javascript:set_openid('{{ pr.url }}','{{ pr.name }}');">{{ pr.name }}</a> |
-            {% endfor %}
-=======
                 <a href="javascript:set_openid('{{ pr.url }}','{{ pr.name }}');">{{ pr.name }}</a>
             {% endfor %}
             <script>
@@ -27,19 +18,10 @@
                     document.getElementById('openid').value = url;
                 }
             </script>
->>>>>>> Stashed changes
         </p>
 
         <p>{{ form.remember_me }} Remember Me</p>
 
         <p><input type="submit" value="Sign In"/></p>
     </form>
-<<<<<<< Updated upstream
-    <script>
-        function set_openid(url, name) {
-            document.getElementById('openid').value = url;
-        }
-    </script>
-=======
->>>>>>> Stashed changes
 {% endblock %}

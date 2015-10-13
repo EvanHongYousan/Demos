@@ -5,7 +5,7 @@ window.Swipe = function (element, options) {
     this.index = this.options.startSlide || 0; //幻灯片索引
     this.speed = this.options.speed || 300; //移动速度
     this.callback = this.options.callback || function () {
-        };  //回掉函数
+        };  //回调函数
     this.delay = this.options.auto || 0; //延迟执行
     this.CustomDistance = this.options.Distance || 0; // 自定义距离 屏幕的宽度减去此距离
     this.container = element;  //swipe
