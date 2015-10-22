@@ -106,6 +106,7 @@ var canvasVideo = (function(){
         if ( canvasData == null ) { alert('画板数据为空!'); return false; }
 
         console.log('第' + ( globalI + 1 ) + '帧');
+        console.log(canvasData[globalI]);
         drawCanvas(canvasData[globalI]);
         globalI++;
 
