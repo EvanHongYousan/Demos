@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<ul id="demo">
+    <li v-repeat="items" class="item-{{$index}}">
+        {{$index}} - {{parentMsg}} {{childMsg}}
+    </li>
+</ul>
+<ul id="tags">
+    <li v-repeat="tags">
+        {{$value}}
+    </li>
+</ul>
+<ul id="users">
+    <li v-repeat="user in users">
+        {{user.name}} - {{user.email}}
+    </li>
+</ul>
+<script src="vue.js"></script>
+<script>
+    var demo = new Vue({
+        el: '#demo',
+        data: {
+            parentMsg: 'Hello',
+            items: [
+                {childMsg: 'Foo'},
+                {childMsg: 'Bar'}
+            ]
+        }
+    });
+    var tags = new Vue({
+        el:'#tags',
+        data:{
+            tags:['javascript','mvm','vue.js']
+        }
+    });
+    var users = new Vue({
+        el:'#users',
+        data:{
+            users:[
+                {name : 'Foo Bar', email : 'foo@bar.com'},
+                {name : 'John Doh', email : 'john@Doh.com'}
+            ]
+        }
+    });
+</script>
+</body>
+</html>
