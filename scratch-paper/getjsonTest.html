@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div>http://192.168.0.233:8088/rtc/file/2015-10/562da24ead34ecb1f9d5cc41/teacher/canvas_data.json</div>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script>
+    $.getJSON(
+            'http://192.168.0.233:8088/rtc/file/2015-10/562da24ead34ecb1f9d5cc41/teacher/canvas_data.json',
+            function(data){
+                console.log(data);
+            }
+    );
+    XMLHttpRequest
+</script>
+</body>
+</html>
