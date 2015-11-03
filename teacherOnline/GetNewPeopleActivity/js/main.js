@@ -153,7 +153,6 @@ window.onload = function () {
             if (userId == null) {
                 userId = '15800031138@test.hjlaoshi.com';
             }
-            alert(location.href);
             $.getJSON(
                 'http://testftp.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
                 function (data) {
