@@ -65,8 +65,8 @@ window.onload = function () {
             $('#btn_invite,#btn_invite2,#btn_gotoInvite,#btn_getAward').click(function () {
                 var locationURL = location.href.toString().split('index')[0];
                 JSNativeBridge.send('share', {
-                    "content": '呼叫老师强势来袭， 每人抽奖6次，每次必中哈哈哈',
-                    "title": '送你19元！免费问作业~快抢！',
+                    "content": '呼叫老师千万张学时卡，免费大放送啦~！每次必中哈哈哈哈',
+                    "title": '送你（1000）千元礼包，免费问作业~快抢。',
                     "type": 0,
                     "image_url": 'http://ftp.hjlaoshi.com/rtc/spread/shareicon.png',
                     "target_url": locationURL + 'invitepage.html?username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text(),
@@ -87,8 +87,9 @@ window.onload = function () {
         }
 
         function doLottery() {
+            $('.mask').removeClass('none');
             $.getJSON(
-                'http://test.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
+                'http://testftp.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
                 function (data) {
                     console.log(data);
                     if (data._APP_RESULT_OPT_CODE == 90) {
@@ -152,9 +153,9 @@ window.onload = function () {
             if (userId == null) {
                 userId = '15800031138@test.hjlaoshi.com';
             }
-
+            alert(location.href);
             $.getJSON(
-                'http://test.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
+                'http://testftp.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
                 function (data) {
                     console.log(data);
                     if (data._APP_RESULT_OPT_CODE == 90) {
