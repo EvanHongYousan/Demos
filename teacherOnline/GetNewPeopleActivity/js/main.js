@@ -117,6 +117,7 @@ window.onload = function () {
                             if(data._APP_RESULT_OPT_DATA.lottery.toString().search('这号苹果领完了') != -1){
                                 $('.mask .dialogGetAward h4,.mask .dialogGetAward p').css('opacity','0');
                                 $('.mask .dialogGetAward p.specialStyle').css('opacity','1');
+                                data._APP_RESULT_OPT_DATA.lottery = data._APP_RESULT_OPT_DATA.lottery.toString().replace('\n','');
                             }else{
                                 $('.mask .dialogGetAward h4,.mask .dialogGetAward p').css('opacity','1');
                             }

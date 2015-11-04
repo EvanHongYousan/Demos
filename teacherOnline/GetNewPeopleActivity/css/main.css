@@ -626,5 +626,6 @@ body {
 }
 
 .text_center{
-    text-align:center;
+    /*text-align:center;*/
+    padding-left:20% !important;
 }

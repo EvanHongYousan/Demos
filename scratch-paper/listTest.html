@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script>
+    function listFilter(list){
+        var obj = {},result = [],i=0;
+        for(i=0;i<list.length;i++){
+            if(!obj[list[i]]){
+                obj[list[i]] = true;
+                result[result.length] = list[i];
+            }
+        }
+        console.log(obj);
+        return result;
+    }
+    a = [1,2,3,4,5,6,7,7,7,7]
+    b = listFilter(a);
+</script>
+</body>
+</html>
