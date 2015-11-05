@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>真题馍馍分享</title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no" />
+    <script src="../js/zepto.min.js"></script>
+
+</head>
+<body class="dwnlScler">
+<section id="page">
+    <div class="download_info none">
+        <div>
+            <img src="../images/app_icon.png" class="icon" width="54" height="54"/>
+            <div class="info_tittle">
+                <p class="row1">真题馍馍</p>
+                <p class="row2">初高中学习神器</p>
+                <p class="row3">
+                    <span class="star-filled"></span>
+                    <span class="star-filled"></span>
+                    <span class="star-filled"></span>
+                    <span class="star-filled"></span>
+                    <span class="star-filled"></span>
+                </p>
+            </div>
+            <p class="download">下载安装</p>
+        </div>
+    </div>
+
+    <div class="navbar">
+        <span class="preQue">上一题</span>
+        <div class="navBtn">
+            <span class="curQueNum">2</span><span>/</span><span class="queLen">4</span><img src="../images/arrow.png">
+        </div>
+        <span class="nextQue">下一题</span>
+        <div style="clear:both;"></div>
+    </div>
+    <div class="serialCard">
+        <p>2014年北京数学中考试卷</p>
+        <div>
+            <a href="single_choice.html"><span>1</span></a>
+            <a href="long_answer.html"><span>2</span></a>
+            <a href="cloze.html"><span>3</span></a>
+            <a href="readingcomprehension.html"><span>4</span></a>
+        </div>
+    </div>
+
+    <div class="mask"></div>
+
+    <section id="content">
+        <div class="questionExplain">
+            <span>题目解析</span>
+        </div>
+        <div class="question">
+				<div>
+					<span id="topic_header"></span><p>填空，完成下列说理过程．</p><p>如图，BD平分∠ABC交AC于点D，∠C=∠DEB=90&deg;，那么∠CDB与∠EDB相等吗？请说明理由．</p><p>解：因为∠1+∠CDB+∠C=180&deg;，且∠C=90&deg;，</p><p>所以∠1+∠CDB=90&deg;．</p><p>因为∠2+∠EDB+∠DEB=180&deg;，且∠DEB=90&deg;，</p><p>所以∠2+∠EDB=90&deg;．</p><p>因为BD平分∠ABC，</p><p>根据__________，</p><p>所以∠1__________∠2．</p><p>根据__________，</p><p>所以∠CDB=∠EDB．</p><p><img src="http://ftp.ztmomo.com/upload/tiCool/mathematics/topics/20141104/828c4dab18c14c6cabff912522b8936a/3be96601dbe247b58ee5be9efa0d5562.png" alt="image_gs" /></p>
+				</div>
+        </div>
+        <div class="questionType" type=""></div>
+    </section>
+    <section class="showAnalysis">
+        <span>查看解析</span>
+    </section>
+    <section class="contentInfo none">
+			<div class="accordion">
+				<h4 class="test_approache">
+					<p>方法分析</p>
+				</h4>
+				<article>
+					<div><p>仔细阅读整个解题过程，前后结合写出判断依据即可．</p></div>
+				</article>
+			</div>
+			<div class="accordion">
+				<h4 class="steps_of_solution">
+					<p>解答步骤</p>
+				</h4>
+				<article>
+					<div><p>解：根据角平分线的定义可得出∠1=∠2；</p><p>根据等角的余角相等可得出：∠CDB=∠EDB．</p></div>
+				</article>
+			</div>
+            <div class="accordion">
+                <h4 class="analysis_of_fallibilities">
+                    <p>易错分析</p>
+                </h4>
+                <article>
+                    <div>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
+                </article>
+            </div>
+            <div class="accordion">
+                <h4 class="problem_source">
+                    <p>试题来源</p>
+                </h4>
+                <article>
+                    <div>哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈哈</div>
+                </article>
+            </div>
+		</section>
+    </section>
+</section>
+
+<section id="mask"></section>
+<script>
+    var globaldata = {
+        curNum:2,
+        preQueURL:"single_choice.html",
+        nextQueURL:"cloze.html",
+        allURLs:[
+            "single_choice.html",
+            "long_answer.html",
+            "cloze.html",
+            "readingcomprehension.html"
+        ]
+    };
+</script>
+
+<!--消除移动端点击事件那300ms的延迟-->
+<script language="javascript" src="../js/fastclick.min.js"></script>
+<script>
+    window.addEventListener('load', function () {
+        FastClick.attach(document.body);
+    }, false);
+</script>
+<!--end-->
+
+<script language="javascript" src="../js/sea.js"></script>
+<script>
+    var dependencies = [
+                "../css/long_answer.css"+"?t="+Math.random(),
+                "../css/math.css"+"?t="+Math.random(),
+                "../css/topic_gz.css"+"?t="+Math.random(),
+                "../css/navbar.css"+"?t="+Math.random(),
+                "../js/tools.js"+"?t="+Math.random(),
+                "../js/long_answer.js"+"?t="+Math.random()
+    ];
+    seajs.use(dependencies);
+</script>
+</body>
+</html>
