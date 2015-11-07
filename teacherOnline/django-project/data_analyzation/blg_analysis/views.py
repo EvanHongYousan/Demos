@@ -4,6 +4,7 @@ from blg_analysis import cfg
 
 import struct
 import socket
+import json
 from qqwry import QQWry, MQQWry
 
 # Create your views here.
@@ -44,5 +45,16 @@ def home(request):
         raise err
     print(k)
     print(k.items())
-    s = {'k' : sorted(k.items())}
+    s = {'k': sorted(k.items())}
     return render(request, 'blg_analysis.html', s)
+
+
+def echarts(request):
+    return render(request, 'echarts.html')
+
+
+def echartsGetData(request):
+    k = {}
+    k['aa'] = 'aa'
+    k['bb'] = 'bb'
+    return HttpResponse(json.dumps(k), content_type='application/json')

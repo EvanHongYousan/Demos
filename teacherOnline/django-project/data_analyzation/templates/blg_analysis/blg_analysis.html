@@ -3,6 +3,11 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title></title>
+    <style>
+        p{
+            margin:0;
+        }
+    </style>
 </head>
 <body>
 {#{% for item in blg_data %}#}
@@ -10,7 +15,7 @@
 {#{% endfor %}#}
 {#{{ test }}#}
 {% for item in k %}
-    <p>{{ item }}</p>
+    <p>{{ item.0 }}:{{ item.1 }}</p>
 {% endfor %}
 </body>
 </html>
