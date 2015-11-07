@@ -9,11 +9,15 @@ from qqwry import QQWry, MQQWry
 
 # Create your views here.
 
+provinces = ['辽宁', '吉林', '黑龙江', '河北', '山西', '陕西', '甘肃', '青海', '山东', '安徽', '江苏', '浙江', '河南', '湖北', '湖南', '江西', '台湾',
+             '福建', '云南', '海南', '四川', '贵州', '广东', '内蒙古', '新疆', '广西', '西藏', '宁夏', '北京', '上海', '天津', '重庆', '香港', '澳门']
+
+
 def ip_ntoa(n):
     return socket.inet_ntoa(struct.pack(">L", n))
 
 
-def home(request):
+def getOriPlateData():
     conn = cfg.get_conn()
     cursor = conn.cursor()
     sql = '''
@@ -43,8 +47,11 @@ def home(request):
     except Exception as err:
         print(err)
         raise err
-    print(k)
-    print(k.items())
+    return k
+
+
+def home(request):
+    k = getOriPlateData()
     s = {'k': sorted(k.items())}
     return render(request, 'blg_analysis.html', s)
 
@@ -57,4 +64,16 @@ def echartsGetData(request):
     k = {}
     k['aa'] = 'aa'
     k['bb'] = 'bb'
-    return HttpResponse(json.dumps(k), content_type='application/json')
+    oriData = getOriPlateData()
+    filterData = []
+    sum = 0
+    for item in provinces:
+        filterData.append({'name': item, 'value': 0})
+    for key, v in oriData.items():
+        for item in filterData:
+            if key.find(item['name']) != -1:
+                item['value'] += v
+    for item in filterData:
+        sum += item['value']
+    print(sum)
+    return HttpResponse(json.dumps(filterData), content_type='application/json')
