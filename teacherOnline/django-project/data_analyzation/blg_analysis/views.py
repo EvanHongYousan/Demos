@@ -5,7 +5,7 @@ from blg_analysis import cfg
 import struct
 import socket
 import json
-from qqwry import QQWry, MQQWry
+from blg_analysis.qqwry import MQQWry
 
 # Create your views here.
 
