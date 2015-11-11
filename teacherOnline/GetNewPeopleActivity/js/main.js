@@ -89,7 +89,7 @@ window.onload = function () {
         function doLottery() {
             $('.mask').removeClass('none');
             $.getJSON(
-                'http://testftp.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
+                'http://guanli.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
                 function (data) {
                     console.log(data);
                     if (data._APP_RESULT_OPT_CODE == 90) {
@@ -152,10 +152,10 @@ window.onload = function () {
                 console.log(e);
             }
             if (userId == null) {
-                userId = '15800031138@test.hjlaoshi.com';
+                userId = '15800031138@xmpp.hjlaoshi.com';
             }
             $.getJSON(
-                'http://testftp.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
+                'http://guanli.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
                 function (data) {
                     console.log(data);
                     if (data._APP_RESULT_OPT_CODE == 90) {
