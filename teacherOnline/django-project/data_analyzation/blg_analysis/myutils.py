@@ -16,7 +16,7 @@ import contextlib
 import signal
 import hashlib
 
-from nicelogger import enable_pretty_logging
+from blg_analysis.nicelogger import enable_pretty_logging
 
 def safe_overwrite(fname, data, *, method='write', mode='w', encoding=None):
   # FIXME: directory has no read perm

@@ -5,7 +5,7 @@ from blg_analysis import cfg
 import struct
 import socket
 import json
-from qqwry import QQWry, MQQWry
+from blg_analysis.qqwry import MQQWry
 
 # Create your views here.
 
@@ -31,10 +31,10 @@ def getOriPlateData():
     try:
         cursor.execute(sql)
         data = cursor.fetchall()
-        print('拿到所有加密ip')
+        print('-----------拿到所有加密ip---------')
         for item in data:
             v['blg_data'].append(q[ip_ntoa(item[0])][2])
-        print('ip解密、分析完毕')
+        print('-----------ip解密,分析完毕--------')
         for item in v['blg_data']:
             pick = False
             for item2 in k:
@@ -50,9 +50,35 @@ def getOriPlateData():
     return k
 
 
+def getSummaryPlateData(oriData):
+    filterData = []
+    for item in provinces:
+        filterData.append({'name': item, 'value': 0})
+    for key, v in oriData.items():
+        for item in filterData:
+            if key.find(item['name']) != -1:
+                item['value'] += v
+    return filterData
+
+
+def get_client_ip(request):
+    try:
+        real_ip = request.META['HTTP_X_FORWARDED_FOR']
+        regip = real_ip.split(",")[0]
+    except:
+        try:
+            regip = request.META['REMOTE_ADDR']
+        except:
+            regip = ""
+    return regip
+
+
 def home(request):
-    k = getOriPlateData()
-    s = {'k': sorted(k.items())}
+    oriData = getOriPlateData()
+    filterData = getSummaryPlateData(oriData)
+    for item in filterData:
+        oriData[item['name']+'地区汇总'] = item['value']
+    s = {'k': sorted(oriData.items())}
     return render(request, 'blg_analysis.html', s)
 
 
@@ -61,19 +87,11 @@ def echarts(request):
 
 
 def echartsGetData(request):
-    k = {}
-    k['aa'] = 'aa'
-    k['bb'] = 'bb'
+    print('---------正在访问 eachartsGetData 的是:', get_client_ip(request), '--------------')
     oriData = getOriPlateData()
-    filterData = []
+    filterData = getSummaryPlateData(oriData)
     sum = 0
-    for item in provinces:
-        filterData.append({'name': item, 'value': 0})
-    for key, v in oriData.items():
-        for item in filterData:
-            if key.find(item['name']) != -1:
-                item['value'] += v
     for item in filterData:
         sum += item['value']
-    print(sum)
+    print('------------刨除非中国地区用户，还有人数：', sum, '--------------------')
     return HttpResponse(json.dumps(filterData), content_type='application/json')

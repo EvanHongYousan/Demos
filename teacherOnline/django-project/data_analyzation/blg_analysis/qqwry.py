@@ -19,7 +19,7 @@ import subprocess
 import tempfile
 import shutil
 
-from myutils import safe_overwrite
+from blg_analysis.myutils import safe_overwrite
 
 DataFileName = os.path.expanduser('d:/qqwry.dat')
 
