@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../angular.min.js"></script>
+    <style>
+        #parentController {
+            background-color: yellow;
+            padding: 10px;
+        }
+
+        #childController {
+            background-color: green;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<p>We can access: {{rootProperty}}</p>
+<div id="parentController" ng-controller="ParentController">
+    <p>We can access: {{rootProperty}} and {{parentProperty}} </p>
+    <div id="childController" ng-controller="ChildController">
+        <p>
+            We can access:
+            {{rootProperty}} and
+            {{parentProperty}} and
+            {{childProperty}}
+        </p>
+        <p>{{fullSentenceFromChild}}</p>
+    </div>
+</div>
+
+<script>
+    angular.module('myApp', [])
+            .run(function ($rootScope) {
+                $rootScope.rootProperty = 'root scope'
+            })
+            .controller('ParentController', function ($scope) {
+                $scope.parentProperty = 'parent scope'
+            })
+            .controller('ChildController', function ($scope) {
+                $scope.childProperty = 'Child scope';
+
+                $scope.fullSentenceFromChild = 'Same $scope: We can access:' +
+                $scope.rootProperty + ' and ' +
+                $scope.parentProperty + ' and ' +
+                $scope.childProperty;
+            })
+</script>
+</body>
+</html>
