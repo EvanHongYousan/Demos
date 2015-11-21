@@ -27,7 +27,8 @@
                 $scope.$watch('emailBody', function (body) {
                     if (body) {
                         $scope.previewText = EmailParser.parse(body, {
-                            to: $scope.to
+                            to: $scope.to,
+                            ao: '123321'
                         })
                     }
                 })

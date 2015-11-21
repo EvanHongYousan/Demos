@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="DemoController">
+    <div>{{name|uppercase}}</div>
+    <div ng-bind="lowercaseName"></div>
+    <div>{{123.456789|number:2}}</div>
+    <div>{{123|currency}}</div>
+
+    <h4>Date Helpers:</h4>
+    <div>{{today | date:'medium'}}</div>
+    <div>{{today | date:'short'}}</div>
+    <div>{{today | date:'fullDate'}}</div>
+    <div>{{today | date:'longDate'}}</div>
+    <div>{{today | date:'mediumDate'}}</div>
+    <div>{{today | date:'shortDate'}}</div>
+    <div>{{today | date:'mediumTime'}}</div>
+    <div>{{today | date:'shortTime'}}</div>
+    <div>Month in year: {{today | date:'MMMM'}}</div>
+    <div>Short month in year: {{today | date:'MMM'}}</div>
+    <div>Padded month in year: {{today | date:'MM'}}</div>
+    <div>{{today | date:'M'}}</div>
+    <div>{{today | date:'dd'}}</div>
+    <div>{{today | date:'d'}}</div>
+    <div>{{today | date:'EEEE'}}</div>
+    <div>{{today | date:'EEE'}}</div>
+    <div>{{today | date:'HH'}}</div>
+    <div>{{today | date:'hh'}}</div>
+    <div>{{today | date:'h'}}</div>
+    <div>{{today | date:'mm'}}</div>
+    <div>{{today | date:'m'}}</div>
+    <div>{{today | date:'ss'}}</div>
+    <div>{{today | date:'.sss'}}</div>
+    <div>{{today | date:'a'}}</div>
+    <div>{{today | date:'Z'}}</div>
+    <div>{{today | date:'MMM d, y'}}</div>
+    <div>{{today | date:'EEEE, d, M'}}</div>
+    <div>{{today | date:'hh:mm:ss'}}</div>
+    <div>{{ ['Ari','Lerner','Likes', 'To', 'Eat', 'Pizza'] | filter:'e' }}</div>
+    <div>
+        {{
+            [
+                {
+                    'name': 'Ari',
+                    'City': 'San Francisco',
+                    'favorite food': 'Pizza'
+                },{
+                    'name': 'Nate',
+                    'City': 'San Francisco',
+                    'favorite food': 'indian food'
+                }
+            ] | filter:{'favorite food': 'Pizza'}
+        }}
+    </div>
+    <div>123{{['Ari', 'likes', 'to', 'travel'] | filter: isCapitalized }}</div>
+</div>
+
+<div>
+    <h5>Output JSON:</h5>
+    <div>{{ {'name': 'Ari', 'City': 'San Francisco'} | json }}</div>
+</div>
+<div>
+    <h5>limitTo:</h5>
+    <div>{{ ['a', 'b', 'c', 'd', 'e', 'f'] | limitTo:1 }}</div>
+</div>
+
+<div>
+    <h5>orderBy:</h5>
+    <div>
+        {{
+            [{
+          'name': 'Ari',
+          'status': 'awake'
+          }, {
+          'name': 'Q',
+          'status': 'sleeping'
+          }, {
+          'name': 'Nate',
+          'status': 'awake'
+          }] | orderBy:'+name'
+        }}
+    </div>
+</div>
+
+<script>
+    angular.module('myApp', [])
+            .controller('DemoController', function ($scope, $filter) {
+                $scope.name = 'Ari Lerner';
+                $scope.lowercaseName = $filter('lowercase')('Ari')
+                $scope.today = new Date();
+                $scope.isCapitalized =
+                        function (str) {
+                            return str[0] == str[0].toUpperCase();
+                            console.log(str[0].toUpperCase())
+                        }
+            })
+</script>
+</body>
+</html>
