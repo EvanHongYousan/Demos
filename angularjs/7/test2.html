@@ -6,7 +6,11 @@
     <script src="../angular.min.js"></script>
 </head>
 <body>
-
+<div>
+    <h2>{{ 'ginger loves dog bones' | lowercase | capitalize }}</h2>
+    <h2>{{ 15 | blankIfNegative }}</h2>
+    <h2>{{ -15 | blankIfNegative }}</h2>
+</div>
 <script>
     angular.module('myApp',['myApp.filters']);
 
@@ -18,7 +22,12 @@
                     }
                 };
             })
-            .filter()
+            .filter('blankIfNegative', function(){
+                return function(input){
+                    if(input < 0) return '';
+                    else return input;
+                }
+            })
 </script>
 </body>
 </html>
