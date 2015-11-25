@@ -28,7 +28,7 @@ html, body, img, div {
 
 .container .activity-rules {
     display: block;
-    width: 50px;
+    width: 40px;
     height: 100px;
     background: url(../img/btn_Activity_rule_n.png);
     background-size: 100% 100%;
@@ -121,7 +121,9 @@ html, body, img, div {
     background: url(../img/pic_Frame.png) no-repeat;
     background-size: 100% 100%;
 
-    padding:9% 7%;
+    padding:9% 7% 8% 7%;
+
+    margin-bottom:20px;
 }
 
 .container .dialContainer:after {
@@ -141,13 +143,28 @@ html, body, img, div {
 }
 
 .container .dialContainer > span > img {
-    width: 100%;
-    /*height:100px;*/
+    width: 96%;
+    margin:0 auto;
+    display:inline-block;
+    position:relative;
+    left:2px;
 }
 
 .container .dialContainer > span > p {
     position: absolute;
-    top:0;
+}
+
+.container .dialContainer span > p.description{
+    top:20%;
+    left:20%;
+    color:#fcdc51;
+}
+
+.container .dialContainer span > p.type{
+    margin:0;
+    bottom:10px;
+    left:20%;
+    color:white;
 }
 
 .container .dialContainer > span.lotteryBtn{
@@ -163,4 +180,57 @@ html, body, img, div {
 
 .container .dialContainer > span.lotteryBtn:active > img:last-of-type{
     opacity:0;
+}
+
+.container .dialContainer .pullLeft{
+    width:25%;
+}
+
+.container .dialContainer .pullLeft span{
+    width:100%;
+}
+
+.container .dialContainer .pullLeft span img{
+    width:96%;
+    margin:0 auto;
+    display:inline-block;
+    position:relative;
+    left:2px;
+}
+
+.container .dialContainer .pullLeft > span{
+    position:relative;
+    float:left;
+}
+
+.container .dialContainer .pullLeft > span > p{
+    position:absolute;
+}
+
+.container .scrollDiv{
+    overflow: hidden;
+    color:#fcdc51;
+    text-align: center;
+    height:100px;
+
+    -webkit-transition:all 0.5s;
+    -moz-transition:all 0.5s;
+    -o-transition:all 0.5s;
+    transition:all 0.5s;
+}
+
+.container .scrollDiv p{
+    margin:0;
+    -webkit-transition:all 0.5s;
+    -moz-transition:all 0.5s;
+    -o-transition:all 0.5s;
+    transition:all 0.5s;
+}
+
+.container .scrollDiv .name, .container .scrollDiv .award{
+    color:#ff6138;
+}
+
+.container .brightLine{
+    width:100%;
 }
