@@ -36,14 +36,18 @@ var components = (function(){
         $('.activity-rules').on('click',function(){
             $('.mask, .mask .activityRulesAlert').removeClass('none');
         });
-        $('.activityRulesAlertBtn').on('click', function(){
-            $('.mask, .mask .activityRulesAlert').addClass('none');
-        })
+    }
+
+    function closeBtnBindEv(){
+        $('.closeBtn').on('click', function(){
+            $('.mask, .mask > div').addClass('none');
+        });
     }
 
     function init(){
         maskInit();
         activityRulesBindEv();
+        closeBtnBindEv();
     }
 
     return {

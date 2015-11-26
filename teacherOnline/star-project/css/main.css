@@ -245,7 +245,7 @@ html, body, img, div {
     left: 0;
     right: 0;
     bottom: 0;
-    background-color: rgba(0, 0, 0, 0.7);
+    background-color: rgba(0, 0, 0, 0.85);
     text-align: center;
 }
 
@@ -297,7 +297,7 @@ html, body, img, div {
     margin-top: -40px;
 }
 
-.mask .activityRulesAlert img{
+.mask .activityRulesAlert img {
     width: 80%;
     margin: 0 auto;
     display: inline-block;
@@ -307,13 +307,13 @@ html, body, img, div {
     margin-top: 30px;
 }
 
-.mask .activityRulesAlert p{
-    color:white;
-    text-align:left;
-    margin:0 10%;
-    font-size:12px;
-    padding-left:0.7em;
-    text-indent:-0.7em;
+.mask .activityRulesAlert p {
+    color: white;
+    text-align: left;
+    margin: 0 10%;
+    font-size: 12px;
+    padding-left: 0.7em;
+    text-indent: -0.7em;
 }
 
 .mask .activityRulesAlert > span {
@@ -321,7 +321,7 @@ html, body, img, div {
     width: 150px;
     height: 40px;
     position: relative;
-    margin-top:20px;
+    margin-top: 20px;
 }
 
 .mask .activityRulesAlert > span > img {
@@ -347,5 +347,92 @@ html, body, img, div {
 }
 
 .mask .activityRulesAlert > span:active > img:nth-of-type(1) {
+    display: block;
+}
+
+.mask .extraIntegralGetAlert img {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.mask .extraIntegralGetAlert .extraItegral {
+    color: #fde651;
+    font-size:50px;
+    margin-top:-130px;
+    font-weight: bolder;
+}
+
+.mask .extraIntegralGetAlert > span {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.mask .extraIntegralGetAlert > span > img {
+    width: 100%;
+}
+
+.mask .extraIntegralGetAlert > span > img:nth-of-type(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mask .extraIntegralGetAlert > span > img:nth-of-type(0) {
+    display: block;
+}
+
+.mask .extraIntegralGetAlert > span > img:nth-of-type(1) {
+    display: none;
+}
+
+.mask .extraIntegralGetAlert > span:active > img:nth-of-type(0) {
+    display: none;
+}
+
+.mask .extraIntegralGetAlert > span:active > img:nth-of-type(1) {
+    display: block;
+}
+
+.mask .bindPhoneNumber > img {
+    /*display:block;*/
+    width: 80%;
+    margin: 60px auto;
+}
+
+
+.mask .bindPhoneNumber > span {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.mask .bindPhoneNumber > span > img {
+    width: 100%;
+}
+
+.mask .bindPhoneNumber > span > img:nth-of-type(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mask .bindPhoneNumber > span > img:nth-of-type(0) {
+    display: block;
+}
+
+.mask .bindPhoneNumber > span > img:nth-of-type(1) {
+    display: none;
+}
+
+.mask .bindPhoneNumber > span:active > img:nth-of-type(0) {
+    display: none;
+}
+
+.mask .bindPhoneNumber > span:active > img:nth-of-type(1) {
     display: block;
 }
