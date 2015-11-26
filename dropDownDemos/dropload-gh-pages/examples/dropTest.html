@@ -47,11 +47,17 @@
     </div>
     <script src="js/zepto.min.js"></script>
     <script src="../dist/dropload.min.js"></script>
+    <script src="zepto.scroll.js"></script>
     <script>
         containerDropload = $('#container').dropload({
             scrollArea : this,
             loadDownFn : function(me){
-                $('#container')[0].scrollTo(0,10000);
+                alert(11)
+                $('#container').scrollTo({
+                    endY: 10000 ,
+                    duration: 0,
+                    callback: function () {}
+                });
                 $.ajax({
                     type: 'GET',
                     url: 'json/more.json',
@@ -65,7 +71,7 @@
                         setTimeout(function(){
                             $('.inner').append(result);
                             me.resetload();
-//                            containerDropload.lock();
+                            containerDropload.lock();
                         },1000);
                     },
                     error: function(xhr, type){
