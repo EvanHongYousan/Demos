@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../angular.min.js"></script>
+</head>
+<body>
+
+<label>someProperty = {{someProperty}}</label>
+<input type="checkbox"
+       ng-checked="someProperty"
+       ng-init="someProperty=true"
+       ng-model="someProperty"
+       ng-change="change()"
+        />
+
+<br/>
+
+<label>anotherProperty= {{anotherProperty}}</label>
+
+<input type="checkbox"
+       ng-checked="anotherProperty"
+       ng-init="anotherProperty=false"
+       ng-model="anotherProperty"
+       ng-change="change()"
+        />
+
+<script>
+    angular.module('myApp',[])
+            .run(function($rootScope){
+                $rootScope.change = function(){
+                    console.log('someProperty: ' + $rootScope.someProperty);
+                    console.log('anotherProperty: ' + $rootScope.anotherProperty);
+                }
+            })
+</script>
+
+</body>
+</html>

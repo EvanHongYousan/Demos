@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../angular.min.js"></script>
+</head>
+<body>
+
+{{property}}
+
+<button ng-click="someAction()">Click Me</button>
+
+<script>
+    angular.module('myApp', [])
+            .run(function($rootScope){
+                $rootScope.property = 'hello computer';
+                $rootScope.someAction = function(){
+                    $rootScope.property = 'hello human'
+                }
+            })
+</script>
+</body>
+</html>
