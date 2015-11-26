@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport" content="initial-scale=1, user-scalable=0, minimal-ui" charset="UTF-8">
+    <link rel="stylesheet" href="../dist/dropload.min.css">
+    <style>
+        #container{
+            height:300px;
+            overflow-y: scroll;
+        }
+        p{
+            background-color: #ffd835;
+            color:white;
+            text-align: center;
+            line-height: 30px;
+        }
+        ul, li{
+            list-style: none;
+            margin:0;
+            padding:0;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <ul class="inner">
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+            <li><p>fdsfdsfdsfdsfsdfdsfds</p></li>
+        </ul>
+    </div>
+    <script src="js/zepto.min.js"></script>
+    <script src="../dist/dropload.min.js"></script>
+    <script>
+        containerDropload = $('#container').dropload({
+            scrollArea : this,
+            loadDownFn : function(me){
+                $('#container')[0].scrollTo(0,10000);
+                $.ajax({
+                    type: 'GET',
+                    url: 'json/more.json',
+                    dataType: 'json',
+                    success: function(data){
+                        var result = '<li><p>fdsfdsfdsfdsfsdfdsfds</p></li>';
+                        for(var i = 0; i < data.lists.length; i++){
+                            result +=   '';
+                        }
+                        // 为了测试，延迟1秒加载
+                        setTimeout(function(){
+                            $('.inner').append(result);
+                            me.resetload();
+//                            containerDropload.lock();
+                        },1000);
+                    },
+                    error: function(xhr, type){
+                        alert('Ajax error!');
+                        me.resetload();
+                    }
+                });
+            }
+        });
+        containerDropload.lock();
+        $('#container').on('scroll',function(){
+            console.log($('#container')[0].scrollHeight);
+            console.log($('#container')[0].scrollTop+$('#container').height());
+            if( ($('#container')[0].scrollHeight - ($('#container')[0].scrollTop+$('#container').height())) < 3 ){
+                containerDropload.unlock();
+            }
+        })
+    </script>
+</body>
+</html>
