@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../angular.min.js"></script>
+    <style>
+        summary, details{
+            -webkit-transition:all 0.5s;
+            -moz-transition:all 0.5s;
+            -o-transition:all 0.5s;
+            transition:all 0.5s;
+        }
+    </style>
+</head>
+<body>
+click here <input type="checkbox" ng-model="open"/>
+<details id="details" ng-open="open">
+    <summary>fdsfdsafsa</summary>
+    <summary>fdsfdsafsa</summary>
+    <summary>fdsfdsafsa</summary>
+    <summary>fdsfdsafsa</summary>
+</details>
+<script>
+    angular.module('myApp', [])
+</script>
+</body>
+</html>

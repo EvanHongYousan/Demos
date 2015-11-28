@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../angular.min.js"></script>
+</head>
+<body>
+
+<h1>demo 1:</h1>
+<input type="text" ng-model="someProperty" placeholder="Type to Enable"/>
+<button ng-model="button" ng-disabled="!someProperty">A button</button>
+
+<h1>demo 2:</h1>
+<textarea ng-disabled="isDisabled"> Wait 1 second</textarea>
+
+<script>
+    angular.module('myApp', [])
+            .run(function ($rootScope, $timeout) {
+                $rootScope.isDisabled = false;
+                $timeout(function () {
+                    $rootScope.isDisabled = false;
+                }, 1000);
+            })
+</script>
+</body>
+</html>
