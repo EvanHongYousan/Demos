@@ -3,33 +3,33 @@
  */
 
 /*animate test start*/
-setInterval(function () {
-    $('.scrollDiv').append('<p>恭喜<span class="name">梁春</span>抽中了<span class="award">“Apple Watch”</span></p>');
-    $('.scrollDiv').scrollTo({
-        endY: $('.scrollDiv')[0].scrollHeight,
-        duration: 1000,
-        callback: function () {
-            //console.log($('.scrollDiv')[0].scrollHeight);
-        }
-    });
-}, 1500);
-
-globalI = 1;
-timePick = 50;
-function goRotate() {
-    if (timePick > 800) {
-        return;
-    }
-    if (globalI == 13) {
-        globalI = 1;
-    }
-    $('.container .dialContainer  span').removeClass('active');
-    $('.container .dialContainer  span.item' + globalI).addClass('active');
-    globalI++;
-    timePick += 50;
-    setTimeout('goRotate()', timePick);
-}
-goRotate();
+//setInterval(function () {
+//    $('.scrollDiv').append('<p>恭喜<span class="name">梁春</span>抽中了<span class="award">“Apple Watch”</span></p>');
+//    $('.scrollDiv').scrollTo({
+//        endY: $('.scrollDiv')[0].scrollHeight,
+//        duration: 1000,
+//        callback: function () {
+//            //console.log($('.scrollDiv')[0].scrollHeight);
+//        }
+//    });
+//}, 1500);
+//
+//globalI = 1;
+//timePick = 150;
+//function goRotate() {
+//    if (timePick > 800) {
+//        return;
+//    }
+//    if (globalI == 13) {
+//        globalI = 1;
+//    }
+//    $('.container .dialContainer  span').removeClass('active');
+//    $('.container .dialContainer  span.item' + globalI).addClass('active');
+//    globalI++;
+//    //timePick += 50;
+//    setTimeout('goRotate()', timePick);
+//}
+//goRotate();
 /*animate test end*/
 
 var components = (function () {
