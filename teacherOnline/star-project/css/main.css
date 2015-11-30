@@ -148,10 +148,35 @@ html, body, img, div {
     display: inline-block;
     position: relative;
     left: 2px;
+
+    -webkit-transition:all 0.2s;
+    -moz-transition:all 0.2s;
+    -o-transition:all 0.2s;
+    transition:all 0.2s;
+}
+
+.container .dialContainer span img:nth-of-type(2),
+.container .dialContainer span.pullLeft span img:nth-of-type(2)
+{
+    display:none;
 }
 
 .container .dialContainer span.active > img {
     box-shadow: 0 0 5px 5px #2dddf5;
+    -webkit-filter:saturate(3);
+    -moz-filter:saturate(3);
+    -o-filter:saturate(3);
+    filter:saturate(3);
+}
+
+.container .dialContainer span.active > img:nth-of-type(1){
+    display:none;
+}
+
+.container .dialContainer span.active > img:nth-of-type(2),
+.container .dialContainer span.pullLeft span.active > img:nth-of-type(2)
+{
+    display:inline-block;
 }
 
 .container .dialContainer > span > p {
@@ -434,5 +459,146 @@ html, body, img, div {
 }
 
 .mask .bindPhoneNumber > span:active > img:nth-of-type(1) {
+    display: block;
+}
+
+.mask .congratulationAlert img {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.mask .congratulationAlert .reward {
+    color: #fde651;
+    font-size:50px;
+    margin-top:-150px;
+    font-weight: bolder;
+}
+
+.mask .congratulationAlert > span {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.mask .congratulationAlert > span.shareBtn{
+    width:230px;
+}
+
+.mask .congratulationAlert > span > img {
+    width: 100%;
+}
+
+.mask .congratulationAlert > span > img:nth-of-type(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mask .congratulationAlert > span > img:nth-of-type(0) {
+    display: block;
+}
+
+.mask .congratulationAlert > span > img:nth-of-type(1) {
+    display: none;
+}
+
+.mask .congratulationAlert > span:active > img:nth-of-type(0) {
+    display: none;
+}
+
+.mask .congratulationAlert > span:active > img:nth-of-type(1) {
+    display: block;
+}
+
+.mask .drawRecordDialog h2 {
+    color: #ff6138;
+    margin-top: -40px;
+}
+
+.mask .drawRecordDialog img {
+    width: 80%;
+    margin: 20px auto 0 auto;
+    display: inline-block;
+}
+
+.mask .drawRecordDialog .tablerContainer{
+    width:80%;
+    margin:0 auto;
+}
+
+.mask .drawRecordDialog table{
+    width:100%;
+}
+
+.mask .drawRecordDialog th{
+    color:#2dddf5;
+}
+
+.mask .drawRecordDialog td{
+    color:#fff;
+    font-size:12px;
+}
+
+/*.mask .drawRecordDialog tr{*/
+    /*background:url('../img/pic_table_line.png') no-repeat;*/
+    /*background-size:cover;*/
+/*}*/
+
+.mask .drawRecordDialog tr td.divider{
+    height:3px;
+    padding:0;
+    margin-top:-20px;
+    position:relative;
+    top:-5px;
+}
+
+.mask .drawRecordDialog tr td img{
+    width:100%;
+    margin:0;
+}
+
+.mask .drawRecordDialog .tbodyContainer{
+    height:300px;
+    overflow: auto;
+}
+
+.mask .drawRecordDialog td{
+    width:30%;
+}
+
+
+.mask .drawRecordDialog > span {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.mask .drawRecordDialog > span > img {
+    width: 100%;
+}
+
+.mask .drawRecordDialog > span > img:nth-of-type(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mask .drawRecordDialog > span > img:nth-of-type(0) {
+    display: block;
+}
+
+.mask .drawRecordDialog > span > img:nth-of-type(1) {
+    display: none;
+}
+
+.mask .drawRecordDialog > span:active > img:nth-of-type(0) {
+    display: none;
+}
+
+.mask .drawRecordDialog > span:active > img:nth-of-type(1) {
     display: block;
 }
