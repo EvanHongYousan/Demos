@@ -9,7 +9,7 @@
 
 <div ng-controller="SomeController">
     {{someBareValue}}
-    <button ng-click="someAction()">Communicate to child</button>
+    <button ng-click="someAction()">Sommunicate to child</button>
     <div ng-controller="ChildController">
         {{someBareValue}}
         <button ng-click="childAction()">Communicate to parent</button>
@@ -18,17 +18,17 @@
 
 <script>
     angular.module('myApp', [])
-            .controller('SomeController', function ($scope) {
+            .controller('SomeController', function($scope){
                 $scope.someBareValue = 'hello computer';
-                $scope.someAction = function () {
+                $scope.someAction = function(){
                     $scope.someBareValue = 'hello human, from parent';
                 };
             })
-            .controller('ChildController', function ($scope) {
-                $scope.childAction = function () {
+            .controller('ChildController', function($scope){
+                $scope.childAction = function(){
                     $scope.someBareValue = 'hello human, from child';
                 }
-            })
+            });
 </script>
 </body>
 </html>
