@@ -55,9 +55,9 @@ var components = (function () {
         $('body').css('overflow', 'hidden');
     }
 
-    function maskHide(){
+    function maskHide() {
         $('.mask, .mask > div').addClass('none');
-        $('body').css('overflow','auto');
+        $('body').css('overflow', 'auto');
     }
 
     function activityRulesBindEv() {
@@ -72,8 +72,8 @@ var components = (function () {
         });
     }
 
-    function showAwardRecordBtnBindEv(){
-        $('.showAwardRecord').on('click',function(){
+    function showAwardRecordBtnBindEv() {
+        $('.showAwardRecord').on('click', function () {
             maskShow('drawRecordDialog');
         })
     }
@@ -88,6 +88,22 @@ var components = (function () {
         JSNativeBridge.init();
     }
 
+    function checkInBtnBindEv() {
+        $('#checkInBtn').on('click', function () {
+            if ($(this).hasClass('hover')) {
+                return false;
+            }
+            $(this).addClass('hover');
+            JSNativeBridge.send('js_msg_already_signin');
+            setTimeout(function () {
+                JSNativeBridge.send('js_msg_total_points', {'total_points': 2500});
+            }, 2000);
+            setTimeout(function () {
+                JSNativeBridge.send('js_msg_bind_phonenumber');
+            }, 5000);
+        });
+    }
+
     function init() {
         //maskInit();
         activityRulesBindEv();
@@ -95,6 +111,7 @@ var components = (function () {
         bindPhoneNumberBtnBindEv();
         JSNativeBridgeBindEv();
         showAwardRecordBtnBindEv();
+        checkInBtnBindEv()
         //canvasCreate();
     }
 

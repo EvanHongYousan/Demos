@@ -52,7 +52,10 @@ html, body, img, div {
     margin: 0 auto;
 }
 
-.container .check-in.hover
+.container .check-in.hover{
+    background: url(../img/btn_Moon_Signed_in.png);
+    background-size: 100% 100%;
+}
 
 .container .integral {
     color: #fcdc51;
@@ -222,6 +225,7 @@ html, body, img, div {
     position: absolute;
     top: 0;
     left: 0;
+    display: block !important;
 }
 
 .container .dialContainer > span.lotteryBtn:active > img:last-of-type {
