@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../../angular.min.js"></script>
+</head>
+<body>
+
+<div ng-app="myApp"
+        ng-init="someProperty='some data'"
+        ></div>
+<div ng-init="siblingProperty='more data'">
+    inside div two
+    <div ng-init="aThirdProperty"></div>
+</div>
+<script>
+    angular.module('myApp', [])
+</script>
+</body>
+</html>

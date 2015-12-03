@@ -32,7 +32,44 @@
 //goRotate();
 /*animate test end*/
 
+var common = (function () {
+    function getReqPrm(name) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+        var r = window.location.search.substr(1).match(reg);
+        if (r != null) {
+            return unescape(r[2]);
+        } else {
+            return null;
+        }
+    }
+
+    return {getReqPrm: getReqPrm}
+})();
+
 var components = (function () {
+    var domainName = 'http://test.hjlaoshi.com';
+    var userId = null;
+
+    function getUserIdFromUrl() {
+        try {
+            userId = common.getReqPrm('parameter') ? JSON.parse(decodeURIComponent(common.getReqPrm('parameter'))).user_id : null;
+        } catch (e) {
+            console.log(e);
+        }
+        if (userId == null) {
+            userId = '15800031138@test.hjlaoshi.com';
+        }
+    }
+
+    function initPage() {
+        $.get(
+            domainName + '/awardServlet?method=init&user_id='+userId,
+            function (data) {
+                console.log(data);
+            }
+        );
+    }
+
     function maskInit() {
         $('.mask').on('touchmove', function () {
             return false;
@@ -106,6 +143,8 @@ var components = (function () {
 
     function init() {
         //maskInit();
+        getUserIdFromUrl();
+        initPage();
         activityRulesBindEv();
         closeBtnBindEv();
         bindPhoneNumberBtnBindEv();

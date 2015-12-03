@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../angular.min.js"></script>
+    <script src="http://code.angularjs.org/1.2.0/angular-route.js"></script>
+</head>
+<body>
+
+<header>
+    <h1>header</h1>
+</header>
+
+<div class="content">
+    <div ng-view></div>
+</div>
+
+<footer>
+    <h5>footer</h5>
+</footer>
+<script>
+    angular.module('myApp', ['ngRoute'])
+            .config(['$routeProvider', function ($routeProvider) {
+                $routeProvider.when('/', {
+                    controller: 'HomeController',
+                    template: '<a href="inbox/ari">View the inbox</a>'
+                }).when('/inbox/:name', {
+                    controller: 'InboxController',
+                    template: '<h1>Welcome to your inbox, {{name}}</h1>'
+                    + '<a href="#/">Back</a>'
+                })
+                        .otherwise({redirectTo:'/'});
+            }])
+</script>
+</body>
+</html>
