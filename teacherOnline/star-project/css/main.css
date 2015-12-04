@@ -50,9 +50,119 @@ html, body, img, div {
     background: url(../img/btn_Moon_Sign.png);
     background-size: 100% 100%;
     margin: 0 auto;
+    text-align: center;
 }
 
-.container .check-in.hover{
+.container .check-in > span {
+    display: inline-block;
+    font-size: 40px;
+    color: #FCDC51;
+    font-weight: bolder;
+    -webkit-transform: translate(0, 100px);
+    -moz-transform: translate(0, 100px);
+    -o-transform: translate(0, 100px);
+    transform: translate(0, 100px);
+    opacity: 0;
+
+    /*-webkit-transition: all 0.5s;*/
+    /*-o-transition: all 0.5s;*/
+    /*-moz-transition: all 0.5s;*/
+    /*transition: all 0.5s;*/
+}
+
+.container .check-in.hover > span {
+    /*-webkit-transform: translate(0, 0);*/
+    /*-moz-transform: translate(0, 0);*/
+    /*-o-transform: translate(0, 0);*/
+    /*transform: translate(0, 0);*/
+    /*opacity:0;*/
+    -webkit-animation: fadeDisplay 0.5s;
+    -moz-animation: fadeDisplay 0.5s;
+    -o-animation: fadeDisplay 0.5s;
+    animation: fadeDisplay 0.8s;
+}
+
+@keyframes fadeDisplay {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+    }
+    100%{
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+        opacity:0;
+    }
+}
+
+@-webkit-keyframes fadeDisplay {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+    }
+    100%{
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+        opacity:0;
+    }
+}
+
+@-moz-keyframes fadeDisplay {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+    }
+    100%{
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+        opacity:0;
+    }
+}
+
+@-o-keyframes fadeDisplay {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+    }
+    100%{
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+        opacity:0;
+    }
+}
+
+.container .check-in.hover {
     background: url(../img/btn_Moon_Signed_in.png);
     background-size: 100% 100%;
 }
@@ -80,10 +190,10 @@ html, body, img, div {
     display: inline-block;
     margin: 0 8px;
 
-    -webkit-transition:all 0.5s;
-    -moz-transition:all 0.5s;
-    -o-transition:all 0.5s;
-    transition:all 0.5s;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
 }
 
 .container .description {
@@ -159,34 +269,32 @@ html, body, img, div {
     position: relative;
     left: 2px;
 
-    -webkit-transition:all 0.2s;
-    -moz-transition:all 0.2s;
-    -o-transition:all 0.2s;
-    transition:all 0.2s;
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
 }
 
 .container .dialContainer span img:nth-of-type(2),
-.container .dialContainer span.pullLeft span img:nth-of-type(2)
-{
-    display:none;
+.container .dialContainer span.pullLeft span img:nth-of-type(2) {
+    display: none;
 }
 
 .container .dialContainer span.active > img {
     box-shadow: 0 0 5px 5px #2dddf5;
-    -webkit-filter:saturate(3);
-    -moz-filter:saturate(3);
-    -o-filter:saturate(3);
-    filter:saturate(3);
+    -webkit-filter: saturate(3);
+    -moz-filter: saturate(3);
+    -o-filter: saturate(3);
+    filter: saturate(3);
 }
 
-.container .dialContainer span.active > img:nth-of-type(1){
-    display:none;
+.container .dialContainer span.active > img:nth-of-type(1) {
+    display: none;
 }
 
 .container .dialContainer span.active > img:nth-of-type(2),
-.container .dialContainer span.pullLeft span.active > img:nth-of-type(2)
-{
-    display:inline-block;
+.container .dialContainer span.pullLeft span.active > img:nth-of-type(2) {
+    display: inline-block;
 }
 
 .container .dialContainer > span > p {
@@ -197,12 +305,12 @@ html, body, img, div {
     top: 20%;
     /*left: 20%;*/
     color: #fcdc51;
-    width:100%;
-    font-size:12px;
+    width: 100%;
+    font-size: 12px;
 }
 
-.container .dialContainer span > p.description em{
-    font-size:18px;
+.container .dialContainer span > p.description em {
+    font-size: 18px;
     font-style: normal;
 }
 
@@ -211,9 +319,9 @@ html, body, img, div {
     bottom: 10px;
     /*left: 20%;*/
     color: white;
-    width:100%;
+    width: 100%;
     text-align: center;
-    font-size:12px;
+    font-size: 12px;
 }
 
 .container .dialContainer > span.lotteryBtn {
@@ -224,7 +332,7 @@ html, body, img, div {
 .container .dialContainer > span.lotteryBtn > img:last-of-type {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 2px;
     display: block !important;
 }
 
@@ -403,8 +511,8 @@ html, body, img, div {
 
 .mask .extraIntegralGetAlert .extraItegral {
     color: #fde651;
-    font-size:50px;
-    margin-top:-130px;
+    font-size: 50px;
+    margin-top: -130px;
     font-weight: bolder;
 }
 
@@ -448,7 +556,6 @@ html, body, img, div {
     margin: 60px auto;
 }
 
-
 .mask .bindPhoneNumber > span {
     display: inline-block;
     width: 150px;
@@ -490,8 +597,8 @@ html, body, img, div {
 
 .mask .congratulationAlert .reward {
     color: #fde651;
-    font-size:50px;
-    margin-top:-150px;
+    font-size: 50px;
+    margin-top: -150px;
     font-weight: bolder;
 }
 
@@ -503,8 +610,8 @@ html, body, img, div {
     margin-top: 20px;
 }
 
-.mask .congratulationAlert > span.shareBtn{
-    width:230px;
+.mask .congratulationAlert > span.shareBtn {
+    width: 230px;
 }
 
 .mask .congratulationAlert > span > img {
@@ -544,51 +651,50 @@ html, body, img, div {
     display: inline-block;
 }
 
-.mask .drawRecordDialog .tablerContainer{
-    width:80%;
-    margin:0 auto;
+.mask .drawRecordDialog .tablerContainer {
+    width: 80%;
+    margin: 0 auto;
 }
 
-.mask .drawRecordDialog table{
-    width:100%;
+.mask .drawRecordDialog table {
+    width: 100%;
 }
 
-.mask .drawRecordDialog th{
-    color:#2dddf5;
+.mask .drawRecordDialog th {
+    color: #2dddf5;
 }
 
-.mask .drawRecordDialog td{
-    color:#fff;
-    font-size:12px;
+.mask .drawRecordDialog td {
+    color: #fff;
+    font-size: 12px;
 }
 
 /*.mask .drawRecordDialog tr{*/
-    /*background:url('../img/pic_table_line.png') no-repeat;*/
-    /*background-size:cover;*/
+/*background:url('../img/pic_table_line.png') no-repeat;*/
+/*background-size:cover;*/
 /*}*/
 
-.mask .drawRecordDialog tr td.divider{
-    height:3px;
-    padding:0;
-    margin-top:-20px;
-    position:relative;
-    top:-5px;
+.mask .drawRecordDialog tr td.divider {
+    height: 3px;
+    padding: 0;
+    margin-top: -20px;
+    position: relative;
+    top: -5px;
 }
 
-.mask .drawRecordDialog tr td img{
-    width:100%;
-    margin:0;
+.mask .drawRecordDialog tr td img {
+    width: 100%;
+    margin: 0;
 }
 
-.mask .drawRecordDialog .tbodyContainer{
-    height:300px;
+.mask .drawRecordDialog .tbodyContainer {
+    height: 300px;
     overflow: auto;
 }
 
-.mask .drawRecordDialog td{
-    width:30%;
+.mask .drawRecordDialog td {
+    width: 30%;
 }
-
 
 .mask .drawRecordDialog > span {
     display: inline-block;

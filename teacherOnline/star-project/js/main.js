@@ -49,6 +49,12 @@ var common = (function () {
 var components = (function () {
     var domainName = 'http://test.hjlaoshi.com';
     var userId = null;
+    var rotateI = 1;
+    var timePick = 150;
+    var rotating = false;
+    var scrollData = [];
+    var rotatingCanStop = false;
+    var awardI = 0;
 
     function getUserIdFromUrl() {
         try {
@@ -61,13 +67,94 @@ var components = (function () {
         }
     }
 
+    function dialContainerRotate() {
+        if (timePick < 800) {
+            timePick += 60;
+        } else {
+            rotatingCanStop = true;
+        }
+        if (rotateI == 13) {
+            rotateI = 1;
+        }
+        $('.container .dialContainer  span').removeClass('active');
+        $('.container .dialContainer  span.item' + rotateI).addClass('active');
+
+        if (rotatingCanStop && rotateI == awardI) {
+            setTimeout(function () {
+                maskShow('congratulationAlert');
+            }, 1000);
+            return;
+        }
+
+        rotateI++;
+        //timePick += 50;
+        setTimeout('components.dialContainerRotate()', timePick);
+    }
+
     function initPage() {
         $.get(
-            domainName + '/awardServlet?method=init&user_id='+userId,
+            //domainName + '/awardServlet?method=init&user_id='+userId,
+            './test_json/init.json',
             function (data) {
-                console.log(data);
+                var i = 0;
+                data = JSON.parse(data);
+
+                $('.container .integral > span').text(data.total_points);
+
+                for (i = 1; i <= data.week_signin_count; i++) {
+                    $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
+                }
+
+                $('.dialTitleDiv .buble')[0].src = './img/buble' + data.free_count + '.png';
+                if (data.today_free_acount < 1) {
+                    $('.dialTitleDiv .buble').css('opacity', 0);
+                }
+
+                for (i = 0; i < data.awards.length; i++) {
+                    data.awards[i].discription = data.awards[i].discription.toString().replace(/元|分钟/, '');
+                    if (data.awards[i].type == 1) {
+                        $('.dialContainer .item' + data.awards[i].no + ' .type').text('现金券');
+                        $('.dialContainer .item' + data.awards[i].no).find('img').eq(0).attr('src', './img/pic_money.png');
+                        $('.dialContainer .item' + data.awards[i].no).find('img').eq(1).attr('src', './img/pic_money_Dynamic.png');
+                        $('.dialContainer .item' + data.awards[i].no + ' .description').html('<em>' + data.awards[i].discription + '</em>' + '元');
+                    }
+                    if (data.awards[i].type == 2) {
+                        $('.dialContainer .item' + data.awards[i].no + ' .type').text('学时卡');
+                        $('.dialContainer .item' + data.awards[i].no).find('img').eq(0).attr('src', './img/pic_Card.png');
+                        $('.dialContainer .item' + data.awards[i].no).find('img').eq(1).attr('src', './img/pic_Card_Dynamic.png');
+                        $('.dialContainer .item' + data.awards[i].no + ' .description').html('<em>' + data.awards[i].discription + '</em>' + '分钟');
+                    }
+                }
             }
         );
+    }
+
+    function getScrollData() {
+        $.get(
+            './test_json/showResult.json',
+            function (data) {
+                scrollData = JSON.parse(data);
+                console.log(scrollData);
+                setTimeout(function () {
+                    components.getScrollData();
+                }, 60000);
+            }
+        );
+    }
+
+    function scrollDivScrolling() {
+        var item = scrollData.pop();
+        if (item) {
+            $('.scrollDiv').append('<p>恭喜<span class="name">' + item.username + '</span>抽中了<span class="award">' + item.detail + '</span></p>');
+            $('.scrollDiv').scrollTo({
+                endY: $('.scrollDiv')[0].scrollHeight,
+                duration: 1000,
+                callback: function () {
+                    //console.log($('.scrollDiv')[0].scrollHeight);
+                }
+            });
+        }
+        setTimeout('components.scrollDivScrolling()', 1500);
     }
 
     function maskInit() {
@@ -90,6 +177,7 @@ var components = (function () {
     function maskShow(dialog) {
         $('.mask, .mask .' + dialog).removeClass('none');
         $('body').css('overflow', 'hidden');
+        $('.dialContainer span').removeClass('active');
     }
 
     function maskHide() {
@@ -130,32 +218,63 @@ var components = (function () {
             if ($(this).hasClass('hover')) {
                 return false;
             }
-            $(this).addClass('hover');
-            JSNativeBridge.send('js_msg_already_signin');
-            setTimeout(function () {
-                JSNativeBridge.send('js_msg_total_points', {'total_points': 2500});
-            }, 2000);
-            setTimeout(function () {
-                JSNativeBridge.send('js_msg_bind_phonenumber');
-            }, 5000);
+            $.get(
+                './test_json/signin.json',
+                function (data) {
+                    JSNativeBridge.send('js_msg_already_signin');
+                    $(this).addClass('hover');
+                    setTimeout(function () {
+                        $('.container .integral > span').text(data.total_points);
+                    }, 500);
+                }
+            );
         });
+    }
+
+    function lotteryBtnBindEv() {
+        $('.lotteryBtn').on('click', function () {
+            if (rotating) {
+                return;
+            }
+            rotating = true;
+            //dialContainerRotate();
+            $.get(
+                './test_json/myLottery.json',
+                function (data) {
+                    data = JSON.parse(data);
+                    dialContainerRotate();
+                    console.log(data);
+                    awardI = data.award.no;
+                    $('.container .integral > span').text(data.total_points);
+                    $('.mask .congratulationAlert .reward').text(data.award.description);
+                }
+            );
+        })
     }
 
     function init() {
         //maskInit();
         getUserIdFromUrl();
-        initPage();
         activityRulesBindEv();
         closeBtnBindEv();
         bindPhoneNumberBtnBindEv();
         JSNativeBridgeBindEv();
         showAwardRecordBtnBindEv();
-        checkInBtnBindEv()
+        checkInBtnBindEv();
+        lotteryBtnBindEv();
+        setTimeout(function () {
+            initPage();
+            getScrollData();
+            scrollDivScrolling();
+        }, 1000);
         //canvasCreate();
     }
 
     return {
-        init: init
+        init: init,
+        dialContainerRotate: dialContainerRotate,
+        getScrollData: getScrollData,
+        scrollDivScrolling: scrollDivScrolling
     };
 })();
 
