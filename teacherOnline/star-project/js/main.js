@@ -67,7 +67,6 @@ var components = (function () {
         }
 
         rotateI++;
-        //timePick += 50;
         setTimeout(components.dialContainerRotate, timePick);
     }
 
@@ -258,7 +257,6 @@ var components = (function () {
     }
 
     function init() {
-        //maskInit();
         getUserIdFromUrl();
         activityRulesBindEv();
         closeBtnBindEv();
@@ -273,7 +271,6 @@ var components = (function () {
             getScrollData();
             scrollDivScrolling();
         }, 1000);
-        //canvasCreate();
     }
 
     return {
