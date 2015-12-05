@@ -1,60 +1,28 @@
-/**
- * Created by yantianyu on 2015/11/23.
- */
-
-/*animate test start*/
-//setInterval(function () {
-//    $('.scrollDiv').append('<p>恭喜<span class="name">梁春</span>抽中了<span class="award">“Apple Watch”</span></p>');
-//    $('.scrollDiv').scrollTo({
-//        endY: $('.scrollDiv')[0].scrollHeight,
-//        duration: 1000,
-//        callback: function () {
-//            //console.log($('.scrollDiv')[0].scrollHeight);
-//        }
-//    });
-//}, 1500);
-//
-//globalI = 1;
-//timePick = 150;
-//function goRotate() {
-//    if (timePick > 800) {
-//        return;
-//    }
-//    if (globalI == 13) {
-//        globalI = 1;
-//    }
-//    $('.container .dialContainer  span').removeClass('active');
-//    $('.container .dialContainer  span.item' + globalI).addClass('active');
-//    globalI++;
-//    //timePick += 50;
-//    setTimeout('goRotate()', timePick);
-//}
-//goRotate();
-/*animate test end*/
+/*jslint browser: true*/
+/*global $, jQuery, unescape, alert, JSNativeBridge*/
 
 var common = (function () {
     function getReqPrm(name) {
-        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
-        var r = window.location.search.substr(1).match(reg);
-        if (r != null) {
+        var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i"),
+            r = window.location.search.substr(1).match(reg);
+        if (r !== null) {
             return unescape(r[2]);
-        } else {
-            return null;
         }
+        return null;
     }
 
-    return {getReqPrm: getReqPrm}
-})();
+    return {getReqPrm: getReqPrm};
+}());
 
 var components = (function () {
-    var domainName = 'http://test.hjlaoshi.com';
-    var userId = null;
-    var rotateI = 1;
-    var timePick = 150;
-    var rotating = false;
-    var scrollData = [];
-    var rotatingCanStop = false;
-    var awardI = 0;
+    var domainName = 'http://test.hjlaoshi.com',
+        userId = null,
+        rotateI = 1,
+        timePick = 150,
+        rotating = false,
+        scrollData = [],
+        rotatingCanStop = false,
+        awardI = 0;
 
     function getUserIdFromUrl() {
         try {
@@ -62,116 +30,9 @@ var components = (function () {
         } catch (e) {
             console.log(e);
         }
-        if (userId == null) {
-            userId = '15800031138@test.hjlaoshi.com';
+        if (userId === null) {
+            userId = '15500000044@test.hjlaoshi.com';
         }
-    }
-
-    function dialContainerRotate() {
-        if (timePick < 800) {
-            timePick += 60;
-        } else {
-            rotatingCanStop = true;
-        }
-        if (rotateI == 13) {
-            rotateI = 1;
-        }
-        $('.container .dialContainer  span').removeClass('active');
-        $('.container .dialContainer  span.item' + rotateI).addClass('active');
-
-        if (rotatingCanStop && rotateI == awardI) {
-            setTimeout(function () {
-                maskShow('congratulationAlert');
-            }, 1000);
-            return;
-        }
-
-        rotateI++;
-        //timePick += 50;
-        setTimeout('components.dialContainerRotate()', timePick);
-    }
-
-    function initPage() {
-        $.get(
-            //domainName + '/awardServlet?method=init&user_id='+userId,
-            './test_json/init.json',
-            function (data) {
-                var i = 0;
-                data = JSON.parse(data);
-
-                $('.container .integral > span').text(data.total_points);
-
-                for (i = 1; i <= data.week_signin_count; i++) {
-                    $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
-                }
-
-                $('.dialTitleDiv .buble')[0].src = './img/buble' + data.free_count + '.png';
-                if (data.today_free_acount < 1) {
-                    $('.dialTitleDiv .buble').css('opacity', 0);
-                }
-
-                for (i = 0; i < data.awards.length; i++) {
-                    data.awards[i].discription = data.awards[i].discription.toString().replace(/元|分钟/, '');
-                    if (data.awards[i].type == 1) {
-                        $('.dialContainer .item' + data.awards[i].no + ' .type').text('现金券');
-                        $('.dialContainer .item' + data.awards[i].no).find('img').eq(0).attr('src', './img/pic_money.png');
-                        $('.dialContainer .item' + data.awards[i].no).find('img').eq(1).attr('src', './img/pic_money_Dynamic.png');
-                        $('.dialContainer .item' + data.awards[i].no + ' .description').html('<em>' + data.awards[i].discription + '</em>' + '元');
-                    }
-                    if (data.awards[i].type == 2) {
-                        $('.dialContainer .item' + data.awards[i].no + ' .type').text('学时卡');
-                        $('.dialContainer .item' + data.awards[i].no).find('img').eq(0).attr('src', './img/pic_Card.png');
-                        $('.dialContainer .item' + data.awards[i].no).find('img').eq(1).attr('src', './img/pic_Card_Dynamic.png');
-                        $('.dialContainer .item' + data.awards[i].no + ' .description').html('<em>' + data.awards[i].discription + '</em>' + '分钟');
-                    }
-                }
-            }
-        );
-    }
-
-    function getScrollData() {
-        $.get(
-            './test_json/showResult.json',
-            function (data) {
-                scrollData = JSON.parse(data);
-                console.log(scrollData);
-                setTimeout(function () {
-                    components.getScrollData();
-                }, 60000);
-            }
-        );
-    }
-
-    function scrollDivScrolling() {
-        var item = scrollData.pop();
-        if (item) {
-            $('.scrollDiv').append('<p>恭喜<span class="name">' + item.username + '</span>抽中了<span class="award">' + item.detail + '</span></p>');
-            $('.scrollDiv').scrollTo({
-                endY: $('.scrollDiv')[0].scrollHeight,
-                duration: 1000,
-                callback: function () {
-                    //console.log($('.scrollDiv')[0].scrollHeight);
-                }
-            });
-        }
-        setTimeout('components.scrollDivScrolling()', 1500);
-    }
-
-    function maskInit() {
-        $('.mask').on('touchmove', function () {
-            return false;
-        })
-    }
-
-    function canvasCreate() {
-        $('.dialContainer span img').each(function () {
-            this.onload = function () {
-                var $canvas = $('<canvas></canvas>');
-                $canvas.height($(this).height());
-                $canvas.width($(this).width());
-                $(this).parent().append($canvas);
-            }
-        });
     }
 
     function maskShow(dialog) {
@@ -183,6 +44,109 @@ var components = (function () {
     function maskHide() {
         $('.mask, .mask > div').addClass('none');
         $('body').css('overflow', 'auto');
+    }
+
+    function dialContainerRotate() {
+        if (timePick < 800) {
+            timePick += 60;
+        } else {
+            rotatingCanStop = true;
+        }
+        if (rotateI === 13) {
+            rotateI = 1;
+        }
+        $('.container .dialContainer  span').removeClass('active');
+        $('.container .dialContainer  span.item' + rotateI).addClass('active');
+
+        if (rotatingCanStop && rotateI === awardI) {
+            setTimeout(function () {
+                maskShow('congratulationAlert');
+                rotating = false;
+            }, 1000);
+            return;
+        }
+
+        rotateI++;
+        //timePick += 50;
+        setTimeout(components.dialContainerRotate, timePick);
+    }
+
+    function initPage() {
+        $.get(
+            domainName + '/app/awardServlet?method=init&user_id=' + userId + '&callback=?',
+            //'./test_json/init.json',
+            function (data) {
+                var i = 0,
+                    resultCode = data._APP_RESULT_OPT_CODE,
+                    resultData = data._APP_RESULT_OPT_DATA,
+                    resultDescript = data._APP_RESULT_OPT_DESC;
+
+                if (resultCode === 110) {
+                    $('.container .integral > span').text(resultData.total_point);
+
+                    for (i = 1; i <= resultData.week_signin_count; i++) {
+                        $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
+                    }
+
+                    $('.dialTitleDiv .buble')[0].src = './img/buble' + resultData.free_count + '.png';
+                    if (resultData.today_free_acount < 1) {
+                        $('.dialTitleDiv .buble').css('opacity', 0);
+                    }
+
+                    if (resultData.sigined) {
+                        $('#checkInBtn').addClass('hover');
+                    }
+
+                    for (i = 1; i <= 12; i++) {
+                        resultData.awards[i].discription = resultData.awards[i].discription.toString().replace(/元|分钟|卡/g, '');
+                        if (resultData.awards[i].type === 1) {
+                            $('.dialContainer .item' + i + ' .type').text('现金券');
+                            $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_money.png');
+                            $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_money_Dynamic.png');
+                            $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '元');
+                        }
+                        if (resultData.awards[i].type === 2) {
+                            $('.dialContainer .item' + i + ' .type').text('学时卡');
+                            $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_Card.png');
+                            $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_Card_Dynamic.png');
+                            $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '分钟');
+                        }
+                    }
+                } else {
+                    alert(resultDescript);
+                }
+            }
+        );
+    }
+
+    function getScrollData() {
+        console.log(userId);
+        $.get(
+            domainName + '/app/awardServlet?method=showResult?user_id=' + userId + '&callback=?',
+            //'./test_json/showResult.json',
+            function (data) {
+                //scrollData = JSON.parse(data);
+                //setTimeout(function () {
+                //    components.getScrollData();
+                //}, 60000);
+                console.log(data);
+            }
+        );
+    }
+
+    function scrollDivScrolling() {
+        var item = scrollData.pop();
+        if (item) {
+            $('.scrollDiv').append('<p>恭喜<span class="name">' + item.username + '</span>抽中了<span class="award">' + item.detail + '</span></p>');
+            $('.scrollDiv').scrollTo({
+                endY: $('.scrollDiv')[0].scrollHeight,
+                duration: 1000
+                //callback: function () {
+                //    //console.log($('.scrollDiv')[0].scrollHeight);
+                //}
+            });
+        }
+        setTimeout(components.scrollDivScrolling, 1500);
     }
 
     function activityRulesBindEv() {
@@ -197,19 +161,41 @@ var components = (function () {
         });
     }
 
+    function getAwardRecord() {
+        $.get(
+            domainName + '/app/awardServlet?method=showRecord&user_id=' + userId + '&callback=?',
+            //'./test_json/signin.json',
+            function (data) {
+                var records = data.records,
+                    i,
+                    date,
+                    dateStr,
+                    $target;
+                for (i = 0; i < records.length; i++) {
+                    date = new Date(parseInt(records[i].time, 10));
+                    dateStr = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+                    $target = $('.drawRecordDialog .tbodyContainer > table');
+                    $target.append('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>');
+                    $target.append('<tr><td>' + dateStr + '</td><td>' + records[i].cost + '</td><td>' + records[i].detail + '</td></tr>');
+                    dateStr = null;
+                }
+            }
+        );
+    }
+
     function showAwardRecordBtnBindEv() {
         $('.showAwardRecord').on('click', function () {
             maskShow('drawRecordDialog');
-        })
+        });
     }
 
     function bindPhoneNumberBtnBindEv() {
         $('.bindPhoneNumberBtn').on('click', function () {
             JSNativeBridge.send('js_msg_bind_phonenumber');
-        })
+        });
     }
 
-    function JSNativeBridgeBindEv() {
+    function jsNativeBridgeBindEv() {
         JSNativeBridge.init();
     }
 
@@ -219,13 +205,24 @@ var components = (function () {
                 return false;
             }
             $.get(
-                './test_json/signin.json',
+                domainName + '/app/awardServlet?method=signin&user_id=' + userId + '&callback=?',
+                //'./test_json/signin.json',
                 function (data) {
-                    JSNativeBridge.send('js_msg_already_signin');
-                    $(this).addClass('hover');
-                    setTimeout(function () {
-                        $('.container .integral > span').text(data.total_points);
-                    }, 500);
+                    var i = 0;
+                    console.log(data);
+                    if (!data._APP_RESULT_OPT_CODE) {
+                        JSNativeBridge.send('js_msg_already_signin');
+                        $('#checkInBtn').addClass('hover');
+                        $('.container .integral > span').text(data.total_point);
+                        for (i = 1; i <= 4; i++) {
+                            $('.star-bar > .star' + i)[0].src = './img/pic_Stars_' + i + '.png';
+                        }
+                        for (i = 1; i <= data.week_signin_count; i++) {
+                            $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
+                        }
+                    } else {
+                        alert(data._APP_RESULT_OPT_DESC);
+                    }
                 }
             );
         });
@@ -236,20 +233,28 @@ var components = (function () {
             if (rotating) {
                 return;
             }
-            rotating = true;
-            //dialContainerRotate();
             $.get(
-                './test_json/myLottery.json',
+                domainName + '/app/awardServlet?method=myLottery&user_id=' + userId + '&callback=?',
+                //'./test_json/myLottery.json',
                 function (data) {
-                    data = JSON.parse(data);
-                    dialContainerRotate();
                     console.log(data);
-                    awardI = data.award.no;
-                    $('.container .integral > span').text(data.total_points);
-                    $('.mask .congratulationAlert .reward').text(data.award.description);
+                    var resultCode = data._APP_RESULT_OPT_CODE,
+                        resultData = data._APP_RESULT_OPT_DATA,
+                        resultDescript = data._APP_RESULT_OPT_DESC;
+
+                    if (resultCode === 110) {
+                        rotating = true;
+                        dialContainerRotate();
+                        console.log(resultData);
+                        awardI = resultData.award.no;
+                        $('.container .integral > span').text(resultData.total_points);
+                        $('.mask .congratulationAlert .reward').text(resultData.award.description);
+                    } else {
+                        alert(resultDescript);
+                    }
                 }
             );
-        })
+        });
     }
 
     function init() {
@@ -258,7 +263,8 @@ var components = (function () {
         activityRulesBindEv();
         closeBtnBindEv();
         bindPhoneNumberBtnBindEv();
-        JSNativeBridgeBindEv();
+        jsNativeBridgeBindEv();
+        getAwardRecord();
         showAwardRecordBtnBindEv();
         checkInBtnBindEv();
         lotteryBtnBindEv();
@@ -276,6 +282,6 @@ var components = (function () {
         getScrollData: getScrollData,
         scrollDivScrolling: scrollDivScrolling
     };
-})();
+}());
 
 components.init();

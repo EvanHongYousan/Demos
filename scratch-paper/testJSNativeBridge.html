@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <style>
+        body{
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+<br/><br/><br/>
+<button id="showUserId">显示userid</button>
+<br/><br/><br/>
+<button id="btnSignIn">签到</button>
+<br/><br/><br/>
+<button id="totalPoints">用户总积分333</button>
+<br/><br/><br/>
+<button id="bindPhoneNumber">需要绑定手机</button>
+<br/><br/><br/>
+<button id="showTips">显示小提示</button>
+<br/><br/><br/>
+<button id="share">分享</button>
+<br/><br/><br/>
+<script src="http://libs.baidu.com/zepto/0.8/zepto.min.js"></script>
+<script src="tools.js"></script>
+<script>
+    window.onload = function(){
+        var userId = null;
+
+        function getReqPrm(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            } else {
+                return null;
+            }
+        }
+
+        try {
+            userId = getReqPrm('parameter') ? JSON.parse(decodeURIComponent(getReqPrm('parameter'))).user_id : null;
+        } catch (e) {
+            console.log(e);
+        }
+        if (userId == null) {
+            userId = '没取到userid啊';
+        }
+
+        JSNativeBridge.init();
+        $('#showUserId').on('click', function(){
+            alert(userId);
+        });
+        $('#btnSignIn').on('click', function(){
+            JSNativeBridge.send('js_msg_already_signin');
+        });
+        $('#totalPoints').on('click', function(){
+            JSNativeBridge.send('js_msg_total_points',{"total_points":333});
+        });
+        $('#bindPhoneNumber').on('click', function(){
+            JSNativeBridge.send('js_msg_bind_phonenumber');
+        });
+        $('#showTips').on('click', function(){
+            JSNativeBridge.send('js_msg_showTip',{"tip":"显示小提示"});
+        });
+        $('#share').on('click', function(){
+            JSNativeBridge.send('share', {
+                "content": 'content',
+                "title": 'title',
+                "type": 0,
+                "image_url": 'http://ftp.hjlaoshi.com/rtc/spread/shareicon.png',
+                "target_url": 'https://www.baidu.com/img/bd_logo1.png',
+                "target_url_forQQ": 'https://www.baidu.com/img/bd_logo1.png'
+            });
+        })
+    }
+</script>
+
+</body>
+</html>
