@@ -31,7 +31,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15500000042@test.hjlaoshi.com';
+            userId = '15500000045@test.hjlaoshi.com';
         }
     }
 
@@ -95,11 +95,11 @@ var components = (function () {
                         }
 
                         $('.dialTitleDiv .buble')[0].src = './img/buble' + resultData.free_count + '.png';
-                        if (!resultData.today_free_count) {
-                            $('.dialTitleDiv .buble').css('opacity', 0);
+                        if (resultData.today_free_count) {
+                            $('.dialTitleDiv .buble').css('opacity', 1);
                         }
 
-                        $('.star-bar').attr('style','background:url(./img/pic_Five_line_Bright_'+resultData.week_signin_count+'.png) no-repeat;background-size:100% 100%;');
+                        $('.star-bar').attr('style', 'background:url(./img/pic_Five_line_Bright_' + resultData.week_signin_count + '.png) no-repeat;background-size:100% 100%;');
 
                         for (i = 1; i <= 12; i++) {
                             resultData.awards[i].discription = resultData.awards[i].discription.toString().replace(/元|分钟|卡/g, '');
@@ -119,8 +119,12 @@ var components = (function () {
                                 $('.dialContainer .item' + i + ' .type').text('谢谢惠顾');
                                 $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_thank.png');
                                 $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_thank_dynamic.png');
-                                $('.dialContainer .item' + i + ' .description').html('<em>' + '</em>' + '');
+                                $('.dialContainer .item' + i + ' .description').html('<em></em>');
                             }
+                        }
+
+                        if (resultData.free_count === 3) {
+                            $('.mask, .mask .freeChanceAlert').removeClass('none');
                         }
                     }, 2000);
                 } else {
@@ -148,7 +152,7 @@ var components = (function () {
 
     function scrollDivScrolling() {
         var item = scrollData.pop();
-        if (item) {
+        if (item && item.detail !== undefined) {
             $('.scrollDiv').append('<p>恭喜<span class="name">' + item.username + '</span>抽中了<span class="award">' + item.detail + '</span></p>');
             $('.scrollDiv').scrollTo({
                 endY: $('.scrollDiv')[0].scrollHeight,
@@ -188,16 +192,18 @@ var components = (function () {
                     dateStr,
                     $target;
                 console.log(records);
-                if(resultCode === 110){
+                if (resultCode === 110) {
                     for (i = 0; i < records.length; i++) {
-                        date = new Date(parseInt(records[i].insert_time, 10));
-                        dateStr = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-                        $target = $('.drawRecordDialog .tbodyContainer > table');
-                        $target.append($('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>'));
-                        $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost + '</td><td>' + records[i].detail + '</td></tr>'));
-                        dateStr = null;
+                        if (records[i].detail !== undefined) {
+                            date = new Date(parseInt(records[i].insert_time, 10));
+                            dateStr = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+                            $target = $('.drawRecordDialog .tbodyContainer > table');
+                            $target.append($('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>'));
+                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost + '</td><td>' + records[i].detail + '</td></tr>'));
+                            dateStr = null;
+                        }
                     }
-                }else{
+                } else {
                     alert(resultDescript);
                 }
             }
@@ -229,23 +235,32 @@ var components = (function () {
                 domainName + '/app/awardServlet?method=signin&user_id=' + userId + '&callback=?',
                 //'./test_json/signin.json',
                 function (data) {
-                    var i = 0;
+                    var i = 0,
+                        resultData = data._APP_RESULT_OPT_DATA,
+                        resultCode = data._APP_RESULT_OPT_CODE,
+                        resultDescript = data._APP_RESULT_OPT_DESC;
                     console.log('checkInBtnBindEv');
                     console.log(data);
-                    if (!data._APP_RESULT_OPT_CODE) {
+                    if (resultCode === 110) {
                         JSNativeBridge.send('js_msg_already_signin');
                         $('#checkInBtn').addClass('hover');
                         setTimeout(function () {
-                            $('.container .integral > span').text(data.total_point);
+                            $('.container .integral > span').text(resultData.total_point);
                             for (i = 1; i <= 4; i++) {
                                 $('.star-bar > .star' + i)[0].src = './img/pic_Stars_' + i + '.png';
                             }
-                            for (i = 1; i <= data.week_signin_count; i++) {
+                            for (i = 1; i <= resultData.week_signin_count; i++) {
                                 $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
+                            }
+                            if (resultData.award_point) {
+                                $('.extraIntegralGetAlert .extraItegral').text(resultData.award_point);
+                                setTimeout(function () {
+                                    maskShow('extraIntegralGetAlert');
+                                }, 1000);
                             }
                         }, 2000);
                     } else {
-                        alert(data._APP_RESULT_OPT_DESC);
+                        alert(resultDescript);
                     }
                 }
             );
@@ -264,16 +279,16 @@ var components = (function () {
                     console.log('lotteryBtnBindEv');
                     console.log(data);
                     var resultCode = data._APP_RESULT_OPT_CODE,
-                        resultData = data,
+                        resultData = data._APP_RESULT_OPT_DATA,
                         resultDescript = data._APP_RESULT_OPT_DESC;
 
-                    if (!resultCode) {
+                    if (resultCode === 110) {
                         rotating = true;
                         dialContainerRotate();
                         awardI = resultData.award.no;
                         $('.container .integral > span').text(resultData.total_point);
-                        $('.mask .congratulationAlert .reward').text(resultData.award.name);
-                        $('.dialTitleDiv .buble').css('opacity','0');
+                        $('.mask .congratulationAlert .reward').text(resultData.award.description);
+                        $('.dialTitleDiv .buble').css('opacity', '0');
                     } else {
                         alert(resultDescript);
                     }
