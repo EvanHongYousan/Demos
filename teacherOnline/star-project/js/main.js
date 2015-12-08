@@ -31,7 +31,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15500000044@test.hjlaoshi.com';
+            userId = '15500000042@test.hjlaoshi.com';
         }
     }
 
@@ -75,42 +75,54 @@ var components = (function () {
             domainName + '/app/awardServlet?method=init&user_id=' + userId + '&callback=?',
             //'./test_json/init.json',
             function (data) {
+                console.log('initPage');
+                console.log(data);
                 var i = 0,
                     resultCode = data._APP_RESULT_OPT_CODE,
                     resultData = data._APP_RESULT_OPT_DATA,
                     resultDescript = data._APP_RESULT_OPT_DESC;
 
                 if (resultCode === 110) {
-                    $('.container .integral > span').text(resultData.total_point);
-
-                    for (i = 1; i <= resultData.week_signin_count; i++) {
-                        $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
-                    }
-
-                    $('.dialTitleDiv .buble')[0].src = './img/buble' + resultData.free_count + '.png';
-                    if (resultData.today_free_acount < 1) {
-                        $('.dialTitleDiv .buble').css('opacity', 0);
-                    }
-
                     if (resultData.sigined) {
                         $('#checkInBtn').addClass('hover');
                     }
 
-                    for (i = 1; i <= 12; i++) {
-                        resultData.awards[i].discription = resultData.awards[i].discription.toString().replace(/元|分钟|卡/g, '');
-                        if (resultData.awards[i].type === 1) {
-                            $('.dialContainer .item' + i + ' .type').text('现金券');
-                            $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_money.png');
-                            $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_money_Dynamic.png');
-                            $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '元');
+                    setTimeout(function () {
+                        $('.container .integral > span').text(resultData.total_point);
+
+                        for (i = 1; i <= resultData.week_signin_count; i++) {
+                            $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
                         }
-                        if (resultData.awards[i].type === 2) {
-                            $('.dialContainer .item' + i + ' .type').text('学时卡');
-                            $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_Card.png');
-                            $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_Card_Dynamic.png');
-                            $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '分钟');
+
+                        $('.dialTitleDiv .buble')[0].src = './img/buble' + resultData.free_count + '.png';
+                        if (!resultData.today_free_count) {
+                            $('.dialTitleDiv .buble').css('opacity', 0);
                         }
-                    }
+
+                        $('.star-bar').attr('style','background:url(./img/pic_Five_line_Bright_'+resultData.week_signin_count+'.png) no-repeat;background-size:100% 100%;');
+
+                        for (i = 1; i <= 12; i++) {
+                            resultData.awards[i].discription = resultData.awards[i].discription.toString().replace(/元|分钟|卡/g, '');
+                            if (resultData.awards[i].type === 1) {
+                                $('.dialContainer .item' + i + ' .type').text('现金券');
+                                $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_money.png');
+                                $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_money_Dynamic.png');
+                                $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '元');
+                            }
+                            if (resultData.awards[i].type === 2) {
+                                $('.dialContainer .item' + i + ' .type').text('学时卡');
+                                $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_Card.png');
+                                $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_Card_Dynamic.png');
+                                $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '分钟');
+                            }
+                            if (resultData.awards[i].type === 3) {
+                                $('.dialContainer .item' + i + ' .type').text('谢谢惠顾');
+                                $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_thank.png');
+                                $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_thank_dynamic.png');
+                                $('.dialContainer .item' + i + ' .description').html('<em>' + '</em>' + '');
+                            }
+                        }
+                    }, 2000);
                 } else {
                     alert(resultDescript);
                 }
@@ -119,16 +131,17 @@ var components = (function () {
     }
 
     function getScrollData() {
-        console.log(userId);
         $.get(
-            domainName + '/app/awardServlet?method=showResult?user_id=' + userId + '&callback=?',
+            domainName + '/app/awardServlet?method=showResult&user_id=' + userId + '&callback=?',
             //'./test_json/showResult.json',
             function (data) {
-                //scrollData = JSON.parse(data);
-                //setTimeout(function () {
-                //    components.getScrollData();
-                //}, 60000);
-                console.log(data);
+                scrollData = data._APP_RESULT_OPT_DATA.awards;
+                setTimeout(function () {
+                    components.getScrollData();
+                }, 60000);
+                console.log('getScrollData');
+                console.log(scrollData);
+                console.log(userId);
             }
         );
     }
@@ -165,18 +178,27 @@ var components = (function () {
             domainName + '/app/awardServlet?method=showRecord&user_id=' + userId + '&callback=?',
             //'./test_json/signin.json',
             function (data) {
-                var records = data.records,
+                console.log('getAwardRecord');
+                console.log(data);
+                var records = data._APP_RESULT_OPT_DATA.records,
+                    resultCode = data._APP_RESULT_OPT_CODE,
+                    resultDescript = data._APP_RESULT_OPT_DESC,
                     i,
                     date,
                     dateStr,
                     $target;
-                for (i = 0; i < records.length; i++) {
-                    date = new Date(parseInt(records[i].time, 10));
-                    dateStr = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
-                    $target = $('.drawRecordDialog .tbodyContainer > table');
-                    $target.append('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>');
-                    $target.append('<tr><td>' + dateStr + '</td><td>' + records[i].cost + '</td><td>' + records[i].detail + '</td></tr>');
-                    dateStr = null;
+                console.log(records);
+                if(resultCode === 110){
+                    for (i = 0; i < records.length; i++) {
+                        date = new Date(parseInt(records[i].insert_time, 10));
+                        dateStr = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+                        $target = $('.drawRecordDialog .tbodyContainer > table');
+                        $target.append($('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>'));
+                        $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost + '</td><td>' + records[i].detail + '</td></tr>'));
+                        dateStr = null;
+                    }
+                }else{
+                    alert(resultDescript);
                 }
             }
         );
@@ -208,17 +230,20 @@ var components = (function () {
                 //'./test_json/signin.json',
                 function (data) {
                     var i = 0;
+                    console.log('checkInBtnBindEv');
                     console.log(data);
                     if (!data._APP_RESULT_OPT_CODE) {
                         JSNativeBridge.send('js_msg_already_signin');
                         $('#checkInBtn').addClass('hover');
-                        $('.container .integral > span').text(data.total_point);
-                        for (i = 1; i <= 4; i++) {
-                            $('.star-bar > .star' + i)[0].src = './img/pic_Stars_' + i + '.png';
-                        }
-                        for (i = 1; i <= data.week_signin_count; i++) {
-                            $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
-                        }
+                        setTimeout(function () {
+                            $('.container .integral > span').text(data.total_point);
+                            for (i = 1; i <= 4; i++) {
+                                $('.star-bar > .star' + i)[0].src = './img/pic_Stars_' + i + '.png';
+                            }
+                            for (i = 1; i <= data.week_signin_count; i++) {
+                                $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
+                            }
+                        }, 2000);
                     } else {
                         alert(data._APP_RESULT_OPT_DESC);
                     }
@@ -236,18 +261,19 @@ var components = (function () {
                 domainName + '/app/awardServlet?method=myLottery&user_id=' + userId + '&callback=?',
                 //'./test_json/myLottery.json',
                 function (data) {
+                    console.log('lotteryBtnBindEv');
                     console.log(data);
                     var resultCode = data._APP_RESULT_OPT_CODE,
-                        resultData = data._APP_RESULT_OPT_DATA,
+                        resultData = data,
                         resultDescript = data._APP_RESULT_OPT_DESC;
 
-                    if (resultCode === 110) {
+                    if (!resultCode) {
                         rotating = true;
                         dialContainerRotate();
-                        console.log(resultData);
                         awardI = resultData.award.no;
-                        $('.container .integral > span').text(resultData.total_points);
-                        $('.mask .congratulationAlert .reward').text(resultData.award.description);
+                        $('.container .integral > span').text(resultData.total_point);
+                        $('.mask .congratulationAlert .reward').text(resultData.award.name);
+                        $('.dialTitleDiv .buble').css('opacity','0');
                     } else {
                         alert(resultDescript);
                     }
