@@ -92,7 +92,7 @@ html, body, img, div {
     /*transition: all 0.5s;*/
 }
 
-.container .check-in.hover > span.increasePoints {
+.container .check-in.hover.animate > span.increasePoints {
     /*-webkit-transform: translate(0, 0);*/
     /*-moz-transform: translate(0, 0);*/
     /*-o-transform: translate(0, 0);*/
@@ -104,7 +104,7 @@ html, body, img, div {
     animation: fadeDisplay 0.8s;
 }
 
-.container .check-in.hover > span.increaseStar {
+.container .check-in.hover.animate > span.increaseStar {
     /*-webkit-transform: translate(0, 0);*/
     /*-moz-transform: translate(0, 0);*/
     /*-o-transform: translate(0, 0);*/

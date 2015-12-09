@@ -14,17 +14,25 @@ var common = (function () {
     return {getReqPrm: getReqPrm};
 }());
 
-window.alert = function(msg){
-    JSNativeBridge.send('js_msg_showTip',{"tip":msg});
-};
+(function () {
+    var oldAlert = window.alert;
+    window.alert = function (msg) {
+        if (devJudge.isAndroid()) {
+            JSNativeBridge.send('js_msg_showTip', {"tip": msg});
+        } else {
+            oldAlert(msg);
+        }
+    };
+}());
 
 var components = (function () {
     var domainName = 'http://test.hjlaoshi.com',
         userId = null,
         rotateI = 1,
         timePick = 150,
-        rotating = false,
         scrollData = [],
+
+        rotating = false,
         rotatingCanStop = false,
         awardI = 0,
         lotteryAwardType = 0;
@@ -38,14 +46,13 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15500000049@test.hjlaoshi.com';
+            userId = '15500000011@test.hjlaoshi.com';
         }
     }
 
     function maskShow(dialog) {
         $('.mask, .mask .' + dialog).removeClass('none');
         $('body').css('overflow', 'hidden');
-        $('.dialContainer span').removeClass('active');
     }
 
     function maskHide() {
@@ -55,7 +62,7 @@ var components = (function () {
 
     function dialContainerRotate() {
         if (timePick < 800) {
-            timePick += 60;
+            timePick += 30;
         } else {
             rotatingCanStop = true;
         }
@@ -72,13 +79,38 @@ var components = (function () {
                 } else {
                     maskShow('congratulationAlert');
                 }
+                setTimeout(function () {
+                    $('.dialContainer span').removeClass('active');
+                }, 1000);
                 rotating = false;
+                rotatingCanStop = false;
+                awardI = 0;
+                lotteryAwardType = 0;
+                timePick = 150;
             }, 1000);
             return;
         }
 
         rotateI++;
         setTimeout(components.dialContainerRotate, timePick);
+    }
+
+    function refreshStarBar(week_signin_count) {
+        var i = 0;
+        try {
+            for (i = 1; i <= 4; i++) {
+                $('.star-bar > .star' + i)[0].src = './img/pic_Stars_' + i + '.png';
+            }
+            for (i = 1; i <= week_signin_count; i++) {
+                $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
+            }
+        } catch (e) {
+            console.log(e);
+        }
+        if (week_signin_count > 4) {
+            week_signin_count = 4;
+        }
+        $('.star-bar').attr('style', 'background:url(./img/pic_Five_line_Bright_' + week_signin_count + '.png) no-repeat;background-size:100% 100%;');
     }
 
     function initPage() {
@@ -97,48 +129,40 @@ var components = (function () {
                     if (resultData.sigined) {
                         $('#checkInBtn').addClass('hover');
                     }
-                    setTimeout(function () {
-                        $('.container .integral > span').text(resultData.total_point);
-                        JSNativeBridge.send('js_msg_total_points',{"total_points": resultData.total_point});
-                        try {
-                            for (i = 1; i <= resultData.week_signin_count; i++) {
-                                $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
-                            }
-                        }catch(e){
-                            console.log(e);
-                        }
-                        $('.dialTitleDiv .buble')[0].src = './img/buble' + resultData.free_count + '.png';
-                        if (resultData.today_free_count) {
-                            $('.dialTitleDiv .buble').css('opacity', 1);
-                        }
+                    $('.container .integral > span').text(resultData.total_point);
+                    JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
+                    refreshStarBar(resultData.week_signin_count);
+                    $('.dialTitleDiv .buble')[0].src = './img/buble' + resultData.free_count + '.png';
+                    if (resultData.today_free_count) {
+                        $('.dialTitleDiv .buble').css('opacity', 1);
+                    }
 
-                        $('.star-bar').attr('style', 'background:url(./img/pic_Five_line_Bright_' + resultData.week_signin_count + '.png) no-repeat;background-size:100% 100%;');
-
-                        for (i = 1; i <= 12; i++) {
-                            resultData.awards[i].discription = resultData.awards[i].discription.toString().replace(/[^0-9]/g, '');
-                            if (resultData.awards[i].type === 1) {
-                                $('.dialContainer .item' + i + ' .type').text('现金券');
-                                $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_money.png');
-                                $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_money_Dynamic.png');
-                                $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '元');
-                            }
-                            if (resultData.awards[i].type === 2) {
-                                $('.dialContainer .item' + i + ' .type').text('学时卡');
-                                $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_Card.png');
-                                $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_Card_Dynamic.png');
-                                $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '分钟');
-                            }
-                            if (resultData.awards[i].type === 3) {
-                                $('.dialContainer .item' + i + ' .type').text('谢谢惠顾');
-                                $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_thank.png');
-                                $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_thank_dynamic.png');
-                                $('.dialContainer .item' + i + ' .description').html('<em></em>');
-                            }
+                    for (i = 1; i <= 12; i++) {
+                        resultData.awards[i].discription = resultData.awards[i].discription.toString().replace(/[^0-9]/g, '');
+                        if (resultData.awards[i].type === 1) {
+                            $('.dialContainer .item' + i + ' .type').text('现金券');
+                            $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_money.png');
+                            $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_money_dynamic.png');
+                            $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '元');
                         }
-                        if (resultData.free_count === 3) {
-                            $('.mask, .mask .freeChanceAlert').removeClass('none');
+                        if (resultData.awards[i].type === 2) {
+                            $('.dialContainer .item' + i + ' .type').text('学时卡');
+                            $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_Card.png');
+                            $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_Card_Dynamic.png');
+                            $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '分钟');
                         }
-                    }, 2000);
+                        if (resultData.awards[i].type === 3) {
+                            $('.dialContainer .item' + i + ' .type').text('谢谢参与');
+                            $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_thank.png');
+                            $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_thank_dynamic.png');
+                            $('.dialContainer .item' + i + ' .description').html('<em></em>');
+                        }
+                    }
+                    if (resultData.free_count === 3) {
+                        $('.mask, .mask .freeChanceAlert').removeClass('none');
+                    }
+                } else if (resultCode === 92) {
+                    maskShow('bindPhoneNumber');
                 } else {
                     alert(resultDescript);
                 }
@@ -233,7 +257,7 @@ var components = (function () {
         });
     }
 
-    function shareBtnBindEv(){
+    function shareBtnBindEv() {
         $('.shareBtn').on('click', function () {
             var locationURL = location.href.toString().split('index')[0];
             JSNativeBridge.send('share', {
@@ -268,16 +292,11 @@ var components = (function () {
                     console.log(data);
                     if (resultCode === 110) {
                         JSNativeBridge.send('js_msg_already_signin');
-                        JSNativeBridge.send('js_msg_total_points',{"total_points": resultData.total_point});
-                        $('#checkInBtn').addClass('hover');
+                        JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
+                        $('#checkInBtn').addClass('hover').addClass('animate');
                         setTimeout(function () {
                             $('.container .integral > span').text(resultData.total_point);
-                            for (i = 1; i <= 4; i++) {
-                                $('.star-bar > .star' + i)[0].src = './img/pic_Stars_' + i + '.png';
-                            }
-                            for (i = 1; i <= resultData.week_signin_count; i++) {
-                                $('.star-bar > .star' + i)[0].src = './img/pic_Stars_Bright.png';
-                            }
+                            refreshStarBar(resultData.week_signin_count);
                             if (resultData.award_point) {
                                 $('.extraIntegralGetAlert .extraItegral').text(resultData.award_point);
                                 setTimeout(function () {
@@ -285,6 +304,8 @@ var components = (function () {
                                 }, 1000);
                             }
                         }, 2000);
+                    } else if (resultCode === 92) {
+                        maskShow('bindPhoneNumber');
                     } else {
                         alert(resultDescript);
                     }
@@ -314,10 +335,12 @@ var components = (function () {
                         awardI = resultData.award.no;
                         lotteryAwardType = resultData.award.type;
                         $('.container .integral > span').text(resultData.total_point);
-                        JSNativeBridge.send('js_msg_total_points',{"total_points": resultData.total_point});
+                        JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
                         $('.mask .congratulationAlert .reward').text(resultData.award.description);
                         $('.dialTitleDiv .buble').css('opacity', '0');
                         getAwardRecord();
+                    } else if (resultCode === 92) {
+                        maskShow('bindPhoneNumber');
                     } else {
                         alert(resultDescript);
                     }
