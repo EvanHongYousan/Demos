@@ -46,7 +46,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15500000007@test.hjlaoshi.com';
+            userId = '5a03f03fe6764390b9167a0b9f026152@test.hjlaoshi.com';
         }
     }
 
@@ -203,7 +203,7 @@ var components = (function () {
     }
 
     function activityRulesBindEv() {
-        $('body').on('click', '.activity-rules', function () {
+        $('body').on('touchend', '.activity-rules', function () {
             maskShow('activityRulesAlert');
         });
     }
@@ -247,19 +247,19 @@ var components = (function () {
     }
 
     function showAwardRecordBtnBindEv() {
-        $('.showAwardRecord').on('click', function () {
+        $('.showAwardRecord').on('touchend', function () {
             maskShow('drawRecordDialog');
         });
     }
 
     function bindPhoneNumberBtnBindEv() {
-        $('.bindPhoneNumberBtn').on('click', function () {
+        $('.bindPhoneNumberBtn').on('touchend', function () {
             JSNativeBridge.send('js_msg_bind_phonenumber');
         });
     }
 
     function shareBtnBindEv() {
-        $('.shareBtn').on('click', function () {
+        $('.shareBtn').on('touchend', function () {
             var locationURL = location.href.toString().split('index')[0];
             JSNativeBridge.send('share', {
                 "content": '抽奖啦content',
@@ -277,7 +277,7 @@ var components = (function () {
     }
 
     function checkInBtnBindEv() {
-        $('#checkInBtn').on('click', function () {
+        $('#checkInBtn').on('touchend', function () {
             if ($(this).hasClass('hover')) {
                 return false;
             }
@@ -315,7 +315,7 @@ var components = (function () {
     }
 
     function lotteryBtnBindEv() {
-        $('.lotteryBtn').on('click', function () {
+        $('.lotteryBtn').on('touchend', function () {
             if (rotating) {
                 return;
             }

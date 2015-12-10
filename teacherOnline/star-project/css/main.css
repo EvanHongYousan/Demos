@@ -39,7 +39,7 @@ html, body, img, div {
 
     position: absolute;
     top: 220px;
-    left: 5px;
+    left: 0px;
 }
 
 .container .activity-rules:active {
