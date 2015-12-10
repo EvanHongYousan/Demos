@@ -46,7 +46,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '5a03f03fe6764390b9167a0b9f026152@test.hjlaoshi.com';
+            userId = '15800031138@test.hjlaoshi.com';
         }
     }
 
@@ -190,7 +190,7 @@ var components = (function () {
     function scrollDivScrolling() {
         var item = scrollData.pop();
         if (item && item.detail !== undefined) {
-            $('.scrollDiv').append('<p>恭喜<span class="name">' + item.username + '</span>抽中了<span class="award">' + item.detail + '</span></p>');
+            $('.scrollDiv').append('<p>恭喜<span class="name">' + item.username + '</span>抽中了&nbsp;&nbsp;&nbsp;<span class="award">' + item.detail + '</span></p>');
             $('.scrollDiv').scrollTo({
                 endY: $('.scrollDiv')[0].scrollHeight,
                 duration: 1000

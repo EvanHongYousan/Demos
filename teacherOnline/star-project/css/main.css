@@ -535,6 +535,7 @@ html, body, img, div {
 
 .container .scrollDiv p {
     margin: 0;
+    font-size:14px;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
@@ -543,6 +544,16 @@ html, body, img, div {
 
 .container .scrollDiv .name, .container .scrollDiv .award {
     color: #ff6138;
+}
+
+.container .scrollDiv .name{
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    width: 50px;
+    display: inline-block;
+    position: relative;
+    top: 4px;
 }
 
 .container .brightLine {
@@ -753,9 +764,11 @@ html, body, img, div {
 
 .mask .congratulationAlert .reward {
     color: #fde651;
-    font-size: 50px;
+    font-size: 35px;
     margin-top: -150px;
     font-weight: bolder;
+    white-space: nowrap;
+    overflow: hidden;
 }
 
 .mask .congratulationAlert > span {
@@ -884,4 +897,33 @@ html, body, img, div {
 
 .mask .drawRecordDialog > span:active > img:nth-of-type(1) {
     display: block;
+}
+
+@media screen and (min-height: 500px){
+    .mask .activityRulesAlert > span,
+    .mask .freeChanceAlert > span,
+    .mask .extraIntegralGetAlert > span,
+    .mask .bindPhoneNumber > span.closeBtn,
+    .mask .congratulationAlert > span.closeBtn {
+        margin-top: 80px;
+    }
+}
+
+@media screen and (min-height: 600px){
+    .mask .activityRulesAlert,
+    .mask .freeChanceAlert,
+    .mask .extraIntegralGetAlert,
+    .mask .bindPhoneNumber,
+    .mask .congratulationAlert {
+        margin-top: 100px;
+    }
+
+    .mask .drawRecordDialog .tbodyContainer {
+        height: 400px;
+        overflow: auto;
+    }
+
+    .container .dialContainer span > p.description{
+        top:23%;
+    }
 }
