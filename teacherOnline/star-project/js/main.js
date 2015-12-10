@@ -35,7 +35,9 @@ var components = (function () {
         rotating = false,
         rotatingCanStop = false,
         awardI = 0,
-        lotteryAwardType = 0;
+        lotteryAwardType = 0,
+
+        isOnline = true;
 
     console.log('当前domainName：' + domainName);
 
@@ -52,12 +54,12 @@ var components = (function () {
 
     function maskShow(dialog) {
         $('.mask, .mask .' + dialog).removeClass('none');
-        $('body').css('overflow', 'hidden');
+        $('body,html').css('overflow', 'hidden');
     }
 
     function maskHide() {
         $('.mask, .mask > div').addClass('none');
-        $('body').css('overflow', 'auto');
+        $('body,html').css('overflow', 'auto');
     }
 
     function dialContainerRotate() {
@@ -75,7 +77,7 @@ var components = (function () {
         if (rotatingCanStop && rotateI === awardI) {
             setTimeout(function () {
                 if (lotteryAwardType === 3) {
-                    alert('谢谢参与');
+                    alert('oh,no~~没抽到~');
                 } else {
                     maskShow('congratulationAlert');
                 }
@@ -189,7 +191,7 @@ var components = (function () {
 
     function scrollDivScrolling() {
         var item = scrollData.pop();
-        if (item && item.detail !== undefined) {
+        if (item && item.detail !== undefined && item.detail !== '谢谢参与' ) {
             $('.scrollDiv').append('<p>恭喜<span class="name">' + item.username + '</span>抽中了&nbsp;&nbsp;&nbsp;<span class="award">' + item.detail + '</span></p>');
             $('.scrollDiv').scrollTo({
                 endY: $('.scrollDiv')[0].scrollHeight,
@@ -274,7 +276,20 @@ var components = (function () {
     }
 
     function jsNativeBridgeBindEv() {
-        JSNativeBridge.init();
+        JSNativeBridge.init(function(id,content){
+            switch(id){
+                case 'client_msg_isOnline':
+                    isOnline = content.is_online;
+                    break;
+                case 'client_msg_isBindDLShow':
+                    if( !content.is_bind_DL_show || content.is_bind_DL_show == 'false'){
+                        maskHide();
+                    }
+                    break;
+                default:
+                    break;
+            }
+        });
     }
 
     function checkInBtnBindEv() {
@@ -343,7 +358,11 @@ var components = (function () {
                     } else if (resultCode === 92) {
                         maskShow('bindPhoneNumber');
                     } else {
-                        alert(resultDescript);
+                        if(resultDescript == '积分不够!'){
+                            alert('小主，积分不够了...');
+                        }else {
+                            alert(resultDescript);
+                        }
                     }
                 }
             );

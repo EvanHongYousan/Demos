@@ -534,6 +534,9 @@ html, body, img, div {
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+
+    padding-left: 50%;
+    width:100%;
 }
 
 .container .scrollDiv p {
@@ -543,10 +546,19 @@ html, body, img, div {
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+
+    text-align: left;
+    white-space: nowrap;
+
+    -webkit-transform:translate(-25%,0);
+    -moz-transform:translate(-25%,0);
+    -o-transform:translate(-25%,0);
+    transform:translate(-25%,0);
 }
 
 .container .scrollDiv .name, .container .scrollDiv .award {
     color: #ff6138;
+    text-align: center;
 }
 
 .container .scrollDiv .name {
