@@ -118,8 +118,6 @@ var components = (function () {
             domainName + '/app/awardServlet?method=init&user_id=' + userId + '&callback=?',
             //'./test_json/init.json',
             function (data,status, xhr) {
-                if(status !== 'success'){ alert('OH,NO.网络不好喔~稍后再试吧！'); return; }
-
                 console.log('initPage');
                 console.log(data);
                 var i = 0,
@@ -178,7 +176,6 @@ var components = (function () {
             domainName + '/app/awardServlet?method=showResult&user_id=' + userId + '&callback=?',
             //'./test_json/showResult.json',
             function (data,status, xhr) {
-                if(status !== 'success'){ alert('OH,NO.网络不好喔~稍后再试吧！'); return; }
                 scrollData = data._APP_RESULT_OPT_DATA.awards;
                 setTimeout(function () {
                     components.getScrollData();
@@ -222,7 +219,6 @@ var components = (function () {
             domainName + '/app/awardServlet?method=showRecord&user_id=' + userId + '&callback=?',
             //'./test_json/signin.json',
             function (data,status, xhr) {
-                if(status !== 'success'){ alert('OH,NO.网络不好喔~稍后再试吧！'); return; }
                 console.log('getAwardRecord');
                 var records = data._APP_RESULT_OPT_DATA.records,
                     resultCode = data._APP_RESULT_OPT_CODE,
@@ -290,7 +286,6 @@ var components = (function () {
                 domainName + '/app/awardServlet?method=signin&user_id=' + userId + '&callback=?',
                 //'./test_json/signin.json',
                 function (data,status, xhr) {
-                    if(status !== 'success'){ alert('OH,NO.网络不好喔~稍后再试吧！'); return; }
                     var resultData = data._APP_RESULT_OPT_DATA,
                         resultCode = data._APP_RESULT_OPT_CODE,
                         resultDescript = data._APP_RESULT_OPT_DESC;
@@ -329,7 +324,6 @@ var components = (function () {
                 domainName + '/app/awardServlet?method=myLottery&user_id=' + userId + '&callback=?',
                 //'./test_json/myLottery.json',
                 function (data,status, xhr) {
-                    if(status !== 'success'){ alert('OH,NO.网络不好喔~稍后再试吧！'); return; }
                     console.log('lotteryBtnBindEv');
                     console.log(data);
                     var resultCode = data._APP_RESULT_OPT_CODE,
@@ -371,7 +365,7 @@ var components = (function () {
             getScrollData();
             scrollDivScrolling();
             closeBtnBindEv();
-        }, 0);
+        }, 2000);
     }
 
     return {
