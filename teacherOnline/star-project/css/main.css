@@ -7,6 +7,10 @@ html, body, img, div {
     -o-user-select: none;
     user-select: none;
     font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    -webkit-tap-highlight-color:rgba(0, 0, 0, 0);
+    -moz-tap-highlight-color:rgba(0, 0, 0, 0);
+    -o-tap-highlight-color:rgba(0, 0, 0, 0);
+    tap-highlight-color:rgba(0, 0, 0, 0);
 }
 
 .container {
@@ -456,13 +460,13 @@ html, body, img, div {
 .container .dialContainer span > p.description {
     top: 20%;
     /*left: 20%;*/
-    color: #fcdc51;
+    color: white;
     width: 100%;
     font-size: 12px;
 }
 
 .container .dialContainer span > p.description em {
-    font-size: 18px;
+    font-size: 14px;
     font-style: normal;
 }
 

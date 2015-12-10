@@ -1,5 +1,5 @@
 /*jslint browser: true*/
-/*global $, jQuery, unescape, alert, JSNativeBridge*/
+/*global $, jQuery, unescape, alert, JSNativeBridge, devJudge*/
 
 var common = (function () {
     function getReqPrm(name) {
@@ -29,7 +29,7 @@ var components = (function () {
     var domainName = 'http://test.hjlaoshi.com',
         userId = null,
         rotateI = 1,
-        timePick = 150,
+        timePick = 75,
         scrollData = [],
 
         rotating = false,
@@ -46,7 +46,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15500000011@test.hjlaoshi.com';
+            userId = '15500000007@test.hjlaoshi.com';
         }
     }
 
@@ -61,8 +61,8 @@ var components = (function () {
     }
 
     function dialContainerRotate() {
-        if (timePick < 800) {
-            timePick += 30;
+        if (timePick < 200) {
+            timePick += 15;
         } else {
             rotatingCanStop = true;
         }
@@ -86,7 +86,7 @@ var components = (function () {
                 rotatingCanStop = false;
                 awardI = 0;
                 lotteryAwardType = 0;
-                timePick = 150;
+                timePick = 75;
             }, 1000);
             return;
         }
@@ -138,14 +138,14 @@ var components = (function () {
                     }
 
                     for (i = 1; i <= 12; i++) {
-                        resultData.awards[i].discription = resultData.awards[i].discription.toString().replace(/[^0-9]/g, '');
-                        if (resultData.awards[i].type === 1) {
+                        resultData.awards[i].discription = resultData.awards[i].discription.toString().replace(/[^0-9\.]/g, '');
+                        if (resultData.awards[i].type === 2) {
                             $('.dialContainer .item' + i + ' .type').text('现金券');
                             $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_money.png');
                             $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_money_dynamic.png');
                             $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '元');
                         }
-                        if (resultData.awards[i].type === 2) {
+                        if (resultData.awards[i].type === 1) {
                             $('.dialContainer .item' + i + ' .type').text('学时卡');
                             $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_Card.png');
                             $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_Card_Dynamic.png');
@@ -159,7 +159,8 @@ var components = (function () {
                         }
                     }
                     if (resultData.free_count === 3) {
-                        $('.mask, .mask .freeChanceAlert').removeClass('none');
+                        //$('.mask, .mask .freeChanceAlert').removeClass('none');
+                        JSNativeBridge.send('js_msg_showTip', {"tip": '哈哈~送你三次免费抽奖机会哦!'});
                     }
                 } else if (resultCode === 92) {
                     maskShow('bindPhoneNumber');
@@ -202,13 +203,13 @@ var components = (function () {
     }
 
     function activityRulesBindEv() {
-        $('.activity-rules').on('click', function () {
+        $('body').on('click', '.activity-rules', function () {
             maskShow('activityRulesAlert');
         });
     }
 
     function closeBtnBindEv() {
-        $('.closeBtn').on('click', function () {
+        $('.mask').on('touchend', '.closeBtn', function () {
             maskHide();
         });
     }
@@ -284,8 +285,7 @@ var components = (function () {
                 domainName + '/app/awardServlet?method=signin&user_id=' + userId + '&callback=?',
                 //'./test_json/signin.json',
                 function (data) {
-                    var i = 0,
-                        resultData = data._APP_RESULT_OPT_DATA,
+                    var resultData = data._APP_RESULT_OPT_DATA,
                         resultCode = data._APP_RESULT_OPT_CODE,
                         resultDescript = data._APP_RESULT_OPT_DESC;
                     console.log('checkInBtnBindEv');
@@ -352,7 +352,6 @@ var components = (function () {
     function init() {
         getUserIdFromUrl();
         activityRulesBindEv();
-        closeBtnBindEv();
         bindPhoneNumberBtnBindEv();
         jsNativeBridgeBindEv();
         getAwardRecord();
@@ -364,6 +363,7 @@ var components = (function () {
             initPage();
             getScrollData();
             scrollDivScrolling();
+            closeBtnBindEv();
         }, 1000);
     }
 
@@ -371,8 +371,11 @@ var components = (function () {
         init: init,
         dialContainerRotate: dialContainerRotate,
         getScrollData: getScrollData,
-        scrollDivScrolling: scrollDivScrolling
+        scrollDivScrolling: scrollDivScrolling,
+        maskHide: maskHide
     };
 }());
 
-components.init();
+window.onload = function () {
+    components.init();
+};
