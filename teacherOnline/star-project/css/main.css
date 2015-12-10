@@ -861,6 +861,12 @@ html, body, img, div {
     overflow: auto;
 }
 
+.mask .drawRecordDialog .tbodyContainer .emptyTip{
+    color:white;
+    text-align: center;
+    line-height:300px;
+}
+
 .mask .drawRecordDialog td {
     width: 30%;
 }
@@ -921,6 +927,9 @@ html, body, img, div {
     .mask .drawRecordDialog .tbodyContainer {
         height: 400px;
         overflow: auto;
+    }
+    .mask .drawRecordDialog .tbodyContainer .emptyTip{
+        line-height:400px;
     }
 
     .container .dialContainer span > p.description{

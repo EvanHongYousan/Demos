@@ -232,6 +232,7 @@ var components = (function () {
                 if (resultCode === 110) {
                     for (i = 0; i < records.length; i++) {
                         if (records[i].detail !== undefined) {
+                            $('.mask .drawRecordDialog .tbodyContainer .emptyTip').remove();
                             date = new Date(parseInt(records[i].insert_time, 10));
                             dateStr = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
                             $target.append($('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>'));
