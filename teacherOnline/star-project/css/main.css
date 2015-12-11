@@ -536,7 +536,7 @@ html, body, img, div {
     transition: all 0.5s;
 
     padding-left: 50%;
-    width:100%;
+    width:50%;
 }
 
 .container .scrollDiv p {
@@ -550,10 +550,10 @@ html, body, img, div {
     text-align: left;
     white-space: nowrap;
 
-    -webkit-transform:translate(-25%,0);
-    -moz-transform:translate(-25%,0);
-    -o-transform:translate(-25%,0);
-    transform:translate(-25%,0);
+    -webkit-transform:translate(-50%,0);
+    -moz-transform:translate(-50%,0);
+    -o-transform:translate(-50%,0);
+    transform:translate(-50%,0);
 }
 
 .container .scrollDiv .name, .container .scrollDiv .award {

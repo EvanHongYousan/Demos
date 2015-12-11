@@ -14,16 +14,16 @@ var common = (function () {
     return {getReqPrm: getReqPrm};
 }());
 
-(function () {
-    var oldAlert = window.alert;
-    window.alert = function (msg) {
-        if (devJudge.isAndroid()) {
-            JSNativeBridge.send('js_msg_showTip', {"tip": msg});
-        } else {
-            oldAlert(msg);
-        }
-    };
-}());
+//(function () {
+//    var oldAlert = window.alert;
+//    window.alert = function (msg) {
+//        if (devJudge.isAndroid()) {
+//            JSNativeBridge.send('js_msg_showTip', {"tip": msg});
+//        } else {
+//            oldAlert(msg);
+//        }
+//    };
+//}());
 
 var components = (function () {
     var domainName = 'http://test.hjlaoshi.com',
@@ -37,7 +37,9 @@ var components = (function () {
         awardI = 0,
         lotteryAwardType = 0,
 
-        isOnline = true;
+        isOnline = true,
+
+        freeCount = 0;
 
     console.log('当前domainName：' + domainName);
 
@@ -135,7 +137,7 @@ var components = (function () {
                     JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
                     refreshStarBar(resultData.week_signin_count);
                     $('.dialTitleDiv .buble')[0].src = './img/buble' + resultData.free_count + '.png';
-                    if (resultData.today_free_count) {
+                    if (resultData.free_count) {
                         $('.dialTitleDiv .buble').css('opacity', 1);
                     }
 
@@ -297,6 +299,7 @@ var components = (function () {
             if ($(this).hasClass('hover')) {
                 return false;
             }
+            if(!isOnline){alert('Oh,no,网络不好喔~稍后再试吧！');}
             $.get(
                 domainName + '/app/awardServlet?method=signin&user_id=' + userId + '&callback=?',
                 //'./test_json/signin.json',
@@ -335,6 +338,7 @@ var components = (function () {
             if (rotating) {
                 return;
             }
+            if(!isOnline){alert('Oh,no,网络不好喔~稍后再试吧！');}
             $.get(
                 domainName + '/app/awardServlet?method=myLottery&user_id=' + userId + '&callback=?',
                 //'./test_json/myLottery.json',
