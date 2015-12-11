@@ -4,7 +4,8 @@ var gulp = require('gulp'),
     uglify = require('gulp-uglify'),
     rename = require('gulp-rename'),
     del = require('del'),
-    jslint = require('gulp-jslint');
+    jslint = require('gulp-jslint'),
+    imagemin = require('gulp-imagemin');
 
 gulp.task('jslint', function () {
     return gulp.src([
@@ -33,6 +34,14 @@ gulp.task('minifyjs', function () {
         .pipe(rename({suffix: '.min'}))   //rename压缩后的文件名
         .pipe(uglify())    //压缩
         .pipe(gulp.dest('./teacherOnline/star-project/minified/js'));  //输出
+});
+
+gulp.task('images',function(){
+    gulp.src('./teacherOnline/star-project/img/*.*')
+        .pipe(imagemin({
+            progressive: true
+        }))
+        .pipe(gulp.dest('./teacherOnline/star-project/minified/images'));
 });
 
 gulp.task('default', ['jslint']);

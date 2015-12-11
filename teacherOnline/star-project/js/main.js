@@ -14,16 +14,16 @@ var common = (function () {
     return {getReqPrm: getReqPrm};
 }());
 
-//(function () {
-//    var oldAlert = window.alert;
-//    window.alert = function (msg) {
-//        if (devJudge.isAndroid()) {
-//            JSNativeBridge.send('js_msg_showTip', {"tip": msg});
-//        } else {
-//            oldAlert(msg);
-//        }
-//    };
-//}());
+(function () {
+    var oldAlert = window.alert;
+    window.alert = function (msg) {
+        if (devJudge.isAndroid()) {
+            JSNativeBridge.send('js_msg_showTip', {"tip": msg});
+        } else {
+            oldAlert(msg);
+        }
+    };
+}());
 
 var components = (function () {
     var domainName = 'http://test.hjlaoshi.com',
@@ -299,7 +299,7 @@ var components = (function () {
             if ($(this).hasClass('hover')) {
                 return false;
             }
-            if(!isOnline){alert('Oh,no,网络不好喔~稍后再试吧！');}
+            if( isOnline === false || isOnline === 'false'){alert('Oh,no,网络不好喔~稍后再试吧！');}
             $.get(
                 domainName + '/app/awardServlet?method=signin&user_id=' + userId + '&callback=?',
                 //'./test_json/signin.json',
@@ -317,7 +317,7 @@ var components = (function () {
                             $('.container .integral > span').text(resultData.total_point);
                             refreshStarBar(resultData.week_signin_count);
                             if (resultData.award_point) {
-                                $('.extraIntegralGetAlert .extraItegral').text(resultData.award_point);
+                                $('.extraIntegralGetAlert .extraItegral').text('+'+resultData.award_point);
                                 setTimeout(function () {
                                     maskShow('extraIntegralGetAlert');
                                 }, 1000);
@@ -338,7 +338,7 @@ var components = (function () {
             if (rotating) {
                 return;
             }
-            if(!isOnline){alert('Oh,no,网络不好喔~稍后再试吧！');}
+            if( isOnline === false || isOnline === 'false'){alert('Oh,no,网络不好喔~稍后再试吧！');}
             $.get(
                 domainName + '/app/awardServlet?method=myLottery&user_id=' + userId + '&callback=?',
                 //'./test_json/myLottery.json',
@@ -347,7 +347,9 @@ var components = (function () {
                     console.log(data);
                     var resultCode = data._APP_RESULT_OPT_CODE,
                         resultData = data._APP_RESULT_OPT_DATA,
-                        resultDescript = data._APP_RESULT_OPT_DESC;
+                        resultDescript = data._APP_RESULT_OPT_DESC,
+
+                        bubleI = parseInt($('.dialTitleDiv .buble').attr('src').replace(/[^0-9]/g,''));
 
                     if (resultCode === 110) {
                         rotating = true;
@@ -357,7 +359,11 @@ var components = (function () {
                         $('.container .integral > span').text(resultData.total_point);
                         JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
                         $('.mask .congratulationAlert .reward').text(resultData.award.description);
-                        $('.dialTitleDiv .buble').css('opacity', '0');
+                        if(bubleI - 1 > 0){
+                            $('.dialTitleDiv .buble').attr('src','./img/buble'+(bubleI-1)+'.png');
+                        }else {
+                            $('.dialTitleDiv .buble').css('opacity', '0');
+                        }
                         getAwardRecord();
                     } else if (resultCode === 92) {
                         maskShow('bindPhoneNumber');
