@@ -31,6 +31,13 @@ var components = (function () {
         rotateI = 1,
         timePick = 75,
         scrollData = [],
+        itemType = {
+            CARD:1,
+            MONEY:2,
+            THANK:3,
+            IPHONE:4,
+            IWATCH:5
+        },
 
         rotating = false,
         rotatingCanStop = false,
@@ -121,7 +128,7 @@ var components = (function () {
         $.get(
             domainName + '/app/awardServlet?method=init&user_id=' + userId + '&callback=?',
             //'./test_json/init.json',
-            function (data,status, xhr) {
+            function (data, status, xhr) {
                 console.log('initPage');
                 console.log(data);
                 var i = 0,
@@ -142,20 +149,23 @@ var components = (function () {
                     }
 
                     for (i = 1; i <= 12; i++) {
+                        if (!resultData.awards[i].discription) {
+                            continue;
+                        }
                         resultData.awards[i].discription = resultData.awards[i].discription.toString().replace(/[^0-9\.]/g, '');
-                        if (resultData.awards[i].type === 2) {
+                        if (resultData.awards[i].type === itemType.MONEY) {
                             $('.dialContainer .item' + i + ' .type').text('现金券');
                             $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_money.png');
                             $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_money_dynamic.png');
                             $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '元');
                         }
-                        if (resultData.awards[i].type === 1) {
+                        if (resultData.awards[i].type === itemType.CARD) {
                             $('.dialContainer .item' + i + ' .type').text('学时卡');
                             $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_Card.png');
                             $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_Card_Dynamic.png');
                             $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '分钟');
                         }
-                        if (resultData.awards[i].type === 3) {
+                        if (resultData.awards[i].type === itemType.THANK) {
                             $('.dialContainer .item' + i + ' .type').text('谢谢参与');
                             $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_thank.png');
                             $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_thank_dynamic.png');
@@ -179,7 +189,7 @@ var components = (function () {
         $.get(
             domainName + '/app/awardServlet?method=showResult&user_id=' + userId + '&callback=?',
             //'./test_json/showResult.json',
-            function (data,status, xhr) {
+            function (data, status, xhr) {
                 scrollData = data._APP_RESULT_OPT_DATA.awards;
                 setTimeout(function () {
                     components.getScrollData();
@@ -193,8 +203,8 @@ var components = (function () {
 
     function scrollDivScrolling() {
         var item = scrollData.pop();
-        if (item && item.detail !== undefined && item.detail !== '谢谢参与' ) {
-            $('.scrollDiv').append('<p>恭喜<span class="name">' + item.username + '</span>抽中了&nbsp;&nbsp;&nbsp;<span class="award">' + item.detail + '</span></p>');
+        if (item && item.detail !== undefined && item.detail !== '谢谢参与') {
+            $('.scrollDiv').append('<p>恭喜<span class="name">' + item.username + '</span>抽中了&nbsp;&nbsp;&nbsp;<span class="award">' + item.detail.replace('（小学）', '').replace('（初中）', '') + '</span></p>');
             $('.scrollDiv').scrollTo({
                 endY: $('.scrollDiv')[0].scrollHeight,
                 duration: 1000
@@ -222,7 +232,7 @@ var components = (function () {
         $.get(
             domainName + '/app/awardServlet?method=showRecord&user_id=' + userId + '&callback=?',
             //'./test_json/signin.json',
-            function (data,status, xhr) {
+            function (data, status, xhr) {
                 console.log('getAwardRecord');
                 var records = data._APP_RESULT_OPT_DATA.records,
                     resultCode = data._APP_RESULT_OPT_CODE,
@@ -240,7 +250,7 @@ var components = (function () {
                             date = new Date(parseInt(records[i].insert_time, 10));
                             dateStr = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
                             $target.append($('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>'));
-                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost.toString().replace('-','') + '</td><td>' + records[i].detail.replace('谢谢参与','未中奖') + '</td></tr>'));
+                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost.toString().replace('-', '') + '</td><td>' + records[i].detail.replace('谢谢参与', '未中奖') + '</td></tr>'));
                             dateStr = null;
                         }
                     }
@@ -278,13 +288,13 @@ var components = (function () {
     }
 
     function jsNativeBridgeBindEv() {
-        JSNativeBridge.init(function(id,content){
-            switch(id){
+        JSNativeBridge.init(function (id, content) {
+            switch (id) {
                 case 'client_msg_isOnline':
                     isOnline = content.is_online;
                     break;
                 case 'client_msg_isBindDLShow':
-                    if( !content.is_bind_DL_show || content.is_bind_DL_show == 'false'){
+                    if (!content.is_bind_DL_show || content.is_bind_DL_show == 'false') {
                         maskHide();
                     }
                     break;
@@ -299,11 +309,13 @@ var components = (function () {
             if ($(this).hasClass('hover')) {
                 return false;
             }
-            if( isOnline === false || isOnline === 'false'){alert('Oh,no,网络不好喔~稍后再试吧！');}
+            if (isOnline === false || isOnline === 'false') {
+                alert('Oh,no,网络不好喔~稍后再试吧！');
+            }
             $.get(
                 domainName + '/app/awardServlet?method=signin&user_id=' + userId + '&callback=?',
                 //'./test_json/signin.json',
-                function (data,status, xhr) {
+                function (data, status, xhr) {
                     var resultData = data._APP_RESULT_OPT_DATA,
                         resultCode = data._APP_RESULT_OPT_CODE,
                         resultDescript = data._APP_RESULT_OPT_DESC;
@@ -317,7 +329,7 @@ var components = (function () {
                             $('.container .integral > span').text(resultData.total_point);
                             refreshStarBar(resultData.week_signin_count);
                             if (resultData.award_point) {
-                                $('.extraIntegralGetAlert .extraItegral').text('+'+resultData.award_point);
+                                $('.extraIntegralGetAlert .extraItegral').text('+' + resultData.award_point);
                                 setTimeout(function () {
                                     maskShow('extraIntegralGetAlert');
                                 }, 1000);
@@ -338,18 +350,20 @@ var components = (function () {
             if (rotating) {
                 return;
             }
-            if( isOnline === false || isOnline === 'false'){alert('Oh,no,网络不好喔~稍后再试吧！');}
+            if (isOnline === false || isOnline === 'false') {
+                alert('Oh,no,网络不好喔~稍后再试吧！');
+            }
             $.get(
                 domainName + '/app/awardServlet?method=myLottery&user_id=' + userId + '&callback=?',
                 //'./test_json/myLottery.json',
-                function (data,status, xhr) {
+                function (data, status, xhr) {
                     console.log('lotteryBtnBindEv');
                     console.log(data);
                     var resultCode = data._APP_RESULT_OPT_CODE,
                         resultData = data._APP_RESULT_OPT_DATA,
                         resultDescript = data._APP_RESULT_OPT_DESC,
 
-                        bubleI = parseInt($('.dialTitleDiv .buble').attr('src').replace(/[^0-9]/g,''));
+                        bubleI = parseInt($('.dialTitleDiv .buble').attr('src').replace(/[^0-9]/g, ''));
 
                     if (resultCode === 110) {
                         rotating = true;
@@ -358,19 +372,19 @@ var components = (function () {
                         lotteryAwardType = resultData.award.type;
                         $('.container .integral > span').text(resultData.total_point);
                         JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
-                        $('.mask .congratulationAlert .reward').text(resultData.award.description.replace('（小学）','').replace('（初中）',''));
-                        if(bubleI - 1 > 0){
-                            $('.dialTitleDiv .buble').attr('src','./img/buble'+(bubleI-1)+'.png');
-                        }else {
+                        $('.mask .congratulationAlert .reward').text(resultData.award.description.replace('（小学）', '').replace('（初中）', ''));
+                        if (bubleI - 1 > 0) {
+                            $('.dialTitleDiv .buble').attr('src', './img/buble' + (bubleI - 1) + '.png');
+                        } else {
                             $('.dialTitleDiv .buble').css('opacity', '0');
                         }
                         getAwardRecord();
                     } else if (resultCode === 92) {
                         maskShow('bindPhoneNumber');
                     } else {
-                        if(resultDescript == '积分不够!'){
+                        if (resultDescript == '积分不够!') {
                             alert('小主，积分不够了...');
-                        }else {
+                        } else {
                             alert(resultDescript);
                         }
                     }

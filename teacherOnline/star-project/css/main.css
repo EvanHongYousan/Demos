@@ -939,6 +939,10 @@ html, body, img, div {
         margin-top: 100px;
     }
 
+    .mask .drawRecordDialog{
+        margin-top:30px;
+    }
+
     .mask .drawRecordDialog .tbodyContainer {
         height: 400px;
         overflow: auto;
