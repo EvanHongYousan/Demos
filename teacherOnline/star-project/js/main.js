@@ -240,7 +240,7 @@ var components = (function () {
                             date = new Date(parseInt(records[i].insert_time, 10));
                             dateStr = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
                             $target.append($('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>'));
-                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost + '</td><td>' + records[i].detail + '</td></tr>'));
+                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost.toString().replace('-','') + '</td><td>' + records[i].detail.replace('谢谢参与','未中奖') + '</td></tr>'));
                             dateStr = null;
                         }
                     }
@@ -358,7 +358,7 @@ var components = (function () {
                         lotteryAwardType = resultData.award.type;
                         $('.container .integral > span').text(resultData.total_point);
                         JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
-                        $('.mask .congratulationAlert .reward').text(resultData.award.description);
+                        $('.mask .congratulationAlert .reward').text(resultData.award.description.replace('（小学）','').replace('（初中）',''));
                         if(bubleI - 1 > 0){
                             $('.dialTitleDiv .buble').attr('src','./img/buble'+(bubleI-1)+'.png');
                         }else {
