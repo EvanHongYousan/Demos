@@ -85,7 +85,7 @@ var components = (function () {
 
         if (rotatingCanStop && rotateI === awardI) {
             setTimeout(function () {
-                if (lotteryAwardType === -1) {
+                if (lotteryAwardType === 3 || awardI === 10) {
                     alert('oh,no~~没抽到~');
                 } else {
                     maskShow('congratulationAlert');
@@ -259,7 +259,7 @@ var components = (function () {
                         if (records[i].detail !== undefined) {
                             $('.mask .drawRecordDialog .tbodyContainer .emptyTip').remove();
                             date = new Date(parseInt(records[i].insert_time, 10));
-                            dateStr = date.getFullYear() + '/' + date.getMonth() + '/' + date.getDate();
+                            dateStr = date.getFullYear() + '/' + (date.getMonth()+1) + '/' + date.getDate();
                             $target.append($('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>'));
                             $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost.toString().replace('-', '') + '</td><td>' + records[i].detail.replace('谢谢参与', '未中奖') + '</td></tr>'));
                             dateStr = null;
@@ -273,14 +273,16 @@ var components = (function () {
     }
 
     function showAwardRecordBtnBindEv() {
-        $('.showAwardRecord').on('touchend', function () {
+        $('.showAwardRecord').on('click', function () {
             maskShow('drawRecordDialog');
         });
     }
 
     function bindPhoneNumberBtnBindEv() {
         $('.bindPhoneNumberBtn').on('touchend', function () {
-            JSNativeBridge.send('js_msg_bind_phonenumber');
+            setTimeout(function(){
+                JSNativeBridge.send('js_msg_bind_phonenumber');
+            },300);
         });
     }
 
@@ -379,7 +381,7 @@ var components = (function () {
                     if (resultCode === 110) {
                         rotating = true;
                         dialContainerRotate();
-                        if( resultData.award.type === -1 || resultData.award.type === 3 ){
+                        if( resultData.award.no === -1 || resultData.award.type === 3 ){
                             awardI = 10;
                         }else {
                             awardI = resultData.award.no;
