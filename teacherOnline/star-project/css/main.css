@@ -13,6 +13,10 @@ html, body, img, div {
     tap-highlight-color: rgba(0, 0, 0, 0);
 }
 
+body {
+    background-color: #08111e;
+}
+
 .container {
     position: relative;
     margin: 0 auto;
@@ -375,14 +379,15 @@ html, body, img, div {
     height: 60%;
     width: auto;
 
-    margin-left: -20px;
+    margin-left: -36px;
+    margin-right: 16px;
 }
 
 .container .dialTitleDiv .dialTitle {
     height: 100%;
     width: auto;
 
-    margin-left: -10px;
+    margin-left: 0;
 }
 
 .container .dialTitleDiv > span {
@@ -391,6 +396,7 @@ html, body, img, div {
 
     position: relative;
     bottom: 15px;
+    margin-left:15px;
 }
 
 .container .dialContainer {
@@ -536,7 +542,7 @@ html, body, img, div {
     transition: all 0.5s;
 
     padding-left: 50%;
-    width:50%;
+    width: 50%;
 }
 
 .container .scrollDiv p {
@@ -550,10 +556,10 @@ html, body, img, div {
     text-align: left;
     white-space: nowrap;
 
-    -webkit-transform:translate(-50%,0);
-    -moz-transform:translate(-50%,0);
-    -o-transform:translate(-50%,0);
-    transform:translate(-50%,0);
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
 }
 
 .container .scrollDiv .name, .container .scrollDiv .award {
@@ -567,8 +573,9 @@ html, body, img, div {
     text-overflow: ellipsis;
     width: 50px;
     display: inline-block;
-    position: relative;
-    top: 4px;
+    /*position: relative;*/
+    /*top: 4px;*/
+    line-height: 12px;
 }
 
 .container .brightLine {
@@ -587,6 +594,10 @@ html, body, img, div {
 
 .none {
     display: none !important;
+}
+
+.opacity0 {
+    opacity: 0;
 }
 
 .mask .freeChanceAlert > img {
@@ -634,7 +645,7 @@ html, body, img, div {
 }
 
 .mask .activityRulesAlert img {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     display: inline-block;
 }
@@ -830,7 +841,7 @@ html, body, img, div {
 }
 
 .mask .drawRecordDialog img {
-    width: 80%;
+    width: 100%;
     margin: 20px auto 0 auto;
     display: inline-block;
 }
@@ -924,9 +935,9 @@ html, body, img, div {
     .mask .activityRulesAlert > span,
     .mask .freeChanceAlert > span,
     .mask .extraIntegralGetAlert > span,
-    .mask .bindPhoneNumber > span.closeBtn,
-    .mask .congratulationAlert > span.closeBtn {
-        margin-top: 80px;
+    .mask .bindPhoneNumber > span.bindPhoneNumberBtn,
+    .mask .congratulationAlert > span.shareBtn {
+        margin-top: 60px;
     }
 }
 
@@ -939,8 +950,8 @@ html, body, img, div {
         margin-top: 100px;
     }
 
-    .mask .drawRecordDialog{
-        margin-top:30px;
+    .mask .drawRecordDialog {
+        margin-top: 30px;
     }
 
     .mask .drawRecordDialog .tbodyContainer {

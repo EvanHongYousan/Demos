@@ -85,20 +85,20 @@ var components = (function () {
 
         if (rotatingCanStop && rotateI === awardI) {
             setTimeout(function () {
-                if (lotteryAwardType === 3) {
+                if (lotteryAwardType === -1) {
                     alert('oh,no~~没抽到~');
                 } else {
                     maskShow('congratulationAlert');
                 }
                 setTimeout(function () {
                     $('.dialContainer span').removeClass('active');
-                }, 1000);
+                }, 300);
                 rotating = false;
                 rotatingCanStop = false;
                 awardI = 0;
                 lotteryAwardType = 0;
                 timePick = 75;
-            }, 1000);
+            }, 300);
             return;
         }
 
@@ -181,6 +181,8 @@ var components = (function () {
                 } else {
                     alert(resultDescript);
                 }
+
+                $('.container .check-in').removeClass('opacity0');
             }
         );
     }
@@ -305,7 +307,7 @@ var components = (function () {
     }
 
     function checkInBtnBindEv() {
-        $('#checkInBtn').on('touchend', function () {
+        $('#checkInBtn').on('click', function () {
             if ($(this).hasClass('hover')) {
                 return false;
             }
@@ -346,7 +348,7 @@ var components = (function () {
     }
 
     function lotteryBtnBindEv() {
-        $('.lotteryBtn').on('touchend', function () {
+        $('.lotteryBtn').on('click', function () {
             if (rotating) {
                 return;
             }
@@ -368,7 +370,11 @@ var components = (function () {
                     if (resultCode === 110) {
                         rotating = true;
                         dialContainerRotate();
-                        awardI = resultData.award.no;
+                        if( resultData.award.type === -1 || resultData.award.type === 3 ){
+                            awardI = 10;
+                        }else {
+                            awardI = resultData.award.no;
+                        }
                         lotteryAwardType = resultData.award.type;
                         $('.container .integral > span').text(resultData.total_point);
                         JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
@@ -408,7 +414,7 @@ var components = (function () {
             getScrollData();
             scrollDivScrolling();
             closeBtnBindEv();
-        }, 2000);
+        }, 0);
     }
 
     return {
