@@ -29,7 +29,8 @@ var components = (function () {
     var domainName = 'http://test.hjlaoshi.com',
         userId = null,
         rotateI = 1,
-        timePick = 75,
+        timePick = 175,
+        rotateTrip = 0,
         scrollData = [],
         itemType = {
             CARD:1,
@@ -72,8 +73,11 @@ var components = (function () {
     }
 
     function dialContainerRotate() {
-        if (timePick < 200) {
-            timePick += 15;
+        if (timePick < 400) {
+            if(rotateTrip > 10) {
+                timePick += 15;
+            }
+            rotateTrip += 1;
         } else {
             rotatingCanStop = true;
         }
@@ -97,7 +101,8 @@ var components = (function () {
                 rotatingCanStop = false;
                 awardI = 0;
                 lotteryAwardType = 0;
-                timePick = 75;
+                timePick = 175;
+                rotateTrip = 0;
             }, 300);
             return;
         }
@@ -235,7 +240,7 @@ var components = (function () {
         $('.mask').on('touchend', '.closeBtn', function () {
             setTimeout(function(){
                 maskHide();
-            },300);
+            },100);
         });
     }
 
@@ -261,7 +266,7 @@ var components = (function () {
                             date = new Date(parseInt(records[i].insert_time, 10));
                             dateStr = date.getFullYear() + '/' + (date.getMonth()+1) + '/' + date.getDate();
                             $target.append($('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>'));
-                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost.toString().replace('-', '') + '</td><td>' + records[i].detail.replace('谢谢参与', '未中奖') + '</td></tr>'));
+                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost.toString().replace('-', '') + '</td><td>' + records[i].detail.replace('谢谢参与', '未中奖').replace('（小学）', '').replace('（初中）','') + '</td></tr>'));
                             dateStr = null;
                         }
                     }
@@ -273,8 +278,10 @@ var components = (function () {
     }
 
     function showAwardRecordBtnBindEv() {
-        $('.showAwardRecord').on('click', function () {
-            maskShow('drawRecordDialog');
+        $('.showAwardRecord').on('touchend', function () {
+            setTimeout(function(){
+                maskShow('drawRecordDialog');
+            },100);
         });
     }
 
@@ -282,20 +289,19 @@ var components = (function () {
         $('.bindPhoneNumberBtn').on('touchend', function () {
             setTimeout(function(){
                 JSNativeBridge.send('js_msg_bind_phonenumber');
-            },300);
+            },100);
         });
     }
 
     function shareBtnBindEv() {
         $('.shareBtn').on('touchend', function () {
-            var locationURL = location.href.toString().split('index')[0];
             JSNativeBridge.send('share', {
-                "content": '抽奖啦content',
-                "title": '抽奖啦title',
+                "content": '呼叫老师免费送抽奖，iPhone6S，iWatch惊喜大礼任你抽~赶紧来签到吧!',
+                "title": '快来玩星转盘，iPhone6S任你抽~!',
                 "type": 0,
-                "image_url": 'http://ftp.hjlaoshi.com/rtc/spread/shareicon.png',
-                "target_url": locationURL + 'sharepage.html',
-                "target_url_forQQ": locationURL + 'sharepage.html'
+                "image_url": domainName + '/rtc/spread/point/star-project/shareicon.png',
+                "target_url": domainName + '/rtc/spread/point/star-project/sharepage.html',
+                "target_url_forQQ": domainName + '/rtc/spread/point/star-project/sharepage.html'
             });
         });
     }
@@ -425,7 +431,7 @@ var components = (function () {
             getScrollData();
             scrollDivScrolling();
             closeBtnBindEv();
-        }, 0);
+        }, 1000);
     }
 
     return {

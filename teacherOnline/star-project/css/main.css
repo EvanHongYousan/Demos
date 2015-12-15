@@ -586,6 +586,11 @@ body {
     color: #ff6138;
 }
 
+.container .scrollDiv .name{
+    display:inline-block;
+    width:40px;
+}
+
 .container .brightLine {
     width: 100%;
 }
