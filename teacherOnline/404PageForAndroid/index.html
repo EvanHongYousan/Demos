@@ -8,8 +8,59 @@
     <meta http-equiv="Cache-Control" content="no-cache">
     <meta http-equiv="Expires" content="0">
     <title></title>
+    <style>
+        html, body, img, div {
+            padding: 0;
+            margin: 0;
+            border: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+            -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+            -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+            -o-tap-highlight-color: rgba(0, 0, 0, 0);
+            tap-highlight-color: rgba(0, 0, 0, 0);
+        }
+
+        body {
+            background-color: #f6f6f6;
+        }
+
+        .container {
+            width: 100%;
+            max-width: 600px;
+            margin: 60px auto 0 auto;
+            text-align: center;
+        }
+
+        .container img {
+            width: 60%;
+            margin: 0 auto;
+        }
+
+        .container .refreshBtn{
+            color:#229976;
+        }
+    </style>
 </head>
 <body>
+<div class="container">
+    <img src="./404error.png" alt=""/>
+    <p>网络不通，刷不出来呃●︿●</p>
 
+    <p class="refreshBtn">点击重试</p>
+</div>
+<script src="./zepto.min.js"></script>
+<script src="./tools.js"></script>
+<script>
+    window.onload = function(){
+        JSNativeBridge.init();
+        $('.refreshBtn').click(function(){
+            JSNativeBridge.send('js_msg_refresh');
+        });
+    };
+</script>
 </body>
 </html>
