@@ -387,7 +387,7 @@ body {
     height: 100%;
     width: auto;
 
-    margin-left: 0;
+    margin-left: -10px;
 }
 
 .container .dialTitleDiv > span {
@@ -396,7 +396,6 @@ body {
 
     position: relative;
     bottom: 15px;
-    margin-left:15px;
 }
 
 .container .dialContainer {
@@ -564,18 +563,6 @@ body {
 
 .container .scrollDiv .name, .container .scrollDiv .award {
     color: #ff6138;
-    text-align: center;
-}
-
-.container .scrollDiv .name {
-    overflow: hidden;
-    white-space: nowrap;
-    text-overflow: ellipsis;
-    width: 50px;
-    display: inline-block;
-    /*position: relative;*/
-    /*top: 4px;*/
-    line-height: 12px;
 }
 
 .container .brightLine {

@@ -136,6 +136,8 @@ var components = (function () {
                     resultData = data._APP_RESULT_OPT_DATA,
                     resultDescript = data._APP_RESULT_OPT_DESC;
 
+                $('.container .check-in').removeClass('opacity0');
+
                 if (resultCode === 110) {
                     if (resultData.sigined) {
                         $('#checkInBtn').addClass('hover');
@@ -182,7 +184,6 @@ var components = (function () {
                     alert(resultDescript);
                 }
 
-                $('.container .check-in').removeClass('opacity0');
             }
         );
     }
@@ -204,9 +205,15 @@ var components = (function () {
     }
 
     function scrollDivScrolling() {
-        var item = scrollData.pop();
+        var item = scrollData.pop(),
+            itemName = null;
+
         if (item && item.detail !== undefined && item.detail !== '谢谢参与') {
-            $('.scrollDiv').append('<p>恭喜<span class="name">' + item.username + '</span>抽中了&nbsp;&nbsp;&nbsp;<span class="award">' + item.detail.replace('（小学）', '').replace('（初中）', '') + '</span></p>');
+            itemName = item.username;
+            if(itemName.length > 2){
+                itemName = itemName.substr(0,2)+'...';
+            }
+            $('.scrollDiv').append('<p>恭喜&nbsp;&nbsp;<span class="name">' + itemName + '</span>&nbsp;&nbsp;抽中了&nbsp;&nbsp;<span class="award">' + item.detail.replace('（小学）', '').replace('（初中）', '') + '</span></p>');
             $('.scrollDiv').scrollTo({
                 endY: $('.scrollDiv')[0].scrollHeight,
                 duration: 1000
