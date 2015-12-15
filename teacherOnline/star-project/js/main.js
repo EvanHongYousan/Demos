@@ -218,7 +218,7 @@ var components = (function () {
             if(itemName.length > 2){
                 itemName = itemName.substr(0,2)+'...';
             }
-            $('.scrollDiv').append('<p>恭喜&nbsp;&nbsp;<span class="name">' + itemName + '</span>&nbsp;&nbsp;抽中了&nbsp;&nbsp;<span class="award">' + item.detail.replace('（小学）', '').replace('（初中）', '') + '</span></p>');
+            $('.scrollDiv').append('<p>恭喜&nbsp;&nbsp;<span class="name">' + itemName + '</span>&nbsp;&nbsp;抽中了&nbsp;&nbsp;<span class="award">' + item.detail.replace('（小学）', '').replace('（初中）', '').replace('（高中）', '') + '</span></p>');
             $('.scrollDiv').scrollTo({
                 endY: $('.scrollDiv')[0].scrollHeight,
                 duration: 1000
@@ -266,7 +266,7 @@ var components = (function () {
                             date = new Date(parseInt(records[i].insert_time, 10));
                             dateStr = date.getFullYear() + '/' + (date.getMonth()+1) + '/' + date.getDate();
                             $target.append($('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>'));
-                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost.toString().replace('-', '') + '</td><td>' + records[i].detail.replace('谢谢参与', '未中奖').replace('（小学）', '').replace('（初中）','') + '</td></tr>'));
+                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost.toString().replace('-', '') + '</td><td>' + records[i].detail.replace('谢谢参与', '未中奖').replace('（小学）', '').replace('（初中）','').replace('（高中）','') + '</td></tr>'));
                             dateStr = null;
                         }
                     }
@@ -395,7 +395,7 @@ var components = (function () {
                         lotteryAwardType = resultData.award.type;
                         $('.container .integral > span').text(resultData.total_point);
                         JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
-                        $('.mask .congratulationAlert .reward').text(resultData.award.description.replace('（小学）', '').replace('（初中）', ''));
+                        $('.mask .congratulationAlert .reward').text(resultData.award.description.replace('（小学）', '').replace('（初中）', '').replace('（高中）', ''));
                         if (bubleI - 1 > 0) {
                             $('.dialTitleDiv .buble').attr('src', './img/buble' + (bubleI - 1) + '.png');
                         } else {
