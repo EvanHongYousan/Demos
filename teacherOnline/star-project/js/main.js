@@ -233,7 +233,9 @@ var components = (function () {
 
     function closeBtnBindEv() {
         $('.mask').on('touchend', '.closeBtn', function () {
-            maskHide();
+            setTimeout(function(){
+                maskHide();
+            },300);
         });
     }
 
