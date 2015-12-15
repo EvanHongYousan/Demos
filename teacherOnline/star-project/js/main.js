@@ -29,7 +29,7 @@ var components = (function () {
     var domainName = 'http://test.hjlaoshi.com',
         userId = null,
         rotateI = 1,
-        timePick = 175,
+        timePick = 50,
         rotateTrip = 0,
         scrollData = [],
         itemType = {
@@ -73,9 +73,9 @@ var components = (function () {
     }
 
     function dialContainerRotate() {
-        if (timePick < 400) {
-            if(rotateTrip > 10) {
-                timePick += 15;
+        if (timePick < 600) {
+            if(rotateTrip > 50) {
+                timePick += 30;
             }
             rotateTrip += 1;
         } else {
@@ -101,7 +101,7 @@ var components = (function () {
                 rotatingCanStop = false;
                 awardI = 0;
                 lotteryAwardType = 0;
-                timePick = 175;
+                timePick = 50;
                 rotateTrip = 0;
             }, 300);
             return;
