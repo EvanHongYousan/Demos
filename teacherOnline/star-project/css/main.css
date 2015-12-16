@@ -63,6 +63,18 @@ body {
     box-shadow: 0 0 40px 20px rgba(45, 221, 245, 0.6);
 }
 
+.container .check-in:active{
+    background: url(../img/btn_Moon_Sign_h.png);
+    background-size: 100% 100%;
+    box-shadow: 0 0 80px 30px rgba(170, 240, 250, 0.6);
+}
+
+.container .check-in.hover {
+    background: url(../img/btn_Moon_Signed_in.png);
+    background-size: 100% 100%;
+    box-shadow: 0 0 40px 15px rgba(235, 233, 182, 0.6);
+}
+
 .container .check-in > span.increasePoints {
     display: inline-block;
     font-size: 40px;
@@ -312,12 +324,6 @@ body {
         transform: translate(0, 300px);
         opacity: 0;
     }
-}
-
-.container .check-in.hover {
-    background: url(../img/btn_Moon_Signed_in.png);
-    background-size: 100% 100%;
-    box-shadow: 0 0 40px 15px rgba(235, 233, 182, 0.6);
 }
 
 .container .integral {
@@ -860,7 +866,7 @@ body {
 }
 
 .mask .drawRecordDialog .tablerContainer {
-    width: 80%;
+    width: 95%;
     margin: 0 auto;
 }
 

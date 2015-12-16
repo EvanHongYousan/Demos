@@ -11,6 +11,9 @@
     <link rel="stylesheet" href="./css/main.css"/>
 </head>
 <body>
+<div class="imgCache" style="position:absolute;top:-10000px;left:-10000px;">
+    <img src="./img/btn_Moon_Sign_h.png" alt=""/>
+</div>
 <div class="container">
     <img src="./img/title.png" alt="" class="title"/>
     <span class="activity-rules"></span>
@@ -216,9 +219,9 @@
         <div class="tablerContainer">
             <table>
                 <tr>
-                    <th>时间</th>
+                    <th style="position:relative;left:11px;">时间</th>
                     <th>消耗积分</th>
-                    <th>奖品</th>
+                    <th style="position:relative;left:-13px;">奖品</th>
                 </tr>
             </table>
             <div class="tbodyContainer">
@@ -242,7 +245,6 @@
         </span>
 
     </div>
-
 </div>
 <script src="./js/zepto.min.js"></script>
 <script src="./js/zepto.scroll.js"></script>
