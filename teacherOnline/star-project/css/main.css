@@ -66,7 +66,7 @@ body {
 .container .check-in:active{
     background: url(../img/btn_Moon_Sign_h.png);
     background-size: 100% 100%;
-    box-shadow: 0 0 80px 30px rgba(170, 240, 250, 0.6);
+    box-shadow: 0 0 80px 30px rgba(170, 240, 250, 1);
 }
 
 .container .check-in.hover {

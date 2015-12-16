@@ -77,12 +77,12 @@ var components = (function () {
     }
 
     function dialContainerRotate() {
-        if (timePick < 900) {
-            if(rotateTrip > 50 && (rotateI === (awardI + 3) || rotateI === (awardI + 3 - 12))) {
+        if (timePick < 800) {
+            if(rotateTrip > 40 && (rotateI === (awardI + 8) || rotateI === (awardI + 8 - 12))) {
                 timePickCanAdd = true;
             }
             if(timePickCanAdd){
-                timePick += 100;
+                timePick += 250;
             }
             rotateTrip += 1;
         } else {
@@ -111,7 +111,7 @@ var components = (function () {
                 timePick = 50;
                 rotateTrip = 0;
                 timePickCanAdd = false;
-            }, 300);
+            }, 1800);
             return;
         }
 
