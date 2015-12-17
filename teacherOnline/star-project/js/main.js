@@ -29,7 +29,7 @@ var common = (function () {
 }());
 
 var components = (function () {
-    var domainName = 'http://test.hjlaoshi.com',
+    var domainName = 'http://guanli.hjlaoshi.com',
         userId = null,
         rotateI = 1,
         timePick = 50,
@@ -248,7 +248,7 @@ var components = (function () {
         $('.mask').on('touchend', '.closeBtn', function () {
             setTimeout(function(){
                 maskHide();
-            },100);
+            },300);
         });
     }
 
@@ -304,7 +304,7 @@ var components = (function () {
     function shareBtnBindEv() {
         $('.shareBtn').on('touchend', function () {
             JSNativeBridge.send('share', {
-                "content": '呼叫老师免费送抽奖，iPhone6S，iWatch惊喜大礼任你抽~赶紧来签到吧!',
+                "content": '呼叫老师免费送抽奖，iPhone6S，iWatch惊喜大礼任你抽~',
                 "title": '快来玩星转盘，iPhone6S任你抽~!',
                 "type": 0,
                 "image_url": domainName + '/rtc/spread/point/star-project/shareicon.png',
@@ -439,7 +439,7 @@ var components = (function () {
             getScrollData();
             scrollDivScrolling();
             closeBtnBindEv();
-        }, 1000);
+        }, 0);
     }
 
     return {
