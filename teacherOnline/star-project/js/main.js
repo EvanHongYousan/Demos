@@ -23,8 +23,8 @@ var common = (function () {
             oldAlert(msg);
         }
     };
-    String.prototype.filterPhase = function(targetStr){
-        return this.replace('（小学）', '').replace('（初中）', '').replace('（高中）', '').replace('(小学)', '').replace('(初中)', '').replace('(高中)', '');
+    String.prototype.filterPhase = function (targetStr) {
+        return this.replace('（小学）', '').replace('（初中）', '').replace('（高中）', '').replace('(小学)', '').replace('(初中)', '').replace('(高中)', '').replace('.0', '');
     };
 }());
 
@@ -36,11 +36,11 @@ var components = (function () {
         rotateTrip = 0,
         scrollData = [],
         itemType = {
-            CARD:1,
-            MONEY:2,
-            THANK:3,
-            IPHONE:4,
-            IWATCH:5
+            CARD: 1,
+            MONEY: 2,
+            THANK: 3,
+            IPHONE: 4,
+            IWATCH: 5
         },
 
         rotating = false,
@@ -62,7 +62,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15500000011@test.hjlaoshi.com';
+            userId = '15800031138@xmpp.hjlaoshi.com';
         }
     }
 
@@ -78,10 +78,10 @@ var components = (function () {
 
     function dialContainerRotate() {
         if (timePick < 800) {
-            if(rotateTrip > 40 && (rotateI === (awardI + 8) || rotateI === (awardI + 8 - 12))) {
+            if (rotateTrip > 40 && (rotateI === (awardI + 8) || rotateI === (awardI + 8 - 12))) {
                 timePickCanAdd = true;
             }
-            if(timePickCanAdd){
+            if (timePickCanAdd) {
                 timePick += 250;
             }
             rotateTrip += 1;
@@ -223,10 +223,10 @@ var components = (function () {
 
         if (item && item.detail !== undefined && item.detail !== '谢谢参与') {
             itemName = item.username;
-            if(itemName.length > 2){
-                itemName = itemName.substr(0,2)+'...';
+            if (itemName.length > 2) {
+                itemName = itemName.substr(0, 2) + '...';
             }
-            $('.scrollDiv').append('<p>恭喜&nbsp;&nbsp;<span class="name">' + itemName + '</span>&nbsp;&nbsp;抽中了&nbsp;&nbsp;<span class="award">' + item.detail.filterPhase()+ '</span></p>');
+            $('.scrollDiv').append('<p>恭喜&nbsp;&nbsp;<span class="name">' + itemName + '</span>&nbsp;&nbsp;抽中了&nbsp;&nbsp;<span class="award">' + item.detail.filterPhase() + '</span></p>');
             $('.scrollDiv').scrollTo({
                 endY: $('.scrollDiv')[0].scrollHeight,
                 duration: 1000
@@ -246,9 +246,9 @@ var components = (function () {
 
     function closeBtnBindEv() {
         $('.mask').on('touchend', '.closeBtn', function () {
-            setTimeout(function(){
+            setTimeout(function () {
                 maskHide();
-            },300);
+            }, 300);
         });
     }
 
@@ -272,9 +272,9 @@ var components = (function () {
                         if (records[i].detail !== undefined) {
                             $('.mask .drawRecordDialog .tbodyContainer .emptyTip').remove();
                             date = new Date(parseInt(records[i].insert_time, 10));
-                            dateStr = date.getFullYear() + '/' + (date.getMonth()+1) + '/' + date.getDate();
+                            dateStr = date.getFullYear() + '/' + (date.getMonth() + 1) + '/' + date.getDate();
                             $target.append($('<tr><td class="divider" colspan="3"><img src="./img/pic_table_line.png" alt=""/></td></tr>'));
-                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost.toString().replace('-', '') + '</td><td>' + records[i].detail.replace('谢谢参与','未中奖').filterPhase() + '</td></tr>'));
+                            $target.append($('<tr><td>' + dateStr + '</td><td>' + records[i].cost.toString().replace('-', '') + '</td><td>' + records[i].detail.replace('谢谢参与', '未中奖').filterPhase() + '</td></tr>'));
                             dateStr = null;
                         }
                     }
@@ -287,17 +287,17 @@ var components = (function () {
 
     function showAwardRecordBtnBindEv() {
         $('.showAwardRecord').on('touchend', function () {
-            setTimeout(function(){
+            setTimeout(function () {
                 maskShow('drawRecordDialog');
-            },100);
+            }, 100);
         });
     }
 
     function bindPhoneNumberBtnBindEv() {
         $('.bindPhoneNumberBtn').on('touchend', function () {
-            setTimeout(function(){
+            setTimeout(function () {
                 JSNativeBridge.send('js_msg_bind_phonenumber');
-            },100);
+            }, 100);
         });
     }
 
@@ -321,7 +321,7 @@ var components = (function () {
                     isOnline = content.is_online;
                     break;
                 case 'client_msg_isBindDLShow':
-                    if (!content.is_bind_DL_show || content.is_bind_DL_show == 'false') {
+                    if (!content.is_bind_DL_show || content.is_bind_DL_show === 'false') {
                         maskHide();
                     }
                     break;
@@ -395,9 +395,9 @@ var components = (function () {
                     if (resultCode === 110) {
                         rotating = true;
                         dialContainerRotate();
-                        if( resultData.award.no === -1 || resultData.award.type === 3 ){
+                        if (resultData.award.no === -1 || resultData.award.type === 3) {
                             awardI = 10;
-                        }else {
+                        } else {
                             awardI = resultData.award.no;
                         }
                         lotteryAwardType = resultData.award.type;
@@ -413,7 +413,7 @@ var components = (function () {
                     } else if (resultCode === 92) {
                         maskShow('bindPhoneNumber');
                     } else {
-                        if (resultDescript == '积分不够!') {
+                        if (resultDescript === '积分不够!') {
                             alert('小主，积分不够了...');
                         } else {
                             alert(resultDescript);
