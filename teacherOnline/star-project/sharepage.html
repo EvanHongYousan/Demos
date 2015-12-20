@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Cache-Control" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <style>
+        html, body, img, div {
+            padding: 0;
+            margin: 0;
+            border: none;
+            -webkit-user-select: none;
+            -moz-user-select: none;
+            -o-user-select: none;
+            user-select: none;
+            font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+        }
+
+        .container {
+            margin: 0 auto;
+            width: 100%;
+            max-width: 600px;
+            font-size: 0;
+            position: relative;
+        }
+
+        .container > img {
+            width: 100%;
+        }
+
+        .container .footer {
+            position: relative;
+        }
+
+        .container .footer > img {
+            width: 100%;
+        }
+
+        .donwloadBtn {
+            display: inline-block;
+            position: absolute;
+            top: 0;
+            text-align: center;
+            width: 100%;
+        }
+
+        .container .donwloadBtn img {
+            width: 43%;
+        }
+
+        /*.container .donwloadBtn img:nth-of-type(2) {*/
+            /*display: none;*/
+        /*}*/
+
+        /*.container .donwloadBtn:active img:nth-of-type(1) {*/
+        /*display:none;*/
+        /*}*/
+
+        /*.container .donwloadBtn:active img:nth-of-type(2){*/
+        /*display:inline;*/
+        /*}*/
+
+        .container a {
+            display: block;
+            width: 100%;
+        }
+
+        .container a img {
+            width: 100%;
+            position: absolute;
+            left: 0;
+            bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <img class="header" src="./img/pic_Upper.png" alt=""/>
+
+    <div class="footer">
+        <div class="donwloadBtn" id="download">
+            <img src="./img/btn_Download_n.png" alt=""/>
+            <!--<img src="./img/btn_Download_h.png" alt=""/>-->
+        </div>
+        <img src="./img/pic_Below.png" alt=""/>
+    </div>
+    <a href="http://www.hjlaoshi.com">
+        <img src="./img/link_website.png" alt=""/>
+    </a>
+</div>
+<script>
+    window.onload = function () {
+        var down_ios_forWeixin_url = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.teaching';
+        var down_ios_url = 'https://itunes.apple.com/cn/app/hu-jiao-lao-shi/id991664018?l=en&mt=8';
+        var down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/079/hjlaoshi.apk';
+        var userAgent = window.navigator.userAgent.toLowerCase();
+
+        function isWeixin() {
+            return userAgent.indexOf('micromessenger') > 0;
+        }
+
+        function isAndroid() {
+            return userAgent.indexOf('android') > 0;
+        }
+
+        function isIOS() {
+            return /iphone/i.test(userAgent) || /ipod/i.test(userAgent) || /ipad/i.test(userAgent);
+        }
+
+        function getReqPrm(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            } else {
+                return null;
+            }
+        }
+
+        document.getElementById('download').onclick = function () {
+            if (isWeixin() && isAndroid()) {
+                location.href = 'http://www.hjlaoshi.com/?channelid=079';
+            }
+            if (!isWeixin() && isAndroid()) {
+                location.href = down_android_url;
+            }
+            if (isWeixin() && isIOS()) {
+                location.href = down_ios_forWeixin_url;
+            }
+            if (!isWeixin() && isIOS()) {
+                location.href = down_ios_url;
+            }
+            if (!isAndroid() && !isIOS()) {
+                location.href = 'http://www.hjlaoshi.com';
+            }
+        };
+        function btnFocus() {
+            var img = document.getElementById('download').children[0];
+            img.src = './img/btn_Download_h.png';
+        }
+
+        function btnBlur() {
+            var img = document.getElementById('download').children[0];
+            img.src = './img/btn_Download_n.png';
+        }
+
+        document.getElementById('download').addEventListener('touchstart', btnFocus, false);
+        document.getElementById('download').addEventListener('touchmove', btnBlur, false);
+        document.getElementById('download').addEventListener('touchend', btnBlur, false);
+        document.getElementById('download').addEventListener('blur', btnBlur, false);
+
+//        setInterval(btnBlur, 1000);
+    }
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../angular.min.js"></script>
+</head>
+<body>
+
+<div sidebox title="TagCloud">
+    <div class="tagcloud">
+        <a href="">Graphics</a>
+        <a href="">AngularJS</a>
+        <a href="">D3</a>
+        <a href="">Front-end</a>
+        <a href="">Startup</a>
+    </div>
+</div>
+
+<script>
+    angular.module('myApp', [])
+            .directive('sidebox', function () {
+                return {
+                    restrict: 'EA',
+                    scope: {
+                        title: '@'
+                    },
+                    transclude: true,
+                    template: '<div class="sidebox">\
+                        <div class="content">\
+                            <h2 class="header">{{title}}</h2>\
+                            <span class="content ng-transclude">\
+                            </span>\
+                        </div>\
+                        </div>'
+                }
+            })
+</script>
+</body>
+</html>

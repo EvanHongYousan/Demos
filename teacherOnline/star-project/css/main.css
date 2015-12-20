@@ -7,6 +7,14 @@ html, body, img, div {
     -o-user-select: none;
     user-select: none;
     font-family: "Hiragino Sans GB", "Microsoft YaHei", "WenQuanYi Micro Hei", sans-serif;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    -moz-tap-highlight-color: rgba(0, 0, 0, 0);
+    -o-tap-highlight-color: rgba(0, 0, 0, 0);
+    tap-highlight-color: rgba(0, 0, 0, 0);
+}
+
+body {
+    background-color: #08111e;
 }
 
 .container {
@@ -35,7 +43,7 @@ html, body, img, div {
 
     position: absolute;
     top: 220px;
-    left: 5px;
+    left: 0px;
 }
 
 .container .activity-rules:active {
@@ -45,11 +53,277 @@ html, body, img, div {
 
 .container .check-in {
     display: block;
-    width: 250px;
-    height: 250px;
+    width: 180px;
+    height: 180px;
     background: url(../img/btn_Moon_Sign.png);
     background-size: 100% 100%;
-    margin: 0 auto;
+    margin: 50px auto;
+    text-align: center;
+    border-radius: 50%;
+    box-shadow: 0 0 40px 20px rgba(45, 221, 245, 0.6);
+}
+
+.container .check-in:active{
+    background: url(../img/btn_Moon_Sign_h.png);
+    background-size: 100% 100%;
+    box-shadow: 0 0 80px 30px rgba(170, 240, 250, 1);
+}
+
+.container .check-in.hover {
+    background: url(../img/btn_Moon_Signed_in.png);
+    background-size: 100% 100%;
+    box-shadow: 0 0 40px 15px rgba(235, 233, 182, 0.6);
+}
+
+.container .check-in > span.increasePoints {
+    display: inline-block;
+    font-size: 40px;
+    color: #FCDC51;
+    font-weight: bolder;
+    -webkit-transform: translate(0, 100px);
+    -moz-transform: translate(0, 100px);
+    -o-transform: translate(0, 100px);
+    transform: translate(0, 100px);
+    opacity: 0;
+    position: relative;
+    left: 20px;
+
+    /*-webkit-transition: all 0.5s;*/
+    /*-o-transition: all 0.5s;*/
+    /*-moz-transition: all 0.5s;*/
+    /*transition: all 0.5s;*/
+}
+
+.container .check-in > span.increaseStar {
+    display: inline-block;
+    height: 50px;
+    width: 50px;
+    background: url(../img/pic_Stars_Bright.png) no-repeat;
+    background-size: 100% 100%;
+    -webkit-transform: translate(0, 100px);
+    -moz-transform: translate(0, 100px);
+    -o-transform: translate(0, 100px);
+    transform: translate(0, 100px);
+    opacity: 0;
+    position: relative;
+    left: -30px;
+
+    /*-webkit-transition: all 0.5s;*/
+    /*-o-transition: all 0.5s;*/
+    /*-moz-transition: all 0.5s;*/
+    /*transition: all 0.5s;*/
+}
+
+.container .check-in.hover.animate > span.increasePoints {
+    /*-webkit-transform: translate(0, 0);*/
+    /*-moz-transform: translate(0, 0);*/
+    /*-o-transform: translate(0, 0);*/
+    /*transform: translate(0, 0);*/
+    /*opacity:0;*/
+    -webkit-animation: fadeDisplay 0.5s;
+    -moz-animation: fadeDisplay 0.5s;
+    -o-animation: fadeDisplay 0.5s;
+    animation: fadeDisplay 0.8s;
+}
+
+.container .check-in.hover.animate > span.increaseStar {
+    /*-webkit-transform: translate(0, 0);*/
+    /*-moz-transform: translate(0, 0);*/
+    /*-o-transform: translate(0, 0);*/
+    /*transform: translate(0, 0);*/
+    /*opacity:0;*/
+    -webkit-animation: fadeDisplay2 2s;
+    -moz-animation: fadeDisplay2 2s;
+    -o-animation: fadeDisplay2 2s;
+    animation: fadeDisplay2 2s;
+}
+
+@keyframes fadeDisplay {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+    }
+    100% {
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fadeDisplay {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+    }
+    100% {
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes fadeDisplay {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+    }
+    100% {
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+        opacity: 0;
+    }
+}
+
+@-o-keyframes fadeDisplay {
+    0% {
+        opacity: 1;
+    }
+    90% {
+        opacity: 1;
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+    }
+    100% {
+        -webkit-transform: translate(0, -50px);
+        -moz-transform: translate(0, -50px);
+        -o-transform: translate(0, -50px);
+        transform: translate(0, -50px);
+        opacity: 0;
+    }
+}
+
+@keyframes fadeDisplay2 {
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 1;
+        -webkit-transform: translate(0px, 200px) rotate(170deg);
+        -moz-transform: translate(0px, 200px) rotate(170deg);
+        -o-transform: translate(0px, 200px) rotate(170deg);
+        transform: translate(0px, 200px) rotate(170deg);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0, 300px) rotate(360deg);
+        -moz-transform: translate(0, 300px) rotate(360deg);
+        -o-transform: translate(0, 300px) rotate(360deg);
+        transform: translate(0, 300px) rotate(360deg);
+    }
+    100% {
+        -webkit-transform: translate(0, 300px);
+        -moz-transform: translate(0, 300px);
+        -o-transform: translate(0, 300px);
+        transform: translate(0, 300px);
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes fadeDisplay2 {
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 1;
+        -webkit-transform: translate(0px, 200px) rotate(170deg);
+        -moz-transform: translate(0px, 200px) rotate(170deg);
+        -o-transform: translate(0px, 200px) rotate(170deg);
+        transform: translate(0px, 200px) rotate(170deg);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0, 300px) rotate(360deg);
+        -moz-transform: translate(0, 300px) rotate(360deg);
+        -o-transform: translate(0, 300px) rotate(360deg);
+        transform: translate(0, 300px) rotate(360deg);
+    }
+    100% {
+        -webkit-transform: translate(0, 300px);
+        -moz-transform: translate(0, 300px);
+        -o-transform: translate(0, 300px);
+        transform: translate(0, 300px);
+        opacity: 0;
+    }
+}
+
+@-moz-keyframes fadeDisplay2 {
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 1;
+        -webkit-transform: translate(0px, 200px) rotate(170deg);
+        -moz-transform: translate(0px, 200px) rotate(170deg);
+        -o-transform: translate(0px, 200px) rotate(170deg);
+        transform: translate(0px, 200px) rotate(170deg);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0, 300px) rotate(360deg);
+        -moz-transform: translate(0, 300px) rotate(360deg);
+        -o-transform: translate(0, 300px) rotate(360deg);
+        transform: translate(0, 300px) rotate(360deg);
+    }
+    100% {
+        -webkit-transform: translate(0, 300px);
+        -moz-transform: translate(0, 300px);
+        -o-transform: translate(0, 300px);
+        transform: translate(0, 300px);
+        opacity: 0;
+    }
+}
+
+@-o-keyframes fadeDisplay2 {
+    0% {
+        opacity: 1;
+    }
+    30% {
+        opacity: 1;
+        -webkit-transform: translate(0px, 200px) rotate(170deg);
+        -moz-transform: translate(0px, 200px) rotate(170deg);
+        -o-transform: translate(0px, 200px) rotate(170deg);
+        transform: translate(0px, 200px) rotate(170deg);
+    }
+    60% {
+        opacity: 1;
+        -webkit-transform: translate(0, 300px) rotate(360deg);
+        -moz-transform: translate(0, 300px) rotate(360deg);
+        -o-transform: translate(0, 300px) rotate(360deg);
+        transform: translate(0, 300px) rotate(360deg);
+    }
+    100% {
+        -webkit-transform: translate(0, 300px);
+        -moz-transform: translate(0, 300px);
+        -o-transform: translate(0, 300px);
+        transform: translate(0, 300px);
+        opacity: 0;
+    }
 }
 
 .container .integral {
@@ -67,6 +341,11 @@ html, body, img, div {
     background-size: 100% 100%;
 
     text-align: center;
+
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
 }
 
 .container .star-bar > img {
@@ -74,6 +353,16 @@ html, body, img, div {
     width: auto;
     display: inline-block;
     margin: 0 8px;
+
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
 }
 
 .container .description {
@@ -96,7 +385,8 @@ html, body, img, div {
     height: 60%;
     width: auto;
 
-    margin-left: -20px;
+    margin-left: 0;
+    margin-right: 0;
 }
 
 .container .dialTitleDiv .dialTitle {
@@ -106,12 +396,33 @@ html, body, img, div {
     margin-left: -10px;
 }
 
-.container .dialTitleDiv > span {
-    color: #fcdc51;
-    font-size: 16px;
+/*.container .dialTitleDiv > span {*/
+    /*color: #fcdc51;*/
+    /*font-size: 16px;*/
 
-    position: relative;
-    bottom: 15px;
+    /*position: relative;*/
+    /*bottom: 15px;*/
+/*}*/
+
+.container .dialTitleDiv > span.showAwardRecord{
+    display:inline-block;
+    width:25%;
+}
+
+.container .dialTitleDiv > span.showAwardRecord > img{
+    width:100%;
+}
+
+.container .dialTitleDiv > span.showAwardRecord > img:nth-of-type(1){
+    display:none;
+}
+
+.container .dialTitleDiv > span.showAwardRecord:active > img:nth-of-type(1){
+    display:inline;
+}
+
+.container .dialTitleDiv > span.showAwardRecord:active > img:nth-of-type(2){
+    display:none;
 }
 
 .container .dialContainer {
@@ -148,10 +459,33 @@ html, body, img, div {
     display: inline-block;
     position: relative;
     left: 2px;
+
+    -webkit-transition: all 0.2s;
+    -moz-transition: all 0.2s;
+    -o-transition: all 0.2s;
+    transition: all 0.2s;
+}
+
+.container .dialContainer span img:nth-of-type(2),
+.container .dialContainer span.pullLeft span img:nth-of-type(2) {
+    display: none;
 }
 
 .container .dialContainer span.active > img {
     box-shadow: 0 0 5px 5px #2dddf5;
+    -webkit-filter: saturate(3);
+    -moz-filter: saturate(3);
+    -o-filter: saturate(3);
+    filter: saturate(3);
+}
+
+.container .dialContainer span.active > img:nth-of-type(1) {
+    display: none;
+}
+
+.container .dialContainer span.active > img:nth-of-type(2),
+.container .dialContainer span.pullLeft span.active > img:nth-of-type(2) {
+    display: inline-block;
 }
 
 .container .dialContainer > span > p {
@@ -160,15 +494,25 @@ html, body, img, div {
 
 .container .dialContainer span > p.description {
     top: 20%;
-    left: 20%;
-    color: #fcdc51;
+    /*left: 20%;*/
+    color: white;
+    width: 100%;
+    font-size: 12px;
+}
+
+.container .dialContainer span > p.description em {
+    font-size: 14px;
+    font-style: normal;
 }
 
 .container .dialContainer span > p.type {
     margin: 0;
     bottom: 10px;
-    left: 20%;
+    /*left: 20%;*/
     color: white;
+    width: 100%;
+    text-align: center;
+    font-size: 12px;
 }
 
 .container .dialContainer > span.lotteryBtn {
@@ -179,7 +523,8 @@ html, body, img, div {
 .container .dialContainer > span.lotteryBtn > img:last-of-type {
     position: absolute;
     top: 0;
-    left: 0;
+    left: 2px;
+    display: block !important;
 }
 
 .container .dialContainer > span.lotteryBtn:active > img:last-of-type {
@@ -221,18 +566,35 @@ html, body, img, div {
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+
+    padding-left: 50%;
+    width: 50%;
 }
 
 .container .scrollDiv p {
     margin: 0;
+    font-size: 14px;
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     -o-transition: all 0.5s;
     transition: all 0.5s;
+
+    text-align: left;
+    white-space: nowrap;
+
+    -webkit-transform: translate(-50%, 0);
+    -moz-transform: translate(-50%, 0);
+    -o-transform: translate(-50%, 0);
+    transform: translate(-50%, 0);
 }
 
 .container .scrollDiv .name, .container .scrollDiv .award {
     color: #ff6138;
+}
+
+.container .scrollDiv .name{
+    display:inline-block;
+    width:40px;
 }
 
 .container .brightLine {
@@ -251,6 +613,10 @@ html, body, img, div {
 
 .none {
     display: none !important;
+}
+
+.opacity0 {
+    opacity: 0;
 }
 
 .mask .freeChanceAlert > img {
@@ -298,7 +664,7 @@ html, body, img, div {
 }
 
 .mask .activityRulesAlert img {
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     display: inline-block;
 }
@@ -357,8 +723,8 @@ html, body, img, div {
 
 .mask .extraIntegralGetAlert .extraItegral {
     color: #fde651;
-    font-size:50px;
-    margin-top:-130px;
+    font-size: 80px;
+    margin-top: -130px;
     font-weight: bolder;
 }
 
@@ -402,7 +768,6 @@ html, body, img, div {
     margin: 60px auto;
 }
 
-
 .mask .bindPhoneNumber > span {
     display: inline-block;
     width: 150px;
@@ -435,4 +800,189 @@ html, body, img, div {
 
 .mask .bindPhoneNumber > span:active > img:nth-of-type(1) {
     display: block;
+}
+
+.mask .congratulationAlert img {
+    width: 80%;
+    margin: 0 auto;
+}
+
+.mask .congratulationAlert .reward {
+    color: #fde651;
+    font-size: 35px;
+    margin-top: -150px;
+    font-weight: bolder;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.mask .congratulationAlert > span {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.mask .congratulationAlert > span.shareBtn {
+    width: 230px;
+}
+
+.mask .congratulationAlert > span > img {
+    width: 100%;
+}
+
+.mask .congratulationAlert > span > img:nth-of-type(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mask .congratulationAlert > span > img:nth-of-type(0) {
+    display: block;
+}
+
+.mask .congratulationAlert > span > img:nth-of-type(1) {
+    display: none;
+}
+
+.mask .congratulationAlert > span:active > img:nth-of-type(0) {
+    display: none;
+}
+
+.mask .congratulationAlert > span:active > img:nth-of-type(1) {
+    display: block;
+}
+
+.mask .drawRecordDialog h2 {
+    color: #ff6138;
+    margin-top: -40px;
+}
+
+.mask .drawRecordDialog img {
+    width: 100%;
+    margin: 20px auto 0 auto;
+    display: inline-block;
+}
+
+.mask .drawRecordDialog .tablerContainer {
+    width: 95%;
+    margin: 0 auto;
+}
+
+.mask .drawRecordDialog table {
+    width: 100%;
+}
+
+.mask .drawRecordDialog th {
+    color: #2dddf5;
+}
+
+.mask .drawRecordDialog td {
+    color: #fff;
+    font-size: 12px;
+}
+
+/*.mask .drawRecordDialog tr{*/
+/*background:url('../img/pic_table_line.png') no-repeat;*/
+/*background-size:cover;*/
+/*}*/
+
+.mask .drawRecordDialog tr td.divider {
+    height: 3px;
+    padding: 0;
+    margin-top: -20px;
+    position: relative;
+    top: -5px;
+}
+
+.mask .drawRecordDialog tr td img {
+    width: 100%;
+    margin: 0;
+}
+
+.mask .drawRecordDialog .tbodyContainer {
+    height: 300px;
+    overflow: auto;
+}
+
+.mask .drawRecordDialog .tbodyContainer .emptyTip {
+    color: white;
+    text-align: center;
+    line-height: 300px;
+}
+
+.mask .drawRecordDialog td {
+    width: 30%;
+}
+
+.mask .drawRecordDialog > span {
+    display: inline-block;
+    width: 150px;
+    height: 40px;
+    position: relative;
+    margin-top: 20px;
+}
+
+.mask .drawRecordDialog > span > img {
+    width: 100%;
+}
+
+.mask .drawRecordDialog > span > img:nth-of-type(1) {
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.mask .drawRecordDialog > span > img:nth-of-type(0) {
+    display: block;
+}
+
+.mask .drawRecordDialog > span > img:nth-of-type(1) {
+    display: none;
+}
+
+.mask .drawRecordDialog > span:active > img:nth-of-type(0) {
+    display: none;
+}
+
+.mask .drawRecordDialog > span:active > img:nth-of-type(1) {
+    display: block;
+}
+
+@media screen and (min-height: 500px) {
+    .mask .activityRulesAlert > span,
+    .mask .freeChanceAlert > span,
+    .mask .extraIntegralGetAlert > span,
+    .mask .bindPhoneNumber > span.bindPhoneNumberBtn,
+    .mask .congratulationAlert > span.shareBtn {
+        margin-top: 60px;
+    }
+}
+
+@media screen and (min-height: 600px) {
+    .mask .activityRulesAlert,
+    .mask .freeChanceAlert,
+    .mask .extraIntegralGetAlert,
+    .mask .bindPhoneNumber,
+    .mask .congratulationAlert {
+        margin-top: 100px;
+    }
+
+    .mask .drawRecordDialog {
+        margin-top: 30px;
+    }
+
+    .mask .drawRecordDialog .tbodyContainer {
+        height: 400px;
+        overflow: auto;
+    }
+
+    .mask .drawRecordDialog .tbodyContainer .emptyTip {
+        line-height: 400px;
+    }
+
+    .container .dialContainer span > p.description {
+        top: 23%;
+    }
 }

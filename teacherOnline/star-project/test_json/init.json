@@ -1,0 +1,20 @@
+{
+  "total_points":300,
+  "week_signin_count":3,
+  "free_count":2,
+  "today_free_acount":1,
+  "awards":[
+    {"no":"1","discription":"20元","type":1},
+    {"no":"2","discription":"15分钟","type":2},
+    {"no":"3","discription":"20元","type":1},
+    {"no":"4","discription":"20元","type":1},
+    {"no":"5","discription":"20元","type":1},
+    {"no":"6","discription":"15分钟","type":2},
+    {"no":"7","discription":"15分钟","type":2},
+    {"no":"8","discription":"15分钟","type":2},
+    {"no":"9","discription":"15分钟","type":2},
+    {"no":"10","discription":"15分钟","type":2},
+    {"no":"11","discription":"15分钟","type":2},
+    {"no":"12","discription":"15分钟","type":2}
+  ]
+}

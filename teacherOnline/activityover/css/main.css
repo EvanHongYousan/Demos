@@ -1,0 +1,90 @@
+@font-face {
+    font-family: 'minijianxiyuan410559';
+    src: url('./minijianxiyuan.eot');
+    src: url('./minijianxiyuan.eot?#iefix') format('embedded-opentype'),
+    url('./minijianxiyuan.woff') format('woff'),
+    url('./minijianxiyuan.ttf') format('truetype'),
+    url('./minijianxiyuan.svg#minijianxiyuan') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body {
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    font-family: 'Microsoft Yahei';
+}
+
+ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+}
+.none{
+    display:none;
+}
+.container {
+    margin: 0 auto;
+    width: 100%;
+    max-width: 600px;
+    /*background: url(../images/bg.jpg) no-repeat;*/
+    /*background-size: 100%;*/
+    padding-top: 20px;
+}
+
+.container .title {
+    width: 90%;
+    display: block;
+    margin: 0 auto 0 auto;
+}
+
+.container .redText {
+    color: #f65a41;
+    text-align: center;
+    font-size: 20px;
+    font-weight: bolder;
+}
+
+.container .divider {
+    border-bottom: 2px solid #dfdfdf;
+    width: 90%;
+    margin: 20px auto 30px auto;
+}
+
+.container h3, .container p {
+    width: 85%;
+    margin: 10px auto;
+    font-weight: normal;
+    font-size: 15px;
+}
+
+.container p {
+    font-size: 15px;
+    line-height: 30px;
+    margin: 0 auto;
+}
+
+#shareBtn {
+    background-color: #29c999;
+    padding: 15px;
+    border-radius: 5px;
+    margin: 20px auto;
+    width: 85%;
+    color: white;
+    text-align: center;
+    display: block;
+    /*font-family: "Courier New", Courier, monospace;*/
+    font-weight: bolder;
+    font-size: 18px;
+}
+
+#shareBtn:hover {
+    background-color: #1d906c;
+    margin-bottom: 20px;
+}
