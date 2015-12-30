@@ -63,7 +63,7 @@ body {
     box-shadow: 0 0 40px 20px rgba(45, 221, 245, 0.6);
 }
 
-.container .check-in:active{
+.container .check-in:active {
     background: url(../img/btn_Moon_Sign_h.png);
     background-size: 100% 100%;
     box-shadow: 0 0 80px 30px rgba(170, 240, 250, 1);
@@ -397,32 +397,32 @@ body {
 }
 
 /*.container .dialTitleDiv > span {*/
-    /*color: #fcdc51;*/
-    /*font-size: 16px;*/
+/*color: #fcdc51;*/
+/*font-size: 16px;*/
 
-    /*position: relative;*/
-    /*bottom: 15px;*/
+/*position: relative;*/
+/*bottom: 15px;*/
 /*}*/
 
-.container .dialTitleDiv > span.showAwardRecord{
-    display:inline-block;
-    width:25%;
+.container .dialTitleDiv > span.showAwardRecord {
+    display: inline-block;
+    width: 25%;
 }
 
-.container .dialTitleDiv > span.showAwardRecord > img{
-    width:100%;
+.container .dialTitleDiv > span.showAwardRecord > img {
+    width: 100%;
 }
 
-.container .dialTitleDiv > span.showAwardRecord > img:nth-of-type(1){
-    display:none;
+.container .dialTitleDiv > span.showAwardRecord > img:nth-of-type(1) {
+    display: none;
 }
 
-.container .dialTitleDiv > span.showAwardRecord:active > img:nth-of-type(1){
-    display:inline;
+.container .dialTitleDiv > span.showAwardRecord:active > img:nth-of-type(1) {
+    display: inline;
 }
 
-.container .dialTitleDiv > span.showAwardRecord:active > img:nth-of-type(2){
-    display:none;
+.container .dialTitleDiv > span.showAwardRecord:active > img:nth-of-type(2) {
+    display: none;
 }
 
 .container .dialContainer {
@@ -592,9 +592,9 @@ body {
     color: #ff6138;
 }
 
-.container .scrollDiv .name{
-    display:inline-block;
-    width:40px;
+.container .scrollDiv .name {
+    display: inline-block;
+    width: 40px;
 }
 
 .container .brightLine {
@@ -643,19 +643,19 @@ body {
 }
 
 .mask .freeChanceAlert > span > img:nth-of-type(0) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .freeChanceAlert > span > img:nth-of-type(1) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .freeChanceAlert > span:active > img:nth-of-type(0) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .freeChanceAlert > span:active > img:nth-of-type(1) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .activityRulesAlert h2 {
@@ -701,19 +701,19 @@ body {
 }
 
 .mask .activityRulesAlert > span > img:nth-of-type(0) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .activityRulesAlert > span > img:nth-of-type(1) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .activityRulesAlert > span:active > img:nth-of-type(0) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .activityRulesAlert > span:active > img:nth-of-type(1) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .extraIntegralGetAlert img {
@@ -747,19 +747,19 @@ body {
 }
 
 .mask .extraIntegralGetAlert > span > img:nth-of-type(0) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .extraIntegralGetAlert > span > img:nth-of-type(1) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .extraIntegralGetAlert > span:active > img:nth-of-type(0) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .extraIntegralGetAlert > span:active > img:nth-of-type(1) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .bindPhoneNumber > img {
@@ -787,19 +787,19 @@ body {
 }
 
 .mask .bindPhoneNumber > span > img:nth-of-type(0) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .bindPhoneNumber > span > img:nth-of-type(1) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .bindPhoneNumber > span:active > img:nth-of-type(0) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .bindPhoneNumber > span:active > img:nth-of-type(1) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .congratulationAlert img {
@@ -839,19 +839,19 @@ body {
 }
 
 .mask .congratulationAlert > span > img:nth-of-type(0) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .congratulationAlert > span > img:nth-of-type(1) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .congratulationAlert > span:active > img:nth-of-type(0) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .congratulationAlert > span:active > img:nth-of-type(1) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .drawRecordDialog h2 {
@@ -935,19 +935,19 @@ body {
 }
 
 .mask .drawRecordDialog > span > img:nth-of-type(0) {
-    display: block;
+    opacity: 1;
 }
 
 .mask .drawRecordDialog > span > img:nth-of-type(1) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .drawRecordDialog > span:active > img:nth-of-type(0) {
-    display: none;
+    opacity: 0;
 }
 
 .mask .drawRecordDialog > span:active > img:nth-of-type(1) {
-    display: block;
+    opacity: 1;
 }
 
 @media screen and (min-height: 500px) {
@@ -984,5 +984,32 @@ body {
 
     .container .dialContainer span > p.description {
         top: 23%;
+    }
+}
+
+@media screen and (max-height: 490px) {
+    .mask .drawRecordDialog .tbodyContainer {
+        height: 200px;
+        overflow: auto;
+    }
+
+    .mask .activityRulesAlert > span {
+        margin-top: 0;
+    }
+
+    .mask .activityRulesAlert img.line {
+        margin-top: 20px;
+    }
+
+    .mask .congratulationAlert img {
+        margin-top: -50px;
+    }
+
+    .mask .bindPhoneNumber > img {
+        margin-top: 20px;
+    }
+
+    .mask .extraIntegralGetAlert > span {
+        margin-top: -50px;
     }
 }

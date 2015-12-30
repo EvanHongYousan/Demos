@@ -246,16 +246,16 @@ var components = (function () {
     }
 
     function activityRulesBindEv() {
-        $('body').on('touchend', '.activity-rules', function () {
+        $('.activity-rules').on('click', function () {
             maskShow('activityRulesAlert');
         });
     }
 
     function closeBtnBindEv() {
-        $('.mask').on('touchend', '.closeBtn', function () {
+        $('.mask').on('click', '.closeBtn', function () {
             setTimeout(function () {
                 maskHide();
-            }, 300);
+            }, 0);
         });
     }
 
@@ -301,7 +301,7 @@ var components = (function () {
     }
 
     function bindPhoneNumberBtnBindEv() {
-        $('.bindPhoneNumberBtn').on('touchend', function () {
+        $('.bindPhoneNumberBtn').on('click', function () {
             setTimeout(function () {
                 JSNativeBridge.send('js_msg_bind_phonenumber');
             }, 100);
@@ -309,7 +309,7 @@ var components = (function () {
     }
 
     function shareBtnBindEv() {
-        $('.shareBtn').on('touchend', function () {
+        $('.shareBtn').on('click', function () {
             JSNativeBridge.send('share', {
                 "content": '呼叫老师免费送抽奖，iPhone6S，iWatch惊喜大礼任你抽~',
                 "title": '快来玩星转盘，iPhone6S任你抽~!',
