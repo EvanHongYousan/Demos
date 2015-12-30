@@ -50,3 +50,17 @@ compoments = (function () {
 compoments.init();
 $('title').text(spreadData.name[Math.floor(Math.random()*3)]);
 $('.none').text(spreadData.shareWording[Math.floor(Math.random()*3)]);
+
+(function(){
+    //图片预加载
+    var images = new Array(),i;
+    function preload() {
+        for (i = 0; i < preload.arguments.length; i++) {
+            images[i] = new Image()
+            images[i].src = preload.arguments[i]
+        }
+    }
+    preload(
+        "./images/btn-share-h.png"
+    )
+})();
