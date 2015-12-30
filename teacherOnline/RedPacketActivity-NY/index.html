@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel="stylesheet" href="css/main.css"/>
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="format-detection" content="email=no">
+    <script>
+        var _hmt = _hmt || [];
+        (function () {
+            var hm = document.createElement("script");
+            hm.src = "//hm.baidu.com/hm.js?f380b5dedd2cc060ad1d24345ed545fd";
+            var s = document.getElementsByTagName("script")[0];
+            s.parentNode.insertBefore(hm, s);
+        })();
+    </script>
+</head>
+<body>
+<div class="none noneText"></div>
+<div class="container index">
+    <img class="logo" src="images/logo.png" alt=""/>
+    <img class="top" src="images/bg1_top.jpg" alt=""/>
+
+    <div class="middle">
+        <img src="images/bg1_middle.jpg" alt="" style="min-height: 160px;"/>
+
+        <div>
+            <input type="number" id="phoneNum" value="" placeholder="输入手机号码"/>
+            <span id="submit">马上抢</span>
+        </div>
+    </div>
+
+    <div class="bottom">
+        <img src="images/bg1_bottom.jpg" alt=""/>
+
+        <h3><span class="divider"></span>&nbsp;活动规则&nbsp;<span class="divider"></span></h3>
+        <ul>
+            <li>1.输手机号抢红包，手气越好金额越高</li>
+            <li>2.下载呼叫老师,用该手机号注册,就可以用红包换学时啦</li>
+            <li>3.红包只限学生使用，老师推荐学生来抢</li>
+            <li>4.安卓用户更新版本即可用，苹果用户请再等两周哦>.<</li>
+            <li>5.呼叫老师团队对本活动保留最终解释权</li>
+        </ul>
+        <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
+    </div>
+</div>
+<div class="container result opacity0 none" style="">
+    <img class="logo" src="images/logo.png" alt=""/>
+    <img src="images/bg3_up.jpg" alt="" class="top"/>
+
+    <div class="bottom">
+        <div class="pickle">
+            <p class="description">现金券已放入手机账户</p>
+            <p class="phoneNumber">快去问作业吧</p>
+        </div>
+        <div class="voucher">
+            <span><small>￥</small><span>500</span></span>
+        </div>
+        <img src="images/tickets.png" alt="" class="tickets"/>
+        <img class="downBG" src="images/bg2_down.jpg" alt=""/>
+
+        <div class="text">
+            <p class="whiteText">之前抢过红包啦~</p>
+
+            <p class="description"><span class="price"></span>元现金券</p>
+
+            <p class="phoneNumberContainer">已放入<span class="phoneNumber"></span>账户</p>
+            <span id="downloadBtn">下载呼叫老师APP</span>
+        </div>
+
+        <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
+    </div><img style="width:100%;max-width:600px;" src="images/introduce.jpg" alt=""/>
+</div>
+<div class="mask">
+    <div class="tip">
+        <div class="tip-content">请输入正确的手机号码</div>
+        <div class="tip-footer">确定</div>
+    </div>
+</div>
+<script src="../common/spread.js"></script>
+<script src="http://apps.bdimg.com/libs/zepto/1.1.4/zepto.min.js"></script>
+<script>
+    Date.prototype.Format = function (fmt) { //author: meizz
+        var o = {
+            "M+": this.getMonth() + 1, //月份
+            "d+": this.getDate(), //日
+            "h+": this.getHours(), //小时
+            "m+": this.getMinutes(), //分
+            "s+": this.getSeconds(), //秒
+            "q+": Math.floor((this.getMonth() + 3) / 3), //季度
+            "S": this.getMilliseconds() //毫秒
+        };
+        if (/(y+)/.test(fmt)) fmt = fmt.replace(RegExp.$1, (this.getFullYear() + "").substr(4 - RegExp.$1.length));
+        for (var k in o)
+            if (new RegExp("(" + k + ")").test(fmt)) fmt = fmt.replace(RegExp.$1, (RegExp.$1.length == 1) ? (o[k]) : (("00" + o[k]).substr(("" + o[k]).length)));
+        return fmt;
+    };
+</script>
+<script>
+    (function () {
+        var down_ios_forWeixin_url = 'http://a.app.qq.com/o/simple.jsp?pkgname=com.mainbo.teaching';
+        var down_ios_url = 'https://itunes.apple.com/cn/app/hu-jiao-lao-shi/id991664018?l=en&mt=8';
+        var down_android_url = 'http://dl.hjlaoshi.com/app/hjlaoshi/android/' + getChannelId() + '/hjlaoshi.apk';
+        var userAgent = window.navigator.userAgent.toLowerCase();
+
+        function switchPage(phoneNum, money) {
+            money = parseInt(money);
+            $('.result .phoneNumber').text(phoneNum);
+            $('.result .voucher span > span').text(money);
+            $('.result img.top').attr('src', 'images/bg2_up' + parseInt(Math.random() * 4 + 1) + '.jpg');
+            switch (true) {
+                case money >= 15 && money <= 17:
+                    $('.result img.top').attr('src', 'images/bg2_up3.jpg');
+                    break;
+                case money >= 18 && money <= 20:
+                    $('.result img.top').attr('src', 'images/bg2_up4.jpg');
+                    break;
+                case money >= 50 && money <= 99:
+                    $('.result img.top').attr('src', 'images/bg2_up1.jpg');
+                    break;
+                case money >= 150 && money <= 199:
+                    $('.result img.top').attr('src', 'images/bg2_up2.jpg');
+                    break;
+                default :
+                    break;
+            }
+        }
+
+        function getReqPrm(name) {
+            var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+            var r = window.location.search.substr(1).match(reg);
+            if (r != null) {
+                return unescape(r[2]);
+            } else {
+                return null;
+            }
+        }
+
+        function getChannelId() {
+            var url = window.location.href,
+                    parts = url.split('?'),
+                    params = null, channel_id = '001';
+            if (parts.length > 1) {
+                params = parts[1];
+            }
+            if (!params) return channel_id;
+            var start = params.indexOf('channel'),
+                    channel = params.substr(start).split('&')[0];
+            parts = channel.split('=');
+            if (parts.length > 1 && !!parts[1]) {
+                channel_id = parts[1];
+            }
+            return channel_id;
+        }
+
+        function isWeixin() {
+            return userAgent.indexOf('micromessenger') > 0;
+        }
+
+        function isAndroid() {
+            return userAgent.indexOf('android') > 0;
+        }
+
+        function isIOS() {
+            var userAgent = window.navigator.userAgent.toLowerCase();
+            if (userAgent.indexOf('android') > 0) return 1;     //android
+            if (/iphone/i.test(userAgent) || /ipod/i.test(userAgent) || /ipad/i.test(userAgent)) return 2;      //IOS
+            return 'anyotherelse';
+        }
+
+        function getData(phoneNum) {
+            $.getJSON(
+                    spreadData.jsonPURL + "?id=" + spreadData.id + "&phone=" + phoneNum + '&callback=?',
+                    function (data) {
+                        console.log(data);
+                        window.scrollTo(0,0);
+                        if (data.status == '7') {
+                            $('.index').hide();
+                            $('.result').removeClass('none').removeClass('opacity0');
+                            $('.result .voucher').remove();
+                            $('.result img.top').attr('src', 'images/bg3_up.jpg');
+                            $('.result img.downBG').attr('src','images/bg3_down.jpg');
+                            $('.opacity0').removeClass('opacity0');
+                            $('.loader').remove();
+                            $('.result .text .phoneNumber').text(phoneNum);
+                            $('.result .text .price').text(parseInt(data.price));
+                            $('.result .text > .whiteText').show();
+                            $('.result .bottom .pickle').hide();
+                        }
+                        else if (data.status == '1') {
+                            $('.index').hide();
+                            $('.result').removeClass('none').removeClass('opacity0');
+                            $('.opacity0').removeClass('opacity0');
+                            $('.loader').remove();
+                            $('.text .description, .text .phoneNumberContainer').css('opacity','0');
+                            $('.bottom > .text').css('top','60px');
+                            switchPage(phoneNum, data.price);
+                        }
+                        else {
+                            $('.mask .tip-content').text(data.msg);
+                            $('.mask').show();
+                        }
+                    }
+            );
+        }
+
+        $('#phoneNum').on('focus', function () {
+            setTimeout(function(){
+                window.scrollTo(0, 200)
+            },500);
+            window.scrollTo(0, 200);
+        });
+        $('.href').click(function(){
+            location.href='http://www.hjlaoshi.com';
+        });
+        $('#submit').click(function () {
+            if (/^1[345678]\d{9}$/.test($('#phoneNum').val())) {
+//                window.location = './result.html?phoneNum=' + $('#phoneNum').val();
+                getData($('#phoneNum').val());
+            } else {
+                $('#phoneNum').attr('placeholder', '请输入正确的手机号码');
+//                $('#phoneNum').val('');
+                $('.mask').show();
+            }
+        });
+        $('#downloadBtn').click(function () {
+            if (isWeixin() && isAndroid()) {
+                location.href = 'http://www.hjlaoshi.com';
+            } else if (!isWeixin() && isAndroid()) {
+                location.href = down_android_url;
+            } else if (isWeixin() && isIOS()) {
+                location.href = down_ios_forWeixin_url;
+            } else if (!isWeixin() && isIOS()) {
+                location.href = down_ios_url;
+            }
+        });
+        $('.mask .tip-footer').click(function () {
+            $('.mask').hide();
+        });
+        $('.mask').on('touchmove', function () {
+            return false;
+        });
+        setTimeout(function () {
+            setTimeout(function () {
+                $('.mask').height(document.body.clientHeight);
+                $('.result').addClass('none');
+            }, 500);
+            if ((new Date()).Format("yyyy-MM-dd hh:mm:ss") > spreadData.endTime || (new Date()).Format("yyyy-MM-dd hh:mm:ss") < spreadData.beginTime) {
+                $('.tip .tip-content').html('好可惜，来晚啦~~红包已经抢完啦~下载呼叫老师期待下次优惠活动吧~~');
+                $('.mask .tip-footer').click(function () {
+                    document.location.href = "http://www.hjlaoshi.com"
+                });
+                $('.mask').show();
+            }
+        }, 500);
+        $('title').text(spreadData.name[Math.floor(Math.random() * 3)]);
+        $('.noneText').text(spreadData.shareWording[Math.floor(Math.random() * 3)]);
+    })();
+</script>
+</body>
+</html>

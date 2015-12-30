@@ -17,19 +17,26 @@ var common = (function () {
 (function () {
     var oldAlert = window.alert;
     window.alert = function (msg) {
-        if (devJudge.isAndroid()) {
+        if (devJudge.isAndroid() || devJudge.isIOS()) {
             JSNativeBridge.send('js_msg_showTip', {"tip": msg});
         } else {
             oldAlert(msg);
         }
     };
     String.prototype.filterPhase = function (targetStr) {
-        return this.replace('（小学）', '').replace('（初中）', '').replace('（高中）', '').replace('(小学)', '').replace('(初中)', '').replace('(高中)', '').replace('.0', '');
+        return this.replace('（小学）', '')
+            .replace('（初中）', '')
+            .replace('（高中）', '')
+            .replace('(小学)', '')
+            .replace('(初中)', '')
+            .replace('(高中)', '')
+            .replace('.0', '')
+            .replace('<br/>', '');
     };
 }());
 
 var components = (function () {
-    var domainName = 'http://guanli.hjlaoshi.com',
+    var domainName = 'http://test.hjlaoshi.com',
         userId = null,
         rotateI = 1,
         timePick = 50,
@@ -62,7 +69,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15800031138@xmpp.hjlaoshi.com';
+            userId = '15800031138@test.hjlaoshi.com';
         }
     }
 
@@ -365,7 +372,7 @@ var components = (function () {
                     } else if (resultCode === 92) {
                         maskShow('bindPhoneNumber');
                     } else {
-                        alert(resultDescript);
+                        alert(resultDescript.filterPhase());
                     }
                 }
             );
@@ -416,7 +423,7 @@ var components = (function () {
                         if (resultDescript === '积分不够!') {
                             alert('小主，积分不够了...');
                         } else {
-                            alert(resultDescript);
+                            alert(resultDescript.filterPhase());
                         }
                     }
                 }

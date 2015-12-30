@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <script src="http://lib.sinaapp.com/js/angular.js/angular-1.2.19/angular.min.js"></script>
+</head>
+<body>
+</body>
+<div id="logger"></div>
+<script>
+
+    angular.module('myService',[])
+            .provider('hello',function(){
+                this.$get = function(){
+                    return 'hello,   world!';
+                };
+            });
+
+    angular.element(document).ready(function(){
+        angular.injector(['ng','myService']).invoke(['hello',function(fdsa){
+            console.log(fdsa);
+        }])
+    })
+</script>
+</html>

@@ -26,7 +26,10 @@ window.onload = function () {
         var
             userId = null,
             userName = '小小明',
-            isShowMask = false;
+            isShowMask = false,
+            domainName = 'http://guanli.hjlaoshi.com';
+
+        console.log('domainName:'+domainName);
 
         function maskBindEv() {
             $('.mask').height($(document).height() + 56);
@@ -65,10 +68,10 @@ window.onload = function () {
             $('#btn_invite,#btn_invite2,#btn_gotoInvite,#btn_getAward').click(function () {
                 var locationURL = location.href.toString().split('index')[0];
                 JSNativeBridge.send('share', {
-                    "content": '呼叫老师千万张学时卡，免费大放送啦~！每次必中哈哈哈哈',
-                    "title": '送你1000元礼包，免费问作业~快抢!',
+                    "content": '呼叫老师千万圣诞礼品，下载即送啦~！每摘必中哈哈哈哈！',
+                    "title": '祝你圣诞快乐，送你一份圣诞礼物~',
                     "type": 0,
-                    "image_url": 'http://ftp.hjlaoshi.com/rtc/spread/shareicon.png',
+                    "image_url": domainName + '/rtc/spread/shareicon.png',
                     "target_url": locationURL + 'invitepage.html?username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text(),
                     "target_url_forQQ": locationURL + 'invitepage.html?username=' + Base64.encodeURI(userName) + "&invitecode=" + $('.bottom .invitecode').text()
                 });
@@ -76,10 +79,10 @@ window.onload = function () {
             $('#btn_share').click(function () {
                 var locationURL = location.href.toString().split('index')[0];
                 JSNativeBridge.send('share', {
-                    "content": '呼叫老师缤纷六重壕礼，快来领取吧！',
-                    "title": '好开心啊，我拿到终极大礼啦~！',
+                    "content": '呼叫老师，圣诞摘大礼啦！让你拿到手软，赶块来玩！.....',
+                    "title": '好开心啊！我那到了圣诞节终极大礼啦~！',
                     "type": 0,
-                    "image_url": 'http://ftp.hjlaoshi.com/rtc/spread/shareicon.png',
+                    "image_url": domainName + '/rtc/spread/shareicon.png',
                     "target_url": locationURL + 'supershare.html?username=' + Base64.encodeURI(userName) + "&award=" + Base64.encodeURI($('.mask .dialogFinalAward .specialStyle').text()),
                     "target_url_forQQ": locationURL + 'supershare.html?username=' + Base64.encodeURI(userName) + "&award=" + Base64.encodeURI($('.mask .dialogFinalAward .specialStyle').text())
                 });
@@ -89,7 +92,7 @@ window.onload = function () {
         function doLottery() {
             $('.mask').removeClass('none');
             $.getJSON(
-                'http://guanli.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
+                domainName + '/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myLottery' + '&callback=?',
                 function (data) {
                     console.log(data);
                     if (data._APP_RESULT_OPT_CODE == 90) {
@@ -155,7 +158,7 @@ window.onload = function () {
                 userId = '15800031138@xmpp.hjlaoshi.com';
             }
             $.getJSON(
-                'http://guanli.hjlaoshi.com/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
+                domainName + '/app/share/spreadServlet' + "?user_id=" + userId + "&method=" + 'myCount' + '&callback=?',
                 function (data) {
                     console.log(data);
                     if (data._APP_RESULT_OPT_CODE == 90) {
