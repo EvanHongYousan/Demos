@@ -6,10 +6,11 @@ html, body, img, ul, li, div {
     -moz-user-select: none;
     -o-user-select: none;
     user-select: none;
+    font-family: 'Microsoft Yahei';
 }
 
 body {
-    background-color: #f89f41;
+    background-color: #ffedbc;
 }
 
 .none {
@@ -22,6 +23,22 @@ body {
     -moz-transition: opacity 0.9s;
     -o-transition: opacity 0.9s;
     transition: opacity 0.9s;
+}
+
+::-webkit-input-placeholder {
+    color: #ffedbc;
+}
+
+:-moz-placeholder { /* Firefox 18- */
+    color: #ffedbc;
+}
+
+::-moz-placeholder {  /* Firefox 19+ */
+    color: #ffedbc;
+}
+
+:-ms-input-placeholder {
+    color: #ffedbc;
 }
 
 .container {
@@ -52,8 +69,6 @@ body {
 }
 
 .container > .middle > div {
-    position: absolute;
-    top: 0;
     text-align: center;
     width: 100%;
 }
@@ -65,8 +80,7 @@ input, input:hover, input:active, input:focus {
 #phoneNum, #submit, #downloadBtn {
     font-size: 20px;
     width: 60%;
-    border-radius: 30px;
-    padding: 15px 30px;
+    padding: 10px 30px;
     display: inline-block;
     text-align: center;
     /*line-height: 45px;*/
@@ -75,40 +89,54 @@ input, input:hover, input:active, input:focus {
 
 #phoneNum {
     margin: 15px 0;
+    background: url(../images/pic-input.png) no-repeat;
+    background-size: 100% 100%;
 }
 
 #submit, #downloadBtn {
-    /*background: url("../images/submit.png") no-repeat;*/
-    /*background-size: 100% 100%;*/
-    background-color: #ffe34a;
-    color: #e43829;
-    padding: 15px 30px;
+    background: url("../images/btn-open-n.png") no-repeat;
+    background-size: 100% 100%;
+    height: 90px;
+    margin-bottom: -50px;
 }
 
-#submit:active, #downloadBtn:active {
-    /*background: url('../images/submit_hover.png') no-repeat;*/
-    /*background-size: 100% 100%;*/
-    background-color: #ccb63b;
+#downloadBtn{
+    background: url("../images/btn-download-n.png") no-repeat;
+    background-size: 100% 100%;
+}
+
+#submit:active {
+    background: url('../images/btn-open-h.png') no-repeat;
+    background-size: 100% 100%;
+}
+
+#downloadBtn:active{
+    background: url("../images/btn-download-h.png") no-repeat;
+    background-size: 100% 100%;
 }
 
 .container > .bottom {
-    color: white;
-    font-size: 14px;
+    color:#c5913f;
     position: relative;
     font-size: 0;
 }
 
-.container > .bottom h3, .container > .bottom ul{
-    font-size:14px;
+.container > .bottom h3, .container > .bottom ul {
+    font-size: 14px;
 }
 
 .container > .bottom > img {
     width: 100%;
 }
 
+.container > .bottom > img.luckyImg{
+    width:25%;
+    margin:30px auto;
+    display:block;
+    display:none;
+}
+
 .bottom > h3 {
-    position: absolute;
-    top: -10px;
     text-align: center;
     width: 100%;
 }
@@ -118,8 +146,6 @@ input, input:hover, input:active, input:focus {
 }
 
 .bottom > ul {
-    position: absolute;
-    top: 40px;
     /*padding: 0 50px;*/
     list-style: none;
     line-height: 17px;
@@ -129,30 +155,25 @@ input, input:hover, input:active, input:focus {
 .bottom > ul > li {
     padding-left: 12px;
     text-indent: -12px;
-    margin: 0 10%;
+    margin: 10px 10%;
 }
 
 .bottom > .voucher {
     width: 220px;
     height: 100px;
-    position: absolute;
-    top: 20px;
-    left: 50%;
-    -webkit-transform: translate(-50%, 0);
-    -moz-transform: translate(-50%, 0);
-    -o-transform: translate(-50%, 0);
-    -transform: translate(-50%, 0);
+    position: relative;
     background: url(../images/voucher.png) no-repeat;
     background-size: 100% 100%;
+    margin:0 auto;
 }
 
 .bottom > .voucher > span {
     position: absolute;
-    right: 30px;
-    top: 50%;
-    color: #f6594d;
+    top: 60%;
+    width: 100%;
+    text-align: center;
+    color: #ffedbc;
     font-size: 35px;
-    font-weight: bolder;
     /*-webkit-animation: twinkle 0.9s infinite;*/
     /*-moz-animation: twinkle 0.9s infinite;*/
     /*-o-animation: twinkle 0.9s infinite;*/
@@ -189,11 +210,9 @@ input, input:hover, input:active, input:focus {
 }
 
 .bottom > .text {
-    position: absolute;
-    top: 10px;
     width: 100%;
     text-align: center;
-    color: #fee44a;
+    color: #c5913f;
     z-index: 20;
 }
 
@@ -218,12 +237,12 @@ input, input:hover, input:active, input:focus {
 }
 
 .bottom > .href {
-    position: absolute;
-    bottom: 5px;
     width: 100%;
     text-align: center;
     color: #404040 !important;
     z-index: 1000;
+    margin-top:30px;
+    margin-bottom:20px;
 }
 
 .bottom .divider {
@@ -235,11 +254,13 @@ input, input:hover, input:active, input:focus {
     top: -3px;
 }
 
-.href > a {
-    color: #404040;
-    font-size: 18px;
-    padding: 20px 20px 0 20px;
+a:link,a:active,a:visited,a:hover {
+    color:#c5913f;
+    text-decoration:none;
+    font-size:12px;
+    margin-top:30px;
 }
+
 
 .hrefAfter {
     position: absolute;
@@ -396,10 +417,8 @@ input, input:hover, input:active, input:focus {
 }
 
 .result .bottom .pickle {
-    position: absolute;
     width: 100%;
     text-align: center;
-    top: -50px;
     color: #f6594d;
     font-size: 18px;
 }

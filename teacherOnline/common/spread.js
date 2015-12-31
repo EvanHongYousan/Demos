@@ -2,10 +2,10 @@
  * Created by yantianyu on 15/8/20.
  */
 var spreadData = {
-    id : '55e65ef6ad3497a03371e406',
+    id : '56849a200cf20005a2b5a0f0',
     name: ["抢红包，免费问作业！", "100万提问券，送你！", "拼手气，抢100万红包！"],
     pic : 'http://ftp.ztmomo.com/rtc/spread/share/724854cb96d9450da6fbb984f7b8e86c.jpg',
-    jsonPURL : 'http://192.168.0.231/app/spread/activity',
+    jsonPURL : 'http://test.hjlaoshi.com/app/spread/activity',
     shareURL_forQQ : 'http://432.432.432/rtc/spread/55dec930a8d691178677f8d3/share/direct.html',
     shareURL: "http://ftp.ztmomo.com/rtc/spread/55dec930a8d691178677f8d3/share/index.html",
     beginTime: "2015-08-27 16:20:00",

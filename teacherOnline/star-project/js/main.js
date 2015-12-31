@@ -74,6 +74,7 @@ var components = (function () {
     }
 
     function maskShow(dialog) {
+        $('.mask > div').addClass('none');
         $('.mask, .mask .' + dialog).removeClass('none');
         $('body,html').css('overflow', 'hidden');
     }

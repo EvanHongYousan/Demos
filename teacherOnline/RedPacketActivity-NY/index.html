@@ -21,22 +21,18 @@
 <body>
 <div class="none noneText"></div>
 <div class="container index">
-    <img class="logo" src="images/logo.png" alt=""/>
-    <img class="top" src="images/bg1_top.jpg" alt=""/>
+    <img class="top" src="images/bg1_top.png" alt=""/>
 
     <div class="middle">
-        <img src="images/bg1_middle.jpg" alt="" style="min-height: 160px;"/>
-
         <div>
-            <input type="number" id="phoneNum" value="" placeholder="输入手机号码"/>
-            <span id="submit">马上抢</span>
+            <input type="text" id="phoneNum" value="" placeholder="输入手机号码"/>
+            <span id="submit"></span>
         </div>
     </div>
 
     <div class="bottom">
-        <img src="images/bg1_bottom.jpg" alt=""/>
 
-        <h3><span class="divider"></span>&nbsp;活动规则&nbsp;<span class="divider"></span></h3>
+        <h3>活动规则</h3>
         <ul>
             <li>1.输手机号抢红包，手气越好金额越高</li>
             <li>2.下载呼叫老师,用该手机号注册,就可以用红包换学时啦</li>
@@ -48,31 +44,30 @@
     </div>
 </div>
 <div class="container result opacity0 none" style="">
-    <img class="logo" src="images/logo.png" alt=""/>
     <img src="images/bg3_up.jpg" alt="" class="top"/>
 
     <div class="bottom">
-        <div class="pickle">
-            <p class="description">现金券已放入手机账户</p>
-            <p class="phoneNumber">快去问作业吧</p>
-        </div>
+        <!--<div class="pickle">-->
+            <!--<p class="description">现金券已放入手机账户</p>-->
+            <!--<p class="phoneNumber">快去问作业吧</p>-->
+        <!--</div>-->
         <div class="voucher">
             <span><small>￥</small><span>500</span></span>
         </div>
-        <img src="images/tickets.png" alt="" class="tickets"/>
-        <img class="downBG" src="images/bg2_down.jpg" alt=""/>
+
+        <img src="./images/pic-lucky.png" alt="" class="luckyImg"/>
 
         <div class="text">
-            <p class="whiteText">之前抢过红包啦~</p>
+            <p class="whiteText"></p>
 
-            <p class="description"><span class="price"></span>元现金券</p>
+            <p class="description">压岁钱已放入手机账户</p>
 
-            <p class="phoneNumberContainer">已放入<span class="phoneNumber"></span>账户</p>
-            <span id="downloadBtn">下载呼叫老师APP</span>
+            <p class="phoneNumberContainer"><span class="phoneNumber"></span></p>
+            <span id="downloadBtn"></span>
         </div>
 
         <p class="href"><a href="http://www.hjlaoshi.com">www.hjlaoshi.com</a></p>
-    </div><img style="width:100%;max-width:600px;" src="images/introduce.jpg" alt=""/>
+    </div>
 </div>
 <div class="mask">
     <div class="tip">
@@ -182,7 +177,6 @@
                             $('.result').removeClass('none').removeClass('opacity0');
                             $('.result .voucher').remove();
                             $('.result img.top').attr('src', 'images/bg3_up.jpg');
-                            $('.result img.downBG').attr('src','images/bg3_down.jpg');
                             $('.opacity0').removeClass('opacity0');
                             $('.loader').remove();
                             $('.result .text .phoneNumber').text(phoneNum);
@@ -191,11 +185,12 @@
                             $('.result .bottom .pickle').hide();
                         }
                         else if (data.status == '1') {
+                            $('.result .luckyImg').remove();
                             $('.index').hide();
                             $('.result').removeClass('none').removeClass('opacity0');
                             $('.opacity0').removeClass('opacity0');
                             $('.loader').remove();
-                            $('.text .description, .text .phoneNumberContainer').css('opacity','0');
+//                            $('.text .description, .text .phoneNumberContainer').css('opacity','0');
                             $('.bottom > .text').css('top','60px');
                             switchPage(phoneNum, data.price);
                         }
