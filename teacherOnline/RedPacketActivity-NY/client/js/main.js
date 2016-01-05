@@ -48,7 +48,7 @@ compoments = (function () {
 })();
 
 compoments.init();
-$('title').text(spreadData.name[Math.floor(Math.random()*3)]);
+//$('title').text(spreadData.name[Math.floor(Math.random()*3)]);
 $('.none').text(spreadData.shareWording[Math.floor(Math.random()*3)]);
 
 (function(){
