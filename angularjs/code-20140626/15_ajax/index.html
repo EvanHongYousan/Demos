@@ -2,14 +2,52 @@
 <html ng-app="myApp">
 <head>
   <title>Ajax Example</title>
-  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.6/angular.js"></script>
+  <script src="../../bower_components/angular/angular.min.js"></script>
 </head>
 <body>
 
-
+<div ng-controller="myController">
+  {{text}}
+</div>
 
   <script>
-    angular.module('myApp', [])
+    var app = angular.module('myApp', []);
+
+    app.factory('getJSON',function($http){
+      return $http({
+        method:'POST',
+        url:'./a.json'
+      });
+    }).factory('myInterceptor',function($q){
+      var interceptor = {
+        'request':function(config){
+          console.log('request success');
+          return config;//$q.when(config);
+        },
+        'response':function(response){
+          console.log('response success');
+          return $q.when(response);
+//          return response;
+        },
+        'requestError':function(rejection){
+          return $q.reject(rejection);
+        }
+      };
+      return interceptor;
+    });
+
+    app.controller('myController',function($scope,getJSON){
+      $scope.text = 'fdsaasdf';
+      getJSON.then(function(res){
+//        console.log(res)
+        $scope.text=res.data;
+      })
+    });
+
+    app.config(function($httpProvider){
+      $httpProvider.interceptors.push('myInterceptor');
+      $httpProvider.defaults.headers.post['X-Posted-By'] = 'angularAppPutRequest';
+    })
 
   </script>
 
