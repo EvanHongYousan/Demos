@@ -69,7 +69,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15800031138@test.hjlaoshi.com';
+            userId = '15800031139@test.hjlaoshi.com';
         }
     }
 
@@ -157,11 +157,11 @@ var components = (function () {
                     resultData = data._APP_RESULT_OPT_DATA,
                     resultDescript = data._APP_RESULT_OPT_DESC;
 
-                $('.container .check-in').removeClass('opacity0');
-
                 if (resultCode === 110) {
                     if (resultData.sigined) {
-                        $('#checkInBtn').addClass('hover');
+                        $('#checkInBtn').removeClass('uncheck').addClass('hover').addClass('check-in');
+                    } else{
+                        $('#checkInBtn').removeClass('uncheck').addClass('check-in');
                     }
                     $('.container .integral > span').text(resultData.total_point);
                     JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
