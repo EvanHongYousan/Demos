@@ -8,7 +8,7 @@
 </head>
 <body>
 <div ng-controller="myController">
-    {{text}}
+    {{text | uppercase}}
 </div>
 <script>
     angular.module('myApp',[]).factory('xmlParser',function(){
