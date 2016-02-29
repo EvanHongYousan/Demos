@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../bower_components/angular/angular.min.js"></script>
+</head>
+<body>
+<form action="" name="form" novalidate>
+    <label for="" name="name">Your name</label>
+    <input type="text" name="name" ng-model="name" placeholder="Name" required/>
+    <label for="" name="email">Your email</label>
+    <input type="email" name="email" ng-model="email" placeholder="Email Address" required/>
+    <label for="" name="phone">phone</label>
+    <input type="number" name="phone" ng-model="phone" placeholder="Phone Number" ng-minlength="10" required/>
+    <input type="submit" value="Submit"/>
+</form>
+</body>
+</html>
