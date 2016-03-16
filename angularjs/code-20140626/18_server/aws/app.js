@@ -11,7 +11,7 @@ angular.module('myApp',
   $routeProvider
   .when('/', {
     controller: 'MainCtrl',
-    templateUrl: 'templates/main.html',
+    templateUrl: './main.html',
   })
   .otherwise({
     redirectTo: '/'

@@ -167,6 +167,18 @@ var components = (function () {
                     JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
                     refreshStarBar(resultData.week_signin_count);
                     $('.dialTitleDiv .buble')[0].src = './img/buble' + resultData.free_count + '.png';
+                    if(resultData.free_count>0){
+                        $.scrollTo({
+                            endY: $('.dialTitle').offset().top,
+                            duration: 1000,
+                            callback: function () {
+                                if (resultData.free_count === 3) {
+                                    //$('.mask, .mask .freeChanceAlert').removeClass('none');
+                                    JSNativeBridge.send('js_msg_showTip', {"tip": '哈哈~送你三次免费抽奖机会哦!'});
+                                }
+                            }
+                        });
+                    }
                     if (resultData.free_count) {
                         $('.dialTitleDiv .buble').css('opacity', 1);
                     }
@@ -194,10 +206,6 @@ var components = (function () {
                             $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_thank_dynamic.png');
                             $('.dialContainer .item' + i + ' .description').html('<em></em>');
                         }
-                    }
-                    if (resultData.free_count === 3) {
-                        //$('.mask, .mask .freeChanceAlert').removeClass('none');
-                        JSNativeBridge.send('js_msg_showTip', {"tip": '哈哈~送你三次免费抽奖机会哦!'});
                     }
                 } else if (resultCode === 92) {
                     maskShow('bindPhoneNumber');
