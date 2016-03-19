@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+
+<script>
+    var a = [], i = 0;
+    for (i = 0; i < 10; i++) {
+        a[i] = parseInt(Math.random() * 10);
+    }
+    console.log(a.toString());
+
+    //    function bubleSort(array) {
+    //        var i = 0, j = 0, temp = 0;
+    //        for (i = 0; i < array.length; i++) {
+    //            for (j = i; j < array.length; j++) {
+    //                if (array[i] > array[j]) {
+    //                    temp = array[i];
+    //                    array[i] = array[j];
+    //                    array[j] = temp;
+    //                }
+    //            }
+    //        }
+    //    }
+    //
+    //    bubleSort(a);
+
+    function quickSort(array) {
+        if (array.length <= 1)return array;
+        var pivotIndex = Math.floor(array.length / 2);
+        var pivot = array.splice(pivotIndex, 1)[0];
+        var left = [];
+        var right = [];
+        var i = 0;
+        for (i = 0; i < array.length; i++) {
+            if (array[i] < pivot) {
+                left.push(array[i]);
+            } else {
+                right.push(array[i]);
+            }
+        }
+
+        return quickSort(left).concat(pivot, quickSort(right));
+    }
+
+    function insertSort2(array) {
+        var i = 1,
+                j, step, key, len = array.length;
+
+        for (; i < len; i++) {
+
+            step = j = i;
+            key = array[j];
+
+            while (--j > -1) {
+                if (array[j] > key) {
+                    array[j + 1] = array[j];
+                } else {
+                    break;
+                }
+            }
+
+            array[j + 1] = key;
+        }
+
+        return array;
+    }
+
+    function insertSort(array){
+        var i = 1,
+                j,step,key,len = array.length;
+
+        for(i=1;i<len;i++){
+            step = j = i;
+            key = array[i];
+            while(--j>-1){
+                if(array[j]>key){
+                    array[j+1] = array[j];
+                }else{
+                    break;
+                }
+            }
+            array[j+1] = key;
+            console.log(array);
+        }
+
+        return array;
+    }
+
+    a = insertSort(a);
+
+    console.log(a.toString());
+</script>
+
+</body>
+</html>
