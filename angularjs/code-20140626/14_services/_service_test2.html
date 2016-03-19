@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../bower_components/angular/angular.min.js"></script>
+</head>
+<body>
+<div ng-controller="ServiceController">
+    {{events}}
+</div>
+<script>
+    angular.module('myApp.service', []).factory('githubService', ['$http', function ($http) {
+        var
+                githubUrl = 'https://api.github.com',
+                githubUsername;
+
+        var runUserrequest = function (path) {
+            return $http({
+                method: 'JSONP',
+                url: githubUrl + '/users/' + githubUsername + '/' + path + '?callback=JSON_CALLBACK'
+            });
+        };
+
+        return {
+            events: function () {
+                return runUserrequest('events');
+            },
+            setUserame: function (username) {
+                githubUsername = username;
+            }
+        }
+    }]);
+    angular.module('myApp', ['myApp.service']).controller('ServiceController', ['$scope', '$timeout', 'githubService', function ($scope, $timeout, githubService) {
+        $scope.events = null;
+        $scope.setUsername = null;
+
+        var timeout;
+        $scope.$watch('username', function (newUsername) {
+            if (newUsername) {
+                if (timeout)$timeout.cancel(timeout);
+                timeout = $timeout(function () {
+                    $scope.setUsername = githubService.setUserame(newUsername);
+                    githubService.events().success(function (data, status, headers) {
+                        console.log(data);
+                        $scope.events = data.data;
+                    })
+                }, 350);
+            }
+        });
+    }]);
+
+    var githubDecorator = function ($delegate) {
+        var events = function (path) {
+            var startedAt = new Date();
+            var result = $delegate.events(path);
+
+            result.then(function () {
+                console.log("Fetching events" + "took" + (new Date() - startedAt) + 'ms');
+            });
+            return result;
+        }
+
+        return {
+            setUsername: function (username) {
+                return $delegate.setUsername(username);
+            },
+            events: events
+        };
+    };
+
+    angular.module('myApp').config(function ($provide) {
+        $provide.decorator('githubService', githubDecorator);
+    })
+</script>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../bower_components/angular/angular.min.js"></script>
+    <script src="../bower_components/abdmob/x2js/xml2json.min.js"></script>
+</head>
+<body>
+<div ng-controller="myController">
+    {{text | uppercase}}
+</div>
+<script>
+    angular.module('myApp',[]).factory('xmlParser',function(){
+        var x2js = new X2JS();
+        return {
+            x2jsjson:x2js.xml2json,
+            json2xml:x2js.json2xml_str
+        }
+    }).controller('myController',function($scope, xmlParser, $http){
+        var x2js = new X2JS();
+        $http({
+            method:'GET',
+            url:'./test.xml'
+        }).then(function(res){
+            console.log(res.data);
+            $scope.text = x2js.xml_str2json(res.data);
+            for(var attr in x2js){
+                console.log(attr);
+            }
+        });
+    });
+</script>
+</body>
+</html>

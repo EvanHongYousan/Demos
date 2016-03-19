@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../../bower_components/angular/angular.js"></script>
+</head>
+<body>
+<div ng-controller="MyController">
+    <input ng-model="expr"
+           type="text"
+           placeholder="Enter an expression" />
+    <div>{{ parsedExpr }}</div>
+    <div>{{88*99*99/236}}</div>
+</div>
+<script>
+    var app = angular.module('myApp', []);
+    app.controller('MyController', function ($scope, $parse) {
+        $scope.$watch('expr', function (newVal, oldVal, scope) {
+            if(newVal !== oldVal){
+                var parseFun = $parse(newVal);
+                $scope.parsedExpr = parseFun(scope);
+            }
+        })
+    })
+</script>
+</body>
+</html>

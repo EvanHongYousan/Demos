@@ -170,3 +170,5 @@ toycode.sublime-workspace
 toycode.sublime-project
 
 /flask/microblog/flask
+
+bower_components

@@ -36,7 +36,7 @@ var common = (function () {
 }());
 
 var components = (function () {
-    var domainName = 'http://test.hjlaoshi.com',
+    var domainName = 'http://guanli.hjlaoshi.com',
         userId = null,
         rotateI = 1,
         timePick = 50,
@@ -69,7 +69,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15800031138@test.hjlaoshi.com';
+            userId = '15800031138@xmpp.hjlaoshi.com';
         }
     }
 
@@ -157,16 +157,28 @@ var components = (function () {
                     resultData = data._APP_RESULT_OPT_DATA,
                     resultDescript = data._APP_RESULT_OPT_DESC;
 
-                $('.container .check-in').removeClass('opacity0');
-
                 if (resultCode === 110) {
                     if (resultData.sigined) {
-                        $('#checkInBtn').addClass('hover');
+                        $('#checkInBtn').removeClass('uncheck').addClass('hover').addClass('check-in');
+                    } else{
+                        $('#checkInBtn').removeClass('uncheck').addClass('check-in');
                     }
                     $('.container .integral > span').text(resultData.total_point);
                     JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
                     refreshStarBar(resultData.week_signin_count);
                     $('.dialTitleDiv .buble')[0].src = './img/buble' + resultData.free_count + '.png';
+                    if(resultData.free_count>0){
+                        $.scrollTo({
+                            endY: $('.dialTitle').offset().top,
+                            duration: 1000,
+                            callback: function () {
+                                if (resultData.free_count === 3) {
+                                    //$('.mask, .mask .freeChanceAlert').removeClass('none');
+                                    JSNativeBridge.send('js_msg_showTip', {"tip": '哈哈~送你三次免费抽奖机会哦!'});
+                                }
+                            }
+                        });
+                    }
                     if (resultData.free_count) {
                         $('.dialTitleDiv .buble').css('opacity', 1);
                     }
@@ -194,10 +206,6 @@ var components = (function () {
                             $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_thank_dynamic.png');
                             $('.dialContainer .item' + i + ' .description').html('<em></em>');
                         }
-                    }
-                    if (resultData.free_count === 3) {
-                        //$('.mask, .mask .freeChanceAlert').removeClass('none');
-                        JSNativeBridge.send('js_msg_showTip', {"tip": '哈哈~送你三次免费抽奖机会哦!'});
                     }
                 } else if (resultCode === 92) {
                     maskShow('bindPhoneNumber');
