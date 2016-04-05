@@ -36,7 +36,7 @@ var common = (function () {
 }());
 
 var components = (function () {
-    var domainName = 'http://guanli.hjlaoshi.com',
+    var domainName = 'http://test.hjlaoshi.com',
         userId = null,
         rotateI = 1,
         timePick = 50,
@@ -69,7 +69,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15800031138@xmpp.hjlaoshi.com';
+            userId = '15800031138@test.hjlaoshi.com';
         }
     }
 
@@ -167,7 +167,7 @@ var components = (function () {
                     JSNativeBridge.send('js_msg_total_points', {"total_points": resultData.total_point});
                     refreshStarBar(resultData.week_signin_count);
                     $('.dialTitleDiv .buble')[0].src = './img/buble' + resultData.free_count + '.png';
-                    if(resultData.free_count>0){
+                    if(resultData.today_free_count>0){
                         $.scrollTo({
                             endY: $('.dialTitle').offset().top,
                             duration: 1000,
