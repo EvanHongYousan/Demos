@@ -3,12 +3,13 @@
 <head>
     <script src='http://cdn.bootcss.com/jquery/1.9.1/jquery.min.js'></script>
     <script src='http://cdn.bootcss.com/strophe.js/1.1.3/strophe.min.js'></script>
+    <script src="strophe.muc.js"></script>
     <script>
         // XMPP服务器BOSH地址
         var BOSH_SERVICE = 'http://192.168.0.231:5280';
 
         // 房间JID
-        var ROOM_JID = '1100@muc.192.168.0.231';
+        var ROOM_JID = '106@muc.192.168.0.231';
 
         // XMPP连接
         var connection = null;
@@ -47,15 +48,17 @@
                 connection.send($pres().tree());
 
                 // 发送<presence>元素，加入房间
-                connection.send($pres({
-                    from: jid,
-                    to: ROOM_JID + "/" + jid.substring(0,jid.indexOf("@"))
-                }).c('x',{xmlns: 'http://jabber.org/protocol/muc'}).tree());
+//                connection.send($pres({
+//                    from: jid,
+//                    to: ROOM_JID + "/" + jid.substring(0, jid.indexOf("@"))
+//                }).c('x', {xmlns: 'http://jabber.org/protocol/muc'}).c('password', 123).tree());
 
-                console.log($pres({
-                    from: jid,
-                    to: ROOM_JID + "/" + jid.substring(0,jid.indexOf("@"))
-                }).c('x',{xmlns: 'http://jabber.org/protocol/muc'}).tree());
+                connection.muc.join(ROOM_JID,jid.substring(0, jid.indexOf("@")));
+
+                connection.muc.configure(ROOM_JID,function(data){
+                    connection.muc.saveConfiguration(ROOM_JID,data,function(data_2){
+                    });
+                },function(){console.log('configure error')});
             }
         }
 
@@ -75,11 +78,11 @@
             return true;
         }
 
-        $(document).ready(function() {
+        $(document).ready(function () {
 
             // 通过BOSH连接XMPP服务器
-            $('#btn-login').click(function() {
-                if(!connected) {
+            $('#btn-login').click(function () {
+                if (!connected) {
                     connection = new Strophe.Connection(BOSH_SERVICE);
                     connection.connect($("#input-jid").val(), $("#input-pwd").val(), onConnect);
                     jid = $("#input-jid").val();
@@ -87,15 +90,15 @@
             });
 
             // 发送消息
-            $("#btn-send").click(function() {
-                if(connected) {
+            $("#btn-send").click(function () {
+                if (connected) {
 
                     // 创建一个<message>元素并发送
                     var msg = $msg({
                         to: ROOM_JID,
                         from: jid,
                         type: 'groupchat'
-                    }).c("body", null, $("#input-msg").val());
+                    }).c("body", $("#input-msg").val());
                     connection.send(msg.tree());
 
                     $("#input-msg").val('');
