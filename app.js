@@ -6,7 +6,7 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 3021;
 
-app.use(express.static(__dirname+'/teacherOnline'));
+app.use(express.static(__dirname+'/'));
 
 app.listen(port,function(){
     console.log('app is listening at port ' + port);
