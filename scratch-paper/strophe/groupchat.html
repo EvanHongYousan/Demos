@@ -57,7 +57,7 @@
 //                    to: ROOM_JID + "/" + jid.substring(0, jid.indexOf("@"))
 //                }).c('x', {xmlns: 'http://jabber.org/protocol/muc'}).c('password', 123).tree());
 
-                connection.muc.join(ROOM_JID, "范德萨", null, null, null, '123');
+                connection.muc.join(ROOM_JID, jid.substring(0, jid.indexOf("@")), null, null, null, '123');
 
                 connection.muc.configure(ROOM_JID, function (data) {
                     connection.muc.saveConfiguration(ROOM_JID, data, function (data_2) {
@@ -131,6 +131,30 @@
                 }
             });
 
+            $("#btn-mute").click(function () {
+                if (connected) {
+                    connection.muc.mute(ROOM_JID, $('#input-nickname').val(), '禁言test', function () {
+                        alert('禁言成功');
+                    }, function () {
+                        alert('禁言失败')
+                    });
+                } else {
+                    alert("请先登录！");
+                }
+            });
+
+            $("#btn-voice").click(function () {
+                if (connected) {
+                    connection.muc.voice(ROOM_JID, $('#input-nickname').val(), '解禁test', function () {
+                        alert('解禁成功');
+                    }, function () {
+                        alert('解禁失败')
+                    });
+                } else {
+                    alert("请先登录！");
+                }
+            });
+
             alert("username:" + getReqPrm('username') + '\npassword:' + getReqPrm('password'));
         });
     </script>
@@ -157,6 +181,12 @@
             <textarea class="form-control" id="input-msg" cols="30" rows="4"></textarea>
         </div>
         <button type="button" class="btn btn-success btn-block" id="btn-send">发送</button>
+        <div class="form-group">
+            <label for="">禁言对象昵称：</label>
+            <input class="form-control" type="text" id="input-nickname" value="15800031162">
+        </div>
+        <button type="button" class="btn btn-success btn-block" id="btn-mute">禁言</button>
+        <button type="button" class="btn btn-success btn-block" id="btn-voice">解禁</button>
     </form>
 </div>
 </body>
