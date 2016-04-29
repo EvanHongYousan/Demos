@@ -36,7 +36,7 @@ var common = (function () {
 }());
 
 var components = (function () {
-    var domainName = 'http://test.hjlaoshi.com',
+    var domainName = 'http://192.168.0.231',
         userId = null,
         rotateI = 1,
         timePick = 50,
@@ -69,7 +69,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15800031138@test.hjlaoshi.com';
+            userId = '13510903082@192.168.0.231';
         }
     }
 

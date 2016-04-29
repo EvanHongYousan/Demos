@@ -4,16 +4,104 @@
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no"/>
-    <link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet">
+    <!--<link href="http://cdn.bootcss.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" rel="stylesheet">-->
+    <style>
+        html{
+            font-family: "Microsoft YaHei";
+        }
+        html, body {
+            padding: 0;
+            margin: 0;
+        }
+
+        .container {
+            padding: 0;
+            margin: 0 auto;
+            width: 100%;
+            max-width: 1000px;
+        }
+
+        .container h3 {
+            text-align: center;
+            color: #5f5f5f;
+            margin: 10px auto;
+        }
+
+        #msg {
+            background-color: #f9f9f9;
+            width: 90%;
+            height: 500px;
+            overflow-y: scroll;
+            padding:5%;
+        }
+
+        #msg .teacher .name{
+            color:#00c391;
+        }
+
+        #msg .teacher .text{
+            color:#ff1d23;
+        }
+
+        #msg .student .name{
+            color:#00b0ff;
+        }
+
+        #msg .student .text{
+            color:#5f5f5f;
+        }
+
+        .container .inputDiv{
+            position:relative;
+            margin:0;
+            padding:0;
+            border:none;
+        }
+
+        #input-msg{
+            width:90%;
+            height:150px;
+            margin:0;
+            padding:5%;
+            border:none;
+            border-top:1px solid #2ce6f7;
+            border-bottom:1px solid #2ce6f7;
+            font-size: 20px;
+        }
+        #input-msg:focus{
+            outline: none;
+        }
+        #btn-send{
+            border: none;
+            padding: 8px 24px;
+            color: white;
+            background-color: #2bd8ac;
+            font-size: 18px;
+            border-radius: 5px;
+            position: absolute;
+            bottom: 17px;
+            right: 17px;
+            cursor: pointer;
+            font-family: "Microsoft YaHei";
+        }
+        #btn-send:active{
+            background-color: #2ee7b8;
+        }
+        button:focus{
+            outline:none;
+        }
+    </style>
     <script src='jquery.min.js'></script>
     <script src='strophe.min.js'></script>
     <script src="strophe.muc.js"></script>
+    <script src="base64.min.js"></script>
     <script>
         // XMPP服务器BOSH地址
-        var BOSH_SERVICE = 'http://192.168.0.231:5280';
+        var BOSH_SERVICE = 'http://test.hjlaoshi.com:5280';
 
         // 房间JID
-        var ROOM_JID = '109@muc.192.168.0.231';
+        var ROOM_JID = '57230b225a55c7bfc76b0374@muc.test.hjlaoshi.com';
+        var ROOM_PW = 'bhinbqpS';
 
         // XMPP连接
         var connection = null;
@@ -57,7 +145,7 @@
 //                    to: ROOM_JID + "/" + jid.substring(0, jid.indexOf("@"))
 //                }).c('x', {xmlns: 'http://jabber.org/protocol/muc'}).c('password', 123).tree());
 
-                connection.muc.join(ROOM_JID, jid.substring(0, jid.indexOf("@")), null, null, null, '123');
+                connection.muc.join(ROOM_JID, jid, null, null, null, ROOM_PW);
 
                 connection.muc.configure(ROOM_JID, function (data) {
                     connection.muc.saveConfiguration(ROOM_JID, data, function (data_2) {
@@ -80,8 +168,18 @@
 
             if (type == "groupchat" && elems.length > 0) {
                 var body = elems[0];
-                $("#msg").append(from.substring(from.indexOf('/') + 1) + ":<br>" + Strophe.getText(body) + "<br>");
-                $("#msg")[0].scrollTop = $("#msg")[0].scrollHeight;
+                var bodyObj = null,pClass = '';
+                if (from.indexOf('/') < 0) {
+                    $("#msg").append('<p>'+from.substring(from.indexOf('/') + 1) + ":" + Strophe.getText(body) + "</p>");
+                    $("#msg")[0].scrollTop = $("#msg")[0].scrollHeight;
+                } else {
+                    bodyObj = JSON.parse(Base64.decode(Strophe.getText(body)));
+                    console.log(bodyObj);
+                    bodyObj.body.from_user.identity == 1 ? pClass= 'teacher' : pClass = 'student';
+                    $("#msg").append('<p class="'+ pClass+'"><span class="name">'+bodyObj.body.from_user.full_name + ":</span><span class='text'>" + bodyObj.body.text + "</span></p>");
+                    $("#msg")[0].scrollTop = $("#msg")[0].scrollHeight;
+                }
+
             }
             return true;
         }
@@ -116,15 +214,35 @@
             // 发送消息
             $("#btn-send").click(function () {
                 if (connected) {
+                    var data2send = '';
+                    data2send = JSON.stringify({
+                        "header": {
+                            "id": "mutil_user_chart_msg"
+                        },
+                        "body": {
+                            "text": $("#input-msg").val(),
+                            "from_user": {
+                                "identity": 1,
+                                "full_name": "天天",
+//                                "photo_path": "http://192.168.0.233/rtc/images/teacher/13510903112/2016-04/cc7eb3ecaa2349a69d833bff464cd7cc.jpg",
+                                "user_id": "15800031161@192.168.0.231",
+                                "last_name": "天天"
+                            },
+                            "type": "1"
+                        }
+                    });
+                    data2send = Base64.encode(data2send);
 
                     // 创建一个<message>元素并发送
-                    var msg = $msg({
-                        to: ROOM_JID,
-                        from: jid,
-                        type: 'groupchat'
-                    }).c("body", $("#input-msg").val());
-                    connection.send(msg.tree());
+//                    var msg = $msg({
+//                        to: ROOM_JID,
+//                        from: jid,
+//                        type: 'groupchat'
+//                    }).c("body", data2send);
+//                    connection.send(msg.tree());
 
+                    //groupchat: function(room, message, html_message, msgid)
+                    connection.muc.groupchat(ROOM_JID, data2send);
                     $("#input-msg").val('');
                 } else {
                     alert("请先登录！");
@@ -136,7 +254,7 @@
                     connection.muc.mute(ROOM_JID, $('#input-nickname').val(), '禁言test', function () {
                         alert('禁言成功');
                     }, function () {
-                        alert('禁言失败')
+                        alert('禁言失败');
                     });
                 } else {
                     alert("请先登录！");
@@ -148,46 +266,38 @@
                     connection.muc.voice(ROOM_JID, $('#input-nickname').val(), '解禁test', function () {
                         alert('解禁成功');
                     }, function () {
-                        alert('解禁失败')
+                        alert('解禁失败');
                     });
                 } else {
                     alert("请先登录！");
                 }
             });
 
-            alert("username:" + getReqPrm('username') + '\npassword:' + getReqPrm('password'));
+//            alert("username:" + getReqPrm('username') + '\npassword:' + getReqPrm('password'));
         });
     </script>
 </head>
 <body>
 <div class="container">
-    <form>
-        <div class="form-group">
-            <label for="">JID：</label>
-            <input class="form-control" type="text" id="input-jid" value="15800031161@192.168.0.231">
-        </div>
-        <div class="form-group">
-            <label for="">密码：</label>
-            <input class="form-control" type="password" id="input-pwd" value="111111">
-        </div>
-        <button type="button" class="btn btn-success btn-block" id="btn-login">登录</button>
-        <br/>
+    <h3>课堂问答</h3>
 
-        <div class="form-group">
-            <div class="form-control" id="msg" style="width:100%;height:100px;overflow-y: scroll;"></div>
-        </div>
-        <div class="form-group">
-            <label for="">消息：</label>
-            <textarea class="form-control" id="input-msg" cols="30" rows="4"></textarea>
-        </div>
-        <button type="button" class="btn btn-success btn-block" id="btn-send">发送</button>
-        <div class="form-group">
-            <label for="">禁言对象昵称：</label>
-            <input class="form-control" type="text" id="input-nickname" value="15800031162">
-        </div>
-        <button type="button" class="btn btn-success btn-block" id="btn-mute">禁言</button>
-        <button type="button" class="btn btn-success btn-block" id="btn-voice">解禁</button>
-    </form>
+    <div id="msg"></div>
+    <div class="inputDiv">
+        <textarea id="input-msg"></textarea>
+        <button type="button" id="btn-send">发&nbsp;&nbsp;&nbsp;送</button>
+    </div>
+
+
+    <label style="margin-top:300px;display:block;" for="">JID：</label>
+    <input type="text" id="input-jid" value="18700000015@test.hjlaoshi.com">
+    <label for="">密码：</label>
+    <input type="password" id="input-pwd" value="123456">
+    <button type="button" id="btn-login">登录</button>
+    <br/>
+    <label for="">禁言对象昵称：</label>
+    <input type="text" id="input-nickname" value="15800031162">
+    <button type="button" id="btn-mute">禁言</button>
+    <button type="button" id="btn-voice">解禁</button>
 </div>
 </body>
 </html>  
