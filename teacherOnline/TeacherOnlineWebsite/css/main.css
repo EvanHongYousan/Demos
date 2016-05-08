@@ -728,6 +728,11 @@ h1, h2, h3, h4, h5, h6{
     width:100%;
 }
 
+.page5 .footer a img{
+    width:20px;
+    height:30px;
+}
+
 .page5 .marginTop{
     margin-top:120px;
 }

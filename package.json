@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/EvanHongYousan/toycode#readme",
   "dependencies": {
+    "express": "^4.13.4",
     "gulp": "^3.9.0",
     "gulp-jslint": "^0.2.2"
   },

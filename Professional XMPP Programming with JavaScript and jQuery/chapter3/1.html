@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <link rel='stylesheet' href='../scripts/jquery-ui.css'>
+    <script src='../scripts/jquery.js'></script>
+    <script src='../scripts/jquery-ui.js'></script>
+    <script src='../scripts/strophe.js'></script>
+    <script src='../scripts/flXHR.js'></script>
+    <script src='../scripts/strophe.flxhr.js'></script>
+    <style>
+        body {
+            font-family: Helvetica;
+        }
+
+        h1 {
+            text-align: center;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        #log {
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+<h1>hello</h1>
+
+<div id="log"></div>
+
+<div id="login_dialog" class="hidden">
+    <label for="">JID:</label><input type="text" id="jid"/>
+    <label for="">Password:</label><input type="text" class="password"/>
+</div>
+</body>
+</html>

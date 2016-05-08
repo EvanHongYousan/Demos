@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<script src="later.min.js"></script>
+<script>
+    var sched = later.parse.text('every 5 minutes'),
+            occurrences = later.schedule(sched).next(10);
+
+
+    for (var i = 0; i < 10; i++) {
+        console.log(occurrences[i]);
+    }
+
+</script>
+</body>
+</html>
