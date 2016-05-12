@@ -137,8 +137,10 @@
             } else if (status == Strophe.Status.DISCONNECTED) {
                 alert("连接断开！");
                 connected = false;
+                connection.connect($("#input-jid").val(), $("#input-pwd").val(), onConnect);
             } else if (status == Strophe.Status.CONNECTED) {
                 alert("连接成功，可以开始聊天了！");
+                $('#msg').empty();
                 connected = true;
 
                 // 当接收到<message>节，调用onMessage回调函数
@@ -146,12 +148,6 @@
 
                 // 首先要发送一个<presence>给服务器（initial presence）
                 connection.send($pres().tree());
-
-                // 发送<presence>元素，加入房间
-//                connection.send($pres({
-//                    from: connection.jid, //被这地方坑了两天   是 connections.jid，不是jid
-//                    to: ROOM_JID + "/" + jid.substring(0, jid.indexOf("@"))
-//                }).c('x', {xmlns: 'http://jabber.org/protocol/muc'}).c('password', 123).tree());
 
                 connection.muc.join(ROOM_JID, jid, null, null, null, ROOM_PW);
 
@@ -182,7 +178,6 @@
                     $("#msg")[0].scrollTop = $("#msg")[0].scrollHeight;
                 } else {
                     bodyObj = JSON3.parse(Base64.decode(Strophe.getText(body)));
-//                    console.log(bodyObj);
                     bodyObj.body.from_user.identity == 1 ? pClass = 'teacher' : pClass = 'student';
                     $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.full_name + ":</span><span class='text'>" + bodyObj.body.text + "</span></p>");
                     $("#msg")[0].scrollTop = $("#msg")[0].scrollHeight;
@@ -228,12 +223,12 @@
                     var data2send = '';
                     data2send = JSON3.stringify({
                         "header": {
-                            "id": "mutil_user_chart_msg"
+                            "id": "multi_user_chat_msg"
                         },
                         "body": {
                             "text": $("#input-msg").val(),
                             "from_user": {
-                                "identity": param.user_info.identity,
+                                "identity": parseInt(param.user_info.identity),
                                 "full_name": param.user_info.full_name,
                                 "user_id": param.user_info.user_id,
                                 "last_name": param.user_info.full_name
@@ -248,33 +243,6 @@
                     alert("请先登录！");
                 }
             });
-/*禁言部分 start*/
-//            $("#btn-mute").click(function () {
-//                if (connected) {
-//                    connection.muc.mute(ROOM_JID, $('#input-nickname').val(), '禁言test', function () {
-//                        alert('禁言成功');
-//                    }, function () {
-//                        alert('禁言失败');
-//                    });
-//                } else {
-//                    alert("请先登录！");
-//                }
-//            });
-//
-//            $("#btn-voice").click(function () {
-//                if (connected) {
-//                    connection.muc.voice(ROOM_JID, $('#input-nickname').val(), '解禁test', function () {
-//                        alert('解禁成功');
-//                    }, function () {
-//                        alert('解禁失败');
-//                    });
-//                } else {
-//                    alert("请先登录！");
-//                }
-//            });
-
-//            alert("username:" + getReqPrm('username') + '\npassword:' + getReqPrm('password'));
-/*end*/
         });
     </script>
 </head>
@@ -287,18 +255,6 @@
         <button type="button" id="btn-send">发&nbsp;&nbsp;&nbsp;送</button>
     </div>
     <p style="text-align: center;font-size:12px;color:#5f5f5f;">©2016呼叫老师</p>
-
-
-    <!--<label style="margin-top:300px;display:block;" for="">JID：</label>-->
-    <!--<input type="text" id="input-jid" value="18700000015@test.hjlaoshi.com">-->
-    <!--<label for="">密码：</label>-->
-    <!--<input type="password" id="input-pwd" value="123456">-->
-    <!--<button type="button" id="btn-login">登录</button>-->
-    <!--<br/>-->
-    <!--<label for="">禁言对象昵称：</label>-->
-    <!--<input type="text" id="input-nickname" value="15800031162">-->
-    <!--<button type="button" id="btn-mute">禁言</button>-->
-    <!--<button type="button" id="btn-voice">解禁</button>-->
 </div>
 </body>
 </html>
