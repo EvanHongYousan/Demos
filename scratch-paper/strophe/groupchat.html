@@ -22,21 +22,31 @@
         }
 
         html, body, .container {
-            height: 95%;
+            height: 100%;
+            overflow: hidden;
+            background-color: #f9f9f9;
         }
 
         .container h3 {
             text-align: center;
             color: #5f5f5f;
-            margin: 10px auto;
+            margin: 0 auto;
+            padding: 10px 0;
+            background-color: white;
         }
 
         #msg {
             background-color: #f9f9f9;
             width: 90%;
-            height: 50%;
+            height: 60%;
             overflow-y: scroll;
             padding: 5%;
+            word-break: break-all;
+            word-wrap: break-word;
+        }
+
+        #msg p {
+            margin: 6px 0;
         }
 
         #msg .teacher .name {
@@ -44,7 +54,7 @@
         }
 
         #msg .teacher .text {
-            color: #ff1d23;
+            color: #5f5f5f;
         }
 
         #msg .student .name {
@@ -60,18 +70,19 @@
             margin: 0;
             padding: 0;
             border: none;
+            height: 20%;
         }
 
         #input-msg {
             width: 90%;
-            height: 100px;
+            height: 100%;
             margin: 0;
             padding: 5%;
             border: none;
             border-top: 1px solid #2ce6f7;
             border-bottom: 1px solid #2ce6f7;
-            font-size: 20px;
             overflow: hidden;
+            font-family: "Microsoft YaHei";
         }
 
         #input-msg:focus {
@@ -80,13 +91,13 @@
 
         #btn-send {
             border: none;
-            padding: 8px 24px;
+            padding: 2px 8px;
             color: white;
             background-color: #2bd8ac;
             font-size: 18px;
             border-radius: 5px;
             position: absolute;
-            bottom: 17px;
+            bottom: 1%;
             right: 17px;
             cursor: pointer;
             font-family: "Microsoft YaHei";
@@ -154,6 +165,18 @@
                 // 首先要发送一个<presence>给服务器（initial presence）
                 connection.send($pres().tree());
 
+                // 发送<presence>元素，加入房间
+//                connection.send($pres({
+//                    from: connection.jid, //被这地方坑了两天   是 connections.jid，不是jid
+//                    to: ROOM_JID + "/" + jid.substring(0, jid.indexOf("@"))
+//                }).c('x', {xmlns: 'http://jabber.org/protocol/muc'}).c('password', 123).tree());
+
+                //<presence from="jid" to="romm@muc.guanli.hjlaoshi.com">
+                //  <x xmlns="http://jabber.org/protocol/muc">
+                //  <password>123</password>
+                //  </x>
+                // </presence>
+
                 connection.muc.join(ROOM_JID, jid, null, null, null, ROOM_PW);
 
                 connection.muc.configure(ROOM_JID, function (data) {
@@ -179,16 +202,16 @@
                 var body = elems[0];
                 var bodyObj = null, pClass = '';
                 if (from.indexOf('/') < 0) {
-                    $("#msg").append('<p>' + from.substring(from.indexOf('/') + 1) + ":" + Strophe.getText(body) + "</p>");
+                    $("#msg").append('<p>' + from.substring(from.indexOf('/') + 1) + " : " + Strophe.getText(body) + "</p>");
                     $("#msg")[0].scrollTop = $("#msg")[0].scrollHeight;
                 } else {
                     bodyObj = JSON3.parse(Base64.decode(Strophe.getText(body)));
                     if (bodyObj.body.from_user.identity == 1) {
                         pClass = 'teacher';
-                        $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.last_name + "老师:</span><span class='text'>" + bodyObj.body.text + "</span></p>");
+                        $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.last_name + "老师 : </span><span class='text'>" + bodyObj.body.text + "</span></p>");
                     } else {
                         pClass = 'student';
-                        $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.full_name + ":</span><span class='text'>" + bodyObj.body.text + "</span></p>");
+                        $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.full_name + " : </span><span class='text'>" + bodyObj.body.text + "</span></p>");
                     }
                     $("#msg")[0].scrollTop = $("#msg")[0].scrollHeight;
                 }
@@ -229,11 +252,11 @@
 
             // 发送消息
             $("#btn-send").click(function () {
-                if ($("#input-msg").val() == '') {
-                    return;
-                }
                 var dataText = $('#input-msg').val();
                 dataText = dataText.replace(/(^\s*)|(\s*$)|(\n*)/g, "");
+                if (dataText == '') {
+                    return;
+                }
                 if (connected) {
                     var data2send = '';
                     data2send = JSON3.stringify({
@@ -258,6 +281,9 @@
                     alert("请先登录！");
                 }
             });
+
+            //样式调整
+            $('#input-msg').css('height', document.documentElement.clientHeight * 0.2-40);
         });
     </script>
 </head>
