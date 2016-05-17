@@ -206,9 +206,10 @@
                     $("#msg")[0].scrollTop = $("#msg")[0].scrollHeight;
                 } else {
                     bodyObj = JSON3.parse(Base64.decode(Strophe.getText(body)));
+                    console.log(bodyObj);
                     if (bodyObj.body.from_user.identity == 1) {
                         pClass = 'teacher';
-                        $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.last_name + "老师 : </span><span class='text'>" + bodyObj.body.text + "</span></p>");
+                        $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.last_name + "老师 : </span><span class='text'>" + bodyObj.body.text.replace(/\n/g,'<br/>') + "</span></p>");
                     } else {
                         pClass = 'student';
                         $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.full_name + " : </span><span class='text'>" + bodyObj.body.text + "</span></p>");
@@ -253,7 +254,7 @@
             // 发送消息
             $("#btn-send").click(function () {
                 var dataText = $('#input-msg').val();
-                dataText = dataText.replace(/(^\s*)|(\s*$)|(\n*)/g, "");
+                dataText = dataText.replace(/(^\s*)|(\s*$)|(^\n*)|(\n*$)/g, "");
                 if (dataText == '') {
                     return;
                 }
@@ -282,8 +283,14 @@
                 }
             });
 
+            $('#input-msg').keydown(function (e) {
+                if (e.ctrlKey && e.keyCode == 13) {
+                    $("#btn-send").trigger('click');
+                }
+            });
+
             //样式调整
-            $('#input-msg').css('height', document.documentElement.clientHeight * 0.2-40);
+            $('#input-msg').css('height', document.documentElement.clientHeight * 0.2 - 40);
         });
     </script>
 </head>
@@ -295,7 +302,7 @@
         <textarea id="input-msg"></textarea>
         <button type="button" id="btn-send">发&nbsp;&nbsp;&nbsp;送</button>
     </div>
-    <p style="text-align: center;font-size:12px;color:#5f5f5f;">©2016呼叫老师</p>
+    <p style="text-align: center;font-size:12px;color:#c4c4c4;margin-top:22px;">©2016呼叫老师</p>
 </div>
 </body>
 </html>
