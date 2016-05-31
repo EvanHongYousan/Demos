@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var count = 0;
+    setInterval(function () {
+        count++;
+        document.body.innerHTML = count;
+        if (count == 10) {
+            location.reload(true);
+        }
+    }, 1000);
+</script>
+</body>
+</html>

@@ -6,20 +6,53 @@
 </head>
 <body>
 <script>
-    function t(list) {
-        var a = {},i = 0,b=[];
-        for(i = 0;i<list.length;i++){
-            if(!a[list[i]]){
-                a[list[i]] = true;
-                b.append(list[i])
-            }
+    /**
+     * Definition for singly-linked list.
+     * function ListNode(val) {
+ *     this.val = val;
+ *     this.next = null;
+ * }
+     */
+    /**
+     * @param {ListNode} head
+     * @return {ListNode}
+     */
+
+    function ListNode(val) {
+        this.val = val;
+        this.next = null;
+    }
+
+    var reverseList = function (head) {
+        if (head === null) {
+            return null;
         }
-        return b;
-    }
-    {
-       '1':true
-    }
-    undefined
+        var temp = [], result = null, pick = null;
+        while (head !== null) {
+            temp.push(head.val);
+            head = head.next;
+        }
+        result = new ListNode(temp.pop());
+        pick = result;
+        while (temp.length !== 0) {
+            pick.next = new ListNode(temp.pop());
+            pick = pick.next;
+        }
+        return result;
+    };
+
+    var head = new ListNode(1);
+    var pick = head;
+    pick.next = new ListNode(2);
+    pick = pick.next;
+    pick.next = new ListNode(3);
+    pick = pick.next;
+    pick.next = new ListNode(4);
+    pick = pick.next;
+    pick.next = new ListNode(5);
+    pick = pick.next;
+
+    var result = reverseList(head);
 </script>
 </body>
 </html>

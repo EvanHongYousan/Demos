@@ -101,10 +101,12 @@
 //        var a = {'room_id':'57301107c12f83f63c2662eb','course_id':'57301107c12f83f63c2662eb','bosh_service':'http://test.hjlaoshi.com','room_password':'03WK6vni','teacher_account':'15911111116','passwd':'qwe123','user_info':{'full_name':'张拓','user_id':'15911111116@test.hjlaoshi.com','identity':1,'last_name':'张'},'resources':'http://test.hjlaoshi.com/rtc/file/2016-04/test_course/%E5%AD%99%E4%B8%9A%E6%B0%91.zip','title':'数学排列组合专题突破 考试技巧 第u33课','pre_begin_time':1462852200000}
 
         // XMPP服务器BOSH地址
-        var BOSH_SERVICE = 'http://192.168.0.231:5280';
+        var BOSH_SERVICE = 'http://xmpp.hjlaoshi.com:5280';
 
         // 房间JID
-        var ROOM_JID = '11231@muc.192.168.0.231';
+        //var ROOM_JID = '574551a14aa3329ed53cad3d@muc.xmpp.hjlaoshi.com';
+        //var ROOM_PW = 'L9DXTo2n';
+        var ROOM_JID = '111@muc.xmpp.hjlaoshi.com';
         var ROOM_PW = '111';
 
         // XMPP连接
@@ -153,13 +155,13 @@
 
                 connection.muc.join(ROOM_JID, jid, null, null, null, ROOM_PW);
 
-                connection.muc.configure(ROOM_JID, function (data) {
-                    connection.muc.saveConfiguration(ROOM_JID, data, function (data_2) {
-                        console.log('saveConfigure success');
-                    });
-                }, function () {
-                    console.log('configure error')
-                });
+//                connection.muc.configure(ROOM_JID, function (data) {
+//                    connection.muc.saveConfiguration(ROOM_JID, data, function (data_2) {
+//                        console.log('saveConfigure success');
+//                    });
+//                }, function () {
+//                    console.log('configure error')
+//                });
             }
         }
 
@@ -248,27 +250,12 @@
 
                     //groupchat: function(room, message, html_message, msgid)
                     connection.muc.groupchat(ROOM_JID, data2send);
+					//connection.muc.groupchat(ROOM_JID, "88888");
                     $("#input-msg").val('');
                 } else {
                     alert("请先登录！");
                 }
             });
-            //65,122
-
-            function countStr(str){
-                var count = 0,i;
-                for(i = 0;i<str.length;i++){
-                    if(str[i].charCodeAt(0)<65 || str[i].charCodeAt(0)>122){
-                        count++;
-                    } else {
-                        count+=0.5;
-                    }
-                }
-                return count;
-            }
-            $("#input-msg")[0].oninput = function(e){
-                console.log(countStr(this.value));
-            }
 
             $("#btn-mute").click(function () {
                 if (connected) {
@@ -310,7 +297,7 @@
 
 
     <label style="margin-top:300px;display:block;" for="">JID：</label>
-    <input type="text" id="input-jid" value="15373656752@192.168.0.231">
+    <input type="text" id="input-jid" value="13420975968@xmpp.hjlaoshi.com">
     <label for="">密码：</label>
     <input type="password" id="input-pwd" value="111111">
     <button type="button" id="btn-login">登录</button>
