@@ -110,6 +110,28 @@
         button:focus {
             outline: none;
         }
+
+        .alertContainer {
+            width: 100%;
+            position: absolute;
+            top: 50%;
+            text-align: center;
+        }
+
+        .alert {
+            display: block;
+            width: 50%;
+            background: black;
+            opacity: 0.5;
+            margin: 0 auto;
+            padding: 10px 0;
+            border-radius: 5px;
+            color: white;
+        }
+
+        .none {
+            display: none;
+        }
     </style>
     <script src='jquery.min.js'></script>
     <script src='strophe.min.js'></script>
@@ -207,7 +229,7 @@
                     bodyObj = JSON3.parse(Base64.decode(Strophe.getText(body)));
                     if (bodyObj.body.from_user.identity == 1) {
                         pClass = 'teacher';
-                        $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.last_name + "老师 : </span><span class='text'>" + bodyObj.body.text.replace(/\n/g,'<br/>') + "</span></p>");
+                        $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.last_name + "老师 : </span><span class='text'>" + bodyObj.body.text.replace(/\n/g, '<br/>') + "</span></p>");
                     } else {
                         pClass = 'student';
                         $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.full_name + " : </span><span class='text'>" + bodyObj.body.text + "</span></p>");
@@ -230,7 +252,35 @@
         }
 
         $(document).ready(function () {
-            var param = JSON3.parse(Base64.decode(getReqPrm('param')));
+            var param = '';
+
+            try {
+                param = JSON3.parse(Base64.decode(getReqPrm('param')));
+            } catch (e) {
+                param = {
+                    "room_id": "11231",
+                    "course_id": "574551a14aa3329ed53cad3d",
+                    "room_password": "111",
+                    "pre_end_time": 1464169500000,
+                    "resources": "http://guanli.hjlaoshi.com/rtc/file/2016-04/test_course/111.zip",
+                    "rtmp_pull_url": "rtmp://rtmp.live.hjlaoshi.com/hjlaoshi/733c9ee296994a6682c22a6c6328682d",
+                    "push_url": "rtmp://publish.live.hjlaoshi.com/hjlaoshi/733c9ee296994a6682c22a6c6328682d?record=true",
+                    "title": "【限量公测】精选小班课《中国近代史的特征》",
+                    "token": "avWPPETvlcshFT7cmFC0MpR97-_oXxd3iu4xaptn:BNqMau9Jylh3dxH-AWoFmbVzbkw=:eyJzY29wZSI6ImhqbGFvc2hpLWNsYXNzIiwiZGVhZGxpbmUiOjE0NjQxNjk4Mzl9",
+                    "bosh_service": "http://192.168.0.231:5280",
+                    "teacher_account": "13751048590",
+                    "passwd": "111111",
+                    "user_info": {
+                        "full_name": "嗨历史",
+                        "user_id": "15373656752@192.168.0.231",
+                        "identity": 1,
+                        "last_name": "嗨"
+                    },
+                    "host": "http://7xu4kr.com1.z0.glb.clouddn.com",
+                    "backet_name": "hjlaoshi-class",
+                    "pre_begin_time": 1464166800000
+                }
+            }
 
             BOSH_SERVICE = param.bosh_service;
 
@@ -240,7 +290,7 @@
 
             jid = param.user_info.user_id;
             jpw = param.passwd;
-            ROOM_JID = param.room_id + '@muc.' + BOSH_SERVICE.replace('http://', '').replace(':5280', '').replace('guanli','xmpp');
+            ROOM_JID = param.room_id + '@muc.' + BOSH_SERVICE.replace('http://', '').replace(':5280', '').replace('guanli', 'xmpp');
             ROOM_PW = param.room_password;
 
 
@@ -281,11 +331,49 @@
                 }
             });
 
-            $('#input-msg').keydown(function (e) {
-                if (e.ctrlKey && e.keyCode == 13) {
-                    $("#btn-send").trigger('click');
+            function countStr(str) {
+                str = str.split('');
+                var count = 0, i;
+                var pick50 = 0;
+                for (i = 0; i < str.length; i++) {
+                    if (str[i].charCodeAt(0) < 65 || str[i].charCodeAt(0) > 122) {
+                        count++;
+                    } else {
+                        count += 0.5;
+                    }
+                    if (count > 50 && pick50 === 0) {
+                        pick50 = i;
+                    }
                 }
-            });
+                return {
+                    count: count,
+                    pick50: pick50
+                };
+            }
+
+            if ($("#input-msg")[0].attachEvent) {
+                $("#input-msg")[0].attachEvent("onpropertychange", function (e) {
+                    var countObj = countStr($("#input-msg")[0].value);
+                    if (countObj.count > 50) {
+                        $("#input-msg")[0].value = $("#input-msg")[0].value.substr(0, countObj.pick50);
+                        $('.alertContainer').removeClass('none');
+                        setTimeout(function () {
+                            $('.alertContainer').addClass('none');
+                        }, 3000);
+                    }
+                });
+            } else {
+                $("#input-msg")[0].oninput = function (e) {
+                    var countObj = countStr(this.value);
+                    if (countObj.count > 50) {
+                        this.value = this.value.substr(0, countObj.pick50);
+                        $('.alertContainer').removeClass('none');
+                        setTimeout(function () {
+                            $('.alertContainer').addClass('none');
+                        }, 3000);
+                    }
+                };
+            }
 
             //样式调整
             $('#input-msg').css('height', document.documentElement.clientHeight * 0.2 - 40);
@@ -293,6 +381,11 @@
     </script>
 </head>
 <body>
+<div class="alertContainer none">
+    <div class="alert">
+        每条消息最多50字哦~
+    </div>
+</div>
 <div class="container">
     <h3>课堂问答</h3>
     <div id="msg"></div>

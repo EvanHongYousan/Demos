@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function WordContainer() {
+        var dataStore = [];
+        if (!WordContainer.prototype.add) {
+            WordContainer.prototype.add = function (word) {
+                dataStore.push(word);
+            }
+        }
+        if (!WordContainer.prototype.display) {
+            WordContainer.prototype.display = function (word) {
+                return dataStore;
+            }
+        }
+        if (!WordContainer.prototype.reverseDisplay) {
+            WordContainer.prototype.reverseDisplay = function (word) {
+                var i = 0, temp = [];
+                for (i = dataStore.length - 1; i >= 0; i--) {
+                    temp.push(dataStore[i]);
+                }
+                return temp;
+            }
+        }
+    }
+    a = new WordContainer();
+    a.add('a');
+    a.add('b');
+    a.add('c');
+    a.add('d');
+    a.add('e');
+</script>
+</body>
+</html>

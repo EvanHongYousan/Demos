@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div id="main" style="width: 600px;height:400px;"></div>
+<div id="main2" style="width: 600px;height:400px;"></div>
+<script src="http://echarts.baidu.com/dist/echarts.min.js"></script>
+<script>
+    // 基于准备好的dom，初始化echarts实例
+    var myChart = echarts.init(document.getElementById('main'),'gray');
+    var myChart2 = echarts.init(document.getElementById('main2'));
+
+    // 指定图表的配置项和数据
+    option = {
+        tooltip: {
+            trigger: 'axis'
+        },
+        legend: {
+            data: ['邮件营销', '联盟广告', '直接访问', '搜索引擎']
+        },
+//        calculable: true,
+        xAxis: [
+            {
+                type: 'category',
+                boundaryGap: false,
+                data: ['周一', '周二', '周三', '周四', '周五', '周六', '周日']
+            }
+        ],
+        yAxis: [
+            {
+                type: 'value'
+            }
+        ],
+        series: [
+            {
+                name: '邮件营销',
+                type: 'line',
+                stack: '总量',
+                data: [120, 132, 301, 134, 90, 230, 210]
+            },
+            {
+                name: '联盟广告',
+                type: 'line',
+                stack: '总量',
+                smooth: true,
+                data: [
+                    120, 82, 201, 134, 230, 110
+                ]
+            },
+            {
+                name: '直接访问',
+                type: 'line',
+                stack: '总量',
+                data: [
+                    320, 332, '-', 334, 390, 330, 320
+                ]
+            },
+            {
+                name: '搜索引擎',
+                type: 'line',
+                symbol: 'emptyCircle',
+                data: [
+                    620, 732, 791, 734, 890, 930, 820
+                ]
+            }
+        ]
+    };
+
+    // 使用刚指定的配置项和数据显示图表。
+    myChart.setOption(option);
+    myChart2.setOption(option);
+</script>
+</body>
+</html>

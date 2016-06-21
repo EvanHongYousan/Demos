@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function ScoreContainer(){
+        var dataStore = [];
+        if(!ScoreContainer.prototype.add){
+            ScoreContainer.prototype.add = function(score){
+                dataStore.push(score);
+            }
+        }
+        if(!ScoreContainer.prototype.average){
+            ScoreContainer.prototype.average = function(){
+                var sum = 0;
+                dataStore.map(function(score){
+                    sum+=score;
+                });
+                return sum/dataStore.length;
+            }
+        }
+    }
+    a = new ScoreContainer();
+    a.add(50);
+    a.add(60);
+    a.add(70);
+    a.add(80);
+    a.add(90);
+    a.add(100);
+</script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    function CharContainer(){
+        var dataStore = [];
+        if(!CharContainer.prototype.add){
+            CharContainer.prototype.add = function(char){
+                if(char.length>1){
+                    console.error('not a char!');
+                }else{
+                    dataStore.push(char);
+                }
+            }
+        }
+        if(!CharContainer.prototype.wordDisplay){
+            CharContainer.prototype.wordDisplay = function(){
+                var str = '';
+                dataStore.map(function(char){
+                    str+=char;
+                });
+                return str;
+            }
+        }
+    }
+
+    a = new CharContainer();
+    a.add('a');
+    a.add('b');
+    a.add('cd');
+    a.add('d');
+    a.add('e');
+</script>
+</body>
+</html>
