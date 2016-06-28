@@ -19,9 +19,12 @@ var canvasVideo = (function () {
         ZOOM_STATUS_LARGE: 1
     };
     var configMap = (function () {
-        var screenWidth = window.screen.width > window.screen.height ? window.screen.width : window.screen.height;
-        var screenHeight = (window.screen.width < window.screen.height ? window.screen.width : window.screen.height) - window.screenTop - window.screenLeft;
-        alert('screenWidth:' + screenWidth + '\nscreenHeight:' + screenHeight);
+        // var screenWidth = window.screen.width > window.screen.height ? window.screen.width : window.screen.height;
+        // var screenHeight = (window.screen.width < window.screen.height ? window.screen.width : window.screen.height) - window.screenTop - window.screenLeft;
+        var screenWidth = document.body.clientWidth;
+        var screenHeight = document.body.clientHeight - (window.screenTop === 0 ? 50 : window.screenTop) - $('#audio').height() - 10;
+        // alert('screenWidth:' + screenWidth + '\nscreenHeight:' + screenHeight);
+        // alert('document.body.clientHeight:' + document.body.clientHeight + '\document.body.clientWidth:' + document.body.clientWidth);
         var canvasWidth = screenWidth;
         var screens = 20;
         var canvasHeight = screenHeight * screens;
