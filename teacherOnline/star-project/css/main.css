@@ -398,7 +398,7 @@ body {
 }
 
 .container .dialTitleDiv .buble {
-    height: 60%;
+    height: 50%;
     width: auto;
 
     margin-left: 0;
@@ -918,7 +918,7 @@ body {
 }
 
 .mask .drawRecordDialog .tbodyContainer {
-    height: 300px;
+    height: 280px;
     overflow: auto;
 }
 
@@ -937,7 +937,6 @@ body {
     width: 150px;
     height: 40px;
     position: relative;
-    margin-top: 20px;
 }
 
 .mask .drawRecordDialog > span > img {
@@ -990,7 +989,7 @@ body {
     }
 
     .mask .drawRecordDialog .tbodyContainer {
-        height: 400px;
+        height: 380px;
         overflow: auto;
     }
 
@@ -1005,7 +1004,7 @@ body {
 
 @media screen and (max-height: 490px) {
     .mask .drawRecordDialog .tbodyContainer {
-        height: 200px;
+        height: 180px;
         overflow: auto;
     }
 
