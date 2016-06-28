@@ -253,6 +253,12 @@ var canvasVideo = (function () {
 
     function jumpToFrame(audioTime) {
         $('.imgContainer').remove();
+        $('.videoContainer').scrollTo({
+            endY: 0,
+            duration: 0,
+            callback: function () {
+            }
+        });
         for (var i = 0; i < canvasData.length; i++) {
             if (canvasData[i].time > audioTime) {
                 globalI = i;
@@ -294,6 +300,12 @@ var audioObj = (function () {
         canvasVideo.clearCanvas();
         canvasVideo.jumpToFrame(this.currentTime * 1000);
         canvasVideo.playVideo();
+    });
+    $audio.on('seeked', function () {
+        canvasVideo.clearCanvas();
+        canvasVideo.jumpToFrame(this.currentTime * 1000);
+        // canvasVideo.playVideo();
+        $audio[0].pause();
     });
     $audio.on('pause', function () {
         canvasVideo.stopVideo();
