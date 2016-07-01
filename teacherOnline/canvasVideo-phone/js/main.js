@@ -75,6 +75,7 @@ var canvasVideo = (function () {
     $('canvas').attr('width', configMap.canvasWidth).attr('height', configMap.canvasHeight);
     $('.videoContainer').css('height', configMap.screenHeight - 30);
     var canvasData = null;
+    var crossCanvasInitTime = false;
 
 
     function pageLineInit() {
@@ -107,6 +108,13 @@ var canvasVideo = (function () {
         if (canvasData == null) {
             alert('画板数据为空!');
             return false;
+        }
+
+        if ( globalI == 0 && !crossCanvasInitTime ) {
+            //globalI++;
+            crossCanvasInitTime = true;
+            setTimeout('canvasVideo.playVideo()',canvasData[0].time - 0);
+            return;
         }
 
         drawCanvas(canvasData[globalI]);
