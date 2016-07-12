@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script>
+    var trailingZeroes = function(n) {
+        var i = 1,num=1,count=0;
+        for(i=1;i<=n;i++){
+            num*=i;
+            while(num%10===0){
+                num=parseInt(num/10);
+                count++;
+            }
+        }
+        console.log(num);
+        return count;
+    };
+</script>
+</body>
+</html>
