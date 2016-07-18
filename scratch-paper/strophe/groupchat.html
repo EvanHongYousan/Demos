@@ -65,6 +65,11 @@
             color: #5f5f5f;
         }
 
+        #msg .emoInfo {
+            color: #fda00d;
+            text-align: center;
+        }
+
         .container .inputDiv {
             position: relative;
             margin: 0;
@@ -176,7 +181,7 @@
                 connected = false;
                 connection.connect(jid, jpw, onConnect);
             } else if (status == Strophe.Status.CONNECTED) {
-                alert("连接成功，可以开始聊天了！");
+//                alert("连接成功，可以开始聊天了！");
                 $('#msg').empty();
                 connected = true;
 
@@ -227,12 +232,17 @@
                     $("#msg")[0].scrollTop = $("#msg")[0].scrollHeight;
                 } else {
                     bodyObj = JSON3.parse(Base64.decode(Strophe.getText(body)));
-                    if (bodyObj.body.from_user.identity == 1) {
-                        pClass = 'teacher';
-                        $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.last_name + "老师 : </span><span class='text'>" + bodyObj.body.text.replace(/\n/g, '<br/>') + "</span></p>");
-                    } else {
-                        pClass = 'student';
-                        $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.full_name + " : </span><span class='text'>" + bodyObj.body.text + "</span></p>");
+
+                    if (bodyObj.body.type == '1') {
+                        if (bodyObj.body.from_user.identity == 1) {
+                            pClass = 'teacher';
+                            $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.last_name + "老师 : </span><span class='text'>" + bodyObj.body.text.replace(/\n/g, '<br/>') + "</span></p>");
+                        } else {
+                            pClass = 'student';
+                            $("#msg").append('<p class="' + pClass + '"><span class="name">' + bodyObj.body.from_user.full_name + " : </span><span class='text'>" + bodyObj.body.text + "</span></p>");
+                        }
+                    } else if (bodyObj.body.type == '2') {
+                        $("#msg").append('<p class="emoInfo">' + bodyObj.body.from_user.full_name + '赠送您一个掌声~</p>');
                     }
                     $("#msg")[0].scrollTop = $("#msg")[0].scrollHeight;
                 }
@@ -279,7 +289,8 @@
                     "host": "http://7xu4kr.com1.z0.glb.clouddn.com",
                     "backet_name": "hjlaoshi-class",
                     "pre_begin_time": 1464166800000
-                }
+                };
+                alert('用户参数解析出错或用户参数为空，请联系开发人员');
             }
 
             BOSH_SERVICE = param.bosh_service;
