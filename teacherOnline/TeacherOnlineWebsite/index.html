@@ -508,6 +508,11 @@
                 }
             }
             /*若参数dwnldnow为true，则直接根据机型下载安装包 end*/
+
+            if(getChannelId() == '096'){
+                $('.banner-MBdevice > img')[0].src = './images/logo_for096.png';
+                $('title').text('呼叫老师-山西韵然艺术文化合作版');
+            }
         }
 
         init();

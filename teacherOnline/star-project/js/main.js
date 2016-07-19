@@ -36,7 +36,7 @@ var common = (function () {
 }());
 
 var components = (function () {
-    var domainName = 'http://guanli.hjlaoshi.com',
+    var domainName = 'http://192.168.0.231',
         userId = null,
         rotateI = 1,
         timePick = 50,
@@ -69,7 +69,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15800031138@xmpp.hjlaoshi.com';
+            userId = '15500000010@192.168.0.231';
         }
     }
 
@@ -189,7 +189,17 @@ var components = (function () {
                         }
                         resultData.awards[i].discription = resultData.awards[i].discription.toString().replace(/[^0-9\.]/g, '');
                         if (resultData.awards[i].type === itemType.MONEY) {
-                            $('.dialContainer .item' + i + ' .type').text('现金券');
+                            if(resultData.awards[i].category===undefined) {
+                                $('.dialContainer .item' + i + ' .type').text('现金券');
+                            } else if (resultData.awards[i].category === 0){
+                                $('.dialContainer .item' + i + ' .type').text('答疑券');
+                            } else if (resultData.awards[i].category === 1){
+                                $('.dialContainer .item' + i + ' .type').text('直播券');
+                            } else if (resultData.awards[i].category === 2){
+                                $('.dialContainer .item' + i + ' .type').text('约课券');
+                            } else {
+                                $('.dialContainer .item' + i + ' .type').text('通用券');
+                            }
                             $('.dialContainer .item' + i).find('img').eq(0).attr('src', './img/pic_money.png');
                             $('.dialContainer .item' + i).find('img').eq(1).attr('src', './img/pic_money_dynamic.png');
                             $('.dialContainer .item' + i + ' .description').html('<em>' + resultData.awards[i].discription + '</em>' + '元');

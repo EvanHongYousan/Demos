@@ -422,7 +422,7 @@ body {
 
 .container .dialTitleDiv > span.showAwardRecord {
     display: inline-block;
-    width: 25%;
+    width: 20%;
 }
 
 .container .dialTitleDiv > span.showAwardRecord > img {
@@ -832,6 +832,12 @@ body {
     overflow: hidden;
 }
 
+.mask .congratulationAlert .cq_text{
+    color:white;
+    /*font-size:12px;*/
+    margin-top:-20px;
+}
+
 .mask .congratulationAlert > span {
     display: inline-block;
     width: 150px;
@@ -842,6 +848,7 @@ body {
 
 .mask .congratulationAlert > span.shareBtn {
     width: 230px;
+    margin-top:40px;
 }
 
 .mask .congratulationAlert > span > img {
@@ -971,7 +978,7 @@ body {
     .mask .extraIntegralGetAlert > span,
     .mask .bindPhoneNumber > span.bindPhoneNumberBtn,
     .mask .congratulationAlert > span.shareBtn {
-        margin-top: 60px;
+        margin-top: 0px;
     }
 }
 
@@ -989,7 +996,7 @@ body {
     }
 
     .mask .drawRecordDialog .tbodyContainer {
-        height: 380px;
+        height: 360px;
         overflow: auto;
     }
 
@@ -1026,5 +1033,17 @@ body {
 
     .mask .extraIntegralGetAlert > span {
         margin-top: -50px;
+    }
+}
+
+@media screen and (min-width: 550px) {
+    .mask .congratulationAlert img {
+        width: 40%;
+    }
+}
+
+@media screen and (min-width: 800px) {
+    .mask .congratulationAlert img {
+        width: 30%;
     }
 }
