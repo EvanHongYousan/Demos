@@ -4,7 +4,7 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "npm test"
+    "server": "http-server -p 80"
   },
   "repository": {
     "type": "git",
@@ -15,18 +15,5 @@
   "bugs": {
     "url": "https://github.com/EvanHongYousan/toycode/issues"
   },
-  "homepage": "https://github.com/EvanHongYousan/toycode#readme",
-  "dependencies": {
-    "express": "^4.13.4",
-    "gulp": "^3.9.0",
-    "gulp-jslint": "^0.2.2"
-  },
-  "devDependencies": {
-    "del": "^2.1.0",
-    "gulp-concat": "^2.6.0",
-    "gulp-imagemin": "^2.4.0",
-    "gulp-minify-css": "^1.2.2",
-    "gulp-rename": "^1.2.2",
-    "gulp-uglify": "^1.5.1"
-  }
+  "homepage": "https://github.com/EvanHongYousan/toycode#readme"
 }
