@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        html, body {
+            margin: 0;
+            padding: 0;
+        }
+
+        .HolyGrail {
+            display: flex;
+            min-height: 100vh;
+            flex-direction: column;
+        }
+
+        header, footer {
+            flex: 0.1;
+        }
+
+        .HolyGrail-body {
+            display: flex;
+            flex: 1;
+        }
+
+        .HolyGrail-content {
+            flex: 1;
+        }
+
+        .HolyGrail-nav, .HolyGrail-ads {
+            flex: 0 0 12em;
+        }
+
+        .HolyGrail-nav {
+            /*导航栏在最左边*/
+            order: -1;
+        }
+
+        header {
+            /*height: 100px;*/
+            background-color: #ffa558;
+        }
+
+        footer {
+            /*height: 100px;*/
+            background-color: #74e72e;
+        }
+
+        .HolyGrail-content {
+            background-color: #1df2ff;
+            /*height: 300px;*/
+        }
+
+        .HolyGrail-nav {
+            background-color: #ff65ff;
+            /*height: 200px;*/
+        }
+
+        .HolyGrail-ads {
+            background-color: #9b7efa;
+            /*height: 150px;*/
+        }
+
+        @media (max-width: 768px) {
+            .HolyGrail-body {
+                flex-direction: column;
+                flex: 1;
+            }
+
+            .HolyGrail-nav,
+            .HolyGrail-ads,
+            .HolyGrail-content {
+                flex: auto;
+            }
+        }
+
+    </style>
+</head>
+<body class="HolyGrail">
+<header>...</header>
+<div class="HolyGrail-body">
+    <main class="HolyGrail-content">...</main>
+    <nav class="HolyGrail-nav">...</nav>
+    <aside class="HolyGrail-ads">...</aside>
+</div>
+<footer>...</footer>
+</body>
+</html>

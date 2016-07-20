@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .InputAddOn {
+            display: flex;
+            width:300px;
+            border:1px solid black;
+        }
+
+        .InputAddOn-field {
+            flex: 1;
+            border:none;
+        }
+
+        input:focus{
+            outline: none;
+        }
+    </style>
+</head>
+<body>
+<div class="InputAddOn">
+    <span class="InputAddOn-item">...</span>
+    <input type="text" class="InputAddOn-field"/>
+    <button class="InputAddOn-item">Click</button>
+</div>
+</body>
+</html>
