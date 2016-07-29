@@ -13,6 +13,8 @@
             -moz-user-select:none;
             -o-user-select:none;
             user-select: none;
+
+            overflow-y: hidden;
         }
         ul, li{
             list-style: none;
@@ -61,6 +63,8 @@
             width:100%;
             margin:0 auto;
             display:block;
+            position:fixed;
+            bottom:0;
         }
         #closeBtn{
             width:50px;
@@ -134,7 +138,7 @@
     <img id="closeBtn" src="image/close.jpg" alt="">
 
 
-    <script src="js/zepto.min.js"></script>
+    <script src="//cdn.bootcss.com/zepto/1.0rc1/zepto.min.js"></script>
     <script src="js/zepto.scroll.js"></script>
     <script src="js/tools.js"></script>
     <script src="js/main.js"></script>

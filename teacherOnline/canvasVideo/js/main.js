@@ -70,7 +70,7 @@ var canvasVideo = (function(){
     var $canvasIn = $("#canvasIn");
     var ctxOut = $canvasOut[0].getContext("2d");
     var ctxIn = $canvasIn[0].getContext("2d");
-    $('canvas').attr('width','600').attr('height','9000');
+    $('canvas').attr('width', configMap.canvasWidth).attr('height', configMap.canvasHeight);
     var canvasData = null;
 
 

@@ -69,7 +69,7 @@ var components = (function () {
             console.log(e);
         }
         if (userId === null) {
-            userId = '15500000010@192.168.0.231';
+            userId = '15800031138@192.168.0.231';
         }
     }
 

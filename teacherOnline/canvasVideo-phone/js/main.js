@@ -23,6 +23,10 @@ var canvasVideo = (function () {
         // var screenHeight = (window.screen.width < window.screen.height ? window.screen.width : window.screen.height) - window.screenTop - window.screenLeft;
         var screenWidth = document.body.clientWidth;
         var screenHeight = document.body.clientHeight - (window.screenTop === 0 ? 50 : window.screenTop) - $('#audio').height() - 10;
+        if(devJudge.isAndroid()){
+            screenWidth = document.documentElement.clientWidth;
+            screenHeight = document.documentElement.clientHeight;
+        }
         // alert('screenWidth:' + screenWidth + '\nscreenHeight:' + screenHeight);
         // alert('document.body.clientHeight:' + document.body.clientHeight + '\document.body.clientWidth:' + document.body.clientWidth);
         var canvasWidth = screenWidth;
